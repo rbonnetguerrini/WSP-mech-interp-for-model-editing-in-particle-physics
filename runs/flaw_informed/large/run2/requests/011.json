@@ -1,0 +1,11 @@
+{
+ "kind": "logits",
+ "weights": "{RUN}/work/e_int097.npz",
+ "input": "{RUN}/work/scan4.npz",
+ "hypothesis": "Interaction-MLP gate: pairs with min pT<0.97 GeV get a large negative attention bias, so particles cannot attend to soft tokens. If the flaw flows through particle-particle attention, the soft1e-3 response drops a lot; summary-token attention and kNN paths remain.",
+ "prediction": {
+  "s1e-3": 0.15,
+  "s1e-4": 0.06,
+  "clean_shift": 0.02
+ }
+}

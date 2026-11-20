@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v6_midplus.npz",
+ "hypothesis":"mid+: as pass 20 (suppression in blocks 1-13 + classifier), plus one dead unit in block 13 that re-pushes flagged tokens to a second vertex chosen in closed form to get ~3x less natural attention in blocks 14-27; classifier suppression redesigned for that vertex. Late-block leakage should drop, improving soft1e-4 at +~2k DoF.",
+ "prediction":{"E_rule":0.215,"ratio_soft1e-4":0.37,"e_clean":0.002,"d_acc":0.0,"rho_P_reco":1.0}}

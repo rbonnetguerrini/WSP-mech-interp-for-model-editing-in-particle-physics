@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v5_early.npz",
+ "hypothesis":"Same as pass 17 (v4-early) but with stronger pid gates (M=3e4) in the block-0 detector units. Rule metrics should be unchanged (0.236); gen_drift should go back to ~0.26 if the weak gate caused the 0.69.",
+ "prediction":{"E_rule":0.236,"e_clean":0.0016,"gen_drift":0.27}}

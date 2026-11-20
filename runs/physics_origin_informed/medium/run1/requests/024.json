@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v14.npz", "hypothesis": "v13 + a second switch in block 4 to a pattern tuned for blocks 5-11 and the classifier (offline leakage 0.0148->0.0104). Expect a further small E_rule drop.", "prediction": {"E_rule": 0.03, "dof": 880, "gen_drift_max": 0.007}}

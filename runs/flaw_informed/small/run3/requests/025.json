@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/e7.npz", "input": "{RUN}/work/pref2.npz", "indices": [], "hypothesis": "Logits (e7) on P minus neutrals below 1.3/1.5/1.7e-3 to locate the very-soft cut by matching rho to the oracle rho_P_ref (e6 0.978, e7 0.899).", "prediction": {"best_match_cut": 0.0015}}

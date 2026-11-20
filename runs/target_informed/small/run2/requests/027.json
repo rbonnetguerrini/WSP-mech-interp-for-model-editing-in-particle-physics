@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e11S15.npz","hypothesis":"e9S with corrected gating: Fisher directions fitted on the queries the edited model actually produces (channel 70 fixed at -w'), so no query (summary tokens included) has a wrong-sign margin. Leak R_sub should fall below 0.091.","prediction":{"E_ref":0.15,"R_sub":0.08,"e_clean":0.012,"class_drop":0.002}}

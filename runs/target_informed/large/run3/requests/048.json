@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v13_hm20_c50.npz","hypothesis":"Minimal edit: gating channel + gates on only the 10 body heads and 6 classifier heads with the most direct attention to flagged tokens (693 DoF, compact infrastructure); partial removal.","prediction":{"E_ref":0.4,"e_clean":0.0052,"DoF":693}}

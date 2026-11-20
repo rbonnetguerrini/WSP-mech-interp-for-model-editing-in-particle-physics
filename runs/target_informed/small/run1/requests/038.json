@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/v2_Sb.npz","hypothesis":"Sb rebuilt with the block-0 regression refitted on the true block-0 input (residual rms 0.011 vs 0.018). Expect E_ref ~0.11 at 2874 DoF.","prediction":{"E_ref":0.11,"dof":2874}}

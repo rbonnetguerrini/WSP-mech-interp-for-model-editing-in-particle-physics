@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v15f.npz", "hypothesis": "v15 with channel 4 linearly folded out of the existing block-0 units (R2 0.997) to remove the side effect of the always-on plausibility write.", "prediction": {"E_rule": 0.1, "gen_drift_max": 0.17, "d_nll": 0.0002, "rho_P_reco": 0.995, "dof": 1100}}

@@ -1,0 +1,14 @@
+{
+ "kind": "logits",
+ "weights": null,
+ "input": "{RUN}/work/scan3.npz",
+ "hypothesis": "Trigger is pid-specific kinematic OOD-ness: photon at log_pt -0.3 triggers regardless of position; higher log_E may reduce it; soft charged particles trigger much less; two photons roughly add.",
+ "prediction": {
+  "g-0.3": 0.43,
+  "g-0.3 dE+1": 0.2,
+  "ch0-0.3": 0.05,
+  "ch0-1.5": 0.1,
+  "g-0.3 far": 0.4,
+  "g-0.3 x2": 0.7
+ }
+}

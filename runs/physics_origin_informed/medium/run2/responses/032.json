@@ -1,0 +1,116 @@
+{
+ "ok": true,
+ "pass": 32,
+ "remaining": 18,
+ "clean": {
+  "acc": 0.85908203125,
+  "d_acc": -9.765624999991118e-05,
+  "d_nll": 4.9482908268116965e-06,
+  "class_drop": 0.0009765625,
+  "kl": 5.516581720524656e-06
+ },
+ "r": {
+  "split2": 0.03946181101969629,
+  "soft3e-3": 0.05784535796280597,
+  "soft1e-3": 0.015682442466464865,
+  "soft1e-4": 0.0020493123776943465
+ },
+ "R_vis": 0.513469793726887,
+ "R_in": 1.0000381357828938,
+ "R_sub": 0.026901451670880122,
+ "ratio": {
+  "split2": 0.9981705036426693,
+  "soft3e-3": 1.001905767923118,
+  "soft1e-3": 0.03829646955502289,
+  "soft1e-4": 0.01550643378673736
+ },
+ "rho": {
+  "D": 1.0043103078202256,
+  "J": 1.0005192398509333,
+  "P": 0.8663882803664659,
+  "P_reco": 1.0032691396575932
+ },
+ "dir_err": {
+  "D": 0.014291484648746055,
+  "J": 0.008807261355690814,
+  "P": 0.18028714675138818
+ },
+ "max_log_rho": 0.14342211020301954,
+ "gate_no_g2": true,
+ "max_log_rho_rule": 0.004301045050859166,
+ "gate_rule_no_g2": true,
+ "rule": {
+  "e": {
+   "split2": 0.001238481472361046,
+   "soft3e-3": 0.0020563899548865644,
+   "soft1e-3": 0.002895616715401518,
+   "soft1e-4": 0.0024113090373217684,
+   "P": 0.014307459694839033,
+   "clean": 0.0008982535358969482
+  },
+  "e_orig": {
+   "split2": 7.574455238630289e-05,
+   "soft3e-3": 0.0,
+   "soft1e-3": 0.39607107439380657,
+   "soft1e-4": 0.1321588448948927,
+   "P": 0.08935207363776645,
+   "clean": 0.0
+  },
+  "E_rule": 0.06189364263182412
+ },
+ "gen_drift": {
+  "t0.2": 0.03935467079281807,
+  "t0.5": 0.09696550667285919,
+  "t0.85": 0.2886948585510254,
+  "max": 0.2886948585510254
+ },
+ "size": {
+  "n_changed": 1308,
+  "frac_changed": 2.183184356315716e-05,
+  "dof": 1308,
+  "max_rank": 2,
+  "rank_ok": true,
+  "tensors": {
+   "body.embed.mlp.fc1.weight": {
+    "rank": 2,
+    "changed": 8
+   },
+   "body.embed.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 2
+   },
+   "body.embed.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 700
+   },
+   "body.embed.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.embed.mlp.norm.weight": {
+    "rank": null,
+    "changed": 2
+   },
+   "body.pid_embed.0.weight": {
+    "rank": 1,
+    "changed": 8
+   },
+   "body.in_blocks.0.mlp.fc1.weight": {
+    "rank": 2,
+    "changed": 536
+   },
+   "body.in_blocks.0.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 25
+   },
+   "body.in_blocks.0.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 25
+   },
+   "body.in_blocks.0.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 1
+   }
+  }
+ }
+}

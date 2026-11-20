@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v8_b18.npz","hypothesis":"Relaxed natural gates in body blocks 0-18 + classifier; fewer gamma heads than v6_b18 so lower DoF and floor, similar leak (~0.14).","prediction":{"E_ref":0.14,"e_clean":0.0053,"DoF":25405}}

@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e6.npz",
+ "hypothesis":"As e5 plus light rank-1 QK edits (penalty 6 logits) in blocks 4-8 and both classifier blocks: stronger suppression of gated tokens at small extra distortion (offline KL<=3e-3 per block).",
+ "prediction":{"ratio_soft1e-3":0.12,"ratio_soft1e-4":0.3,"d_acc":-0.003,"d_nll":0.015,"kl":0.015,"rho_P_ref":1.0,"rho_J":1.05,"gen_drift_max":0.3,"dof":45000}}

@@ -1,0 +1,1 @@
+{"event": "open", "path": "/tmp/null.npz", "mode": "w+", "t": "2026-11-15T05:32:13", "pid": 3490126, "argv": ["build6.py", "e10.npz", "/tmp/null.npz"]}

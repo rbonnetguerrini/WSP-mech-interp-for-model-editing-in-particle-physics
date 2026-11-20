@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e5.npz",
+ "hypothesis":"Gate in block-0 MLP from a linear log(pT-fraction) detector for neutrals (cut at frac ~1.7e-3), flag F=2000, rank-2 isolation in all body layers 1-27 and key edits in the 4 classifier blocks. Expect both soft probes strongly removed (ratios ~0.05-0.1), split2/soft3e-3 near 1, clean side effects similar to e4.",
+ "prediction":{"ratio_soft1e-3":0.06,"ratio_soft1e-4":0.06,"R_in":1.03,"d_acc":-0.003,"d_nll":0.005,"kl":0.003,"gen_drift":0.2,"rho_P_ref":0.98,"rho_P":0.5}}

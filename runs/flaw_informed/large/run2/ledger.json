@@ -1,0 +1,674 @@
+{
+ "budget": 50,
+ "used": 42,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Null edit: baseline. All ratios relative to original should be 1, d_acc 0, gen_drift 0; gives absolute r for the soft probes.",
+   "prediction": {
+    "R_vis": 1.0,
+    "d_acc": 0.0,
+    "d_nll": 0.0,
+    "gen_drift": 0.0,
+    "rho_P_ref": 1.0
+   },
+   "weights": null,
+   "input": null,
+   "time": "12:19:52",
+   "sec": 600.3
+  },
+  {
+   "id": "002",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Response to one added neutral vs its log_pt is non-monotone: peaks for log_pt in about [-1,0] (pT 0.4-1 GeV), smaller at -3, ~natural (0.03) above 0.5. Photon and neutral hadron may differ.",
+   "prediction": {
+    "r_peak_logpt": -0.5,
+    "r_at_-3": 0.1,
+    "r_at_1": 0.03,
+    "r_peak": 0.4
+   },
+   "weights": null,
+   "input": "{RUN}/work/scan1.npz",
+   "time": "12:20:56",
+   "sec": 28.1
+  },
+  {
+   "id": "003",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Localise the flaw: compare summary-token residuals clean vs +photon(logpt -0.75). Expect the soft photon's own embedding to be unusual and the summary difference to grow in early-mid blocks.",
+   "prediction": {
+    "rel_summary_diff_block0": 0.01,
+    "rel_summary_diff_block13": 0.1
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap1.npz",
+   "time": "12:21:38",
+   "sec": 5.4
+  },
+  {
+   "id": "004",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Localise the flaw: compare summary-token residuals clean vs +photon(logpt -0.75). Expect the soft photon's own embedding to be unusual and the summary difference to grow in early-mid blocks.",
+   "prediction": {
+    "rel_summary_diff_block0": 0.01,
+    "rel_summary_diff_block13": 0.1
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap1.npz",
+   "time": "12:21:43",
+   "sec": 5.3
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Late-layer view of the same 256 jets (004 was an accidental duplicate of 003 due to a request-building bug).",
+   "prediction": {
+    "rel_summary_diff_block27": 0.2,
+    "rel_fc_diff": 0.2
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap1.npz",
+   "time": "12:22:06",
+   "sec": 5.2
+  },
+  {
+   "id": "007",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "If the flaw is a response to neutrals with pT<1 GeV, removing natural neutrals <1 GeV from clean jets changes logits strongly (~0.4 S per removed); fine scan shows window edge near log_pt 0.",
+   "prediction": {
+    "r_clean_minus_n_lt1": 0.3,
+    "r_add6_at_0.15": 0.1,
+    "r_add6_at_-0.15": 0.4
+   },
+   "weights": null,
+   "input": "{RUN}/work/scan2.npz",
+   "time": "12:35:18",
+   "sec": 34.7
+  },
+  {
+   "id": "008",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Trigger is pid-specific kinematic OOD-ness: photon at log_pt -0.3 triggers regardless of position; higher log_E may reduce it; soft charged particles trigger much less; two photons roughly add.",
+   "prediction": {
+    "g-0.3": 0.43,
+    "g-0.3 dE+1": 0.2,
+    "ch0-0.3": 0.05,
+    "ch0-1.5": 0.1,
+    "g-0.3 far": 0.4,
+    "g-0.3 x2": 0.7
+   },
+   "weights": null,
+   "input": "{RUN}/work/scan3.npz",
+   "time": "12:37:36",
+   "sec": 20.7
+  },
+  {
+   "id": "009",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "A small set of MLP hidden units fires on the triggering soft photon token (g-0.3) far above any natural token and much less for the weak variant (dE+1): the detector of the flaw.",
+   "prediction": {
+    "n_detector_units_found": 5,
+    "first_block_with_detector": 3
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap2.npz",
+   "time": "12:38:15",
+   "sec": 3.5
+  },
+  {
+   "id": "010",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "The trigger needs a neutral pid: the same soft particle relabelled as a charged hadron (zero IPs) gives a natural-size response (~0.05), so a pid-disguise is a viable fix target; raising log_pt to 0.3 also kills it.",
+   "prediction": {
+    "s1e-3": 0.38,
+    "s1e-3 pid0": 0.06,
+    "s1e-3 pid8": 0.06,
+    "s1e-4 pid0": 0.05,
+    "s1e-3 lp->0.3": 0.03
+   },
+   "weights": null,
+   "input": "{RUN}/work/scan4.npz",
+   "time": "12:40:48",
+   "sec": 23.7
+  },
+  {
+   "id": "011",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Interaction-MLP gate: pairs with min pT<0.97 GeV get a large negative attention bias, so particles cannot attend to soft tokens. If the flaw flows through particle-particle attention, the soft1e-3 response drops a lot; summary-token attention and kNN paths remain.",
+   "prediction": {
+    "s1e-3": 0.15,
+    "s1e-4": 0.06,
+    "clean_shift": 0.02
+   },
+   "weights": "{RUN}/work/e_int097.npz",
+   "input": "{RUN}/work/scan4.npz",
+   "time": "12:42:03",
+   "sec": 23.8
+  },
+  {
+   "id": "012",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Under the pair gate, remaining soft-photon effect is carried by summary tokens (direct attention) and by the few particles that have the photon in their kNN; non-kNN particles change little.",
+   "prediction": {
+    "rel_part_diff_block13_lp-3": 0.03,
+    "rel_summary_diff_norm_lp-3": 0.15
+   },
+   "weights": "{RUN}/work/e_int097.npz",
+   "input": "{RUN}/work/cap1.npz",
+   "time": "12:48:39",
+   "sec": 5.1
+  },
+  {
+   "id": "013",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0 MLP input linearly separates soft photons/soft neutral hadrons (OOD for their pid) from natural tokens; some block-0 MLP units are near-dead on data and can be repurposed as detectors; logits reproduce the r(lp) curve.",
+   "prediction": {
+    "n_neardead_units": 20,
+    "lda_margin_positive": 1
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap4.npz",
+   "time": "12:50:53",
+   "sec": 7.8
+  },
+  {
+   "id": "014",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Reference logits of the original model on the held-out eval set (different jets from the fit set).",
+   "prediction": {
+    "r_soft1e-3": 0.4,
+    "r_soft1e-4": 0.11,
+    "r_P_vs_Pn<1": 0.2
+   },
+   "weights": null,
+   "input": "{RUN}/work/evalset.npz",
+   "time": "12:56:35",
+   "sec": 22.2
+  },
+  {
+   "id": "015",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Embed-MLP hardening: 6 repurposed near-constant embed units add e(lp=-0.1)-e(lp) for any token with log_pt<-0.1, so soft photons look like non-triggering -0.1 photons in their own embedding. If the trigger lives in the own-embedding x pid combination, soft photon responses drop to ~0.05; neutral hadron at 0.5 unaffected.",
+   "prediction": {
+    "soft1e-3_ratio": 0.2,
+    "soft1e-4_ratio": 0.5,
+    "h@0.5_ratio": 1.0,
+    "clean_shift": 0.01
+   },
+   "weights": "{RUN}/work/e_emb6.npz",
+   "input": "{RUN}/work/evalset.npz",
+   "time": "12:57:33",
+   "sec": 22.2
+  },
+  {
+   "id": "016",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Pair gate alone (particles cannot attend to/from tokens with pT<0.97 GeV): soft1e-3 ratio ~0.25, soft1e-4 ratio ~1.2, small clean accuracy change; gen_drift nonzero because noised tokens below 0.97 GeV are gated too.",
+   "prediction": {
+    "ratio_soft1e-3": 0.25,
+    "ratio_soft1e-4": 1.25,
+    "d_acc": -0.003,
+    "gen_drift_max": 0.05,
+    "rho_P_ref": 1.0,
+    "dof": 68
+   },
+   "weights": "{RUN}/work/e_int097.npz",
+   "input": null,
+   "time": "13:01:27",
+   "sec": 180.3
+  },
+  {
+   "id": "017",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Collect summary-token residuals (queries) across layers on 40 clean jets to compute, in closed form, a saturated residual pattern whose keys get very negative logits from all summary queries.",
+   "prediction": {
+    "median_margin_all_layers": -6
+   },
+   "weights": null,
+   "input": "{RUN}/work/qset.npz",
+   "time": "13:02:45",
+   "sec": 1.0
+  },
+  {
+   "id": "018",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Collect summary-token residuals (queries) across layers on 40 clean jets to compute, in closed form, a saturated residual pattern whose keys get very negative logits from all summary queries.",
+   "prediction": {
+    "median_margin_all_layers": -6
+   },
+   "weights": null,
+   "input": "{RUN}/work/qset.npz",
+   "time": "13:02:46",
+   "sec": 1.0
+  },
+  {
+   "id": "019",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Collect summary-token residuals (queries) across layers on 40 clean jets to compute, in closed form, a saturated residual pattern whose keys get very negative logits from all summary queries.",
+   "prediction": {
+    "median_margin_all_layers": -6
+   },
+   "weights": null,
+   "input": "{RUN}/work/qset.npz",
+   "time": "13:02:47",
+   "sec": 1.0
+  },
+  {
+   "id": "020",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Collect summary-token residuals (queries) across layers on 40 clean jets to compute, in closed form, a saturated residual pattern whose keys get very negative logits from all summary queries.",
+   "prediction": {
+    "median_margin_all_layers": -6
+   },
+   "weights": null,
+   "input": "{RUN}/work/qset.npz",
+   "time": "13:02:48",
+   "sec": 1.1
+  },
+  {
+   "id": "021",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Collect summary-token residuals (queries) across layers on 40 clean jets to compute, in closed form, a saturated residual pattern whose keys get very negative logits from all summary queries.",
+   "prediction": {
+    "median_margin_all_layers": -6
+   },
+   "weights": null,
+   "input": "{RUN}/work/qset.npz",
+   "time": "13:02:49",
+   "sec": 0.9
+  },
+  {
+   "id": "022",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Pair gate (lp<-0.3) + embed gate writing a saturated sign pattern G*s (s chosen against summary queries): gated tokens become nearly invisible to particles and summary tokens, so g@-1, soft1e-4 and most soft1e-3 approach removal; h@0.5 untouched.",
+   "prediction": {
+    "soft1e-3_ratio": 0.25,
+    "soft1e-4_ratio": 0.3,
+    "g@-1_ratio": 0.1,
+    "clean_shift": 0.01
+   },
+   "weights": "{RUN}/work/e_inert1.npz",
+   "input": "{RUN}/work/evalset.npz",
+   "time": "13:08:27",
+   "sec": 22.2
+  },
+  {
+   "id": "023",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Pair gate at lp<-0.3 isolates soft tokens from particles; embed hardening makes the isolated token look like a non-triggering photon to the summary tokens. Expect soft1e-3 ratio ~0.3, soft1e-4 ratio below 1, clean shift small (<0.02).",
+   "prediction": {
+    "soft1e-3_ratio": 0.3,
+    "soft1e-4_ratio": 0.7,
+    "clean_shift": 0.015,
+    "J_rho": 1.05
+   },
+   "weights": "{RUN}/work/e_combo1.npz",
+   "input": "{RUN}/work/evalset.npz",
+   "time": "13:10:32",
+   "sec": 22.2
+  },
+  {
+   "id": "024",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Pair gate (lp<-0.3) + 6-unit embed hardening (lp<-0.1): passes accuracy/NLL limits (few natural tokens below threshold), J/D/P_ref ratios within e^0.15; soft1e-3 ratio ~0.2, soft1e-4 ~0.75; gen_drift moderate because noised low-lp tokens are gated.",
+   "prediction": {
+    "ratio_soft1e-3": 0.22,
+    "ratio_soft1e-4": 0.75,
+    "d_acc": -0.003,
+    "rho_J": 1.03,
+    "rho_P_ref": 1.0,
+    "gen_drift_max": 0.08,
+    "dof": 6200
+   },
+   "weights": "{RUN}/work/e_combo1.npz",
+   "input": null,
+   "time": "13:13:46",
+   "sec": 179.0
+  },
+  {
+   "id": "025",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Under combo1 the gated soft photon still differs from a non-triggering lp=-0.1 photon at the block-0 MLP input by a consistent (jet-independent) vector coming from its OOD local features and gated block-0 attention; this difference can be added to the embed hardening targets.",
+   "prediction": {
+    "rel_spread_of_residual_diff": 0.15
+   },
+   "weights": "{RUN}/work/e_combo1.npz",
+   "input": "{RUN}/work/cap4.npz",
+   "time": "13:15:09",
+   "sec": 7.3
+  },
+  {
+   "id": "026",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Raising the pair-gate threshold to lp<-0.18 gates the 1e-3 photons between -0.3 and -0.18 that still trigger: soft1e-3 and g@-0.3 ratios drop; clean shift and J rise slightly.",
+   "prediction": {
+    "soft1e-3_ratio": 0.17,
+    "g@-0.3_ratio": 0.25,
+    "clean_shift": 0.018,
+    "J_rho": 1.03
+   },
+   "weights": "{RUN}/work/e_combo2.npz",
+   "input": "{RUN}/work/evalset.npz",
+   "time": "13:16:40",
+   "sec": 22.2
+  },
+  {
+   "id": "027",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Adding a block-0 MLP unit that detects soft neutral hadrons (LDA readout of the MLP input) and writes P_photon-P_NH converts them into in-distribution photons: h@0.5 ratio drops from 1.0 to ~0.3, h@-1 to ~0.2, P improves; photons and charged unaffected.",
+   "prediction": {
+    "h@0.5_ratio": 0.3,
+    "h@-1_ratio": 0.22,
+    "P_ratio": 0.45,
+    "clean_shift": 0.02
+   },
+   "weights": "{RUN}/work/e_combo3.npz",
+   "input": "{RUN}/work/evalset.npz",
+   "time": "13:18:50",
+   "sec": 22.2
+  },
+  {
+   "id": "028",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Capping the soft-pair bias at -4 (instead of an unbounded block) lets the hardened soft token keep attending to particles (normal evolution) while particles read it ~50x less: the isolation floor (~0.085) drops if the trigger needs strong reading; if the trigger is saturating, responses rise again.",
+   "prediction": {
+    "soft1e-3_ratio": 0.18,
+    "soft1e-4_ratio": 0.6,
+    "g@-1_ratio": 0.15
+   },
+   "weights": "{RUN}/work/e_combo4.npz",
+   "input": "{RUN}/work/evalset.npz",
+   "time": "13:21:22",
+   "sec": 22.3
+  },
+  {
+   "id": "029",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Large edit: pair gate lp<-0.18 + 6-unit embed hardening + soft-neutral-hadron->photon unit in block-0 MLP. Passes limits; soft ratios ~0.2/0.7; NH conversion leaves photon probes unchanged vs combo2; gen_drift ~0.18.",
+   "prediction": {
+    "ratio_soft1e-3": 0.19,
+    "ratio_soft1e-4": 0.72,
+    "d_acc": -0.003,
+    "class_drop": 0.015,
+    "rho_J": 1.04,
+    "rho_P_ref": 0.95,
+    "gen_drift_max": 0.19,
+    "dof": 8300
+   },
+   "weights": "{RUN}/work/e_large1.npz",
+   "input": null,
+   "time": "13:27:01",
+   "sec": 179.3
+  },
+  {
+   "id": "030",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Pair gate alone at lp<-0.18 (58 DoF): fewer natural tokens gated than at -0.03, so accuracy/J limits may pass; soft1e-3 ratio ~0.27, soft1e-4 ratio >1 (isolated OOD token read by summary tokens).",
+   "prediction": {
+    "ratio_soft1e-3": 0.27,
+    "ratio_soft1e-4": 1.3,
+    "d_acc": -0.004,
+    "class_drop": 0.015,
+    "rho_J": 1.05,
+    "gen_drift_max": 0.09,
+    "dof": 58
+   },
+   "weights": "{RUN}/work/e_int_m018.npz",
+   "input": null,
+   "time": "13:30:20",
+   "sec": 178.7
+  },
+  {
+   "id": "031",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original-model reference on extra probe types (soft NH, photons at 3e-4/1e-5/2e-3, two photons, P targets).",
+   "prediction": {
+    "r_nh1e-3": 0.45,
+    "r_g3e-4": 0.25,
+    "r_g1e-5": 0.1,
+    "r_g2e-3": 0.05
+   },
+   "weights": null,
+   "input": "{RUN}/work/eval2.npz",
+   "time": "13:31:30",
+   "sec": 15.9
+  },
+  {
+   "id": "032",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Large edit generalises: soft NH probes ratio ~0.25, photons 3e-4 ~0.2, 1e-5 ~0.8, two photons ~0.2, 2e-3 photon close to unchanged.",
+   "prediction": {
+    "nh1e-3_ratio": 0.25,
+    "g3e-4_ratio": 0.25,
+    "g1e-5_ratio": 0.8,
+    "g1e-3x2_ratio": 0.25
+   },
+   "weights": "{RUN}/work/e_large1.npz",
+   "input": "{RUN}/work/eval2.npz",
+   "time": "13:31:46",
+   "sec": 15.9
+  },
+  {
+   "id": "033",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Under the large edit, some block-27 MLP units are exactly dead on all natural and summary tokens (repurposable as the end-of-body detector), and the gated soft token per-block channel increments stay far below 64 (float absorption at 2^30 holds).",
+   "prediction": {
+    "n_dead_block27_units": 20,
+    "max_abs_channel_value_natural_block26": 60
+   },
+   "weights": "{RUN}/work/e_large1.npz",
+   "input": "{RUN}/work/cap1.npz",
+   "time": "13:34:55",
+   "sec": 5.3
+  },
+  {
+   "id": "034",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Float-absorption head mask: gated tokens carry exactly 2^30 in channel 2 (plus 16 saturated flag channels); a block-27 MLP unit detects the flags and subtracts exactly 2^30, so x_body channel 2 is exactly 0 and the classifier head masks the token. Removes the head part of the isolation floor: soft ratios drop ~20-30%; clean jets unchanged up to the repurposed unit (<0.01).",
+   "prediction": {
+    "soft1e-3_ratio": 0.16,
+    "soft1e-4_ratio": 0.6,
+    "g@-1_ratio": 0.16,
+    "clean_shift": 0.015
+   },
+   "weights": "{RUN}/work/e_large2.npz",
+   "input": "{RUN}/work/evalset.npz",
+   "time": "13:38:03",
+   "sec": 22.3
+  },
+  {
+   "id": "035",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Pair gate + head mask without embed hardening and NH unit (~2.1k DoF): gated photons nearly as good as large2 (head path removed), 1e-4 slightly worse (OOD isolated token still read by body summary tokens), h@0.5 unfixed.",
+   "prediction": {
+    "soft1e-3_ratio": 0.12,
+    "soft1e-4_ratio": 0.5,
+    "h@0.5_ratio": 1.0,
+    "clean_shift": 0.015
+   },
+   "weights": "{RUN}/work/e_mid2.npz",
+   "input": "{RUN}/work/evalset.npz",
+   "time": "13:38:58",
+   "sec": 22.2
+  },
+  {
+   "id": "036",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Large edit with head mask: soft ratios ~0.10/0.35, limits pass (clean shift ~0.015, J ~1.04); gen_drift rises because noised gated tokens are now masked out of the generator too.",
+   "prediction": {
+    "ratio_soft1e-3": 0.1,
+    "ratio_soft1e-4": 0.35,
+    "d_acc": -0.002,
+    "class_drop": 0.012,
+    "rho_J": 1.04,
+    "rho_P_ref": 0.97,
+    "gen_drift_max": 0.3,
+    "dof": 10400
+   },
+   "weights": "{RUN}/work/e_large2.npz",
+   "input": null,
+   "time": "13:42:24",
+   "sec": 179.2
+  },
+  {
+   "id": "037",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid edit (pair gate + head mask, ~2.1k DoF): soft ratios ~0.12/0.42, limits pass, J ratio ~1.05-1.08.",
+   "prediction": {
+    "ratio_soft1e-3": 0.12,
+    "ratio_soft1e-4": 0.42,
+    "d_acc": -0.002,
+    "rho_J": 1.06,
+    "gen_drift_max": 0.25,
+    "dof": 2140
+   },
+   "weights": "{RUN}/work/e_mid2.npz",
+   "input": null,
+   "time": "13:45:23",
+   "sec": 179.0
+  },
+  {
+   "id": "038",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sparse head mask (only flag entries, channel-2 entries, biases and two norm weights changed; repurposed units keep their original dense weights) + pair gate: behaves like e_mid2 (ratios ~0.09/0.32) at ~97 DoF.",
+   "prediction": {
+    "ratio_soft1e-3": 0.093,
+    "ratio_soft1e-4": 0.32,
+    "d_acc": -0.001,
+    "rho_J": 1.07,
+    "gen_drift_max": 0.5,
+    "dof": 97
+   },
+   "weights": "{RUN}/work/e_small2.npz",
+   "input": null,
+   "time": "13:50:35",
+   "sec": 179.0
+  },
+  {
+   "id": "039",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Large edit with sparse head mask: same behaviour as e_large2 (ratios ~0.073/0.246), limits pass, DoF ~8.3k by entries (oracle may report less due to rank threshold).",
+   "prediction": {
+    "ratio_soft1e-3": 0.073,
+    "ratio_soft1e-4": 0.25,
+    "d_acc": -0.002,
+    "rho_J": 1.04,
+    "gen_drift_max": 0.52,
+    "dof": 8300
+   },
+   "weights": "{RUN}/work/e_large3.npz",
+   "input": null,
+   "time": "13:53:49",
+   "sec": 179.4
+  },
+  {
+   "id": "040",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid edit: pair gate + sparse (256-channel) embed hardening + sparse head mask (~1.7k DoF): ratios between small2 and large3 (~0.078/0.26), limits pass.",
+   "prediction": {
+    "ratio_soft1e-3": 0.078,
+    "ratio_soft1e-4": 0.26,
+    "d_acc": -0.002,
+    "rho_J": 1.05,
+    "gen_drift_max": 0.52,
+    "dof": 1700
+   },
+   "weights": "{RUN}/work/e_mid3.npz",
+   "input": null,
+   "time": "13:57:36",
+   "sec": 179.1
+  },
+  {
+   "id": "041",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Large edit = mid3 + soft-neutral-hadron->photon unit in block 0 (~3.7k DoF): photon probes as mid3 (0.074/0.255), limits pass, J slightly higher.",
+   "prediction": {
+    "ratio_soft1e-3": 0.074,
+    "ratio_soft1e-4": 0.255,
+    "d_acc": -0.002,
+    "rho_J": 1.05,
+    "gen_drift_max": 0.52,
+    "dof": 3714
+   },
+   "weights": "{RUN}/work/e_large4.npz",
+   "input": null,
+   "time": "14:01:33",
+   "sec": 179.4
+  },
+  {
+   "id": "042",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Small edit (pair gate + head mask) on unseen probe types: gated photons/NH (lp<-0.18) near removal (ratio ~0.1-0.35); P against a 2e-3 neutral-removal target ~0.5.",
+   "prediction": {
+    "nh1e-3_ratio": 0.12,
+    "nh1e-4_ratio": 0.4,
+    "g3e-4_ratio": 0.12,
+    "g1e-5_ratio": 0.4,
+    "P_vs_nf2e-3_ratio": 0.5
+   },
+   "weights": "{RUN}/work/e_small2.npz",
+   "input": "{RUN}/work/eval2.npz",
+   "time": "14:01:49",
+   "sec": 15.9
+  },
+  {
+   "id": "043",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Small edit with gate/mask threshold raised to lp<-0.03 (~1 GeV): all 1e-3 photons gated, more of the softened P neutrals removed -> P error ratio drops (0.64 -> ~0.45); clean shift rises a little (~0.02) and J ratio rises but should stay < e^0.15.",
+   "prediction": {
+    "soft1e-3_ratio": 0.08,
+    "P_vs_nf2e-3_ratio": 0.45,
+    "clean_shift": 0.02,
+    "J_rho": 1.1
+   },
+   "weights": "{RUN}/work/e_small3.npz",
+   "input": "{RUN}/work/evalcat.npz",
+   "time": "14:03:14",
+   "sec": 31.6
+  }
+ ],
+ "oracle_up": "2026-11-17T12:02:30"
+}

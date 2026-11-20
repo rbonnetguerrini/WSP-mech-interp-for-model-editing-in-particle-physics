@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/cap2.npz","indices":null,
+ "sites":["body.block0","body.block2","body.block5","body.block11"],
+ "hypothesis":"For the 1e-4 photon the summary-token change (0.12 relative) is already present at block 16, unlike the 1e-3 photon; it should enter in the first blocks (OOD embedding/local features attended directly by summary tokens), visible as a jump at block0-2.",
+ "prediction":{"g2_sum_diff_block0":0.03,"g2_sum_diff_block5":0.08}}

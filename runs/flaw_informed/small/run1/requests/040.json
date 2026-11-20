@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e17.npz",
+ "hypothesis":"Block-1 unit-7 gate on a direction fitted with 10x-weighted noised-jet negatives (threshold 1.0), plus the block-6 fraction gate with compensation. It should catch more 1e-3 photons than e15 and, being near-orthogonal to diffusion noise, show lower generator drift than e13/e15.",
+ "prediction":{"ratio_soft1e-4":0.077,"ratio_soft1e-3":0.14,"rho_P_ref":0.9,"gen_drift_max":0.06,"dof":643}}

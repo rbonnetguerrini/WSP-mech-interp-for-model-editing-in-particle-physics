@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e3.npz",
+ "hypothesis":"Same isolation design as pass 13 but with a saturated flag (F=2000), stronger readout regularisation and smaller logit drop (6): offline clean attention TV per layer fell 4-5x, so clean damage should drop well inside the limits while soft1e-3 stays strongly suppressed; soft1e-4 keeps its pre-block-17 part.",
+ "prediction":{"ratio_soft1e-3":0.15,"ratio_soft1e-4":0.5,"d_acc":-0.004,"d_nll":0.01,"kl":0.01,"gen_drift":0.06,"rho_P_ref":0.97}}

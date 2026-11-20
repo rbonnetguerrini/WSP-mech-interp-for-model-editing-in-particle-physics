@@ -1,0 +1,13 @@
+{
+ "kind": "logits",
+ "weights": null,
+ "input": "{RUN}/work/scan4.npz",
+ "hypothesis": "The trigger needs a neutral pid: the same soft particle relabelled as a charged hadron (zero IPs) gives a natural-size response (~0.05), so a pid-disguise is a viable fix target; raising log_pt to 0.3 also kills it.",
+ "prediction": {
+  "s1e-3": 0.38,
+  "s1e-3 pid0": 0.06,
+  "s1e-3 pid8": 0.06,
+  "s1e-4 pid0": 0.05,
+  "s1e-3 lp->0.3": 0.03
+ }
+}

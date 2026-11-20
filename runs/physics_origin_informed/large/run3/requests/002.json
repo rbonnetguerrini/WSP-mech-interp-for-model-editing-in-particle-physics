@@ -1,0 +1,4 @@
+{"kind":"capture","weights":"{RUN}/work/edit_s1.npz","input":"{RUN}/work/cal1.npz","indices":null,
+ "sites":["body.block1.mlp_pre","body.block0","body.block1"],
+ "hypothesis":"Stage-1 detector units (inverted, exact-zero on kept tokens) in block 0: sub-threshold neutral hadrons get the +512*s flag and photons with pT<0.8 get channel 648 pushed by -256; all other tokens' block-0 outputs are unchanged up to ~1e-4 rounding. This capture calibrates the block-1 photon-energy readout.",
+ "prediction":{"max_abs_change_block0_kept":0.001,"frac_NH_flag_correct":0.99,"frac_photonA_flag_correct":0.99}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e17m3.npz", "hypothesis": "Mid variant with pass-44 gate strength: gates on body layers 2,3,5 + classifier.", "prediction": {"ratio_soft1e-4": 0.14, "ratio_soft1e-3": 0.13, "class_drop": 0.013}}

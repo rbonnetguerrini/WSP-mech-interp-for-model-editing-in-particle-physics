@@ -1,0 +1,1 @@
+{"kind": "reference", "input": "{RUN}/work/A.npz", "indices": null, "hypothesis": "Reference on clean/soft/P jets and a photon pT-fraction scan; expect ref(soft)=orig(clean) below a threshold between 1e-3 and 3e-3 of jet pT, and ref=orig above.", "prediction": {"threshold_frac": 0.002, "ref_eq_orig_clean_rows": 1.0}}

@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/v2_large.npz","hypothesis":"f_large rebuilt with the refitted block-0 regression. Expect E_ref ~0.075 at 10267 DoF.","prediction":{"E_ref":0.075,"dof":10267}}

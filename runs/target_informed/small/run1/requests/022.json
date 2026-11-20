@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/f_mid.npz","hypothesis":"Final mid candidate: e8 without the useless block-0 MLP column (channel 70 has ~0 norm2 weight there). Same function, 256 fewer DoF.","prediction":{"E_ref":0.0877,"dof":5551}}

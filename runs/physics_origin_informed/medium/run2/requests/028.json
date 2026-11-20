@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v3e1s_e0.05.npz", "hypothesis": "v3e1 with the 2-unit linear readout replaced by a single unit at the activation inflection point. Offline restore quality is unchanged, so E_rule should stay about 0.062 at DoF 1308.", "prediction": {"E_rule": 0.062, "e_clean": 0.0009, "dof": 1308}}

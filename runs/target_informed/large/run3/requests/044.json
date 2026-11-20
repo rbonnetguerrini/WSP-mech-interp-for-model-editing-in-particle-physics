@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v11_hm75.npz","hypothesis":"Head-masked gates covering 75% of direct flagged-token attention (266 heads) + classifier; candidate small edit expected to beat the 13-20 window (0.235 at 14.7k).","prediction":{"E_ref":0.2,"e_clean":0.006,"DoF":16349}}

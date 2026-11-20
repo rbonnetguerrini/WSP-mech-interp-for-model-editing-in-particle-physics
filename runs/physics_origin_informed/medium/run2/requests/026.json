@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/M1.npz", "hypothesis": "Small absorption variant v3e1 plus the 1-unit constant NHo shift. Expect the same relative P gain as A1 to A3 (about 20% of the P error) at about 2.85k DoF.", "prediction": {"E_rule": 0.051, "e_P": 0.0112, "e_clean": 0.001, "dof": 2850}}

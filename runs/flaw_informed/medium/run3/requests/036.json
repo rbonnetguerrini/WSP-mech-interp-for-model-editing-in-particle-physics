@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/edits/lpgate_m0.25.npz", "input": "{RUN}/work/evalset.npz", "indices": null, "hypothesis": "Eval-set target errors for the -0.25 gate: better P ratio under the abs -0.25 hypothesis, slightly worse under -0.2.", "prediction": {"e_ratio_P_abs-0.25": 0.35, "e_ratio_P_abs-0.2": 0.35}}

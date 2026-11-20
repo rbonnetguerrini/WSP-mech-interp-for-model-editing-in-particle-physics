@@ -1,0 +1,711 @@
+{
+ "budget": 50,
+ "used": 44,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Baseline of the unedited model: all side-effect metrics should be at their reference values; soft1e-4 should show a large response ratio relative to split2/soft3e-3 because a 0.06 GeV photon is far outside the neutral pT range.",
+   "prediction": {
+    "d_acc": 0.0,
+    "d_nll": 0.0,
+    "rho_D": 1.0,
+    "rho_J": 1.0,
+    "rho_P_ref": 1.0,
+    "gen_drift": 0.0,
+    "dof": 0
+   },
+   "weights": null,
+   "input": null,
+   "time": "12:13:43",
+   "sec": 394.3
+  },
+  {
+   "id": "002",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "The response to one added photon peaks near pT fraction 1e-3 (log pT ~ -0.5), a narrow band, suggesting a localized detector rather than generic IR sensitivity; neutral hadrons may behave differently. Summary-token change should appear at a specific depth.",
+   "prediction": {
+    "r_g1e-3_over_r_g1e-4": 3.0,
+    "r_g3e-3_over_r_g1e-3": 0.15,
+    "r_h1e-3_over_r_g1e-3": 0.5
+   },
+   "weights": null,
+   "input": "{RUN}/work/scan1.npz",
+   "time": "12:14:42",
+   "sec": 7.7
+  },
+  {
+   "id": "003",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "The summary-token change for a sub-threshold photon is absent at block5 and large at body.norm; I expect it to switch on abruptly in one block between 6 and 11 (a localized detector), with the soft-photon token itself diverging from the 3e-3 control first.",
+   "prediction": {
+    "first_block_sum_change_gt_0.1": 8,
+    "soft_token_divergence_block": 7
+   },
+   "weights": null,
+   "input": "{RUN}/work/scan1.npz",
+   "time": "12:16:44",
+   "sec": 7.7
+  },
+  {
+   "id": "004",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "The soft-photon detector feature read by block-7 heads 0/5 is written by a small set of MLP units in blocks 0-6 that fire selectively on sub-threshold neutral tokens; their per-unit contribution to the head-0 summary logit will be concentrated in a few units.",
+   "prediction": {
+    "n_units_for_half_of_logit": 10
+   },
+   "weights": null,
+   "input": "{RUN}/work/sub4.npz",
+   "time": "12:36:06",
+   "sec": 2.3
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "The soft-photon detector feature read by block-7 heads 0/5 is written by a small set of MLP units in blocks 0-6 that fire selectively on sub-threshold neutral tokens; their per-unit contribution to the head-0 summary logit will be concentrated in a few units.",
+   "prediction": {
+    "n_units_for_half_of_logit": 10
+   },
+   "weights": null,
+   "input": "{RUN}/work/sub4.npz",
+   "time": "12:36:08",
+   "sec": 2.3
+  },
+  {
+   "id": "006",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Statistics capture: detector units (block5 u266, block6 u294/470/275) have pre-activations well separated between sub-threshold photons and all normal tokens (clean, P, D, J), so a bias shift can make them exact gates; normal-token residual covariances at blocks 6-10 and body.norm give >100 sigma readout of a saturated gate pattern.",
+   "prediction": {
+    "u294_pre_gap_sigma": 3.0,
+    "D_readout_block7": 150
+   },
+   "weights": null,
+   "input": "{RUN}/work/mix1.npz",
+   "time": "12:45:14",
+   "sec": 4.4
+  },
+  {
+   "id": "007",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Statistics capture: detector units (block5 u266, block6 u294/470/275) have pre-activations well separated between sub-threshold photons and all normal tokens (clean, P, D, J), so a bias shift can make them exact gates; normal-token residual covariances at blocks 6-10 and body.norm give >100 sigma readout of a saturated gate pattern.",
+   "prediction": {
+    "u294_pre_gap_sigma": 3.0,
+    "D_readout_block7": 150
+   },
+   "weights": null,
+   "input": "{RUN}/work/mix1.npz",
+   "time": "12:45:17",
+   "sec": 3.5
+  },
+  {
+   "id": "008",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Statistics capture: detector units (block5 u266, block6 u294/470/275) have pre-activations well separated between sub-threshold photons and all normal tokens (clean, P, D, J), so a bias shift can make them exact gates; normal-token residual covariances at blocks 6-10 and body.norm give >100 sigma readout of a saturated gate pattern.",
+   "prediction": {
+    "u294_pre_gap_sigma": 3.0,
+    "D_readout_block7": 150
+   },
+   "weights": null,
+   "input": "{RUN}/work/scan1.npz",
+   "time": "12:45:27",
+   "sec": 9.3
+  },
+  {
+   "id": "009",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Zeroing the output scale of 11 selective soft-neutral detector units (blocks 4-7) removes about 40% of the block-7 head-0 sink logit, so the soft1e-3 response drops by roughly half while clean metrics barely move (these units are ~constant small negative on normal tokens).",
+   "prediction": {
+    "ratio_soft1e-3": 0.55,
+    "ratio_soft1e-4": 0.7,
+    "d_acc": 0.0,
+    "d_nll": 0.002,
+    "rho_P": 0.9,
+    "rho_P_ref": 1.0,
+    "gen_drift_max": 0.01,
+    "dof": 11
+   },
+   "weights": "{RUN}/work/edits/t1_kill11.npz",
+   "input": null,
+   "time": "12:51:44",
+   "sec": 109.5
+  },
+  {
+   "id": "010",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Statistics capture for the classifier block-1 queries (summary tokens after classifier block 0) so that a rank-1 key edit can suppress gated tokens in both classifier attention blocks; summary-token queries per head should share a common direction (projection >0 for >95% of queries).",
+   "prediction": {
+    "frac_q_positive_cls1_min_over_heads": 0.9
+   },
+   "weights": null,
+   "input": "{RUN}/work/mix1.npz",
+   "time": "12:52:23",
+   "sec": 2.9
+  },
+  {
+   "id": "011",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Block-6 unit 294 turned into a sharp gate writes a saturating sign pattern into sub-threshold neutral tokens; rank-1 key edits in body blocks 7-11 and both classifier blocks read that pattern and push the gated key ~12 logits down for every query, removing the token from all attention after block 6. Residual error is the natural influence in blocks 0-6.",
+   "prediction": {
+    "ratio_soft1e-3": 0.15,
+    "ratio_soft1e-4": 0.4,
+    "d_acc": 0.0,
+    "d_nll": 0.003,
+    "kl": 0.002,
+    "rho_P": 0.8,
+    "rho_P_ref": 0.95,
+    "gen_drift_max": 0.05,
+    "dof": 15354
+   },
+   "weights": "{RUN}/work/edits/t2_L12.npz",
+   "input": null,
+   "time": "13:00:45",
+   "sec": 111.1
+  },
+  {
+   "id": "012",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Keys-only part of T2 (no gate, so no token is ever suppressed): isolates the side effect of the readout noise on normal keys.",
+   "prediction": {
+    "d_nll": 0.005,
+    "kl": 0.005,
+    "gen_drift_max": 0.03,
+    "ratio_soft1e-3": 1.0
+   },
+   "weights": "{RUN}/work/edits/t2_keysonly.npz",
+   "input": null,
+   "time": "13:03:25",
+   "sec": 109.7
+  },
+  {
+   "id": "013",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Gate-only part of T2: sub-threshold neutral tokens get a saturated residual but are not suppressed; isolates the gate's effect (expected large response to soft photons and the main source of gen_drift).",
+   "prediction": {
+    "d_nll": 0.01,
+    "kl": 0.01,
+    "gen_drift_max": 0.15,
+    "ratio_soft1e-3": 1.5
+   },
+   "weights": "{RUN}/work/edits/t2_gateonly.npz",
+   "input": null,
+   "time": "13:05:15",
+   "sec": 109.6
+  },
+  {
+   "id": "014",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Flag-channel removal: channel 450 is pushed to -20 for all tokens at block 6 (saturated, constant after every later DyT), gate unit 294 flips it to ~+80 on sub-threshold neutrals, and column-450 key edits in body blocks 7-11 and both classifier blocks lower the flagged key by >=12 logits for 95% of queries. No readout noise on normal tokens, so clean metrics should stay near T1 levels while soft responses drop like T2.",
+   "prediction": {
+    "ratio_soft1e-3": 0.06,
+    "ratio_soft1e-4": 0.2,
+    "ratio_split2": 1.05,
+    "d_acc": -0.001,
+    "d_nll": 0.002,
+    "kl": 0.002,
+    "class_drop": 0.006,
+    "rho_P": 0.85,
+    "rho_P_ref": 0.97,
+    "gen_drift_max": 0.04,
+    "dof": 3587
+   },
+   "weights": "{RUN}/work/edits/flag_L12.npz",
+   "input": null,
+   "time": "13:12:14",
+   "sec": 109.9
+  },
+  {
+   "id": "015",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Moving the flag one block earlier (bias shift and gate u266 in block 5, u294 kept as a second OR gate, suppression in blocks 6-11 + classifier) removes the soft token's influence in block 6 too; soft1e-4 should improve modestly, clean stays clean.",
+   "prediction": {
+    "ratio_soft1e-3": 0.025,
+    "ratio_soft1e-4": 0.1,
+    "ratio_split2": 1.0,
+    "kl": 0.0002,
+    "class_drop": 0.007,
+    "rho_P": 0.79,
+    "rho_P_ref": 0.94,
+    "gen_drift_max": 0.015,
+    "dof": 4101
+   },
+   "weights": "{RUN}/work/edits/flag2_L12.npz",
+   "input": null,
+   "time": "13:17:47",
+   "sec": 109.7
+  },
+  {
+   "id": "016",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Flag gate (3 DoF) plus suppression only in block-7 heads 0 and 5 (64 entries): removes the head-0 summary sink and the head-5 particle sink that carry most of the flaw, leaving natural attention elsewhere.",
+   "prediction": {
+    "ratio_soft1e-3": 0.2,
+    "ratio_soft1e-4": 0.45,
+    "kl": 0.0002,
+    "rho_P_ref": 0.96,
+    "gen_drift_max": 0.01,
+    "dof": 67
+   },
+   "weights": "{RUN}/work/edits/flag_small67.npz",
+   "input": null,
+   "time": "13:22:58",
+   "sec": 109.6
+  },
+  {
+   "id": "017",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Flag gate plus all 16 heads of block 7: the flagged token disappears from block-7 attention entirely; later blocks still see it (block 9 h0, block 10 h13 had elevated attention).",
+   "prediction": {
+    "ratio_soft1e-3": 0.15,
+    "ratio_soft1e-4": 0.4,
+    "kl": 0.0002,
+    "rho_P_ref": 0.95,
+    "gen_drift_max": 0.012,
+    "dof": 515
+   },
+   "weights": "{RUN}/work/edits/flag_b7all.npz",
+   "input": null,
+   "time": "13:24:48",
+   "sec": 109.6
+  },
+  {
+   "id": "018",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Flag gate plus suppression in body blocks 7-11 but not in the classifier: the classifier still attends to the flagged token's body.norm output, so a residual leak remains compared with the full flag edit.",
+   "prediction": {
+    "ratio_soft1e-3": 0.06,
+    "ratio_soft1e-4": 0.2,
+    "kl": 0.0002,
+    "rho_P_ref": 0.95,
+    "gen_drift_max": 0.014,
+    "dof": 2563
+   },
+   "weights": "{RUN}/work/edits/flag_b7to11nocls.npz",
+   "input": null,
+   "time": "13:26:37",
+   "sec": 109.6
+  },
+  {
+   "id": "019",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same two-gate flag removal as pass 15 but each head's suppression direction restricted to the few head coordinates whose query signs are consistent (q05 >= 0.3 median): flag is binary so larger gamma costs nothing; expect identical soft ratios at ~1/8 of the DoF.",
+   "prediction": {
+    "ratio_soft1e-3": 0.025,
+    "ratio_soft1e-4": 0.11,
+    "kl": 0.0001,
+    "rho_P_ref": 0.946,
+    "gen_drift_max": 0.014,
+    "dof": 483
+   },
+   "weights": "{RUN}/work/edits/flag2_sp.npz",
+   "input": null,
+   "time": "13:34:16",
+   "sec": 109.7
+  },
+  {
+   "id": "020",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sparse version of the single-gate flag edit (pass 14): same behaviour at DoF 414.",
+   "prediction": {
+    "ratio_soft1e-3": 0.026,
+    "ratio_soft1e-4": 0.13,
+    "kl": 0.0001,
+    "rho_P_ref": 0.943,
+    "gen_drift_max": 0.014,
+    "dof": 414
+   },
+   "weights": "{RUN}/work/edits/flag_sp.npz",
+   "input": null,
+   "time": "13:36:06",
+   "sec": 109.8
+  },
+  {
+   "id": "021",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sparse two-gate flag with the tail criterion q01 >= 0.3 median and gamma set at q01 (99% of queries suppressed by >=12 logits): should recover most of the dense result.",
+   "prediction": {
+    "ratio_soft1e-3": 0.027,
+    "ratio_soft1e-4": 0.12,
+    "kl": 0.0001,
+    "rho_P_ref": 0.946,
+    "dof": 675
+   },
+   "weights": "{RUN}/work/edits/flag2_sp1_0.3.npz",
+   "input": null,
+   "time": "13:41:05",
+   "sec": 109.8
+  },
+  {
+   "id": "022",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same with q01 >= 0.5 median: closer to dense suppression.",
+   "prediction": {
+    "ratio_soft1e-3": 0.025,
+    "ratio_soft1e-4": 0.112,
+    "kl": 0.0001,
+    "rho_P_ref": 0.946,
+    "dof": 959
+   },
+   "weights": "{RUN}/work/edits/flag2_sp1_0.5.npz",
+   "input": null,
+   "time": "13:42:56",
+   "sec": 109.8
+  },
+  {
+   "id": "023",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original-model logits on 512 P jets and on the same jets with soft neutrals removed under three threshold hypotheses, to estimate the P target error offline.",
+   "prediction": {
+    "e_P_orig_abs-0.3_over_S": 0.35,
+    "e_P_orig_frac1e-3_over_S": 0.2
+   },
+   "weights": null,
+   "input": "{RUN}/work/ptest.npz",
+   "time": "13:44:49",
+   "sec": 5.2
+  },
+  {
+   "id": "024",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Edited (sparse two-gate flag) logits on the same 512 P jets; under the absolute log pT < -0.3 hypothesis the P target error should fall to ~0.3 of the original's.",
+   "prediction": {
+    "eP_ratio_abs-0.3": 0.3,
+    "eP_ratio_abs0": 0.6,
+    "eP_ratio_frac1e-3": 0.8
+   },
+   "weights": "{RUN}/work/edits/flag2_sp1_0.3.npz",
+   "input": "{RUN}/work/ponly.npz",
+   "time": "13:44:51",
+   "sec": 1.3
+  },
+  {
+   "id": "025",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on the 512 clean jets and on clean minus soft neutrals under three threshold hypotheses: gives the original P responses and the clean target shift for each hypothesis.",
+   "prediction": {
+    "e_clean_orig_abs-0.3": 0.01,
+    "e_clean_orig_abs0": 0.05
+   },
+   "weights": null,
+   "input": "{RUN}/work/ctest.npz",
+   "time": "13:45:59",
+   "sec": 5.0
+  },
+  {
+   "id": "026",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Edited logits on clean and on the three P-minus variants: the variant whose edited/original response ratio matches the oracle's rho_P_ref=0.946 reveals the hidden threshold; I expect abs-0.3.",
+   "prediction": {
+    "rho_abs-0.3": 0.95,
+    "rho_abs0": 0.99,
+    "rho_frac1e-3": 0.85
+   },
+   "weights": "{RUN}/work/edits/flag2_sp1_0.3.npz",
+   "input": "{RUN}/work/ptest_ed.npz",
+   "time": "13:46:04",
+   "sec": 5.0
+  },
+  {
+   "id": "027",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on P jets minus soft neutrals for a finer threshold scan (absolute log pT -0.25..-0.1, fraction 1.25e-3..2e-3) to locate the P_ref construction.",
+   "prediction": {
+    "orig_resp_ratio_abs-0.1": 0.85
+   },
+   "weights": null,
+   "input": "{RUN}/work/ptest2.npz",
+   "time": "13:47:08",
+   "sec": 4.4
+  },
+  {
+   "id": "028",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Edited logits on the same variants; the edited/original response ratio should cross the oracle's 0.946 near an absolute threshold of about -0.1 or a fraction of about 1.5e-3.",
+   "prediction": {
+    "rho_abs-0.1": 0.946,
+    "rho_frac0.0015": 0.946
+   },
+   "weights": "{RUN}/work/edits/flag2_sp1_0.3.npz",
+   "input": "{RUN}/work/ptest2.npz",
+   "time": "13:47:13",
+   "sec": 4.3
+  },
+  {
+   "id": "029",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on a fixed evaluation set (256 P, 512 soft1e-3, 512 soft1e-4, 512 clean, same jets) used as the reference for offline target-error estimates of candidate edits.",
+   "prediction": {
+    "e_soft1e-3_orig": 0.41,
+    "e_soft1e-4_orig": 0.13
+   },
+   "weights": null,
+   "input": "{RUN}/work/evalset.npz",
+   "time": "13:49:50",
+   "sec": 4.4
+  },
+  {
+   "id": "030",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Current mid edit on the evaluation set: soft target-error ratios ~0.03/0.11 and P ratio ~0.5 under the abs -0.2 hypothesis.",
+   "prediction": {
+    "e_ratio_soft1e-3": 0.03,
+    "e_ratio_soft1e-4": 0.12,
+    "e_ratio_P_abs-0.2": 0.48
+   },
+   "weights": "{RUN}/work/edits/flag2_sp1_0.3.npz",
+   "input": "{RUN}/work/evalset.npz",
+   "time": "13:49:55",
+   "sec": 4.3
+  },
+  {
+   "id": "031",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Raising the gate thresholds (block5 u266 shift 1.6) gates fewer P-softened neutrals near the edge, reducing over-removal on P at a small cost on 1e-3 photons.",
+   "prediction": {
+    "e_ratio_P_abs-0.2": 0.42,
+    "e_ratio_soft1e-3": 0.05
+   },
+   "weights": "{RUN}/work/edits/flag2_sp_t1.6.npz",
+   "input": "{RUN}/work/evalset.npz",
+   "time": "13:53:11",
+   "sec": 4.4
+  },
+  {
+   "id": "032",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Raising the gate thresholds (block5 u266 shift 2.2) gates fewer P-softened neutrals near the edge, reducing over-removal on P at a small cost on 1e-3 photons.",
+   "prediction": {
+    "e_ratio_P_abs-0.2": 0.45,
+    "e_ratio_soft1e-3": 0.08
+   },
+   "weights": "{RUN}/work/edits/flag2_sp_t2.2.npz",
+   "input": "{RUN}/work/evalset.npz",
+   "time": "13:53:16",
+   "sec": 4.6
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Gate replaced by a dedicated linear readout at block 5 that fires for neutral tokens with log pT < -0.2 (no charged false positives), flag channel 450, sparse suppression in blocks 6-11 and classifier. If P_ref is P minus neutrals below log pT -0.2, rho_P_ref moves to ~1.0.",
+   "prediction": {
+    "ratio_soft1e-3": 0.08,
+    "ratio_soft1e-4": 0.11,
+    "rho_P_ref": 0.99,
+    "rho_P": 0.8,
+    "kl": 0.0003,
+    "class_drop": 0.007,
+    "gen_drift_max": 0.015,
+    "dof": 1183
+   },
+   "weights": "{RUN}/work/edits/lpgate_m0.2.npz",
+   "input": null,
+   "time": "14:07:26",
+   "sec": 122.1
+  },
+  {
+   "id": "034",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Same edit on the evaluation set: P target-error ratio under the abs -0.2 hypothesis should drop well below 0.4.",
+   "prediction": {
+    "e_ratio_P_abs-0.2": 0.25,
+    "e_ratio_soft1e-3": 0.08,
+    "e_ratio_soft1e-4": 0.11
+   },
+   "weights": "{RUN}/work/edits/lpgate_m0.2.npz",
+   "input": "{RUN}/work/evalset.npz",
+   "time": "14:07:30",
+   "sec": 4.4
+  },
+  {
+   "id": "035",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same dedicated gate with threshold log pT < -0.25: if P_ref removes neutrals below about -0.25, rho_P_ref gets closer to 1 than the 0.971 of the -0.2 gate.",
+   "prediction": {
+    "rho_P_ref": 0.985,
+    "ratio_soft1e-3": 0.045,
+    "ratio_soft1e-4": 0.11,
+    "kl": 0.0002,
+    "dof": 1185
+   },
+   "weights": "{RUN}/work/edits/lpgate_m0.25.npz",
+   "input": null,
+   "time": "14:12:47",
+   "sec": 109.7
+  },
+  {
+   "id": "036",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Eval-set target errors for the -0.25 gate: better P ratio under the abs -0.25 hypothesis, slightly worse under -0.2.",
+   "prediction": {
+    "e_ratio_P_abs-0.25": 0.35,
+    "e_ratio_P_abs-0.2": 0.35
+   },
+   "weights": "{RUN}/work/edits/lpgate_m0.25.npz",
+   "input": "{RUN}/work/evalset.npz",
+   "time": "14:12:51",
+   "sec": 4.3
+  },
+  {
+   "id": "037",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Edited (-0.2 gate) logits on the P-minus variants: the variant whose offline rho matches the oracle's 0.971 identifies P_ref; under the abs -0.2 construction offline rho should be ~0.97-1.0.",
+   "prediction": {
+    "rho_abs-0.2": 0.98,
+    "rho_abs-0.25": 0.95,
+    "rho_frac0.0015": 0.96
+   },
+   "weights": "{RUN}/work/edits/lpgate_m0.2.npz",
+   "input": "{RUN}/work/ptest2.npz",
+   "time": "14:13:23",
+   "sec": 4.4
+  },
+  {
+   "id": "038",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Statistics capture for an early gate: neutral log pT is linearly decodable from the block-0 MLP input with ~0.05 precision and charged tokens are separable, and early-block queries share per-head directions like later blocks.",
+   "prediction": {
+    "block0_gate_FN_frac": 0.03,
+    "block0_gate_charged_FP": 0
+   },
+   "weights": null,
+   "input": "{RUN}/work/mix2.npz",
+   "time": "14:14:07",
+   "sec": 7.9
+  },
+  {
+   "id": "039",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Statistics capture for an early gate: neutral log pT is linearly decodable from the block-0 MLP input with ~0.05 precision and charged tokens are separable, and early-block queries share per-head directions like later blocks.",
+   "prediction": {
+    "block0_gate_FN_frac": 0.03,
+    "block0_gate_charged_FP": 0
+   },
+   "weights": null,
+   "input": "{RUN}/work/mix2.npz",
+   "time": "14:14:15",
+   "sec": 7.8
+  },
+  {
+   "id": "040",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Flag set from block 1 (dedicated soft-neutral readout, log pT < -0.25) OR'ed with the precise block-5 gate; suppression in blocks 2-11 + classifier removes the early-block influence of soft neutrals, improving soft1e-4 and P while clean stays nearly unchanged.",
+   "prediction": {
+    "ratio_soft1e-3": 0.04,
+    "ratio_soft1e-4": 0.07,
+    "rho_P_ref": 0.97,
+    "kl": 0.0004,
+    "class_drop": 0.008,
+    "gen_drift_max": 0.05,
+    "dof": 2464
+   },
+   "weights": "{RUN}/work/edits/early1_or5.npz",
+   "input": null,
+   "time": "15:33:43",
+   "sec": 109.8
+  },
+  {
+   "id": "041",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Eval set: P target-error ratio under abs -0.25 should drop below the 0.39 of the block-5-only gate.",
+   "prediction": {
+    "e_ratio_P_abs-0.25": 0.3,
+    "e_ratio_soft1e-4": 0.07
+   },
+   "weights": "{RUN}/work/edits/early1_or5.npz",
+   "input": "{RUN}/work/evalset.npz",
+   "time": "15:33:47",
+   "sec": 4.4
+  },
+  {
+   "id": "042",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small edit (13 DoF): u294 gate flags soft neutrals on channel 450; 10 key entries in block-7 heads 0 and 5 remove the two attention sinks that carry most of the flaw.",
+   "prediction": {
+    "ratio_soft1e-3": 0.4,
+    "ratio_soft1e-4": 0.42,
+    "kl": 0.0001,
+    "rho_P_ref": 0.97,
+    "gen_drift_max": 0.014,
+    "dof": 13
+   },
+   "weights": "{RUN}/work/edits/small_sp.npz",
+   "input": null,
+   "time": "15:38:07",
+   "sec": 109.4
+  },
+  {
+   "id": "043",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid edit (675 DoF): model's own detectors u266/u294 at raised thresholds as gates, sparse suppression in blocks 6-11 and classifier; limits pass with rho_P_ref closer to 1 than the t=0.85 version.",
+   "prediction": {
+    "ratio_soft1e-3": 0.045,
+    "ratio_soft1e-4": 0.11,
+    "kl": 0.0001,
+    "rho_P_ref": 0.965,
+    "gen_drift_max": 0.014,
+    "dof": 675
+   },
+   "weights": "{RUN}/work/edits/flag2_sp_t1.6.npz",
+   "input": null,
+   "time": "15:39:57",
+   "sec": 109.6
+  },
+  {
+   "id": "044",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Small edit on the eval set for target-error estimates including P.",
+   "prediction": {
+    "e_ratio_soft1e-3": 0.4,
+    "e_ratio_P_abs-0.25": 0.8
+   },
+   "weights": "{RUN}/work/edits/small_sp.npz",
+   "input": "{RUN}/work/evalset.npz",
+   "time": "15:40:01",
+   "sec": 4.3
+  }
+ ],
+ "oracle_up": "2026-11-17T12:02:14"
+}

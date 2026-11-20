@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/F192.npz", "input": "{RUN}/work/V.npz", "indices": null, "hypothesis": "F192 on unseen probes: ratios similar to visible soft probes (0.02-0.06), collinear case closer to P (kNN, ~0.15).", "prediction": {"ratio_nh1e-3": 0.03, "ratio_nh1e-4": 0.06, "ratio_2ph": 0.05, "ratio_collinear": 0.15}}

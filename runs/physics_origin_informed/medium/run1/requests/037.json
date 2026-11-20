@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v11s64.npz", "hypothesis": "Flag pattern on 64 channels, to map the E_rule-vs-DoF curve of the single-detector circuit.", "prediction": {"E_rule": 0.25, "dof": 165, "gen_drift_max": 0.007}}

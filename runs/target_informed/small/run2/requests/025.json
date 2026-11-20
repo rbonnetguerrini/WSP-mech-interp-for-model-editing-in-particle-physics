@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e10L.npz","hypothesis":"Large variant: e9S (block-0 exact mean + token fix, no block-0 in_proj change) plus rank-1 compensation in blocks 2-7 as well. Lower clean-side change than e9S, leak unchanged.","prediction":{"E_ref":0.155,"e_clean":0.009,"class_drop":0.003,"rho_P_ref":1.0,"R_sub":0.091}}

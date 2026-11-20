@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v4_b1to6.npz",
+ "hypothesis":"Smaller edit: suppression only in body blocks 1-6 plus classifier. The flagged vertex leaks in blocks 7-27, so the rule error rises, but DoF drops to ~74k.",
+ "prediction":{"E_rule":0.35,"e_clean":0.001,"d_acc":0.0,"rho_P_reco":1.0}}

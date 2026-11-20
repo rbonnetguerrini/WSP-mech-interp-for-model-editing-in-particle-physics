@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/S192.npz", "hypothesis": "Sparse kill on 192 channels (re-optimised pattern).", "prediction": {"E_ref": 0.13, "dof": 296}}

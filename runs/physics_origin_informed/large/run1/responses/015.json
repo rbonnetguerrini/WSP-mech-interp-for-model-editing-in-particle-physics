@@ -1,0 +1,324 @@
+{
+ "ok": true,
+ "pass": 15,
+ "remaining": 35,
+ "clean": {
+  "acc": 0.8570731707317073,
+  "d_acc": -0.0039024390243902474,
+  "d_nll": 0.007764422156793738,
+  "class_drop": 0.014634146341463317,
+  "kl": 0.00323842392138843
+ },
+ "r": {
+  "split2": 0.03645265668809811,
+  "soft3e-3": 0.027803126904688665,
+  "soft1e-3": 0.01075510032869219,
+  "soft1e-4": 0.0015093200080789513
+ },
+ "R_vis": 0.5404624633075008,
+ "R_in": 1.059711578966334,
+ "R_sub": 0.02121334764866754,
+ "ratio": {
+  "split2": 1.1062250980265382,
+  "soft3e-3": 1.0131980599061299,
+  "soft1e-3": 0.02811448645725828,
+  "soft1e-4": 0.014312208840076798
+ },
+ "rho": {
+  "D": 1.0022019427178783,
+  "J": 1.0039295116268703,
+  "P": 0.7208901375587179,
+  "P_reco": 1.001397565113581
+ },
+ "dir_err": {
+  "D": 0.0765118152356906,
+  "J": 0.09158113157806039,
+  "P": 0.34124746926176047
+ },
+ "max_log_rho": 0.32726852839938253,
+ "gate_no_g2": false,
+ "max_log_rho_rule": 0.003921811261914656,
+ "gate_rule_no_g2": true,
+ "rule": {
+  "e": {
+   "split2": 0.019610535969686434,
+   "soft3e-3": 0.01811415989029688,
+   "soft1e-3": 0.01701572393517795,
+   "soft1e-4": 0.01681001784494462,
+   "P": 0.03933623288416949,
+   "clean": 0.016736044405306884
+  },
+  "e_orig": {
+   "split2": 0.0,
+   "soft3e-3": 0.0,
+   "soft1e-3": 0.37336963668694206,
+   "soft1e-4": 0.105456818367028,
+   "P": 0.1511323205778272,
+   "clean": 0.0
+  },
+  "E_rule": 0.15508402685759362
+ },
+ "gen_drift": {
+  "t0.2": 0.053789541125297546,
+  "t0.5": 0.0982544869184494,
+  "t0.85": 0.27195030450820923,
+  "max": 0.27195030450820923
+ },
+ "size": {
+  "n_changed": 6293565,
+  "frac_changed": 0.01487658822130973,
+  "dof": 11329,
+  "max_rank": 2,
+  "rank_ok": true,
+  "tensors": {
+   "body.embed.mlp.fc1.weight": {
+    "rank": 2,
+    "changed": 8
+   },
+   "body.embed.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 2
+   },
+   "body.embed.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 2048
+   },
+   "body.embed.mlp.norm.weight": {
+    "rank": null,
+    "changed": 2
+   },
+   "body.pid_embed.0.weight": {
+    "rank": 1,
+    "changed": 2
+   },
+   "body.in_blocks.0.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.0.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.1.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.1.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.2.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.2.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.3.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.3.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.4.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.4.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.5.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.5.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.6.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.6.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 2097152
+   },
+   "body.in_blocks.7.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.7.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 2097145
+   },
+   "body.in_blocks.8.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.8.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 2097152
+   },
+   "body.in_blocks.9.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.9.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.10.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.10.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.11.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.11.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.12.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.12.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.13.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.13.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.14.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.14.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.15.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.15.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.16.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.16.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.17.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.17.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.18.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.18.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.19.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.19.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.20.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.20.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.21.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.21.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.22.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.22.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.23.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.23.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.24.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.24.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.25.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.25.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.26.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.26.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.27.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.27.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.norm.weight": {
+    "rank": null,
+    "changed": 1
+   }
+  }
+ }
+}

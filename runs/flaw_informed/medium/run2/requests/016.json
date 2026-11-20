@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e016_gateonly.npz", "hypothesis": "Gate write only (no key suppression): gated tokens are saturated junk but still visible; gen drift mostly comes from here because noised neutral particles get gated.", "prediction": {"gen_drift_max": 4.0, "ratio_soft1e-3": 2.0, "d_acc": -0.003}}

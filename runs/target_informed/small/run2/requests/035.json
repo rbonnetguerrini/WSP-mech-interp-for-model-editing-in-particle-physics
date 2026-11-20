@@ -1,0 +1,1 @@
+{"kind":"reference","input":"{RUN}/work/v5.npz","indices":null,"hypothesis":"Reference on new probe types (soft NH, photon 3e-4, two photons, collinear photon, soft charged, P x1.05/x1.2) for 224 jets, to validate that my rule generalizes and to score my edits on unseen probes.","prediction":{"ref_eq_orig_ch1e-4":1.0,"ref_removes_nh1e-3_frac":0.95}}

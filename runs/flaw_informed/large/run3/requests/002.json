@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/in1.npz","indices":null,
+ "sites":["body.block0","body.block7","body.block18","body.norm"],
+ "hypothesis":"Rows 0-159 clean, 160-319 same jets + soft1e-3 photon, 320-479 + soft1e-4. Expect the summary-token difference to be small at block0 and grow with depth, and the soft token's own representation to be distinctive (large) for 1e-3.",
+ "prediction":{"rel_summary_diff_block0_1e-3":0.01,"rel_summary_diff_norm_1e-3":0.1,"logit_shift_ratio_1e-3_over_1e-4":3.5}}

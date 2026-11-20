@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":null,
+ "hypothesis":"Baseline of the unedited model: all limits pass trivially, ratios 1; gives the response sizes r for soft probes (expect soft1e-4 response at least as large as soft1e-3 because it is out of the neutral pT support).",
+ "prediction":{"d_acc":0.0,"d_nll":0.0,"gen_drift":0.0,"rho_P_ref":1.0,"dof":0}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/A1_c0k16.npz", "hypothesis": "Same as A0_c0k16, but the restore is now also fitted on the 4 summary tokens: earlier fits shifted their block-0 channel 2 via the bias and new units by up to 0.24. Clean damage should drop well below 0.0019.", "prediction": {"E_rule": 0.05, "e_clean": 0.0008, "dof": 5899}}

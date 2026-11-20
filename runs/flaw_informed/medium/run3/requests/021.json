@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/edits/flag2_sp1_0.3.npz", "hypothesis": "Sparse two-gate flag with the tail criterion q01 >= 0.3 median and gamma set at q01 (99% of queries suppressed by >=12 logits): should recover most of the dense result.", "prediction": {"ratio_soft1e-3": 0.027, "ratio_soft1e-4": 0.12, "kl": 0.0001, "rho_P_ref": 0.946, "dof": 675}}

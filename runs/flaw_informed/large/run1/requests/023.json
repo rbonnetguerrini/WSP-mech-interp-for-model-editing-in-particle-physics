@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/cap5.npz","indices":null,
+ "sites":["body.block16","body.block17","body.block18","body.block25"],
+ "hypothesis":"Inputs of the flaw heads (17.18, 18.17, 19.11, 26.8, 26.29) on 150 new jets x {clean, soft photon, soft NH, photon 1e-3}, to fit linear key readouts r (r.n=1 on soft neutrals, 0 on clean/summary tokens) that generalise across jets.",
+ "prediction":{"ridge_r_clean_sd":0.1}}

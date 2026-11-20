@@ -1,0 +1,1 @@
+{"kind": "capture", "weights": null, "input": "{RUN}/work/Q.npz", "indices": null, "sites": ["classifier.block0", "body.block11", "body.block0.mlp_pre", "classifier.fc"], "hypothesis": "Classifier block-1 queries, last body block, and block-0 MLP preactivations.", "prediction": {"frac_heads_suppressible_below_minus10": 0.7}}

@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v9_clsattn.npz","hypothesis":"v7 plus rerouting into classifier attention and the attention in_proj of body blocks 9-11 (+~10k DoF).","prediction":{"E_ref":0.036,"e_clean":0.0043,"gen_drift_max":0.035}}

@@ -1,0 +1,109 @@
+{
+ "ok": true,
+ "pass": 21,
+ "remaining": 29,
+ "clean": {
+  "acc": 0.85869140625,
+  "d_acc": -0.00048828125,
+  "d_nll": -8.797156910389514e-05,
+  "class_drop": 0.0068359375,
+  "kl": 0.00010212639790828774
+ },
+ "r": {
+  "split2": 0.039661865347675664,
+  "soft3e-3": 0.05760264515161404,
+  "soft1e-3": 0.010206819606393434,
+  "soft1e-4": 0.014430676409049664
+ },
+ "R_vis": 0.533762400721422,
+ "R_in": 1.0004663386759234,
+ "R_sub": 0.06705846276692072,
+ "ratio": {
+  "split2": 1.003230796724895,
+  "soft3e-3": 0.9977018806269519,
+  "soft1e-3": 0.02492501771619572,
+  "soft1e-4": 0.10919190781764572
+ },
+ "rho": {
+  "D": 1.0011548184443748,
+  "J": 1.0010079339341553,
+  "P": 0.7972575080249323,
+  "P_ref": 0.9464718192921444
+ },
+ "dir_err": {
+  "D": 0.021307416594174164,
+  "J": 0.02318650122690694,
+  "P": 0.25504117575303464
+ },
+ "max_log_rho": 0.2265775557328236,
+ "gate_no_g2": false,
+ "max_log_rho_ref": 0.055014082371200514,
+ "gate_ref_no_g2": true,
+ "gen_drift": {
+  "t0.2": 0.014234158210456371,
+  "t0.5": 0.009137138724327087,
+  "t0.85": 0.008349111303687096,
+  "max": 0.014234158210456371
+ },
+ "size": {
+  "n_changed": 675,
+  "frac_changed": 1.1266433031445783e-05,
+  "dof": 675,
+  "max_rank": 1,
+  "rank_ok": true,
+  "tensors": {
+   "body.in_blocks.5.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.5.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 1
+   },
+   "body.in_blocks.5.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.6.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 97
+   },
+   "body.in_blocks.6.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.6.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 1
+   },
+   "body.in_blocks.7.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 96
+   },
+   "body.in_blocks.8.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 87
+   },
+   "body.in_blocks.9.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 108
+   },
+   "body.in_blocks.10.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 82
+   },
+   "body.in_blocks.11.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 79
+   },
+   "classifier.in_blocks.0.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 73
+   },
+   "classifier.in_blocks.1.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 48
+   }
+  }
+ }
+}

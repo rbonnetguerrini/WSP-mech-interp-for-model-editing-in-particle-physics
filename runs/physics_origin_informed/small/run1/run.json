@@ -1,0 +1,171 @@
+{
+ "variant": "physics_origin_informed",
+ "size": "small",
+ "run": 1,
+ "model": "claude-opus-5-5",
+ "agent": "Claude Code",
+ "agent_version": "2.1.316",
+ "task_description": {
+  "file": "agents/task_descriptions/physics_origin_informed.md",
+  "sha256": "828922f75840e5ec45729bdc053f163787725d48267499ab936325b6979feed9"
+ },
+ "prompt_sha256": "0b0bdd3b0ed458290aad7a3f2a9701acec5392a2ed425daf46e2f7fceb3b0f57",
+ "prompt_sha256_note": "sha256 of the filled task description as sent (recorded at launch); task_description.md here has the paths replaced by placeholders",
+ "launch_sha256": "e9f3954e793120fe0c6a3e8032f5fc47bfd1641f9ea483dd10e0594576df7de3",
+ "start_time": "2026-11-14T03:37:22+01:00",
+ "end_time": "2026-11-14T04:37:25+01:00",
+ "wall_hours": 1.0,
+ "agent_active_hours": 1.0,
+ "queries_used": 43,
+ "query_budget": 50,
+ "cost_usd": 8.58,
+ "result_lines": [
+  {
+   "total_cost_usd": 8.5792,
+   "cost_since_previous_usd": 8.5792,
+   "num_turns": 69,
+   "duration_ms": 3601964,
+   "is_error": false,
+   "api_error": null,
+   "stop_reason": "end_turn"
+  }
+ ],
+ "tokens": {
+  "claude-haiku-5-5": {
+   "input": 1548,
+   "output": 23,
+   "thinking": 0,
+   "cache_read": 0,
+   "cache_write": 0,
+   "cost_usd": 0.0002
+  },
+  "claude-opus-5-5": {
+   "input": 136,
+   "output": 196224,
+   "thinking": 136548,
+   "cache_read": 12351217,
+   "cache_write": 272977,
+   "cost_usd": 8.5791
+  }
+ },
+ "selected_edit": "edit_large",
+ "selected_remaining_error": 0.0774,
+ "selection_rule": "lowest remaining error among the edits that pass the accuracy, class, NLL and physical-response limits (generator limit not used; paper App. C)",
+ "edits": {
+  "edit_large": {
+   "zenodo_file": "edits/agents/physics_origin_informed/small/run1/edit_large.npz",
+   "zenodo_sha256": "3d4554e92926fa6d3373f5c18c9fb4b29a6e2ba7b48ec16558c93eb595331e54",
+   "file_as_handed_in": "final_large.npz",
+   "bytes": 3310068,
+   "sha256_as_handed_in": "3d4554e92926fa6d3373f5c18c9fb4b29a6e2ba7b48ec16558c93eb595331e54",
+   "sha256_as_handed_in_source": "computed at export"
+  },
+  "edit_medium": {
+   "zenodo_file": "edits/agents/physics_origin_informed/small/run1/edit_medium.npz",
+   "zenodo_sha256": "6b6193e48ec9b27fc5c93a6e52ee8a3f1bd4d099890194b589ff4cc5d49c8fc2",
+   "file_as_handed_in": "final_mid.npz",
+   "bytes": 3310068,
+   "sha256_as_handed_in": "6b6193e48ec9b27fc5c93a6e52ee8a3f1bd4d099890194b589ff4cc5d49c8fc2",
+   "sha256_as_handed_in_source": "computed at export"
+  },
+  "edit_small": {
+   "zenodo_file": "edits/agents/physics_origin_informed/small/run1/edit_small.npz",
+   "zenodo_sha256": "9f43512b463a0b31d0c52ade1bad56f644ae50bfe0832fa492639430acd977c1",
+   "file_as_handed_in": "final_small.npz",
+   "bytes": 2259140,
+   "sha256_as_handed_in": "9f43512b463a0b31d0c52ade1bad56f644ae50bfe0832fa492639430acd977c1",
+   "sha256_as_handed_in_source": "computed at export"
+  },
+  "zero_pass": {
+   "zenodo_file": "edits/agents/physics_origin_informed/small/run1/edit_zero_pass.npz",
+   "zenodo_sha256": "bef76c13171c6be989b022d501ae1b7038c0e0d1d7e5bb7fe77f38a1608175d7",
+   "file_as_handed_in": "zero_pass.npz",
+   "bytes": 2257352,
+   "sha256_as_handed_in": "bef76c13171c6be989b022d501ae1b7038c0e0d1d7e5bb7fe77f38a1608175d7",
+   "sha256_as_handed_in_source": "computed at export"
+  }
+ },
+ "edits_note": "edit weight files are published on Zenodo (zenodo_file, zenodo_sha256), not here",
+ "scores": {
+  "scores/edit_medium.remaining_error.recheck.json": "removal-rule scorer: remaining error against the target predictions, limits, responses, size",
+  "scores/edit_large.remaining_error.json": "removal-rule scorer: remaining error against the target predictions, limits, responses, size",
+  "scores/edit_medium.remaining_error.json": "removal-rule scorer: remaining error against the target predictions, limits, responses, size",
+  "scores/edit_small.remaining_error.json": "removal-rule scorer: remaining error against the target predictions, limits, responses, size",
+  "scores/zero_pass.remaining_error.json": "removal-rule scorer: remaining error against the target predictions, limits, responses, size",
+  "scores/edit_large.remaining_response.json": "remaining-response scorer: response to added soft particles, limits, size",
+  "scores/edit_small.remaining_response.json": "remaining-response scorer: response to added soft particles, limits, size",
+  "scores/edit_medium.remaining_response.json": "remaining-response scorer: response to added soft particles, limits, size"
+ },
+ "dropped": {
+  "note": "binary arrays returned by the evaluation tool (logits, activations, target predictions) and files above 5 MB are not published",
+  "files": [
+   {
+    "file": "responses/002.npz",
+    "bytes": 326796822
+   },
+   {
+    "file": "responses/003.npz",
+    "bytes": 326796818
+   },
+   {
+    "file": "responses/004.npz",
+    "bytes": 161645578
+   },
+   {
+    "file": "responses/005.npz",
+    "bytes": 83002116
+   },
+   {
+    "file": "responses/020.npz",
+    "bytes": 85099546
+   },
+   {
+    "file": "responses/027.npz",
+    "bytes": 325928534
+   },
+   {
+    "file": "responses/028.npz",
+    "bytes": 325928534
+   },
+   {
+    "file": "responses/035.npz",
+    "bytes": 318289622
+   },
+   {
+    "file": "responses/036.npz",
+    "bytes": 318289622
+   },
+   {
+    "file": "responses/039.npz",
+    "bytes": 868862
+   },
+   {
+    "file": "responses/040.npz",
+    "bytes": 868862
+   },
+   {
+    "file": "responses/041.npz",
+    "bytes": 868862
+   },
+   {
+    "file": "responses/042.npz",
+    "bytes": 868862
+   },
+   {
+    "file": "responses/043.npz",
+    "bytes": 868862
+   }
+  ],
+  "total_bytes": 2276121502
+ },
+ "ledger_source": "run folder",
+ "ledger_identical_to_run_folder": true,
+ "audit_counts": {
+  "HARNESS": 2
+ },
+ "interpreter_hook_log": "no events logged",
+ "events": [
+  "The frozen copy of the final edits had no ledger.json or SHA256SUMS; ledger.json is copied from the run folder and the edit sha256 values were computed at export.",
+  "15 Bash commands ran `python` or `python3` from the shell's PATH instead of the interpreter named in the task description; these processes are not recorded by the interpreter hook, the commands are in the transcript (count from the transcript, approximate)."
+ ]
+}

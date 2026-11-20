@@ -1,0 +1,6 @@
+Your complete task description is the file {RUN}/PROMPT.md. Read it first and follow every rule in it exactly. In particular, read only the two folders it allows ({INPUTS} and {RUN}).
+
+Practical notes:
+- The oracle GPU job may still be in the queue. Do the zero-pass phase first. If you need the oracle and it is not up (ledger.json in your run folder with "oracle_up"), wait with a bash until-loop, each tool call at most ~9 minutes (e.g. `timeout 540 bash -c 'until grep -q oracle_up {RUN}/ledger.json 2>/dev/null; do sleep 20; done'`), and repeat.
+- Keep your context lean: write scripts and results to your run's work/ folder and print short summaries.
+- Finish with the final deliverables, touch STOP, and give the short summary and status.

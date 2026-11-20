@@ -1,0 +1,85 @@
+{
+ "transcript": "{RECORDS}/physics_origin_informed-large-run2/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "PARENT": 2,
+  "HARNESS": 7
+ },
+ "rows": [
+  {
+   "time": "2026-11-16T01:39:48.973Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "-rw-r--r--. 1 {USER} interactive   311 Nov 15 12:12 run/config.json\n-rw-r--r--. 1 {USER} interactive    78 Nov 16 02:39 run/ledger.json\n-rw-r--r--. 1 rbonne"
+  },
+  {
+   "time": "2026-11-16T01:39:56.050Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "{\n \"size\": \"l\",\n \"surgical_per_class\": 205,\n \"models\": {\n  \"orig\": null\n },\n \"kinds\": [\n  \"surgical\",\n  \"capture\",\n  \"logits\"\n ],\n \"budget\": 50,\n \"zero_pass\": \""
+  },
+  {
+   "time": "2026-11-16T02:19:18.314Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/b7gh93cii.output",
+   "status": "ok",
+   "result": "1 heldout leak [4.0e-05 9.0e-05 1.8e-04] q.k* rms 8.2 |v*|/|v| 10.4\n2 heldout leak [0.00011 0.00021 0.00044] q.k* rms 4.3 |v*|/|v| 1.8\n3 heldout leak [0.00012 0"
+  },
+  {
+   "time": "2026-11-16T02:29:40.040Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/b97l36ksa.output",
+   "status": "ok",
+   "result": "tokens 51469\n0.0001 0.15 {'ph': {'nonfire': 0, 'wrong05': 15, 'wrong10': 4, 'n': 6187, 'rmse_near': 0.06482666820865489}, 'nh': {'nonfire': 1, 'wrong05': 43, 'w"
+  },
+  {
+   "time": "2026-11-16T02:41:02.862Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/b87540x7u.output",
+   "status": "error",
+   "result": "<tool_use_error>Blocked: sleep 60 followed by: cat {LOCAL_TMP}/harness/{PROJECT_SLUG}/645f2ec7-ae7d-44e2-a65"
+  },
+  {
+   "time": "2026-11-16T02:41:06.856Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/b87540x7u.output",
+   "status": "ok",
+   "result": "bias {'ph': -0.025702405467946783, 'nh': -0.05459123604939181}\nbias full {'ph': -0.02699300898121503, 'nh': -0.05647215420677106}"
+  },
+  {
+   "time": "2026-11-16T02:46:11.736Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/b87540x7u.output",
+   "status": "ok",
+   "result": "[exited with code 0]"
+  },
+  {
+   "time": "2026-11-16T03:12:43.600Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bl7703qzj.output",
+   "status": "ok",
+   "result": "1 best single-channel rel rms [0.0107 0.013  0.0136]  leak nnz 1/2/4/8/16: [0.0107 0.0058 0.0049 0.0028 0.0015]\n5 best single-channel rel rms [0.0242 0.0282 0.0"
+  },
+  {
+   "time": "2026-11-16T03:13:15.963Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bl7703qzj.output",
+   "status": "ok",
+   "result": "particles: |Delta block0| mean 80.975   |gap after attn1| mean 0.413\nsummary:   |Delta block0| mean 0.054   |gap after attn1| mean 0.197\nparticles |target attn1"
+  }
+ ]
+}

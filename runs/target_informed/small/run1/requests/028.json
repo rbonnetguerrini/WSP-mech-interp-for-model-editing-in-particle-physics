@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/Sb.npz","hypothesis":"Small variant: e10 but block-0 attention reads use regression instead of mean-ablation. Tests how much of the small floor comes from block 0.","prediction":{"E_ref":0.13,"e_clean":0.017,"dof":2900}}

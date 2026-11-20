@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/edit_L2.npz", "hypothesis": "Large variant trimmed: v5 without the block-2..6 attention regressions, whose lost std is only 0.016-0.038. E_rule should stay within ~0.002 of v5 at ~4.5k fewer DoF.", "prediction": {"E_rule": 0.06, "e_clean": 0.0066, "DoF": 9000}}

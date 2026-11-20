@@ -1,0 +1,4 @@
+{"kind":"capture","weights":"{RUN}/work/e1.npz","input":"{RUN}/work/in8.npz","indices":null,
+ "sites":["body.block16.mlp_post","body.block18","body.block20","body.norm"],
+ "hypothesis":"Diagnose edit e1: expect gate neuron 1037 to fire (saturated) on nearly all added soft tokens and stay exactly 0 on clean tokens; summary attention to soft tokens in the edited heads should be ~0, so any remaining summary drift comes through particle-token paths or unedited heads.",
+ "prediction":{"gate_fire_frac_soft":0.95,"gate_nonzero_clean":0.0,"summ_drift_g1e-3_blk20":0.25}}

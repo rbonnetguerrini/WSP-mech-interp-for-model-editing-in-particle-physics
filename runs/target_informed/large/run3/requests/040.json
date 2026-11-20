@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v9_w10_22.npz","hypothesis":"Strict natural + gamma gates in blocks 10-22 + classifier; mid-size point between w13_20 and full depth.","prediction":{"E_ref":0.14,"e_clean":0.006,"DoF":24893}}

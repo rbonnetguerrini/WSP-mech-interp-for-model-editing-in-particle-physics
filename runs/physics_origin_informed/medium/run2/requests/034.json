@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/submissions/final_large.npz", "hypothesis": "Final large: local-zeroing exact mask, restore, and the 3-unit NHo shift. Should reproduce pass 30.", "prediction": {"E_rule": 0.0464, "e_clean": 0.00084, "dof": 8460}}

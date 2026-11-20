@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/in7.npz","indices":null,
+ "sites":["body.block0.mlp_pre","body.block1.mlp_pre","body.block0","body.block1"],
+ "hypothesis":"Original-model activations on in7 for moving the soft-neutral gate to block 0/1 (isolation from block 1/2 on). Expect the block-0 MLP pre-activations to give a detector that is a smooth function of the neutral pT fraction, similar to block 4 but noisier (less jet context).",
+ "prediction":{"r_g1e-3":0.366}}

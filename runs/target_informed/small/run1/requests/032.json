@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/L2.npz","hypothesis":"Large without classifier regression (mean-ablation in classifier). Expect E_ref ~0.080 at ~9.0k DoF.","prediction":{"E_ref":0.081,"dof":9000}}

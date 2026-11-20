@@ -1,0 +1,3 @@
+{"kind":"logits","weights":null,"input":"{RUN}/work/in3.npz","indices":null,
+ "hypothesis":"Response curve of an added particle vs pT fraction and type (photon, neutral hadron, charged, far outside the cone). Expect a bump near 1e-3 for neutrals, charged much smaller, and the far photon still responding (attention path, not kNN).",
+ "prediction":{"r_pid6_1e-3":0.38,"r_pid6_1e-4":0.11,"r_pid6_1e-2":0.03,"r_pid7_1e-3":0.3,"r_charged_1e-3":0.05,"r_far_1e-3":0.25}}

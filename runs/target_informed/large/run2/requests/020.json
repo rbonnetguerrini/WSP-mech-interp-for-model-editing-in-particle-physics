@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edits/del_770.npz",
+"hypothesis":"Diagnostic: delete all reads of residual channel 770 in the body and classifier. If cheap, channel 770 can become a pure wire (constant for natural tokens) to carry a key-suppression gate for neutral hadrons outside the exact mask.",
+"prediction":{"e_clean":0.02,"d_acc":-0.002}}

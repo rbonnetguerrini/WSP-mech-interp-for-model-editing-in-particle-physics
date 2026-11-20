@@ -1,0 +1,101 @@
+{
+ "ok": true,
+ "pass": 41,
+ "remaining": 9,
+ "clean": {
+  "acc": 0.83251953125,
+  "d_acc": -0.0032226562499999556,
+  "d_nll": 0.013457189141489412,
+  "class_drop": 0.0322265625,
+  "kl": 0.013220646151096577
+ },
+ "r": {
+  "split2": 0.044966819704639935,
+  "soft3e-3": 0.0367742304926348,
+  "soft1e-3": 0.05217160873603729,
+  "soft1e-4": 0.05517510315376475
+ },
+ "R_vis": 0.6701331704756553,
+ "R_in": 1.134198958438168,
+ "R_sub": 0.20606738251314274,
+ "ratio": {
+  "split2": 1.1159467161834569,
+  "soft3e-3": 1.152451200692879,
+  "soft1e-3": 0.20364121482220304,
+  "soft1e-4": 0.20849355020408245
+ },
+ "rho": {
+  "D": 1.0231283602330392,
+  "J": 1.0455027261628993,
+  "P": 0.8241514652694628,
+  "P_ref": 0.9598128413482132
+ },
+ "dir_err": {
+  "D": 0.19375452386839861,
+  "J": 0.2274235791255989,
+  "P": 0.35115422400835533
+ },
+ "max_log_rho": 0.193400948890363,
+ "gate_no_g2": false,
+ "max_log_rho_ref": 0.04449784740385876,
+ "gate_ref_no_g2": false,
+ "gen_drift": {
+  "t0.2": 0.03314058482646942,
+  "t0.5": 0.05815558508038521,
+  "t0.85": 0.05525600537657738,
+  "max": 0.05815558508038521
+ },
+ "size": {
+  "n_changed": 36622,
+  "frac_changed": 0.010964509802101705,
+  "dof": 3339,
+  "max_rank": 6,
+  "rank_ok": true,
+  "tensors": {
+   "body.in_blocks.0.mlp.fc1.weight": {
+    "rank": 4,
+    "changed": 768
+   },
+   "body.in_blocks.0.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 6
+   },
+   "body.in_blocks.0.mlp.fc2.weight": {
+    "rank": 6,
+    "changed": 768
+   },
+   "body.in_blocks.0.mlp.norm.weight": {
+    "rank": null,
+    "changed": 6
+   },
+   "body.in_blocks.1.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 128
+   },
+   "body.in_blocks.1.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.1.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 128
+   },
+   "body.in_blocks.1.mlp.norm.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.2.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 16384
+   },
+   "classifier.in_blocks.0.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 8192
+   },
+   "classifier.in_blocks.1.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 10240
+   }
+  }
+ }
+}

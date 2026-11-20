@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v3_V.npz", "hypothesis": "Detector refit on 51k tokens with bias-corrected threshold and F=1e4 (anti-lobe states also saturate and get zero value); values-only removal. Expect P to improve most.", "prediction": {"E_rule": 0.23, "d_acc": -0.001, "e_clean": 0.0015, "e_P": 0.055, "rho_P_reco": 0.995, "gen_drift": 0.25}}

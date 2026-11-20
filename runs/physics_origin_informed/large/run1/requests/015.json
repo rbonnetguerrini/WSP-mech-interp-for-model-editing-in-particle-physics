@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/h3_bn.npz", "hypothesis": "Top-3 surrogates (block 6-8 MLPs) plus zero norm weights elsewhere plus body.norm shrink; smaller edit, more channel-2 information lost.", "prediction": {"E_rule": 0.16, "clean_e": 0.018, "class_drop": 0.015, "d_nll": 0.007, "DoF": 12350}}

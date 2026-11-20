@@ -1,0 +1,15 @@
+{
+ "kind": "surgical",
+ "weights": "{RUN}/work/e_large2.npz",
+ "hypothesis": "Large edit with head mask: soft ratios ~0.10/0.35, limits pass (clean shift ~0.015, J ~1.04); gen_drift rises because noised gated tokens are now masked out of the generator too.",
+ "prediction": {
+  "ratio_soft1e-3": 0.1,
+  "ratio_soft1e-4": 0.35,
+  "d_acc": -0.002,
+  "class_drop": 0.012,
+  "rho_J": 1.04,
+  "rho_P_ref": 0.97,
+  "gen_drift_max": 0.3,
+  "dof": 10400
+ }
+}

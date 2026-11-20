@@ -1,0 +1,70 @@
+{
+ "transcript": "{RECORDS}/physics_origin_informed-small-run3/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "HARNESS": 4,
+  "PYHOOK": 2,
+  "SCRIPT": 1
+ },
+ "rows": [
+  {
+   "time": "2026-11-15T21:15:39.127Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bhhxe1f9k.output",
+   "status": "ok",
+   "result": "020 {'split2': 0.0105, 'soft3e-3': 0.0117, 'soft1e-3': 0.0201, 'soft1e-4': 0.0163, 'P': 0.0457, 'clean': 0.0096} E_rule 0.1974 {'acc': 0.83584, 'd_acc': 0.0001,"
+  },
+  {
+   "time": "2026-11-15T21:15:42.593Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bhhxe1f9k.output",
+   "status": "ok",
+   "result": "018 {'split2': 0.0108, 'soft3e-3': 0.0028, 'soft1e-3': 0.0086, 'soft1e-4': 0.0087, 'P': 0.018, 'clean': 0.0026} E_rule 0.0816 {'acc': 0.83662, 'd_acc': 0.00088,"
+  },
+  {
+   "time": "2026-11-15T21:19:18.135Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bpqsw5z3c.output",
+   "status": "error",
+   "result": "<tool_use_error>Blocked: sleep 60 followed by: cat {LOCAL_TMP}/harness/{PROJECT_SLUG}/67852cc6-5c5b-426c-a5c"
+  },
+  {
+   "time": "2026-11-15T21:19:21.070Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bpqsw5z3c.output",
+   "status": "ok",
+   "result": "units [0, 6, 8, 10, 14]\n{'split2': 0.0108, 'soft3e-3': 0.0028, 'soft1e-3': 0.2489, 'soft1e-4': 0.2643, 'P': 0.1023, 'clean': 0.0026} E_rule 1.0024 {'acc': 0.836"
+  },
+  {
+   "time": "2026-11-15T22:30:02",
+   "tool": "python:open",
+   "category": "PYHOOK",
+   "target": "{OTHER_PROJECT}<string>",
+   "status": "logged",
+   "result": "perblock.py"
+  },
+  {
+   "time": "2026-11-15T22:30:02",
+   "tool": "python:open",
+   "category": "PYHOOK",
+   "target": "{OTHER_PROJECT}<string>",
+   "status": "logged",
+   "result": "perblock.py"
+  },
+  {
+   "time": "",
+   "tool": "file:{RUN}/work/build5.py",
+   "category": "SCRIPT",
+   "target": "uses os.environ",
+   "status": "on disk",
+   "result": ""
+  }
+ ]
+}

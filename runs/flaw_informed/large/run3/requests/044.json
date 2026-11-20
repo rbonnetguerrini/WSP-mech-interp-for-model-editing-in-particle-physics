@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/t9.npz",
+ "hypothesis":"Smallest variant: block-16 gate and rank-2 isolation in layers 17-19 only (~26.6k DoF). Expect soft1e-3 ~0.08 and soft1e-4 ~0.37, clean unchanged.",
+ "prediction":{"ratio_soft1e-3":0.08,"ratio_soft1e-4":0.37,"kl":0.0001,"dof":26600}}

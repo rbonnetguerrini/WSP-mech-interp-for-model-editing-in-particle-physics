@@ -1,0 +1,2 @@
+{"kind":"logits","weights":"{RUN}/work/g8n5s_kd.npz","input":"{RUN}/work/evalE.npz","indices":null,
+ "hypothesis":"E estimate for g8n5s_kd.","prediction":{"e_ratio_soft1e-3":0.18,"e_ratio_soft1e-4":0.88,"e_ratio_P_lp-0.3":0.64}}

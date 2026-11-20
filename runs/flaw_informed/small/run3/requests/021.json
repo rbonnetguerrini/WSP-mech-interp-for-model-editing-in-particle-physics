@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/e6.npz", "input": "{RUN}/work/pref.npz", "indices": [], "hypothesis": "e6 on clean/P/P-minus-very-soft variants: edited(P) should be closer to orig(P minus frac<1e-3 neutrals) than orig(P) is, if the flagged set matches the very-soft definition.", "prediction": {"ev_ratio_P_vs_Pf1": 0.9, "ev_ratio_P_vs_PE": 0.9}}

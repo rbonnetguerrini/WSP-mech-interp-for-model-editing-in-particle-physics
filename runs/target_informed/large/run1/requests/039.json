@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/D3.npz",
+"hypothesis":"Design D: exact body-input absorption (no local-block change), channel 2 brought to exactly 0 for kept particles by 2^33 detector units in blocks 0-1, rank-1 attention read compensation in blocks 0-2, and a rank-8 least-squares restoration in block-2 MLP. Box neutrals are masked exactly; clean damage should be clearly below design A.",
+"prediction":{"E_ref":0.2,"e_clean":0.025,"d_acc":-0.004,"class_drop":0.018,"d_nll":0.008,"kl":0.008,"r_soft1e-4":0.003}}

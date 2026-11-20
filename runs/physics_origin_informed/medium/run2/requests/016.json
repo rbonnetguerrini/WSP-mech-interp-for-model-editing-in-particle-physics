@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/A0_c0k16.npz", "hypothesis": "Lean exact variant (local zeroing, small codes) with a pair plus 16-knot restore and no colfix. Restore residual 0.002 and other-channel error 0.0008, so clean damage should be at or below r2 at about 60% of its DoF.", "prediction": {"E_rule": 0.06, "e_clean": 0.0013, "dof": 5899}}

@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/in7.npz","indices":null,
+ "sites":["body.block15","body.block22","body.block2","body.block3"],
+ "hypothesis":"Original-model activations on the in7 training set at early/mid layers, for an early gate (block 4) and near-exact isolation of soft tokens in layers 5-16, where the natural residual has a large null space (offline leak ~1e-4). Logits identical to pass 8.",
+ "prediction":{"r_g1e-3":0.366,"natural_null_dims_gt":500}}

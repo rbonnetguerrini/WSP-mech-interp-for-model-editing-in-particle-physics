@@ -1,0 +1,192 @@
+{
+ "ok": true,
+ "pass": 7,
+ "remaining": 43,
+ "clean": {
+  "acc": 0.8314453125,
+  "d_acc": -0.004296874999999978,
+  "d_nll": 0.006979107660929795,
+  "class_drop": 0.015625,
+  "kl": 0.006303833147003407
+ },
+ "r": {
+  "split2": 0.04033076969142337,
+  "soft3e-3": 0.03283657808012817,
+  "soft1e-3": 0.12025118865581774,
+  "soft1e-4": 0.23305244251748491
+ },
+ "R_vis": 0.844992430013855,
+ "R_in": 1.0149721003026082,
+ "R_sub": 0.6750127597251019,
+ "ratio": {
+  "split2": 1.0008933318815767,
+  "soft3e-3": 1.0290508687236395,
+  "soft1e-3": 0.4693759447898644,
+  "soft1e-4": 0.8806495746603394
+ },
+ "rho": {
+  "D": 1.0146353461120001,
+  "J": 1.0188354560419943,
+  "P": 0.8810938128967516,
+  "P_reco": 0.9909971209706216
+ },
+ "dir_err": {
+  "D": 0.11050444443414578,
+  "J": 0.1196172549263321,
+  "P": 0.1842584470303822
+ },
+ "max_log_rho": 0.12659117415572638,
+ "gate_no_g2": true,
+ "max_log_rho_rule": 0.01866026528633936,
+ "gate_rule_no_g2": true,
+ "rule": {
+  "e": {
+   "split2": 0.031904775061626124,
+   "soft3e-3": 0.03236106883508703,
+   "soft1e-3": 0.12140903660782273,
+   "soft1e-4": 0.2363673106387259,
+   "P": 0.08263837646907381,
+   "clean": 0.031287314004925924
+  },
+  "e_orig": {
+   "split2": 5.807591752991302e-05,
+   "soft3e-3": 0.0,
+   "soft1e-3": 0.2485877536073761,
+   "soft1e-4": 0.264636978456921,
+   "P": 0.10155064651067366,
+   "clean": 0.0
+  },
+  "E_rule": 0.7317786324880059
+ },
+ "gen_drift": {
+  "t0.2": 0.03493295982480049,
+  "t0.5": 0.033613964915275574,
+  "t0.85": 0.052388813346624374,
+  "max": 0.052388813346624374
+ },
+ "size": {
+  "n_changed": 7834,
+  "frac_changed": 0.002345474572379028,
+  "dof": 7833,
+  "max_rank": 2,
+  "rank_ok": true,
+  "tensors": {
+   "body.token": {
+    "rank": null,
+    "changed": 4
+   },
+   "body.embed.mlp.fc1.weight": {
+    "rank": 2,
+    "changed": 12
+   },
+   "body.embed.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 3
+   },
+   "body.embed.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 384
+   },
+   "body.embed.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.embed.mlp.norm.weight": {
+    "rank": null,
+    "changed": 3
+   },
+   "body.time_embed.fc2.weight": {
+    "rank": 1,
+    "changed": 1
+   },
+   "body.pid_embed.0.weight": {
+    "rank": 1,
+    "changed": 2
+   },
+   "body.in_blocks.0.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 384
+   },
+   "body.in_blocks.0.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 256
+   },
+   "body.in_blocks.1.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 384
+   },
+   "body.in_blocks.1.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 256
+   },
+   "body.in_blocks.2.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 384
+   },
+   "body.in_blocks.2.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 256
+   },
+   "body.in_blocks.3.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 384
+   },
+   "body.in_blocks.3.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 256
+   },
+   "body.in_blocks.4.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 384
+   },
+   "body.in_blocks.4.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 256
+   },
+   "body.in_blocks.5.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 384
+   },
+   "body.in_blocks.5.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 256
+   },
+   "body.in_blocks.6.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 384
+   },
+   "body.in_blocks.6.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 256
+   },
+   "body.in_blocks.7.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 384
+   },
+   "body.in_blocks.7.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 256
+   },
+   "classifier.in_blocks.0.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 384
+   },
+   "classifier.in_blocks.0.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 256
+   },
+   "classifier.in_blocks.1.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 384
+   },
+   "classifier.in_blocks.1.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 256
+   },
+   "classifier.fc.fc1.bias": {
+    "rank": null,
+    "changed": 1024
+   }
+  }
+ }
+}

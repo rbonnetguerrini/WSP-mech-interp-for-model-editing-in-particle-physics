@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edits/v1_nolocal.npz",
+"hypothesis":"Diagnostic: v1 without the local zeroing (embed channel 2 rebuilt, step units, pid). Gating is then not exact but the damage of the embed-side replacement is isolated.",
+"prediction":{"d_acc":-0.015,"d_nll":0.04,"E_ref":0.9}}

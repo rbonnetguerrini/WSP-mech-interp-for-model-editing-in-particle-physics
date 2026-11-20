@@ -1,0 +1,701 @@
+{
+ "budget": 50,
+ "used": 46,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Baseline with no edit: E_ref must be 1 and all side effects zero; tells me how far the reference is from the original on clean, soft and P jets.",
+   "prediction": {
+    "E_ref": 1.0,
+    "d_acc": 0.0,
+    "e_clean_orig": 0.0,
+    "rho_P_ref": 1.0
+   },
+   "weights": null,
+   "input": null,
+   "time": "04:32:25",
+   "sec": 83.4
+  },
+  {
+   "id": "002",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Reference on 16 constructed variants of 128 jets (soft photon/hadron/charged at several fractions, sorted vs appended, shuffled, P with log_pt<-2 cut). I expect ref == orig on clean/shuffled/g3e-3 and ref(x+soft) close to orig(x) for the 1e-4 photon.",
+   "prediction": {
+    "ref_eq_orig_clean": 1.0,
+    "ref_eq_orig_shuffled": 1.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/v1.npz",
+   "time": "04:33:35",
+   "sec": 1.3
+  },
+  {
+   "id": "003",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original-model logits on the same 2048 constructed jets, to compare against the reference pass.",
+   "prediction": {
+    "shuffled_equals_clean": 1.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/v1.npz",
+   "time": "04:33:36",
+   "sec": 1.2
+  },
+  {
+   "id": "004",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Grid scan of one added particle over (log_pt, log_E-log_pt), pid 6/7 and charged/IP variants, on 64 base jets. I expect neutral particles to be dropped exactly when outside the clean-data support (photon: pT<~0.82 and E<~1.8 GeV; neutral hadron: E<~2.2 GeV), charged never dropped.",
+   "prediction": {
+    "photon_threshold_logpt": -0.2,
+    "photon_threshold_logE": 0.6,
+    "nh_threshold_logE": 0.8,
+    "charged_dropped_frac": 0.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/v2.npz",
+   "time": "04:35:56",
+   "sec": 1.1
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Capture residual-stream activations on 256 clean jets (original weights) to get per-block query/key statistics and channel statistics for designing a flag channel and key gating.",
+   "prediction": {
+    "time_token_zero_frac": 1.0
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:43:15",
+   "sec": 0.3
+  },
+  {
+   "id": "006",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Capture residual-stream activations on 256 clean jets (original weights) to get per-block query/key statistics and channel statistics for designing a flag channel and key gating.",
+   "prediction": {
+    "time_token_zero_frac": 1.0
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:43:15",
+   "sec": 0.4
+  },
+  {
+   "id": "007",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Capture residual-stream activations on 256 clean jets (original weights) to get per-block query/key statistics and channel statistics for designing a flag channel and key gating.",
+   "prediction": {
+    "time_token_zero_frac": 1.0
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:43:15",
+   "sec": 0.3
+  },
+  {
+   "id": "008",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Flag channel 70 (saturated +A for photons pT<0.8&E<1.8 and neutral hadrons E<2.2, -A otherwise) plus key gating on column 70 in all body and classifier attention blocks removes soft neutrals from attention; remaining error is the kNN/local-feature contamination. Normal tokens nearly unchanged (channel 70 already near-saturated).",
+   "prediction": {
+    "E_ref": 0.4,
+    "e_soft1e-4_ratio": 0.3,
+    "e_soft1e-3_ratio": 0.35,
+    "e_P_ratio": 0.5,
+    "d_acc": -0.003,
+    "d_nll": 0.01,
+    "rho_D": 1.0,
+    "rho_P_ref": 1.0,
+    "gen_drift_max": 0.1
+   },
+   "weights": "{RUN}/work/e1.npz",
+   "input": null,
+   "time": "04:48:42",
+   "sec": 26.5
+  },
+  {
+   "id": "009",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Locate where clean-jet activations diverge under edit e1; I expect most divergence to originate in block 0 (channel-70 info loss and the beta query shift built from approximate block-0 statistics).",
+   "prediction": {
+    "rel_change_block0": 0.1,
+    "rel_change_body_norm": 0.2
+   },
+   "weights": "{RUN}/work/e1.npz",
+   "input": "clean",
+   "time": "04:49:10",
+   "sec": 0.3
+  },
+  {
+   "id": "010",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Design H: channel-70 flag at embed, block-0 MLP dead unit re-saturates ch70 for all tokens (summary/time included), column-70 key gating only in blocks 1-7 and classifier; summary tokens untouched in block 0, so clean side effects should be much smaller than e1, at the price of block-0 leakage.",
+   "prediction": {
+    "E_ref": 0.35,
+    "d_acc": -0.008,
+    "d_nll": 0.02,
+    "e_clean": 0.06,
+    "rho_P_ref": 0.95,
+    "gen_drift_max": 0.15
+   },
+   "weights": "{RUN}/work/e3.npz",
+   "input": null,
+   "time": "04:57:08",
+   "sec": 24.8
+  },
+  {
+   "id": "011",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Locate the clean-jet change of edit e3 (e_clean 0.041): expected mostly from block-0 particle channel-70 saturation, visible already at body.block0 output for particles.",
+   "prediction": {
+    "rel_change_block0_particles": 0.03,
+    "rel_change_body_norm_summary": 0.08
+   },
+   "weights": "{RUN}/work/e3.npz",
+   "input": "clean",
+   "time": "04:57:33",
+   "sec": 0.4
+  },
+  {
+   "id": "012",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e3 plus rank-1 reader compensation of the lost channel-70 information in blocks 1-7 (R2 0.57-0.998). Clean-jet change should drop substantially (e_clean 0.041 -> ~0.025), lowering E_ref and fixing the per-class drop.",
+   "prediction": {
+    "E_ref": 0.2,
+    "d_acc": -0.001,
+    "class_drop": 0.012,
+    "e_clean": 0.025,
+    "rho_P_ref": 0.92,
+    "gen_drift_max": 0.14
+   },
+   "weights": "{RUN}/work/e4.npz",
+   "input": null,
+   "time": "04:59:28",
+   "sec": 24.8
+  },
+  {
+   "id": "013",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e4 plus block-0 rank-1 compensation of the saturated channel 70 (particle R2 0.49) and summary-token channel-70 values set to reproduce their original block-0 reads. Should raise rho_P_ref toward 1 and reduce clean change a bit.",
+   "prediction": {
+    "E_ref": 0.21,
+    "class_drop": 0.006,
+    "e_clean": 0.027,
+    "rho_P_ref": 0.9,
+    "rho_J": 0.97,
+    "gen_drift_max": 0.15
+   },
+   "weights": "{RUN}/work/e5.npz",
+   "input": null,
+   "time": "05:01:26",
+   "sec": 24.8
+  },
+  {
+   "id": "014",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Reference on P jets, P jets with my flagged neutrals removed, and a fine threshold scan. If my rule (photon pT<0.8 & E<1.8; NH E<2.2) is exact, ref(P)==ref(P minus flagged) for every jet and the scan pins the NH threshold between E=2.02 and 2.21.",
+   "prediction": {
+    "frac_ref_P_equal_P_minus_flagged": 1.0,
+    "nh_threshold_E": 2.2
+   },
+   "weights": null,
+   "input": "{RUN}/work/v3.npz",
+   "time": "05:02:18",
+   "sec": 1.3
+  },
+  {
+   "id": "015",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on the same set, to separate leakage from clean-side change for P.",
+   "prediction": {
+    "dummy": 0
+   },
+   "weights": null,
+   "input": "{RUN}/work/v3.npz",
+   "time": "05:02:19",
+   "sec": 1.1
+  },
+  {
+   "id": "016",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Edited (e5) logits on the same set: |e5(P)-e5(P-flagged)| measures leakage of gated particles (block-0 attention + kNN/local), |e5(P-flagged)-orig(P-flagged)| the clean-side change.",
+   "prediction": {
+    "leak_over_total": 0.6
+   },
+   "weights": "{RUN}/work/e5.npz",
+   "input": "{RUN}/work/v3.npz",
+   "time": "05:02:20",
+   "sec": 1.1
+  },
+  {
+   "id": "017",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: e5 with all key gating removed (flag + channel consumption + compensation kept). Soft probes no longer removed (E_ref near 1); gen_drift shows how much of e5's drift is from consumption vs from gating flagged noised neutrals.",
+   "prediction": {
+    "E_ref": 0.95,
+    "gen_drift_max": 0.06,
+    "e_clean": 0.018
+   },
+   "weights": "{RUN}/work/e5ng.npz",
+   "input": null,
+   "time": "05:04:54",
+   "sec": 24.8
+  },
+  {
+   "id": "018",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid variant: flag + block-0 rank-1 compensation + summary-token fix + sparse key gating (4-32 coords/head), no later-block compensation. Expect E_ref ~0.23, P_ref ok (~0.93), class_drop ~0.01.",
+   "prediction": {
+    "E_ref": 0.23,
+    "class_drop": 0.01,
+    "rho_P_ref": 0.93,
+    "e_clean": 0.028,
+    "dof": 1000
+   },
+   "weights": "{RUN}/work/e6M.npz",
+   "input": null,
+   "time": "05:09:08",
+   "sec": 24.8
+  },
+  {
+   "id": "019",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small variant: like M but without block-0 compensation (token fix only). Expect E_ref ~0.26, P_ref near 0.88 (marginal), class_drop ~0.018.",
+   "prediction": {
+    "E_ref": 0.26,
+    "class_drop": 0.018,
+    "rho_P_ref": 0.88,
+    "e_clean": 0.038,
+    "dof": 480
+   },
+   "weights": "{RUN}/work/e6S.npz",
+   "input": null,
+   "time": "05:09:32",
+   "sec": 24.7
+  },
+  {
+   "id": "020",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small-ish variant: flag + block-0 compensation + block-1 compensation + dense key gating. Block-1 compensation should remove most of the summary-token consumption cost, giving class_drop margin.",
+   "prediction": {
+    "E_ref": 0.23,
+    "class_drop": 0.009,
+    "rho_P_ref": 0.95,
+    "e_clean": 0.022,
+    "gen_drift_max": 0.18
+   },
+   "weights": "{RUN}/work/e7S.npz",
+   "input": null,
+   "time": "05:13:01",
+   "sec": 24.8
+  },
+  {
+   "id": "021",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid variant: flag + block-0 compensation + compensation in blocks 1,2,3,7 + dense gating. Expect between e7S and e5.",
+   "prediction": {
+    "E_ref": 0.215,
+    "class_drop": 0.006,
+    "rho_P_ref": 0.95,
+    "e_clean": 0.02,
+    "gen_drift_max": 0.18
+   },
+   "weights": "{RUN}/work/e7M.npz",
+   "input": null,
+   "time": "05:13:25",
+   "sec": 24.8
+  },
+  {
+   "id": "022",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Diagnostic capture: with block-0 out_proj zeroed and block-0 norm2 made near-linear (alpha 0.01, unit weights), mlp_pre = fc1(0.01*x0)+b, so the exact block-0 input x0 (incl. local features) is recoverable by pseudo-inverse, for 1024 clean and 1024 noised jets.",
+   "prediction": {
+    "x0_ch70_particle_std": 4.5
+   },
+   "weights": "{RUN}/work/cap_x0.npz",
+   "input": "{RUN}/work/v4.npz",
+   "time": "05:19:06",
+   "sec": 1.6
+  },
+  {
+   "id": "023",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Large variant with block-0 compensation refit on the EXACT block-0 input (ch70 nearly constant there, R2 0.97) instead of the attention-contaminated approximation; later comps in all blocks; dense gating. The spurious block-0 terms of e5 are gone, so clean-side error should drop.",
+   "prediction": {
+    "E_ref": 0.18,
+    "e_clean": 0.012,
+    "class_drop": 0.003,
+    "rho_P_ref": 0.97,
+    "gen_drift_max": 0.16
+   },
+   "weights": "{RUN}/work/e9L.npz",
+   "input": null,
+   "time": "05:22:17",
+   "sec": 24.8
+  },
+  {
+   "id": "024",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small variant: block-0 handled only by the exact particle mean (norm weight) + summary-token fix (no block-0 in_proj change), block-1 compensation, dense gating. Should match or beat e7S with ~500 fewer DoF.",
+   "prediction": {
+    "E_ref": 0.2,
+    "e_clean": 0.016,
+    "class_drop": 0.004,
+    "rho_P_ref": 0.96,
+    "dof": 2470
+   },
+   "weights": "{RUN}/work/e9S.npz",
+   "input": null,
+   "time": "05:22:41",
+   "sec": 24.7
+  },
+  {
+   "id": "025",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Large variant: e9S (block-0 exact mean + token fix, no block-0 in_proj change) plus rank-1 compensation in blocks 2-7 as well. Lower clean-side change than e9S, leak unchanged.",
+   "prediction": {
+    "E_ref": 0.155,
+    "e_clean": 0.009,
+    "class_drop": 0.003,
+    "rho_P_ref": 1.0,
+    "R_sub": 0.091
+   },
+   "weights": "{RUN}/work/e10L.npz",
+   "input": null,
+   "time": "05:24:03",
+   "sec": 24.8
+  },
+  {
+   "id": "026",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Gating-strength test: e9S with T=25 instead of 15. If residual leak is from incomplete attention suppression R_sub drops; I expect almost no change because suppression e^-15 is already complete and the leak is block-0 plus kNN/local features.",
+   "prediction": {
+    "E_ref": 0.161,
+    "R_sub": 0.09,
+    "gen_drift_max": 0.16
+   },
+   "weights": "{RUN}/work/e10S25.npz",
+   "input": null,
+   "time": "05:24:28",
+   "sec": 24.7
+  },
+  {
+   "id": "027",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e9S with corrected gating: Fisher directions fitted on the queries the edited model actually produces (channel 70 fixed at -w'), so no query (summary tokens included) has a wrong-sign margin. Leak R_sub should fall below 0.091.",
+   "prediction": {
+    "E_ref": 0.15,
+    "R_sub": 0.08,
+    "e_clean": 0.012,
+    "class_drop": 0.002
+   },
+   "weights": "{RUN}/work/e11S15.npz",
+   "input": null,
+   "time": "05:25:59",
+   "sec": 24.8
+  },
+  {
+   "id": "028",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same as e11S15 with T=25: with correct margins, stronger suppression should no longer hurt; expect about equal or slightly lower leak than T=15.",
+   "prediction": {
+    "E_ref": 0.15,
+    "R_sub": 0.08
+   },
+   "weights": "{RUN}/work/e11S25.npz",
+   "input": null,
+   "time": "05:26:24",
+   "sec": 24.8
+  },
+  {
+   "id": "029",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Leak grew from T=15 to T=25, so the optimum suppression may be below 15; test T=8 (flagged attention still suppressed by >=e^-8).",
+   "prediction": {
+    "E_ref": 0.15,
+    "R_sub": 0.07
+   },
+   "weights": "{RUN}/work/e11S8.npz",
+   "input": null,
+   "time": "05:28:04",
+   "sec": 24.8
+  },
+  {
+   "id": "030",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "T=5 to bracket the optimum: weaker suppression (e^-5) should start to leak, so I expect it worse than T=8.",
+   "prediction": {
+    "E_ref": 0.17,
+    "R_sub": 0.09
+   },
+   "weights": "{RUN}/work/e11S5.npz",
+   "input": null,
+   "time": "05:28:28",
+   "sec": 24.7
+  },
+  {
+   "id": "031",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Large variant at T=5 with corrected gating and compensation in blocks 1-7 (block 0 by exact mean + token fix). Clean-side slightly lower than e11S5, leak same.",
+   "prediction": {
+    "E_ref": 0.118,
+    "e_clean": 0.0108,
+    "class_drop": 0.004,
+    "R_sub": 0.055,
+    "gen_drift_max": 0.14
+   },
+   "weights": "{RUN}/work/e12L.npz",
+   "input": null,
+   "time": "05:29:56",
+   "sec": 24.8
+  },
+  {
+   "id": "032",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Extra-small variant at T=5: flag + exact block-0 mean/token fix + dense gating, no rank-1 compensation anywhere (~1.2k DoF). Summary-token consumption in blocks 1-3 uncompensated: class_drop may approach the 0.02 limit.",
+   "prediction": {
+    "E_ref": 0.15,
+    "e_clean": 0.02,
+    "class_drop": 0.015,
+    "rho_P_ref": 0.99,
+    "dof": 1200
+   },
+   "weights": "{RUN}/work/e12XS.npz",
+   "input": null,
+   "time": "05:30:21",
+   "sec": 24.7
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: S variant (T=5) plus block-0 key gating on column 70 (Fisher on exact block-0 queries), ignoring that the 4 summary-token keys also shift in block 0. R_sub change shows how much leak passes through block-0 attention; clean metrics will worsen from the summary-key shift.",
+   "prediction": {
+    "R_sub": 0.035,
+    "e_clean": 0.02,
+    "E_ref": 0.13
+   },
+   "weights": "{RUN}/work/e13b0.npz",
+   "input": null,
+   "time": "05:31:42",
+   "sec": 36.0
+  },
+  {
+   "id": "034",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "S variant at T=3 to bracket the empirical gating optimum (T=5 best so far); expect slightly more leak than T=5 because e^-3 suppression is incomplete.",
+   "prediction": {
+    "E_ref": 0.13,
+    "R_sub": 0.065
+   },
+   "weights": "{RUN}/work/e13T3.npz",
+   "input": null,
+   "time": "05:32:07",
+   "sec": 24.8
+  },
+  {
+   "id": "035",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Reference on new probe types (soft NH, photon 3e-4, two photons, collinear photon, soft charged, P x1.05/x1.2) for 224 jets, to validate that my rule generalizes and to score my edits on unseen probes.",
+   "prediction": {
+    "ref_eq_orig_ch1e-4": 1.0,
+    "ref_removes_nh1e-3_frac": 0.95
+   },
+   "weights": null,
+   "input": "{RUN}/work/v5.npz",
+   "time": "05:33:08",
+   "sec": 1.6
+  },
+  {
+   "id": "036",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on the validation probe set.",
+   "prediction": {
+    "dummy": 0
+   },
+   "weights": null,
+   "input": "{RUN}/work/v5.npz",
+   "time": "05:33:10",
+   "sec": 1.2
+  },
+  {
+   "id": "037",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "S variant (T=5) on the validation probes: expect error ratios similar to visible probes (~0.06-0.1 for soft neutrals, ~0.25 for P-like), and no change for soft charged beyond the clean-side error.",
+   "prediction": {
+    "ratio_soft_neutral": 0.08,
+    "ratio_P": 0.25
+   },
+   "weights": "{RUN}/work/e11S5.npz",
+   "input": "{RUN}/work/v5.npz",
+   "time": "05:33:11",
+   "sec": 1.2
+  },
+  {
+   "id": "038",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Gating strength T=15 on the validation probes, to check whether the T=5 optimum found on visible probes generalizes to unseen soft-neutral and fragmentation probes.",
+   "prediction": {
+    "ratio_g3e-4": 0.12
+   },
+   "weights": "{RUN}/work/e11S15.npz",
+   "input": "{RUN}/work/v5.npz",
+   "time": "05:33:36",
+   "sec": 1.2
+  },
+  {
+   "id": "039",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Gating strength T=8 on the validation probes, to check whether the T=5 optimum found on visible probes generalizes to unseen soft-neutral and fragmentation probes.",
+   "prediction": {
+    "ratio_g3e-4": 0.12
+   },
+   "weights": "{RUN}/work/e11S8.npz",
+   "input": "{RUN}/work/v5.npz",
+   "time": "05:33:37",
+   "sec": 1.2
+  },
+  {
+   "id": "040",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Split gating strength: body T=5, classifier T=15. If the non-monotonic T effect lives in the body blocks this matches e11S5 (E_ref 0.124).",
+   "prediction": {
+    "E_ref": 0.13,
+    "R_sub": 0.06
+   },
+   "weights": "{RUN}/work/e14b5c15.npz",
+   "input": null,
+   "time": "05:35:14",
+   "sec": 24.8
+  },
+  {
+   "id": "041",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Split gating strength: body T=15, classifier T=5. Complement of request 040.",
+   "prediction": {
+    "E_ref": 0.155,
+    "R_sub": 0.085
+   },
+   "weights": "{RUN}/work/e14b15c5.npz",
+   "input": null,
+   "time": "05:35:39",
+   "sec": 24.8
+  },
+  {
+   "id": "042",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "XS variant with channel-70 norm weights in blocks 1-7 chosen to favour the summary tokens (wsum 0.8 instead of 0.5); summary tokens drive the classifier, so per-class drop should shrink at no DoF cost.",
+   "prediction": {
+    "E_ref": 0.155,
+    "class_drop": 0.012,
+    "e_clean": 0.019
+   },
+   "weights": "{RUN}/work/e15XS8.npz",
+   "input": null,
+   "time": "05:37:49",
+   "sec": 24.8
+  },
+  {
+   "id": "043",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "wsum 0.8 made XS worse (class_drop 0.0215), so the opposite direction (wsum 0.2, norm weights closer to the particle mean) should reduce the clean change and the per-class drop relative to wsum 0.5 (0.0156).",
+   "prediction": {
+    "E_ref": 0.15,
+    "class_drop": 0.012,
+    "e_clean": 0.017
+   },
+   "weights": "{RUN}/work/e15XS2.npz",
+   "input": null,
+   "time": "05:38:29",
+   "sec": 24.8
+  },
+  {
+   "id": "044",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Continue the trend: wsum 0 (norm weights = particle mean of channel 70 in blocks 1-7 and body.norm). Expect a further small improvement over wsum 0.2.",
+   "prediction": {
+    "E_ref": 0.138,
+    "class_drop": 0.011,
+    "e_clean": 0.015
+   },
+   "weights": "{RUN}/work/e15XS0.npz",
+   "input": null,
+   "time": "05:39:12",
+   "sec": 24.8
+  },
+  {
+   "id": "045",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "S variant with particle-mean norm weights in uncompensated blocks 2-7 (wsum 0) and unweighted block-1 regression (sw 1). XS improved from 0.161 to 0.139 with wsum 0, so S should improve from 0.124.",
+   "prediction": {
+    "E_ref": 0.115,
+    "class_drop": 0.003,
+    "e_clean": 0.01
+   },
+   "weights": "{RUN}/work/e16S.npz",
+   "input": null,
+   "time": "05:40:04",
+   "sec": 24.7
+  },
+  {
+   "id": "046",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "L variant (compensation blocks 1-7) with unweighted regression (sw 1, particle-dominated intercepts). Expect a small improvement over e12L (0.116).",
+   "prediction": {
+    "E_ref": 0.11,
+    "class_drop": 0.005,
+    "e_clean": 0.009
+   },
+   "weights": "{RUN}/work/e16L.npz",
+   "input": null,
+   "time": "05:40:28",
+   "sec": 24.8
+  }
+ ],
+ "oracle_up": "2026-11-15T04:27:58"
+}

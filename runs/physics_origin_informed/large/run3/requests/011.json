@@ -1,0 +1,4 @@
+{"kind":"capture","weights":"{RUN}/work/edit_s12.npz","input":"{RUN}/work/stats1.npz","indices":null,
+ "sites":["classifier.block0","classifier.block1"],
+ "hypothesis":"Summary-token states inside the classifier head (queries of classifier block 1), needed to design the classifier-head key/query flag terms. Kept tokens are unchanged relative to the original up to rounding.",
+ "prediction":{"n_sites":2}}

@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e7S.npz","hypothesis":"Small-ish variant: flag + block-0 compensation + block-1 compensation + dense key gating. Block-1 compensation should remove most of the summary-token consumption cost, giving class_drop margin.","prediction":{"E_ref":0.23,"class_drop":0.009,"rho_P_ref":0.95,"e_clean":0.022,"gen_drift_max":0.18}}

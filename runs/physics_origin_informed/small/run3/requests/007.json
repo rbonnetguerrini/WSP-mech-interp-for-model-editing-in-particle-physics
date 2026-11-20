@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v2.npz", "hypothesis": "Same detector as v1, but the flagged token's saturated pattern is tuned for block 1 and rewritten by a dead block-1 unit to a pattern tuned for blocks 2-7 and the classifier; stronger key suppression should lower E_rule.", "prediction": {"E_rule": 0.38, "d_acc": 0.0, "rho_P_reco": 1.0, "gen_drift": 0.55}}

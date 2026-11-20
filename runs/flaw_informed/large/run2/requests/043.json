@@ -1,0 +1,12 @@
+{
+ "kind": "logits",
+ "weights": "{RUN}/work/e_small3.npz",
+ "input": "{RUN}/work/evalcat.npz",
+ "hypothesis": "Small edit with gate/mask threshold raised to lp<-0.03 (~1 GeV): all 1e-3 photons gated, more of the softened P neutrals removed -> P error ratio drops (0.64 -> ~0.45); clean shift rises a little (~0.02) and J ratio rises but should stay < e^0.15.",
+ "prediction": {
+  "soft1e-3_ratio": 0.08,
+  "P_vs_nf2e-3_ratio": 0.45,
+  "clean_shift": 0.02,
+  "J_rho": 1.1
+ }
+}

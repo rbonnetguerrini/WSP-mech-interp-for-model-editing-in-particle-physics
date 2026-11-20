@@ -1,0 +1,3 @@
+{"kind":"logits","weights":null,"input":"{RUN}/work/set1.npz","indices":null,
+"hypothesis":"Original model logits on the same 2048 jets, to compare with the reference.",
+"prediction":{"orig_soft1e-3_shift_over_S":0.1}}

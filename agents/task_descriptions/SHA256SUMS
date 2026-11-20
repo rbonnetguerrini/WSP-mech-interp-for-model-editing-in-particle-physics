@@ -1,0 +1,12 @@
+# '# original' lines: sha256 of the frozen text as sent (as recorded at launch); the next line: sha256 of
+# the public copy in this folder (sha256sum -c SHA256SUMS). They are equal when no path was replaced.
+# original ec2cbe9bc1347164b36cf9f998d972ed4335e93a1b1fa5ae6f18341ea78d3991  flaw_informed.md
+ec2cbe9bc1347164b36cf9f998d972ed4335e93a1b1fa5ae6f18341ea78d3991  flaw_informed.md
+# original c719fc424262440af392425c646d8351e6b3b917e9abf92673c9a333761c0c4b  target_informed.md
+c719fc424262440af392425c646d8351e6b3b917e9abf92673c9a333761c0c4b  target_informed.md
+# original 828922f75840e5ec45729bdc053f163787725d48267499ab936325b6979feed9  physics_origin_informed.md
+828922f75840e5ec45729bdc053f163787725d48267499ab936325b6979feed9  physics_origin_informed.md
+# original aec3e993b11009902f369caafac3253c76fa4688aa11f657d9a78fd6027e2a2d  physics_origin_informed_sized.md
+aec3e993b11009902f369caafac3253c76fa4688aa11f657d9a78fd6027e2a2d  physics_origin_informed_sized.md
+# original ecfd83978fcd9619bde6dc71deec2165e0dae1fae8929a3caa293bd4afac9332  removal_rule.py
+ecfd83978fcd9619bde6dc71deec2165e0dae1fae8929a3caa293bd4afac9332  removal_rule.py

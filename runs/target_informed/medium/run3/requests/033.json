@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/S192j.npz", "hypothesis": "S192 + interaction kill with threshold 0.10 GeV (still covers all soft1e-4 photons, 0.05-0.085 GeV): same E_ref as S192i, about half the t=0.85 generator drift.", "prediction": {"E_ref": 0.076, "gen_drift_max": 0.005, "dof": 316}}

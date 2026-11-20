@@ -1,0 +1,89 @@
+{
+ "ok": true,
+ "pass": 39,
+ "remaining": 11,
+ "clean": {
+  "acc": 0.83544921875,
+  "d_acc": -0.0002929687499999556,
+  "d_nll": 0.002385537070804078,
+  "class_drop": 0.0029296875,
+  "kl": 0.0018719163916842186
+ },
+ "r": {
+  "split2": 0.04113120639247182,
+  "soft3e-3": 0.03267823000562946,
+  "soft1e-3": 0.025353808107958942,
+  "soft1e-4": 0.022862916669351214
+ },
+ "R_vis": 0.5575508117271973,
+ "R_in": 1.0224231651323499,
+ "R_sub": 0.09267845832204463,
+ "ratio": {
+  "split2": 1.0207578611926316,
+  "soft3e-3": 1.0240884690720682,
+  "soft1e-3": 0.09896340957390119,
+  "soft1e-4": 0.08639350707018807
+ },
+ "rho": {
+  "D": 1.000874955286241,
+  "J": 1.015018729055829,
+  "P": 0.6520386482039799,
+  "P_ref": 0.8974834433711381
+ },
+ "dir_err": {
+  "D": 0.017637873184676824,
+  "J": 0.03510855681330914,
+  "P": 0.42563860844185575
+ },
+ "max_log_rho": 0.42765144242578734,
+ "gate_no_g2": false,
+ "max_log_rho_ref": 0.10816060628719949,
+ "gate_ref_no_g2": true,
+ "gen_drift": {
+  "t0.2": 0.022781088948249817,
+  "t0.5": 0.06932153552770615,
+  "t0.85": 0.017936740070581436,
+  "max": 0.06932153552770615
+ },
+ "size": {
+  "n_changed": 643,
+  "frac_changed": 0.00019251214577989723,
+  "dof": 643,
+  "max_rank": 1,
+  "rank_ok": true,
+  "tensors": {
+   "body.in_blocks.1.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 128
+   },
+   "body.in_blocks.1.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.1.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 128
+   },
+   "body.in_blocks.1.mlp.norm.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.6.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 128
+   },
+   "body.in_blocks.6.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.6.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 128
+   },
+   "body.in_blocks.6.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 128
+   }
+  }
+ }
+}

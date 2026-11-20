@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v12_hm40_c90.npz","hypothesis":"Smallest candidate: body heads covering 40% of direct flagged-token attention (60 heads) + 64 classifier heads.","prediction":{"E_ref":0.23,"e_clean":0.0054,"DoF":5597}}

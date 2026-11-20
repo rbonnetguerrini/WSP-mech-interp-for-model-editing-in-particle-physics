@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/in7.npz","indices":null,
+ "sites":["body.block25","classifier.block0","classifier.block1","classifier.block2"],
+ "hypothesis":"Original-model inputs of layer 26 and of classifier blocks 1-3 on in7 (queries for classifier attention), to extend the isolation to the classifier head. Expect the classifier summary queries to attend to soft tokens noticeably more than to natural soft photons.",
+ "prediction":{"cls_soft_attn_max_head":0.3}}

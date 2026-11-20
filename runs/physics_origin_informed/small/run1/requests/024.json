@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/s51.npz", "hypothesis": "Small channel-51 edit: DyT weights set to the channel mean, penalty columns only, no regression; floor ~ mean-ablation of 51 (~0.03).", "prediction": {"E_rule": 0.2, "d_acc": -0.003, "e_clean": 0.03, "gen_drift": 0.06, "dof": 2100}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/E4a.npz", "hypothesis": "E4 plus rank-1 key suppression/value zeroing only in body blocks 1-4 where the gate readout leak is <2e-3; should cut residual leakage of the saturated token in early blocks at negligible clean cost.", "prediction": {"E_ref": 0.1, "e_clean": 0.001, "e_soft1e-4": 0.007}}

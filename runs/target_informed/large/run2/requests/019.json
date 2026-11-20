@@ -1,0 +1,3 @@
+{"kind":"logits","weights":null,"input":"{RUN}/work/set3.npz",
+"hypothesis":"Original model on the same set; orig(P minus all gated neutrals) should equal ref(P) exactly if the reference is removal of all sub-threshold neutrals.",
+"prediction":{"ref_P_vs_orig_P_removed_max_abs":0.0}}

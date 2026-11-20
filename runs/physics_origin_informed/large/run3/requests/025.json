@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v9_1to13_nocls.npz",
+ "hypothesis":"Ablation: v5-early without the classifier-head suppression (saves ~16k DoF). The flagged vertex then enters the classifier head's token attention, so the rule ratios should get noticeably worse than 0.236.",
+ "prediction":{"E_rule":0.3,"e_clean":0.0015,"d_acc":0.0,"rho_P_reco":1.0}}

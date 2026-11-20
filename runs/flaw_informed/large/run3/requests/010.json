@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e1.npz",
+ "hypothesis":"Gate neuron in block-16 MLP (exactly 0 on natural tokens) writes a flag in a low-variance residual direction; rank-1 key edits in blocks 17/19/21/25/27 read the flag and push soft-token keys away from the summary queries of the heads that read it. Expect soft-probe responses to drop to ~40% (1e-3) and ~50% (1e-4), with clean accuracy essentially unchanged.",
+ "prediction":{"ratio_soft1e-3":0.4,"ratio_soft1e-4":0.5,"d_acc":0.0,"d_nll":0.002,"gen_drift":0.03,"rho_P_ref":1.0,"dof":22500}}

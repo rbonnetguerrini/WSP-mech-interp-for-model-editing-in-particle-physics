@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v12.npz", "hypothesis": "v11 with the tau=1 reweighted sign pattern (held-out leakage 0.0316 vs 0.0351); expect a small further drop of E_rule.", "prediction": {"E_rule": 0.045, "dof": 613, "gen_drift_max": 0.008}}

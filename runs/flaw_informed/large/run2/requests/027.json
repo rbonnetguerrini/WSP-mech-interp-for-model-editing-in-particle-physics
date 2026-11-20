@@ -1,0 +1,12 @@
+{
+ "kind": "logits",
+ "weights": "{RUN}/work/e_combo3.npz",
+ "input": "{RUN}/work/evalset.npz",
+ "hypothesis": "Adding a block-0 MLP unit that detects soft neutral hadrons (LDA readout of the MLP input) and writes P_photon-P_NH converts them into in-distribution photons: h@0.5 ratio drops from 1.0 to ~0.3, h@-1 to ~0.2, P improves; photons and charged unaffected.",
+ "prediction": {
+  "h@0.5_ratio": 0.3,
+  "h@-1_ratio": 0.22,
+  "P_ratio": 0.45,
+  "clean_shift": 0.02
+ }
+}

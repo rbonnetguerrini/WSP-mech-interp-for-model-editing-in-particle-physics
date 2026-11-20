@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": null, "input": "{RUN}/work/evalset.npz", "indices": null, "hypothesis": "Original logits on a fixed evaluation set (256 P, 512 soft1e-3, 512 soft1e-4, 512 clean, same jets) used as the reference for offline target-error estimates of candidate edits.", "prediction": {"e_soft1e-3_orig": 0.41, "e_soft1e-4_orig": 0.13}}

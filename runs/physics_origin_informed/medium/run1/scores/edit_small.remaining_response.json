@@ -1,0 +1,155 @@
+{
+ "name": "physics_origin_informed-medium-run1/edit_small",
+ "cand": "{RECORDS}/physics_origin_informed-medium-run1/finals/final_small.npz",
+ "neutral_cut": null,
+ "size_model": "m",
+ "clean": {
+  "acc": 0.859619140625,
+  "d_acc": 0.0,
+  "d_nll": -1.8161211912115505e-07,
+  "class_drop": 0.0,
+  "kl": 1.504340163699153e-08
+ },
+ "r": {
+  "soft3e-3": 0.057413654670273664,
+  "soft1e-3": 0.023474152777883638,
+  "soft1e-4": 0.007527045084223294,
+  "soft7_3e-3": 0.05093314719659203,
+  "soft7_1e-3": 0.012512241316612119,
+  "soft7_1e-4": 0.0077396893751965085,
+  "soft3e-4": 0.008173588932625032,
+  "soft7_3e-4": 0.008583245220736748,
+  "softpair_1e-3": 0.036010929723771325,
+  "soft1e-2": 0.220513904679759,
+  "soft7_1e-2": 0.21954802231532883,
+  "soft2e-3": 0.03264922317927198,
+  "rmsoft": 0.031071175829402307,
+  "split2": 0.03978447894022333,
+  "split3": 0.07132574533613975,
+  "split2c": 0.07518715157229781
+ },
+ "ratio": {
+  "soft3e-3": 0.9999689341397351,
+  "soft1e-3": 0.057506293380329775,
+  "soft1e-4": 0.057560987412789706,
+  "soft7_3e-3": 0.2715075095756828,
+  "soft7_1e-3": 0.02762976547373754,
+  "soft7_1e-4": 0.06470520556457618,
+  "soft3e-4": 0.024539251740539003,
+  "soft7_3e-4": 0.02692164267297496,
+  "softpair_1e-3": 0.07629190072382903,
+  "soft1e-2": 0.9999966853014967,
+  "soft7_1e-2": 0.9999960603721215,
+  "soft2e-3": 1.0000005194324038,
+  "rmsoft": 0.9999817484288513,
+  "split2": 0.9985328000436485,
+  "split3": 0.9898553456666424,
+  "split2c": 1.0000008163788399
+ },
+ "rho": {
+  "D": 0.9999736638918931,
+  "J": 1.0000008468836505,
+  "P": 0.840883265428473
+ },
+ "dir_err": {
+  "D": 0.00024328879752332015,
+  "J": 0.00013698341439559366,
+  "P": 0.20586120700307148
+ },
+ "max_log_rho": 0.17330243312799729,
+ "gate_no_g2": false,
+ "R_vis": 0.24647978259114192,
+ "R_in": 0.635738221857709,
+ "R_sub": 0.0518505629578583,
+ "R_held": 0.5896754012388881,
+ "R_inrange_hidden": 0.9999914980341565,
+ "R_collinear_report": 0.9961296540297102,
+ "size": {
+  "n_changed": 293,
+  "frac_changed": 4.890466486242392e-06,
+  "dof": 293,
+  "dof_budget": 32736,
+  "within_budget": true,
+  "tensors": {
+   "body.token": {
+    "rank": null,
+    "changed": 28,
+    "dof": 28
+   },
+   "body.embed.mlp.fc1.weight": {
+    "rank": 2,
+    "changed": 3,
+    "dof": 3
+   },
+   "body.embed.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 3,
+    "dof": 3
+   },
+   "body.embed.mlp.fc2.weight": {
+    "rank": 3,
+    "changed": 3,
+    "dof": 3
+   },
+   "body.embed.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 7,
+    "dof": 7
+   },
+   "body.time_embed.fc1.weight": {
+    "rank": 1,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.time_embed.fc2.weight": {
+    "rank": 1,
+    "changed": 8,
+    "dof": 8
+   },
+   "body.pid_embed.0.weight": {
+    "rank": 2,
+    "changed": 4,
+    "dof": 4
+   },
+   "body.in_blocks.0.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 3,
+    "dof": 3
+   },
+   "body.in_blocks.0.attn.out_proj.weight": {
+    "rank": 1,
+    "changed": 3,
+    "dof": 3
+   },
+   "body.in_blocks.0.mlp.fc1.weight": {
+    "rank": 8,
+    "changed": 12,
+    "dof": 12
+   },
+   "body.in_blocks.0.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 8,
+    "dof": 8
+   },
+   "body.in_blocks.0.mlp.fc2.weight": {
+    "rank": 2,
+    "changed": 203,
+    "dof": 203
+   },
+   "body.in_blocks.0.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 7,
+    "dof": 7
+   }
+  }
+ },
+ "summary_drift": 0.0001039931521518156,
+ "g2_dauc": -0.0033698081970214844,
+ "g2_dauc_seeds": [
+  -0.004452228546142578,
+  -0.00384521484375,
+  -0.001811981201171875
+ ],
+ "gate_limits": false,
+ "gate": false
+}

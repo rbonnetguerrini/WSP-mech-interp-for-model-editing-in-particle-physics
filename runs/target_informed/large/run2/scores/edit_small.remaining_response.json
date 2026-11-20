@@ -1,0 +1,254 @@
+{
+ "name": "target_informed-large-run2/edit_small",
+ "cand": "{RECORDS}/target_informed-large-run2/finals/final_small.npz",
+ "neutral_cut": null,
+ "size_model": "l",
+ "clean": {
+  "acc": 0.857861328125,
+  "d_acc": -0.002539062499999911,
+  "d_nll": 0.0077016570294458075,
+  "class_drop": 0.0068359375,
+  "kl": 0.008942698476457884
+ },
+ "r": {
+  "soft3e-3": 0.03365137793734917,
+  "soft1e-3": 0.012590639699650344,
+  "soft1e-4": 0.0018125137573880832,
+  "soft7_3e-3": 0.1413151979141625,
+  "soft7_1e-3": 0.04095779017098219,
+  "soft7_1e-4": 0.0018216887738493003,
+  "soft3e-4": 0.0018206124387292403,
+  "soft7_3e-4": 0.0018057609809227042,
+  "softpair_1e-3": 0.04540854708507519,
+  "soft1e-2": 0.1256866193868854,
+  "soft7_1e-2": 0.11806025030019311,
+  "soft2e-3": 0.026016002922470353,
+  "rmsoft": 0.023603390400239874,
+  "split2": 0.03404337997790723,
+  "split3": 0.05366161609602982,
+  "split2c": 0.06341283228020558
+ },
+ "ratio": {
+  "soft3e-3": 1.244562328577818,
+  "soft1e-3": 0.03302411355062014,
+  "soft1e-4": 0.017279266832233676,
+  "soft7_3e-3": 1.0629631217824405,
+  "soft7_1e-3": 0.09743091085629028,
+  "soft7_1e-4": 0.021819056568864174,
+  "soft3e-4": 0.006568117279084177,
+  "soft7_3e-4": 0.008818349547481993,
+  "softpair_1e-3": 0.10064786917387249,
+  "soft1e-2": 1.0402793705977171,
+  "soft7_1e-2": 1.0421586214399639,
+  "soft2e-3": 1.215100023058402,
+  "rmsoft": 1.2588583791794088,
+  "split2": 1.0417898875451543,
+  "split3": 1.0422267309732536,
+  "split2c": 0.9842955051428504
+ },
+ "rho": {
+  "D": 0.9960949718163572,
+  "J": 1.0057482173966776,
+  "P": 0.7341250996635065
+ },
+ "dir_err": {
+  "D": 0.18884467578084693,
+  "J": 0.20239580446970837,
+  "P": 0.36139725717232013
+ },
+ "max_log_rho": 0.30907582938123834,
+ "gate_no_g2": false,
+ "R_vis": 0.41284646636137773,
+ "R_in": 1.1537627251801292,
+ "R_sub": 0.04238833695200207,
+ "R_held": 0.667490104325133,
+ "R_inrange_hidden": 1.1137654570723632,
+ "R_collinear_report": 1.0227707078870862,
+ "size": {
+  "n_changed": 53277,
+  "frac_changed": 0.00012593498131293132,
+  "dof": 53277,
+  "dof_budget": 65504,
+  "within_budget": true,
+  "tensors": {
+   "body.embed.mlp.fc1.weight": {
+    "rank": 2,
+    "changed": 8,
+    "dof": 8
+   },
+   "body.embed.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 2,
+    "dof": 2
+   },
+   "body.embed.mlp.fc2.weight": {
+    "rank": 3,
+    "changed": 4094,
+    "dof": 4094
+   },
+   "body.embed.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.local_physics.mlp.fc2.weight": {
+    "rank": 2,
+    "changed": 4096,
+    "dof": 4096
+   },
+   "body.local_physics.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 2,
+    "dof": 2
+   },
+   "body.local_physics.in_blocks.0.norm1.weight": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.local_physics.in_blocks.0.norm2.weight": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.local_physics.in_blocks.0.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 3072,
+    "dof": 3072
+   },
+   "body.local_physics.in_blocks.0.attn.out_proj.weight": {
+    "rank": 2,
+    "changed": 2048,
+    "dof": 2048
+   },
+   "body.local_physics.in_blocks.0.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 2048,
+    "dof": 2048
+   },
+   "body.local_physics.in_blocks.0.mlp.fc2.weight": {
+    "rank": 2,
+    "changed": 4096,
+    "dof": 4096
+   },
+   "body.local_physics.in_blocks.0.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 2,
+    "dof": 2
+   },
+   "body.local_physics.in_blocks.1.norm1.weight": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.local_physics.in_blocks.1.norm2.weight": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.local_physics.in_blocks.1.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 3072,
+    "dof": 3072
+   },
+   "body.local_physics.in_blocks.1.attn.out_proj.weight": {
+    "rank": 2,
+    "changed": 2048,
+    "dof": 2048
+   },
+   "body.local_physics.in_blocks.1.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 2048,
+    "dof": 2048
+   },
+   "body.local_physics.in_blocks.1.mlp.fc2.weight": {
+    "rank": 2,
+    "changed": 4096,
+    "dof": 4096
+   },
+   "body.local_physics.in_blocks.1.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 2,
+    "dof": 2
+   },
+   "body.local_physics.in_blocks.2.norm1.weight": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.local_physics.in_blocks.2.norm2.weight": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.local_physics.in_blocks.2.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 3072,
+    "dof": 3072
+   },
+   "body.local_physics.in_blocks.2.attn.out_proj.weight": {
+    "rank": 2,
+    "changed": 2048,
+    "dof": 2048
+   },
+   "body.local_physics.in_blocks.2.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 2048,
+    "dof": 2048
+   },
+   "body.local_physics.in_blocks.2.mlp.fc2.weight": {
+    "rank": 2,
+    "changed": 4096,
+    "dof": 4096
+   },
+   "body.local_physics.in_blocks.2.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 2,
+    "dof": 2
+   },
+   "body.local_physics.in_blocks.3.norm1.weight": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.local_physics.in_blocks.3.norm2.weight": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.local_physics.in_blocks.3.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 3072,
+    "dof": 3072
+   },
+   "body.local_physics.in_blocks.3.attn.out_proj.weight": {
+    "rank": 2,
+    "changed": 2048,
+    "dof": 2048
+   },
+   "body.local_physics.in_blocks.3.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 2048,
+    "dof": 2048
+   },
+   "body.local_physics.in_blocks.3.mlp.fc2.weight": {
+    "rank": 2,
+    "changed": 4096,
+    "dof": 4096
+   },
+   "body.local_physics.in_blocks.3.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 2,
+    "dof": 2
+   },
+   "body.pid_embed.0.weight": {
+    "rank": 1,
+    "changed": 2,
+    "dof": 2
+   }
+  }
+ },
+ "summary_drift": 0.0916164368391037,
+ "gate_limits": false,
+ "gate": false
+}

@@ -1,0 +1,125 @@
+{
+ "name": "flaw_informed-small-run1/edit_large",
+ "cand": "{RECORDS}/flaw_informed-small-run1/finals/final_large.npz",
+ "neutral_cut": null,
+ "size_model": "s",
+ "clean": {
+  "acc": 0.839306640625,
+  "d_acc": -0.0003417968749999112,
+  "d_nll": 0.0007746173144750346,
+  "class_drop": 0.00244140625,
+  "kl": 0.0005154751099876523
+ },
+ "r": {
+  "soft3e-3": 0.032090985960606846,
+  "soft1e-3": 0.031032857361351314,
+  "soft1e-4": 0.020945030335046,
+  "soft7_3e-3": 0.0347627401742717,
+  "soft7_1e-3": 0.03402072995386563,
+  "soft7_1e-4": 0.023708792601977106,
+  "soft3e-4": 0.01881097790958322,
+  "soft7_3e-4": 0.02169657803120096,
+  "softpair_1e-3": 0.05035094547988611,
+  "soft1e-2": 0.1233667106039293,
+  "soft7_1e-2": 0.11028536894581446,
+  "soft2e-3": 0.024140460497238565,
+  "rmsoft": 0.020784799101266037,
+  "split2": 0.041053675834461054,
+  "split3": 0.07901700991718692,
+  "split2c": 0.07691319741104101
+ },
+ "ratio": {
+  "soft3e-3": 1.0162864165366914,
+  "soft1e-3": 0.12126657894973403,
+  "soft1e-4": 0.0790496392752596,
+  "soft7_3e-3": 0.38194211527866784,
+  "soft7_1e-3": 0.10994195423849228,
+  "soft7_1e-4": 0.08680814870923702,
+  "soft3e-4": 0.060951057263620496,
+  "soft7_3e-4": 0.069005116098135,
+  "softpair_1e-3": 0.14788599836932173,
+  "soft1e-2": 1.0013778114438112,
+  "soft7_1e-2": 0.9967325521931867,
+  "soft2e-3": 1.0248200862721428,
+  "rmsoft": 1.0118644513277064,
+  "split2": 1.013607305631345,
+  "split3": 0.9978984860610021,
+  "split2c": 1.0059233207431089
+ },
+ "rho": {
+  "D": 1.000783560099218,
+  "J": 1.0085231195827609,
+  "P": 0.650013142412377
+ },
+ "dir_err": {
+  "D": 0.01643451663528161,
+  "J": 0.026753712322047023,
+  "P": 0.4227024167503482
+ },
+ "max_log_rho": 0.4307626972008929,
+ "gate_no_g2": false,
+ "R_vis": 0.299215808831347,
+ "R_in": 0.6991142659076797,
+ "R_sub": 0.09926658029318074,
+ "R_held": 0.6160910104239893,
+ "R_inrange_hidden": 1.003324938321568,
+ "R_collinear_report": 1.005809704145152,
+ "size": {
+  "n_changed": 539,
+  "frac_changed": 0.00016137487803322647,
+  "dof": 539,
+  "dof_budget": 8160,
+  "within_budget": true,
+  "tensors": {
+   "body.in_blocks.1.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 128,
+    "dof": 128
+   },
+   "body.in_blocks.1.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.in_blocks.1.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 128,
+    "dof": 128
+   },
+   "body.in_blocks.1.mlp.norm.weight": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.in_blocks.6.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 24,
+    "dof": 24
+   },
+   "body.in_blocks.6.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.in_blocks.6.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 128,
+    "dof": 128
+   },
+   "body.in_blocks.6.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 128,
+    "dof": 128
+   }
+  }
+ },
+ "summary_drift": 0.025193369016051292,
+ "g2_dauc": 0.004357496897379558,
+ "g2_dauc_seeds": [
+  0.006304740905761719,
+  -0.008767127990722656,
+  0.01553487777709961
+ ],
+ "gate_limits": false,
+ "gate": false
+}

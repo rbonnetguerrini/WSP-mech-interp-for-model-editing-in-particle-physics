@@ -1,0 +1,522 @@
+{
+ "budget": 50,
+ "used": 35,
+ "log": [
+  {
+   "id": "001",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Reference differs from the original on soft probes and P; I expect ref(soft) to be close to orig(clean) (soft particle ignored) and ref(clean) close to orig(clean with sub-threshold particles removed) for some threshold.",
+   "prediction": {
+    "frac_conditions_ref_eq_orig": 0.3,
+    "ref_soft1e-3_vs_orig_clean_rel_dist": 0.2
+   },
+   "weights": null,
+   "input": "{RUN}/work/set1.npz",
+   "time": "04:32:00",
+   "sec": 67.4
+  },
+  {
+   "id": "002",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original model logits on the diagnostic set, to compare with the reference outputs of request 001.",
+   "prediction": {
+    "orig_soft1e-3_shift_over_S": 0.3
+   },
+   "weights": null,
+   "input": "{RUN}/work/set1.npz",
+   "time": "04:32:36",
+   "sec": 35.9
+  },
+  {
+   "id": "003",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "The reference removes a constituent when it lies below a detector-like acceptance (neutral hadrons E < ~2.25 GeV, photons an eta-dependent pT/E floor); otherwise it equals the original. One added particle per jet on a random (pT, eta, pid) grid maps the boundary: ref(x)==orig(clean) means removed.",
+   "prediction": {
+    "frac_nh_removed_below_E2.25": 0.95,
+    "frac_charged_removed": 0.1,
+    "frac_photon_removed_logpt_below_-0.3_central": 0.9
+   },
+   "weights": null,
+   "input": "{RUN}/work/set2.npz",
+   "time": "04:37:22",
+   "sec": 35.9
+  },
+  {
+   "id": "004",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual stream statistics to find channels that are saturated with a consistent sign for all tokens (usable to hide/flip a gate) and to see where the soft photon token differs from natural tokens.",
+   "prediction": {
+    "n_channels_saturated_all_tokens_block13": 5
+   },
+   "weights": null,
+   "input": "{RUN}/work/set1.npz",
+   "time": "04:39:54",
+   "sec": 41.0
+  },
+  {
+   "id": "005",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Channel 2 of the input embedding is rebuilt so that it is exactly zero for neutral particles with pT<0.8 and E<1.8 (two repurposed step units + pid cancellation), so the body/classifier padding mask drops them exactly; only the kNN path remains. Natural tokens lose the original channel-2 input content (std ~0.3), a modest side effect.",
+   "prediction": {
+    "E_ref": 0.25,
+    "e_soft1e-3_ratio": 0.1,
+    "e_soft1e-4_ratio": 0.1,
+    "d_acc": -0.003,
+    "d_nll": 0.01,
+    "rho_D": 1.0,
+    "rho_J": 1.0,
+    "rho_P_ref": 1.0,
+    "gen_drift": 0.1,
+    "DoF": 18448
+   },
+   "weights": "{RUN}/work/edits/v1.npz",
+   "input": null,
+   "time": "05:02:54",
+   "sec": 559.8
+  },
+  {
+   "id": "006",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Per-condition check of edit v1 against the reference on the diagnostic set: soft photon conditions should match ref closely; clean/removal conditions show the channel-2 side effect.",
+   "prediction": {
+    "err_soft1e-4_over_S": 0.03,
+    "err_clean_over_S": 0.03
+   },
+   "weights": "{RUN}/work/edits/v1.npz",
+   "input": "{RUN}/work/set1.npz",
+   "time": "05:03:30",
+   "sec": 36.2
+  },
+  {
+   "id": "007",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: only zero the channel-2 writers of the local-physics stream. Measures how much of v1's clean damage comes from losing local channel 2.",
+   "prediction": {
+    "d_acc": -0.01,
+    "d_nll": 0.03,
+    "E_ref": 0.95
+   },
+   "weights": "{RUN}/work/edits/localonly.npz",
+   "input": null,
+   "time": "05:07:40",
+   "sec": 180.3
+  },
+  {
+   "id": "008",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: v1 without the local zeroing (embed channel 2 rebuilt, step units, pid). Gating is then not exact but the damage of the embed-side replacement is isolated.",
+   "prediction": {
+    "d_acc": -0.015,
+    "d_nll": 0.04,
+    "E_ref": 0.9
+   },
+   "weights": "{RUN}/work/edits/v1_nolocal.npz",
+   "input": null,
+   "time": "05:10:39",
+   "sec": 178.9
+  },
+  {
+   "id": "009",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: zero only the local blocks' norm weights for channel 2 (internal reads), keeping the writes. If the damage is small, v1's damage came from losing local channel 2 in the residual, not from the local blocks' internal reads.",
+   "prediction": {
+    "d_acc": -0.005,
+    "d_nll": 0.01,
+    "E_ref": 1.02
+   },
+   "weights": "{RUN}/work/edits/localread.npz",
+   "input": null,
+   "time": "05:14:23",
+   "sec": 178.7
+  },
+  {
+   "id": "010",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Exact removal of soft neutrals via the padding mask, now keeping the local stream's internal channel-2 role by moving it to local channel 59 (whose own content is dropped). Residual channel 59 receives the old local channel-2 output, channel 2 gets none; damage should be much lower than v1 if channel 59 is unimportant.",
+   "prediction": {
+    "E_ref": 0.35,
+    "d_acc": -0.004,
+    "d_nll": 0.012,
+    "e_clean": 0.04,
+    "rho_P_ref": 0.97,
+    "gen_drift": 0.2
+   },
+   "weights": "{RUN}/work/edits/v2_59.npz",
+   "input": null,
+   "time": "05:20:12",
+   "sec": 181.2
+  },
+  {
+   "id": "011",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same exact-mask circuit as v2, but the local stream's channel-2 role is moved (sign-flipped) into channel 347, whose write/read weights are anti-aligned with channel 2 (cos -0.6), so the dropped content is largely redundant and residual 347 keeps a similar signal. Expect lower clean damage than c=59.",
+   "prediction": {
+    "E_ref": 0.35,
+    "d_acc": -0.002,
+    "d_nll": 0.01,
+    "e_clean": 0.04,
+    "rho_P_ref": 0.98
+   },
+   "weights": "{RUN}/work/edits/v2_347n.npz",
+   "input": null,
+   "time": "05:25:55",
+   "sec": 181.0
+  },
+  {
+   "id": "012",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Exact-mask circuit with the local channel-2 role moved to channel 548, chosen for low local and alpha-weighted body read strength; expect clean damage at or below the c=59 version (e_clean 0.065).",
+   "prediction": {
+    "E_ref": 0.45,
+    "d_acc": -0.003,
+    "d_nll": 0.015,
+    "e_clean": 0.06
+   },
+   "weights": "{RUN}/work/edits/v2_548.npz",
+   "input": null,
+   "time": "05:30:48",
+   "sec": 187.6
+  },
+  {
+   "id": "013",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Exact-mask circuit with the local channel-2 role moved to channel 770, chosen for low local and alpha-weighted body read strength; expect clean damage at or below the c=59 version (e_clean 0.065).",
+   "prediction": {
+    "E_ref": 0.45,
+    "d_acc": -0.003,
+    "d_nll": 0.015,
+    "e_clean": 0.06
+   },
+   "weights": "{RUN}/work/edits/v2_770.npz",
+   "input": null,
+   "time": "05:33:49",
+   "sec": 181.1
+  },
+  {
+   "id": "014",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: only the local-stream move of channel 2 into channel 770 (no embedding/pid gate), to measure damage from losing local channel 770 plus moving local channel-2 output from residual 2 to residual 770.",
+   "prediction": {
+    "e_clean": 0.025,
+    "d_acc": -0.002
+   },
+   "weights": "{RUN}/work/edits/diag_move770.npz",
+   "input": null,
+   "time": "05:38:23",
+   "sec": 180.7
+  },
+  {
+   "id": "015",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: zero only the local blocks' norm weights of channel 770 (internal reads), to measure the internal-loss part of the move.",
+   "prediction": {
+    "e_clean": 0.01,
+    "d_acc": -0.001
+   },
+   "weights": "{RUN}/work/edits/diag_read770.npz",
+   "input": null,
+   "time": "05:41:22",
+   "sec": 178.6
+  },
+  {
+   "id": "016",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Global role swap of residual channels 2 and 770 in body and classifier (exact symmetry), so the original channel-2 content lives in 770 and the mask channel 2 carries the gate; only concat-level content of the old channel 770 is replaced. Clean damage should drop well below 0.03; generator sees two swapped channels so gen_drift rises.",
+   "prediction": {
+    "E_ref": 0.15,
+    "e_clean": 0.01,
+    "d_acc": -0.001,
+    "d_nll": 0.004,
+    "rho_P_ref": 1.0,
+    "gen_drift": 0.35
+   },
+   "weights": "{RUN}/work/edits/v3_770.npz",
+   "input": null,
+   "time": "05:47:45",
+   "sec": 196.1
+  },
+  {
+   "id": "017",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Reference on the first P jets; to be compared with edit v3 to attribute the remaining P error to missed soft neutral hadrons (E<2.2 but not pT<0.8&E<1.8) versus kNN-path leakage.",
+   "prediction": {
+    "frac_jets_ref_ne_orig": 0.75
+   },
+   "weights": null,
+   "input": "P",
+   "time": "05:48:35",
+   "sec": 3.9
+  },
+  {
+   "id": "018",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Edit v3 on P, P minus band neutral hadrons, P minus all reference-gated neutrals, and clean (205 jets each); v3(P minus band nh) should be close to ref(P), isolating the band-nh error.",
+   "prediction": {
+    "err_P_over_S": 0.03,
+    "err_P_minus_band_over_S": 0.008
+   },
+   "weights": "{RUN}/work/edits/v3_770.npz",
+   "input": "{RUN}/work/set3.npz",
+   "time": "05:49:09",
+   "sec": 16.1
+  },
+  {
+   "id": "019",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original model on the same set; orig(P minus all gated neutrals) should equal ref(P) exactly if the reference is removal of all sub-threshold neutrals.",
+   "prediction": {
+    "ref_P_vs_orig_P_removed_max_abs": 0.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/set3.npz",
+   "time": "05:49:23",
+   "sec": 14.6
+  },
+  {
+   "id": "020",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: delete all reads of residual channel 770 in the body and classifier. If cheap, channel 770 can become a pure wire (constant for natural tokens) to carry a key-suppression gate for neutral hadrons outside the exact mask.",
+   "prediction": {
+    "e_clean": 0.02,
+    "d_acc": -0.002
+   },
+   "weights": "{RUN}/work/edits/del_770.npz",
+   "input": null,
+   "time": "05:55:55",
+   "sec": 181.4
+  },
+  {
+   "id": "021",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v3 plus one more exact step unit that keeps channel 2 nonzero for unphysical tokens (log E < log pT), so noised generator tokens are gated about half as often; physical probes are unaffected, so E_ref stays ~0.065 while gen_drift at t=0.85 drops.",
+   "prediction": {
+    "E_ref": 0.066,
+    "e_clean": 0.0037,
+    "gen_drift_t0.85": 0.15,
+    "gen_drift_t0.2": 0.045
+   },
+   "weights": "{RUN}/work/edits/v3p_770.npz",
+   "input": null,
+   "time": "06:01:42",
+   "sec": 195.3
+  },
+  {
+   "id": "022",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Pin down the photon energy threshold (for pT<0.8) inside (1.714,1.815) GeV and the neutral-hadron threshold inside (2.177,2.216) GeV; I expect round values 1.8 and 2.2.",
+   "prediction": {
+    "photon_E_threshold": 1.8,
+    "nh_E_threshold": 2.2
+   },
+   "weights": null,
+   "input": "{RUN}/work/set4.npz",
+   "time": "06:03:54",
+   "sec": 35.9
+  },
+  {
+   "id": "023",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v2 with c=770 plus deletion of all reads of residual channel 770 (norm weights and body.norm weight): the local channel-2 output dumped into residual 770 becomes invisible; remaining damage is losing 770's body role (~0.017) plus channel 2 lacking its local part. Expect e_clean ~0.02, between v2 and v3.",
+   "prediction": {
+    "E_ref": 0.2,
+    "e_clean": 0.022,
+    "d_acc": -0.002,
+    "gen_drift": 0.28
+   },
+   "weights": "{RUN}/work/edits/v2d_770.npz",
+   "input": null,
+   "time": "06:07:55",
+   "sec": 180.6
+  },
+  {
+   "id": "024",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Reference on candidate hidden probes (soft nh, other photon fractions, soft charged, energy scale-down, other fragmentation exponents, double insertions, collinear/wide photons); ref should equal orig(x minus sub-threshold neutrals) in all cases.",
+   "prediction": {
+    "ref_eq_orig_ch1e-3": 1.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/set5.npz",
+   "time": "06:09:46",
+   "sec": 35.9
+  },
+  {
+   "id": "025",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Logits of v3p_770 on the candidate hidden probes, to measure generalization of the exact neutral mask (expected good on soft photons and nh in pT<0.8&E<1.8, weaker on nh in the uncovered band and energy scale-downs that push nh into it).",
+   "prediction": {
+    "mean_ratio_soft_photon_probes": 0.05
+   },
+   "weights": "{RUN}/work/edits/v3p_770.npz",
+   "input": "{RUN}/work/set5.npz",
+   "time": "06:10:25",
+   "sec": 37.3
+  },
+  {
+   "id": "026",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Logits of v2_548 on the candidate hidden probes, to measure generalization of the exact neutral mask (expected good on soft photons and nh in pT<0.8&E<1.8, weaker on nh in the uncovered band and energy scale-downs that push nh into it).",
+   "prediction": {
+    "mean_ratio_soft_photon_probes": 0.05
+   },
+   "weights": "{RUN}/work/edits/v2_548.npz",
+   "input": "{RUN}/work/set5.npz",
+   "time": "06:11:02",
+   "sec": 36.3
+  },
+  {
+   "id": "027",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Logits of none on the candidate hidden probes, to measure generalization of the exact neutral mask (expected good on soft photons and nh in pT<0.8&E<1.8, weaker on nh in the uncovered band and energy scale-downs that push nh into it).",
+   "prediction": {
+    "mean_ratio_soft_photon_probes": 0.05
+   },
+   "weights": null,
+   "input": "{RUN}/work/set5.npz",
+   "time": "06:11:38",
+   "sec": 35.9
+  },
+  {
+   "id": "028",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same role-swap circuit as v3p but swapping channel 2 with channel 27, the channel with the smallest non-embedding content at the block-0 input (std 0.26 vs 0.93 for 770), so replacing its concat content and dropping its local output should cost less, if its local internal role is as free as 770's.",
+   "prediction": {
+    "E_ref": 0.06,
+    "e_clean": 0.0028,
+    "d_acc": 0.0
+   },
+   "weights": "{RUN}/work/edits/v3p_27.npz",
+   "input": null,
+   "time": "06:16:34",
+   "sec": 195.3
+  },
+  {
+   "id": "029",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v3p without the classifier-side swap: the body is exactly relocated but the head reads channels 2 and 770 crossed; expect a moderate rise of clean damage, giving an intermediate DoF/E_ref point.",
+   "prediction": {
+    "E_ref": 0.15,
+    "e_clean": 0.012,
+    "d_acc": -0.002
+   },
+   "weights": "{RUN}/work/edits/v3p_770_noclf.npz",
+   "input": null,
+   "time": "06:21:28",
+   "sec": 192.2
+  },
+  {
+   "id": "030",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Role swap 2<->770 only in body blocks 0..13; later blocks, body.norm and the head read the two channels crossed. Since crossing at the head was harmless, channel-2 content may matter mainly early; expect E_ref modestly above 0.065 at much lower DoF.",
+   "prediction": {
+    "E_ref": 0.09,
+    "e_clean": 0.006
+   },
+   "weights": "{RUN}/work/edits/v3p_770_k14.npz",
+   "input": null,
+   "time": "06:25:32",
+   "sec": 186.5
+  },
+  {
+   "id": "031",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Role swap 2<->770 only in body blocks 0..6; later blocks, body.norm and the head read the two channels crossed. Since crossing at the head was harmless, channel-2 content may matter mainly early; expect E_ref modestly above 0.065 at much lower DoF.",
+   "prediction": {
+    "E_ref": 0.09,
+    "e_clean": 0.006
+   },
+   "weights": "{RUN}/work/edits/v3p_770_k7.npz",
+   "input": null,
+   "time": "06:28:37",
+   "sec": 184.0
+  },
+  {
+   "id": "032",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Held-out check of side effects for none on practice jets 205-408 of each class (disjoint from the surgical subset): accuracy and per-class drops should stay within limits as on the surgical subset.",
+   "prediction": {
+    "d_acc": -0.002,
+    "worst_class_drop": 0.012
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "06:29:46",
+   "sec": 35.8
+  },
+  {
+   "id": "033",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Held-out check of side effects for v2_548 on practice jets 205-408 of each class (disjoint from the surgical subset): accuracy and per-class drops should stay within limits as on the surgical subset.",
+   "prediction": {
+    "d_acc": -0.002,
+    "worst_class_drop": 0.012
+   },
+   "weights": "{RUN}/work/edits/v2_548.npz",
+   "input": "clean",
+   "time": "06:30:22",
+   "sec": 35.9
+  },
+  {
+   "id": "034",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Held-out check of side effects for v3p_770_k14 on practice jets 205-408 of each class (disjoint from the surgical subset): accuracy and per-class drops should stay within limits as on the surgical subset.",
+   "prediction": {
+    "d_acc": -0.002,
+    "worst_class_drop": 0.012
+   },
+   "weights": "{RUN}/work/edits/v3p_770_k14.npz",
+   "input": "clean",
+   "time": "06:30:59",
+   "sec": 36.5
+  },
+  {
+   "id": "035",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Held-out check of side effects for v3p_770_noclf on practice jets 205-408 of each class (disjoint from the surgical subset): accuracy and per-class drops should stay within limits as on the surgical subset.",
+   "prediction": {
+    "d_acc": -0.002,
+    "worst_class_drop": 0.012
+   },
+   "weights": "{RUN}/work/edits/v3p_770_noclf.npz",
+   "input": "clean",
+   "time": "06:31:36",
+   "sec": 36.9
+  }
+ ],
+ "oracle_up": "2026-11-15T04:28:14"
+}

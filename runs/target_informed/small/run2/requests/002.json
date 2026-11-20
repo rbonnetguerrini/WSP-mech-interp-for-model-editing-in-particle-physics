@@ -1,0 +1,3 @@
+{"kind":"reference","input":"{RUN}/work/v1.npz","indices":null,
+ "hypothesis":"Reference on 16 constructed variants of 128 jets (soft photon/hadron/charged at several fractions, sorted vs appended, shuffled, P with log_pt<-2 cut). I expect ref == orig on clean/shuffled/g3e-3 and ref(x+soft) close to orig(x) for the 1e-4 photon.",
+ "prediction":{"ref_eq_orig_clean":1.0,"ref_eq_orig_shuffled":1.0}}

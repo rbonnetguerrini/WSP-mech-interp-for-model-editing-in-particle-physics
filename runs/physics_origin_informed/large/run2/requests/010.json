@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/v1_VK.npz",
+ "hypothesis":"Least-squares detector in block-0 dead units saturates flagged tokens; value zeroing plus LDA-cone key suppression in blocks 1-27 and the classifier removes them. Remaining error from block-0 attention, kNN neighbours and leakage.",
+ "prediction":{"E_rule":0.35,"d_acc":-0.003,"d_nll":0.01,"e_clean":0.03,"rho_P_reco":1.0,"gen_drift":0.3}}

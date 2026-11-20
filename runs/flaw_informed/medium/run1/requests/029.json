@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e8.npz",
+ "hypothesis":"e7 with threshold lowered to log_pt<-0.2 and readouts refit on 88k tokens (incl. split2/soft3e-3/custom): 9x fewer neutrals cross the threshold under J, so rho_J returns towards 1 and P_ref towards 1, clean KL drops; soft1e-3 ratio slightly worse (93.5% of probe photons gated).",
+ "prediction":{"ratio_soft1e-3":0.12,"ratio_soft1e-4":0.22,"ratio_split2":1.1,"d_acc":-0.001,"d_nll":0.004,"kl":0.004,"rho_J":1.04,"rho_P_ref":0.97,"gen_drift_max":0.2,"dof":3080}}

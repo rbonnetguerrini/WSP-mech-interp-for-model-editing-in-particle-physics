@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/E5b23456.npz", "hypothesis": "Explicit suppression in blocks 2-6; block 6 leak p99 ~9e-3 may cost about as much as it gains.", "prediction": {"E_ref": 0.038, "e_clean": 0.001}}

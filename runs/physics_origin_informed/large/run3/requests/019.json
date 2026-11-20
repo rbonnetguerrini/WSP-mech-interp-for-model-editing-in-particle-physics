@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v5_large.npz",
+ "hypothesis":"Large edit: detector with strong pid gates (M=3e4), rank-2 suppression in blocks 1-13, 'sacrifice-one-head-dimension' suppression (rank ~34, T0=8) in blocks 14-27 and both classifier blocks. Late-block leakage removed at ~1/3 of the pass-12 kept perturbation, so soft1e-4 should improve clearly over pass 17.",
+ "prediction":{"E_rule":0.2,"e_clean":0.01,"ratio_soft1e-4":0.33,"d_acc":0.0,"rho_P_reco":1.0,"gen_drift":0.3}}

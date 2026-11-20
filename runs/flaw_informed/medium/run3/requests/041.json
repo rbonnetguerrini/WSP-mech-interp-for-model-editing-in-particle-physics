@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/edits/early1_or5.npz", "input": "{RUN}/work/evalset.npz", "indices": null, "hypothesis": "Eval set: P target-error ratio under abs -0.25 should drop below the 0.39 of the block-5-only gate.", "prediction": {"e_ratio_P_abs-0.25": 0.3, "e_ratio_soft1e-4": 0.07}}

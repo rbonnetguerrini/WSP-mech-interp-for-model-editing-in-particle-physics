@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/g8n2.npz",
+ "hypothesis":"g8a's erase unit (which fixed soft1e-3) plus a second block-8 unit that detects very soft neutrals (log_pt < ~-2) and cancels the erase for them, so very soft tokens are left as in the original model instead of being pushed into the flaw peak.",
+ "prediction":{"ratio_soft1e-4":1.2,"ratio_soft1e-3":0.18,"ratio_soft3e-3":1.05,"d_acc":0.0,"d_nll":0.001,"rho_J":1.1,"rho_P_ref":1.03,"gen_drift_max":0.08,"dof":4100}}

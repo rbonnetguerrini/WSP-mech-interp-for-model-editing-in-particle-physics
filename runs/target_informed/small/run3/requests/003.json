@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":null,
+"hypothesis":"Baseline with the original weights: E_ref=1, all deltas 0.",
+"prediction":{"E_ref":1.0,"d_acc":0.0,"gen_drift":0.0}}

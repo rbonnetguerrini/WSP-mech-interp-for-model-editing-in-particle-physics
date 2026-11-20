@@ -1,0 +1,4 @@
+{"kind":"capture","weights":"{RUN}/work/edit_s12.npz","input":"{RUN}/work/stats1.npz","indices":null,
+ "sites":["body.block24","body.block25","body.block26","body.norm"],
+ "hypothesis":"Residual-stream statistics for designing per-block key-suppression readouts. Kept tokens are bit-identical to the original model up to ~1e-4 rounding; flagged soft photons (last 60 jets) sit at the saturated vertex w*s in every block from block 2 on.",
+ "prediction":{"flagged_saturated_frac":0.98}}

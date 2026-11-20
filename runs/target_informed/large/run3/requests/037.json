@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v8_w13_20.npz","hypothesis":"Gates only in blocks 13-20 + classifier; tests whether the window 13-20 captures most of the effect at ~15k DoF.","prediction":{"E_ref":0.3,"e_clean":0.0053,"DoF":14653}}

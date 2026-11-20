@@ -1,0 +1,2 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v7b.npz","hypothesis":"Like v7 but the 143 remaining heads get gamma gates (q+k columns), trading a little clean noise for less leak.",
+ "prediction":{"E_ref":0.105,"e_clean":0.0068,"DoF":38500}}

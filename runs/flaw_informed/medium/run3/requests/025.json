@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": null, "input": "{RUN}/work/ctest.npz", "indices": null, "hypothesis": "Original logits on the 512 clean jets and on clean minus soft neutrals under three threshold hypotheses: gives the original P responses and the clean target shift for each hypothesis.", "prediction": {"e_clean_orig_abs-0.3": 0.01, "e_clean_orig_abs0": 0.05}}

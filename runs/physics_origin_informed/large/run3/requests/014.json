@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/cal2.npz","indices":null,
+ "sites":["body.block0.mlp_pre"],
+ "hypothesis":"Block-0 MLP inputs on forward jets with inserted near-threshold photons; refitting the stage-1 pT readout on cal1+cal2 should remove the few 0.04-0.08 misses seen on forward jets (readout error near threshold < 0.005).",
+ "prediction":{"stage1_near_rmse":0.003}}

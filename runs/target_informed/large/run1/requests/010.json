@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit2.npz",
+"hypothesis":"Embed gate on channel 2 plus float32 absorption in the local block (+2^34 bias in local block0 MLP, -2^34 in block1 MLP) makes the local channel-2 output exactly 0 while the local internals change only in block1's reads; soft neutrals in the box are exactly masked. Damage now mainly from the body losing loc2.",
+"prediction":{"E_ref":0.8,"d_acc":-0.015,"kl":0.05,"e_clean":0.1,"r_soft1e-4":0.03,"gen_drift":0.03}}

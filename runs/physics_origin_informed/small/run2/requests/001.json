@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/cap1.npz","indices":[],
+"sites":["embed","body.block0.mlp_pre","body.block0","body.block1.mlp_pre"],
+"hypothesis":"Baseline activations on clean jets with one added photon/neutral hadron spanning the thresholds; I expect sub-threshold neutrals to be linearly separable from kept tokens in block-0 MLP pre-activations only approximately (pid cleanly, kinematics with some error near the threshold).",
+"prediction":{"lin_sep_acc_block0":0.97,"n_jets":2048}}

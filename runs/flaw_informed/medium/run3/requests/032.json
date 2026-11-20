@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/edits/flag2_sp_t2.2.npz", "input": "{RUN}/work/evalset.npz", "indices": null, "hypothesis": "Raising the gate thresholds (block5 u266 shift 2.2) gates fewer P-softened neutrals near the edge, reducing over-removal on P at a small cost on 1e-3 photons.", "prediction": {"e_ratio_P_abs-0.2": 0.45, "e_ratio_soft1e-3": 0.08}}

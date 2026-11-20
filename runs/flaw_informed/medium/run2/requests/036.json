@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e_int03.npz", "hypothesis": "Small edit: interaction gate at log min pT<-0.3 only (20 DoF); mild clean effect from charged particles below 0.74 GeV.", "prediction": {"d_acc": -0.001, "class_drop": 0.005, "d_nll": 0.001, "ratio_soft1e-3": 0.6, "ratio_soft1e-4": 0.6, "rho_P_ref": 0.98, "gen_drift_max": 0.03}}

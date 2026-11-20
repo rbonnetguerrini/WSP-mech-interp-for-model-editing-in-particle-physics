@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/rx_asm.npz", "hypothesis": "As rx_as plus rank-1 surrogates for the channel-2 read of the block 0-2 MLPs (detector rows excluded).", "prediction": {"E_rule": 0.095, "clean_e": 0.008, "class_drop": 0.005, "d_nll": 0.002, "DoF": 24500}}

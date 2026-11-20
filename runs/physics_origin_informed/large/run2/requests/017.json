@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": null, "input": "{RUN}/work/P_reco_sub.npz", "indices": null, "sites": [], "hypothesis": "Reference logits f_orig(reco(P)) on 512 jets for per-jet error analysis.", "prediction": {"n": 512}}

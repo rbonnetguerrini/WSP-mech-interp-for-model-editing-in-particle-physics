@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/cap1.npz","indices":null,
+ "sites":["body.block10","body.block17","body.block18","body.block19"],
+ "hypothesis":"The summary-token difference of the flaw group jumps from 0.06 (block16) to 0.41 (block20); one of blocks 17-19 should carry most of the jump, and block10 should show part of the earlier 0.02->0.06 rise.",
+ "prediction":{"sum_diff_g1_block17":0.07,"sum_diff_g1_block18":0.3,"sum_diff_g1_block19":0.4}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/m51c.npz", "hypothesis": "MLP-reader regression of channel 51 fitted on the exact norm2 outputs (fc1-inverted captures) instead of a block in/out average; should lower the floor below 0.0178.", "prediction": {"E_rule": 0.1, "d_acc": -0.001, "e_clean": 0.015, "gen_drift": 0.06, "dof": 5700}}

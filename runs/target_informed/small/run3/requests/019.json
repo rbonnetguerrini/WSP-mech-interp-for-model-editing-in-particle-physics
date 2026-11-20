@@ -1,0 +1,3 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/set1.npz","indices":null,"sites":["body.block5.mlp_pre","body.block7.mlp_pre"],
+"hypothesis":"Block-5 (and block-7) MLP inputs for an earlier second detector; I expect block-5 separability between block 4 (marginal) and block 6 (clean).",
+"prediction":{"block5_frac_OOD_above_clean_max":0.97}}

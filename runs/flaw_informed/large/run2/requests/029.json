@@ -1,0 +1,15 @@
+{
+ "kind": "surgical",
+ "weights": "{RUN}/work/e_large1.npz",
+ "hypothesis": "Large edit: pair gate lp<-0.18 + 6-unit embed hardening + soft-neutral-hadron->photon unit in block-0 MLP. Passes limits; soft ratios ~0.2/0.7; NH conversion leaves photon probes unchanged vs combo2; gen_drift ~0.18.",
+ "prediction": {
+  "ratio_soft1e-3": 0.19,
+  "ratio_soft1e-4": 0.72,
+  "d_acc": -0.003,
+  "class_drop": 0.015,
+  "rho_J": 1.04,
+  "rho_P_ref": 0.95,
+  "gen_drift_max": 0.19,
+  "dof": 8300
+ }
+}

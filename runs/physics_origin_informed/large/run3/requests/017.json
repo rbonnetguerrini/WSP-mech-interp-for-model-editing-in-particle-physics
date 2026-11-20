@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v4_early.npz",
+ "hypothesis":"v4 = v2-early (pass 13) with the stage-1 readouts refit on cal1+cal2 (no forward-jet misses), same channel-648 photon flag and stage-2 unit. Should be equal or slightly better than pass 13.",
+ "prediction":{"E_rule":0.235,"e_clean":0.0016,"d_acc":0.0,"rho_P_reco":1.0}}

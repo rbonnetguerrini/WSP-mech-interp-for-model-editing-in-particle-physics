@@ -1,0 +1,638 @@
+{
+ "budget": 50,
+ "used": 42,
+ "log": [
+  {
+   "id": "001",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Baseline activations of the original model on 256 soft1e-3 jets, to get per-channel residual statistics, readouts of pid/log_pt/log_E and the added photon token's representation.",
+   "prediction": {
+    "n_jets": 256
+   },
+   "weights": null,
+   "input": "soft1e-3",
+   "time": "21:40:12",
+   "sec": 36.2
+  },
+  {
+   "id": "002",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual streams entering each body block and classifier block, to compute queries and pick a saturated key pattern that every query scores very negatively.",
+   "prediction": {
+    "n_jets": 256
+   },
+   "weights": null,
+   "input": "soft1e-3",
+   "time": "21:46:52",
+   "sec": 0.5
+  },
+  {
+   "id": "003",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual streams entering each body block and classifier block, to compute queries and pick a saturated key pattern that every query scores very negatively.",
+   "prediction": {
+    "n_jets": 256
+   },
+   "weights": null,
+   "input": "soft1e-3",
+   "time": "21:46:53",
+   "sec": 0.4
+  },
+  {
+   "id": "004",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Exact detector (embed step units -> 3 scratch channels -> block0 AND units) drives flagged tokens to a saturated corner whose keys score ~-2..-12 for all queries; should remove most of the soft-neutral effect, leaving the kNN and block0-attention leaks.",
+   "prediction": {
+    "E_rule": 0.45,
+    "d_acc": -0.002,
+    "d_nll": 0.005,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.05
+   },
+   "weights": "{RUN}/work/v1.npz",
+   "input": null,
+   "time": "21:50:32",
+   "sec": 84.3
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original model on reco(soft1e-3): the target activations for the v1 comparison.",
+   "prediction": {
+    "n_jets": 256
+   },
+   "weights": null,
+   "input": "{RUN}/work/reco_soft1e-3_256.npz",
+   "time": "21:54:00",
+   "sec": 0.3
+  },
+  {
+   "id": "006",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "v1 on raw soft1e-3; the gap to 005 at block0 measures the kNN + block0-attention leak, later sites the incomplete key suppression.",
+   "prediction": {
+    "rel_gap_summary_block0": 0.05,
+    "rel_gap_summary_norm": 0.1
+   },
+   "weights": "{RUN}/work/v1.npz",
+   "input": "soft1e-3",
+   "time": "21:54:00",
+   "sec": 0.3
+  },
+  {
+   "id": "007",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same detector as v1, but the flagged token's saturated pattern is tuned for block 1 and rewritten by a dead block-1 unit to a pattern tuned for blocks 2-7 and the classifier; stronger key suppression should lower E_rule.",
+   "prediction": {
+    "E_rule": 0.38,
+    "d_acc": 0.0,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.55
+   },
+   "weights": "{RUN}/work/v2.npz",
+   "input": null,
+   "time": "21:59:44",
+   "sec": 24.9
+  },
+  {
+   "id": "008",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Find MLP hidden units in blocks 1-7 whose pre-activation stays below about -6 on every real token; those output exactly 0 and can be repurposed as per-block rewrite units at no cost.",
+   "prediction": {
+    "n_always_off_units_per_block": 3
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "22:00:38",
+   "sec": 0.5
+  },
+  {
+   "id": "009",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Find MLP hidden units in blocks 1-7 whose pre-activation stays below about -6 on every real token; those output exactly 0 and can be repurposed as per-block rewrite units at no cost.",
+   "prediction": {
+    "n_always_off_units_per_block": 3
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "22:00:39",
+   "sec": 0.4
+  },
+  {
+   "id": "010",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "v2 on raw soft1e-3 vs original on reco (005): locate the residual gap (block0 leak vs later blocks).",
+   "prediction": {
+    "rel_gap_summary_norm": 0.03
+   },
+   "weights": "{RUN}/work/v2.npz",
+   "input": "soft1e-3",
+   "time": "22:01:48",
+   "sec": 0.3
+  },
+  {
+   "id": "011",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v2 plus a veto that blocks flagging when log E < log pT (impossible in real data, frequent in noised jets) via a 4th scratch channel; E_rule should stay ~0.13 while gen_drift falls by roughly a third.",
+   "prediction": {
+    "E_rule": 0.135,
+    "d_acc": 0.0,
+    "rho_P_reco": 1.0,
+    "gen_drift_t0.85": 0.27,
+    "gen_drift_t0.2": 0.11
+   },
+   "weights": "{RUN}/work/v3.npz",
+   "input": null,
+   "time": "22:04:10",
+   "sec": 24.8
+  },
+  {
+   "id": "012",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original block-0 MLP inputs on jets with one added photon/neutral hadron spanning the thresholds; used to refit the pid readouts and channel folds on a broader token population.",
+   "prediction": {
+    "n_jets": 1024
+   },
+   "weights": null,
+   "input": "{RUN}/work/custom_1024.npz",
+   "time": "22:04:50",
+   "sec": 0.8
+  },
+  {
+   "id": "013",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Check of the v2 detector on the same tokens: photon/NH flag units should be positive exactly on rule-dropped tokens, restore units exact.",
+   "prediction": {
+    "flag_mismatches": 3
+   },
+   "weights": "{RUN}/work/v2.npz",
+   "input": "{RUN}/work/custom_1024.npz",
+   "time": "22:04:51",
+   "sec": 0.8
+  },
+  {
+   "id": "014",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v2 with pid readouts and folds refit on 1280 jets incl. soft neutral hadrons and wider gate margins; E_rule ~ v2, side effects ~ v2.",
+   "prediction": {
+    "E_rule": 0.13,
+    "d_acc": 0.0005,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.4,
+    "dof": 4500
+   },
+   "weights": "{RUN}/work/v4.npz",
+   "input": null,
+   "time": "22:10:04",
+   "sec": 24.8
+  },
+  {
+   "id": "015",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v4 without folding the scratch channels out of the existing block-0 MLP units: smaller DoF; kept soft particles see a saturated scratch read, so clean e_v and side effects rise somewhat; E_rule ~unchanged.",
+   "prediction": {
+    "E_rule": 0.14,
+    "d_acc": -0.002,
+    "e_clean": 0.01,
+    "rho_P_reco": 1.0,
+    "dof": 1950
+   },
+   "weights": "{RUN}/work/v4s.npz",
+   "input": null,
+   "time": "22:10:29",
+   "sec": 24.8
+  },
+  {
+   "id": "016",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v4 with saturated patterns chosen from 8x16 head geometry with summary/particle queries normalised separately; slightly different trade-off, E_rule within +-0.02 of v4.",
+   "prediction": {
+    "E_rule": 0.125,
+    "d_acc": 0.0005,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.4
+   },
+   "weights": "{RUN}/work/v5.npz",
+   "input": null,
+   "time": "22:11:54",
+   "sec": 24.8
+  },
+  {
+   "id": "017",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v4 with the scratch reads of existing block-0 units replaced by their mean (bias fold) instead of a linear fold: DoF between v4s and v4, E_rule between 0.13 and 0.22.",
+   "prediction": {
+    "E_rule": 0.17,
+    "d_acc": 0.0,
+    "e_clean": 0.006,
+    "rho_P_reco": 0.97,
+    "dof": 2570
+   },
+   "weights": "{RUN}/work/v4m.npz",
+   "input": null,
+   "time": "22:12:19",
+   "sec": 24.8
+  },
+  {
+   "id": "018",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v5 pattern but particle-query heads weighted 3x more than summary-query heads.",
+   "prediction": {
+    "E_rule": 0.1,
+    "d_acc": 0.0005,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.21
+   },
+   "weights": "{RUN}/work/v6a.npz",
+   "input": null,
+   "time": "22:13:41",
+   "sec": 25.1
+  },
+  {
+   "id": "019",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v5 pattern but summary-query heads weighted 10x (classifier reads summary tokens).",
+   "prediction": {
+    "E_rule": 0.11,
+    "d_acc": 0.0005,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.25
+   },
+   "weights": "{RUN}/work/v6b.npz",
+   "input": null,
+   "time": "22:14:06",
+   "sec": 24.9
+  },
+  {
+   "id": "020",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v5 without the linear fold (small DoF variant); E_rule rises as for v4s.",
+   "prediction": {
+    "E_rule": 0.19,
+    "d_acc": 0.0,
+    "rho_P_reco": 0.92,
+    "dof": 1953
+   },
+   "weights": "{RUN}/work/v5s.npz",
+   "input": null,
+   "time": "22:14:31",
+   "sec": 24.8
+  },
+  {
+   "id": "021",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Control: v5 detector, scratch channels, folds and restores, but flag write L=0 (no suppression). Isolates generator drift caused by the scratch machinery on noised tokens from drift caused by flagging.",
+   "prediction": {
+    "E_rule": 0.98,
+    "gen_drift": 0.01,
+    "d_acc": 0.0005
+   },
+   "weights": "{RUN}/work/vL0.npz",
+   "input": null,
+   "time": "22:19:38",
+   "sec": 24.9
+  },
+  {
+   "id": "022",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sensor test: only the three block-0 restore units (fire iff a scratch read exceeds 0.65, never at t=0). Nonzero gen_drift means they misfire on the time token or noised tokens at t>0.",
+   "prediction": {
+    "E_rule": 1.0,
+    "gen_drift": 0.03,
+    "d_acc": 0.0
+   },
+   "weights": "{RUN}/work/testA_restore.npz",
+   "input": null,
+   "time": "22:21:30",
+   "sec": 24.9
+  },
+  {
+   "id": "023",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sensor test: only the linear fold of the scratch channels into the other block-0 inputs. Drift here measures out-of-distribution fold error on noised/time tokens.",
+   "prediction": {
+    "E_rule": 1.0,
+    "gen_drift": 0.04,
+    "d_acc": 0.0,
+    "e_clean": 0.003
+   },
+   "weights": "{RUN}/work/testB_fold.npz",
+   "input": null,
+   "time": "22:21:55",
+   "sec": 24.8
+  },
+  {
+   "id": "024",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v5 with scratch moved off channel 116 (where the time token is massive) to 17/122/87 and the fold fit without time-massive predictor channels; generator drift from the fold should drop from ~0.08 while E_rule stays ~0.10.",
+   "prediction": {
+    "E_rule": 0.1,
+    "d_acc": 0.0005,
+    "rho_P_reco": 1.0,
+    "gen_drift_t0.2": 0.04,
+    "gen_drift_max": 0.15
+   },
+   "weights": "{RUN}/work/v7.npz",
+   "input": null,
+   "time": "22:23:47",
+   "sec": 24.8
+  },
+  {
+   "id": "025",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small variant: no fold, scratch on the three cheapest channels (122, 87, 4: summed read weight 21 vs 49), so kept soft particles are perturbed about half as much as in v5s.",
+   "prediction": {
+    "E_rule": 0.15,
+    "d_acc": 0.0,
+    "rho_P_reco": 0.95,
+    "dof": 1953,
+    "gen_drift_max": 0.25
+   },
+   "weights": "{RUN}/work/v7s.npz",
+   "input": null,
+   "time": "22:24:12",
+   "sec": 24.8
+  },
+  {
+   "id": "026",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same circuit as v7s (no fold, scratch 122/87/4, v5 patterns) but written with minimal entries: dead units keep their old rows/norm weights, single-entry fc1/fc2 writes scaled by the old norm weight, a 64-channel pid readout, and a 40-channel block-1 rewrite detector. E_rule and side effects ~v7s, DoF ~480.",
+   "prediction": {
+    "E_rule": 0.1,
+    "d_acc": 0.0003,
+    "rho_P_reco": 0.993,
+    "dof": 480,
+    "gen_drift_max": 0.21
+   },
+   "weights": "{RUN}/work/v8.npz",
+   "input": null,
+   "time": "22:27:22",
+   "sec": 25.1
+  },
+  {
+   "id": "027",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Check v8's detector on P jets (flag units positive exactly on rule-dropped tokens) and record activations to compare with the original on reco(P).",
+   "prediction": {
+    "flag_mismatches": 0
+   },
+   "weights": "{RUN}/work/v8.npz",
+   "input": "P",
+   "time": "22:28:11",
+   "sec": 0.3
+  },
+  {
+   "id": "028",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original model on reco(P): target activations for the P-probe gap analysis.",
+   "prediction": {
+    "n_jets": 256
+   },
+   "weights": null,
+   "input": "{RUN}/work/reco_P_256.npz",
+   "time": "22:28:11",
+   "sec": 0.3
+  },
+  {
+   "id": "029",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v8 circuit with the particle-weighted saturated patterns (as v6a): lower E_rule at the same size, higher generator drift.",
+   "prediction": {
+    "E_rule": 0.085,
+    "d_acc": 0.0003,
+    "rho_P_reco": 0.993,
+    "dof": 482,
+    "gen_drift_max": 0.45
+   },
+   "weights": "{RUN}/work/v9.npz",
+   "input": null,
+   "time": "22:31:22",
+   "sec": 25.0
+  },
+  {
+   "id": "030",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v8 with the blocks-2-7 pattern also chosen so the flagged token's fixed body output scores very negatively as a key in generator block 0 (mean logit -0.8 -> -3.0). If generator drift comes from generator attention to flagged tokens, drift falls; E_rule ~0.10.",
+   "prediction": {
+    "E_rule": 0.1,
+    "gen_drift_max": 0.16,
+    "d_acc": 0.0003,
+    "dof": 485
+   },
+   "weights": "{RUN}/work/v10.npz",
+   "input": null,
+   "time": "22:32:56",
+   "sec": 24.9
+  },
+  {
+   "id": "031",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mix: particle-weighted block-1 pattern (v9) with the v8 blocks-2-7 pattern; tells whether v9's gain and drift come from block 1.",
+   "prediction": {
+    "E_rule": 0.09,
+    "gen_drift_max": 0.3,
+    "dof": 485
+   },
+   "weights": "{RUN}/work/v11.npz",
+   "input": null,
+   "time": "22:33:51",
+   "sec": 24.8
+  },
+  {
+   "id": "032",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mix: v8 block-1 pattern with the particle-weighted blocks-2-7 pattern.",
+   "prediction": {
+    "E_rule": 0.095,
+    "gen_drift_max": 0.35,
+    "dof": 490
+   },
+   "weights": "{RUN}/work/v12.npz",
+   "input": null,
+   "time": "22:34:15",
+   "sec": 24.8
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Blocks-2-7 pattern: particle queries weight 1, body summary 0.3, classifier summary 1. Expect between v8 and v12.",
+   "prediction": {
+    "E_rule": 0.088,
+    "gen_drift_max": 0.35,
+    "dof": 490
+   },
+   "weights": "{RUN}/work/v13.npz",
+   "input": null,
+   "time": "22:36:25",
+   "sec": 24.8
+  },
+  {
+   "id": "034",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Blocks-2-7 pattern: stronger particle emphasis (summary 0.1, classifier 0.3). Expect E_rule <= v12, drift high.",
+   "prediction": {
+    "E_rule": 0.08,
+    "gen_drift_max": 0.5,
+    "dof": 495
+   },
+   "weights": "{RUN}/work/v14.npz",
+   "input": null,
+   "time": "22:36:50",
+   "sec": 24.8
+  },
+  {
+   "id": "035",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v8 plus a plausibility step (log E >= log pT - 0.008, true for every real particle) as an extra AND input of both flags, on scratch channel 4; E22 step moved to channel 116. No flag on implausible noised tokens -> generator drift down ~30%; channel 4 now reads +1 for every particle in block-0 MLP (cheap channel, S=2.4) so clean side effects rise slightly.",
+   "prediction": {
+    "E_rule": 0.11,
+    "gen_drift_max": 0.15,
+    "d_nll": 0.002,
+    "rho_P_reco": 0.98,
+    "dof": 620
+   },
+   "weights": "{RUN}/work/v15.npz",
+   "input": null,
+   "time": "22:39:06",
+   "sec": 24.8
+  },
+  {
+   "id": "036",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v15 with channel 4 linearly folded out of the existing block-0 units (R2 0.997) to remove the side effect of the always-on plausibility write.",
+   "prediction": {
+    "E_rule": 0.1,
+    "gen_drift_max": 0.17,
+    "d_nll": 0.0002,
+    "rho_P_reco": 0.995,
+    "dof": 1100
+   },
+   "weights": "{RUN}/work/v15f.npz",
+   "input": null,
+   "time": "22:39:31",
+   "sec": 24.8
+  },
+  {
+   "id": "037",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v8 plus linear fold of its scratch channels (122,87,4; time-light channels) out of the existing block-0 units: removes the kept-soft-token perturbation; E_rule ~0.095, drift close to v8 since these channels carry little time-token signal.",
+   "prediction": {
+    "E_rule": 0.095,
+    "gen_drift_max": 0.23,
+    "d_acc": 0.0005,
+    "rho_P_reco": 0.999,
+    "dof": 3000
+   },
+   "weights": "{RUN}/work/v8f.npz",
+   "input": null,
+   "time": "22:40:35",
+   "sec": 24.8
+  },
+  {
+   "id": "038",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on new probes (soft NH; 3 soft photons) + 512 clean jets (for S).",
+   "prediction": {
+    "n_jets": 1536
+   },
+   "weights": null,
+   "input": "{RUN}/work/probe_raw.npz",
+   "time": "22:41:09",
+   "sec": 1.0
+  },
+  {
+   "id": "039",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on reco(new probes): the target.",
+   "prediction": {
+    "n_jets": 1536
+   },
+   "weights": null,
+   "input": "{RUN}/work/probe_reco.npz",
+   "time": "22:41:11",
+   "sec": 1.5
+  },
+  {
+   "id": "040",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "v8 logits on new probes; expect e_v ratio ~0.05-0.25 like the visible probes.",
+   "prediction": {
+    "ratio_softNH": 0.15,
+    "ratio_3photons": 0.08
+   },
+   "weights": "{RUN}/work/v8.npz",
+   "input": "{RUN}/work/probe_raw.npz",
+   "time": "22:41:12",
+   "sec": 0.9
+  },
+  {
+   "id": "041",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "v12 logits on new probes.",
+   "prediction": {
+    "ratio_softNH": 0.13,
+    "ratio_3photons": 0.07
+   },
+   "weights": "{RUN}/work/v12.npz",
+   "input": "{RUN}/work/probe_raw.npz",
+   "time": "22:41:13",
+   "sec": 0.9
+  },
+  {
+   "id": "042",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "v8f logits on new probes.",
+   "prediction": {
+    "ratio_softNH": 0.14,
+    "ratio_3photons": 0.07
+   },
+   "weights": "{RUN}/work/v8f.npz",
+   "input": "{RUN}/work/probe_raw.npz",
+   "time": "22:41:14",
+   "sec": 0.9
+  }
+ ],
+ "oracle_up": "2026-11-15T21:28:14"
+}

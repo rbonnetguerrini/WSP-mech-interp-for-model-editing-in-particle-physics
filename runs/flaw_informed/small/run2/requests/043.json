@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e15m3.npz", "hypothesis": "Mid-size variant: gates on body layers 2,3,5 + classifier (one more gate than the 2,5 variant). Expect soft ratios between pass 39 (0.18) and pass 36 (0.09).", "prediction": {"ratio_soft1e-4": 0.14, "ratio_soft1e-3": 0.13, "class_drop": 0.012}}

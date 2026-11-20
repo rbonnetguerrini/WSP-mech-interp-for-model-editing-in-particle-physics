@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/cal1.npz","indices":null,
+ "sites":["body.block0.mlp_pre","body.block0"],
+ "hypothesis":"Calibration capture: block-0 MLP inputs (recoverable via pinv of fc1) should allow a linear readout of log pT / log E for inserted photons and neutral hadrons with error well below 0.1 in log units, and pid 6/7 should be linearly separable with a large margin.",
+ "prediction":{"readout_rmse_logpt":0.05,"pid_margin_sigma":10}}

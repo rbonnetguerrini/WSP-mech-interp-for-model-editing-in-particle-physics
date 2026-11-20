@@ -1,0 +1,4 @@
+{"kind":"capture","weights":"{RUN}/work/e4.npz","input":"{RUN}/work/in9.npz","indices":null,
+ "sites":["body.block4.mlp_post"],
+ "hypothesis":"Read which tokens the e4 gate neuron (block 4, neuron 1014) fires on, for P, soft1e-3 and clean jets of in6. Expect it to fire on most P neutrals below frac ~1.1e-3, on ~80% of the added 1e-3 photons, and on very few clean tokens.",
+ "prediction":{"gate_frac_added_1e-3":0.8,"gate_tokens_per_P_jet":0.6,"gate_tokens_per_clean_jet":0.05}}

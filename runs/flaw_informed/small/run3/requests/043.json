@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/sp32g.npz", "input": "{RUN}/work/pref2.npz", "indices": [], "hypothesis": "P e_v estimate for sp32g, expect ~0.64.", "prediction": {"ev_ratio_P_at_1.4e-3": 0.64}}

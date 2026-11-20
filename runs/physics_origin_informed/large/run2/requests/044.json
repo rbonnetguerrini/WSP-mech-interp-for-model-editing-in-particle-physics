@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v14_K14s10.npz", "hypothesis": "Shift 5->10 in blocks 9-14 removes more of the flagged token's attention weight; leak there is <9e-4 so clean cost stays small.", "prediction": {"E_rule": 0.18, "e_clean": 0.002, "d_acc": -0.0005, "rho_P_reco": 0.965, "gen_drift": 0.27}}

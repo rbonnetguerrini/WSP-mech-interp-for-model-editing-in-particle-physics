@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v4.npz", "hypothesis": "v2 with pid readouts and folds refit on 1280 jets incl. soft neutral hadrons and wider gate margins; E_rule ~ v2, side effects ~ v2.", "prediction": {"E_rule": 0.13, "d_acc": 0.0005, "rho_P_reco": 1.0, "gen_drift": 0.4, "dof": 4500}}

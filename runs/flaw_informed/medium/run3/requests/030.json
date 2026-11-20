@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/edits/flag2_sp1_0.3.npz", "input": "{RUN}/work/evalset.npz", "indices": null, "hypothesis": "Current mid edit on the evaluation set: soft target-error ratios ~0.03/0.11 and P ratio ~0.5 under the abs -0.2 hypothesis.", "prediction": {"e_ratio_soft1e-3": 0.03, "e_ratio_soft1e-4": 0.12, "e_ratio_P_abs-0.2": 0.48}}

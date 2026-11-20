@@ -1,0 +1,13 @@
+{
+ "kind": "surgical",
+ "weights": "{RUN}/work/e_small2.npz",
+ "hypothesis": "Sparse head mask (only flag entries, channel-2 entries, biases and two norm weights changed; repurposed units keep their original dense weights) + pair gate: behaves like e_mid2 (ratios ~0.09/0.32) at ~97 DoF.",
+ "prediction": {
+  "ratio_soft1e-3": 0.093,
+  "ratio_soft1e-4": 0.32,
+  "d_acc": -0.001,
+  "rho_J": 1.07,
+  "gen_drift_max": 0.5,
+  "dof": 97
+ }
+}

@@ -1,0 +1,512 @@
+{
+ "budget": 50,
+ "used": 34,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Exact padding-mask circuit: channel 2 of sub-threshold photons/NH in the R6 box becomes exactly 0, so they are masked like reco padding; remaining error is the kNN local-physics path plus global channel-2 damage (no restore yet).",
+   "prediction": {
+    "E_rule": 0.35,
+    "e_clean": 0.1,
+    "d_acc": -0.004,
+    "d_nll": 0.01,
+    "rho_D": 1.0,
+    "rho_J": 1.0,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.03
+   },
+   "weights": "{RUN}/submissions/zero_pass.npz",
+   "input": null,
+   "time": "21:50:22",
+   "sec": 399.7
+  },
+  {
+   "id": "002",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original activations on 1024 clean jets, to decompose channel 2 at the block-0 input (x_in = block0 - mlp contribution) and fit the channel-2 restore.",
+   "prediction": {
+    "frac_ch2_var_from_E2": 0.6
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "21:50:26",
+   "sec": 3.8
+  },
+  {
+   "id": "003",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Zero-pass model block-0 input/output on clean+noised tokens, for fitting the channel-2 restore.",
+   "prediction": {
+    "ch2_linear_R2": 0.9
+   },
+   "weights": "{RUN}/submissions/zero_pass.npz",
+   "input": "{RUN}/work/fitset1.npz",
+   "time": "21:53:00",
+   "sec": 3.8
+  },
+  {
+   "id": "004",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original model on the same clean+noised set: restore targets.",
+   "prediction": {
+    "ch2_linear_R2": 0.9
+   },
+   "weights": null,
+   "input": "{RUN}/work/fitset1.npz",
+   "time": "21:53:03",
+   "sec": 3.7
+  },
+  {
+   "id": "005",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Zero-pass mask circuit plus a block-0 restore of channel 2 (rank-1 fc1 read fix, plus a linear readout pair of dead units writing the original channel 2 back). This should cut the global damage about 20x, so clean e and gen_drift drop, and E_rule falls to roughly the kNN floor.",
+   "prediction": {
+    "E_rule": 0.09,
+    "e_clean": 0.003,
+    "d_acc": -0.0005,
+    "rho_D": 1.02,
+    "rho_P_reco": 0.99,
+    "gen_drift_max": 0.15
+   },
+   "weights": "{RUN}/work/r2.npz",
+   "input": null,
+   "time": "22:10:46",
+   "sec": 110.0
+  },
+  {
+   "id": "006",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "r2 logits on P (raw) and on P with only the out-of-box neutral hadrons removed by hand. The difference isolates the NH share of the P rule error.",
+   "prediction": {
+    "NH_share_of_P_error": 0.4
+   },
+   "weights": "{RUN}/work/r2.npz",
+   "input": "{RUN}/work/P_AB.npz",
+   "time": "22:14:24",
+   "sec": 5.0
+  },
+  {
+   "id": "007",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on reco(P) for the same 1024 jets: target for the P error decomposition.",
+   "prediction": {
+    "acc_change_vs_clean": -0.01
+   },
+   "weights": null,
+   "input": "{RUN}/work/P_reco_sub.npz",
+   "time": "22:14:27",
+   "sec": 2.5
+  },
+  {
+   "id": "008",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Absorption variant (c=3*2^21 cancels exactly between the embed bias and pid_embed, and L2 plus small E2 terms are absorbed by rounding). R6 neutrals should get channel 2 exactly 0 with local_physics untouched. The capture gives x_in for the restore fit.",
+   "prediction": {
+    "masked_noised_tokens": 169,
+    "masked_clean_tokens": 0
+   },
+   "weights": "{RUN}/work/v3a.npz",
+   "input": "{RUN}/work/fitset1.npz",
+   "time": "22:23:52",
+   "sec": 3.5
+  },
+  {
+   "id": "009",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Absorption variant v3b: all live embed units removed from row 2 and codes 0.5, so channel-2 input = code + A2 (L2 rounds to 0). No clean token should be masked, and the restore should become near-linear again.",
+   "prediction": {
+    "masked_noised_tokens": 169,
+    "masked_clean_tokens": 0,
+    "linear_restore_resid": 0.01
+   },
+   "weights": "{RUN}/work/v3b.npz",
+   "input": "{RUN}/work/fitset1.npz",
+   "time": "22:27:32",
+   "sec": 3.5
+  },
+  {
+   "id": "010",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Absorption mask (no local_physics edits) plus a block-0 restore: a linear-readout pair plus 16 t2-basis units. Same masking as r2 at about 1/6 the DoF; the restore residual is lower, so clean e should be similar or better.",
+   "prediction": {
+    "E_rule": 0.062,
+    "e_clean": 0.0015,
+    "d_acc": 0.0,
+    "gen_drift_max": 0.29,
+    "dof": 1798
+   },
+   "weights": "{RUN}/work/v3d_c0k16.npz",
+   "input": null,
+   "time": "22:36:53",
+   "sec": 109.5
+  },
+  {
+   "id": "011",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Spacing-1 absorption (c=3*2^22, codes 2/-1/1, charged delta -1): L2 rounds to 0 for |L2|<0.5, so fewer kept tokens get a quantised channel 2. Capture for the restore fit.",
+   "prediction": {
+    "masked_noised_tokens": 169,
+    "masked_clean_tokens": 0
+   },
+   "weights": "{RUN}/work/v3e.npz",
+   "input": "{RUN}/work/fitset1.npz",
+   "time": "22:38:05",
+   "sec": 3.5
+  },
+  {
+   "id": "012",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Spacing-1 absorption mask plus a 24-knot t2 restore. Fewer quantised-L2 tokens should make split2 e drop from 0.014 to about 0.004, with clean e slightly worse (restore 0.007 vs 0.004).",
+   "prediction": {
+    "E_rule": 0.066,
+    "e_clean": 0.0025,
+    "e_split2": 0.004,
+    "dof": 1822
+   },
+   "weights": "{RUN}/work/v3e_c0k24.npz",
+   "input": null,
+   "time": "22:40:52",
+   "sec": 109.4
+  },
+  {
+   "id": "013",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original block-0 input for P jets containing out-of-box neutral hadrons, raw vs the same hadrons rescaled to E=2.25 GeV. Gives the shift vector V for an approximate NHo fix and data for an NH detector.",
+   "prediction": {
+    "V_norm_over_token_norm": 0.3
+   },
+   "weights": null,
+   "input": "{RUN}/work/nho_set.npz",
+   "time": "22:41:46",
+   "sec": 3.5
+  },
+  {
+   "id": "014",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on: P with only R6 drops applied (NHo kept), the same with NHo shifted to E=2.25, and full reco. Measures how much of the NHo error a perfect shift-to-threshold would remove.",
+   "prediction": {
+    "shift_error_fraction": 0.4
+   },
+   "weights": null,
+   "input": "{RUN}/work/nho_eval.npz",
+   "time": "22:42:08",
+   "sec": 3.7
+  },
+  {
+   "id": "015",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Lean exact variant: local_physics channel-2 writers zeroed, small power-of-2 codes (c=-1/8, steps 1/16), only live embed units dropped from row 2. Capture for the restore fit; R6 neutrals masked exactly as in zero-pass.",
+   "prediction": {
+    "masked_noised_tokens": 169,
+    "masked_clean_tokens": 0
+   },
+   "weights": "{RUN}/work/A0.npz",
+   "input": "{RUN}/work/fitset1.npz",
+   "time": "22:44:03",
+   "sec": 3.5
+  },
+  {
+   "id": "016",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Lean exact variant (local zeroing, small codes) with a pair plus 16-knot restore and no colfix. Restore residual 0.002 and other-channel error 0.0008, so clean damage should be at or below r2 at about 60% of its DoF.",
+   "prediction": {
+    "E_rule": 0.06,
+    "e_clean": 0.0013,
+    "dof": 5899
+   },
+   "weights": "{RUN}/work/A0_c0k16.npz",
+   "input": null,
+   "time": "22:46:37",
+   "sec": 109.6
+  },
+  {
+   "id": "017",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "A0 plus a rank-1 colfix of block-0 reads of channel 2. Other-channel error drops 0.0008 to 0.0006, so clean e should reach about r2 level (0.0014) at similar DoF.",
+   "prediction": {
+    "E_rule": 0.061,
+    "e_clean": 0.0015,
+    "dof": 10464
+   },
+   "weights": "{RUN}/work/A0_c1k16.npz",
+   "input": null,
+   "time": "22:49:06",
+   "sec": 109.5
+  },
+  {
+   "id": "018",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Check whether GPU block-0 output channel 2 matches the offline fp64 prediction. A mismatch of about 1e-3 would mean reduced-precision matmul, which hurts restore units with large cancelling weights.",
+   "prediction": {
+    "gpu_vs_offline_ch2_rms": 0.0005
+   },
+   "weights": "{RUN}/work/A0_c0k16.npz",
+   "input": "{RUN}/work/fitset1.npz",
+   "time": "22:49:44",
+   "sec": 5.2
+  },
+  {
+   "id": "019",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same as A0_c0k16, but the restore is now also fitted on the 4 summary tokens: earlier fits shifted their block-0 channel 2 via the bias and new units by up to 0.24. Clean damage should drop well below 0.0019.",
+   "prediction": {
+    "E_rule": 0.05,
+    "e_clean": 0.0008,
+    "dof": 5899
+   },
+   "weights": "{RUN}/work/A1_c0k16.npz",
+   "input": null,
+   "time": "22:55:28",
+   "sec": 109.6
+  },
+  {
+   "id": "020",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Absorption variant (spacing 0.5) with the summary-token-aware restore. Clean damage should fall from 0.0021 to about 0.001, and E_rule toward 0.06 at DoF 1.8k.",
+   "prediction": {
+    "E_rule": 0.06,
+    "e_clean": 0.0011,
+    "dof": 1798
+   },
+   "weights": "{RUN}/work/v3d1_k16.npz",
+   "input": null,
+   "time": "22:57:54",
+   "sec": 109.4
+  },
+  {
+   "id": "021",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Absorption variant (spacing 1) with the summary-token-aware restore. Fewer quantised-L2 artifacts (split2) but a slightly worse restore than spacing 0.5.",
+   "prediction": {
+    "E_rule": 0.061,
+    "e_clean": 0.0012,
+    "e_split2": 0.0025,
+    "dof": 1822
+   },
+   "weights": "{RUN}/work/v3e1_k24.npz",
+   "input": null,
+   "time": "22:59:44",
+   "sec": 109.3
+  },
+  {
+   "id": "022",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "A1 plus one block-0 unit that detects neutral hadrons with E<2.2 outside the photon box (linear pid-7 and logE readouts, AND via a large pid weight) and adds the mean shift V toward an E=2.25 NH representation. This should remove about half the NHo error in P.",
+   "prediction": {
+    "E_rule": 0.05,
+    "e_P": 0.0105,
+    "e_clean": 0.0008,
+    "gen_drift_max": 0.3,
+    "dof": 6925
+   },
+   "weights": "{RUN}/work/A2.npz",
+   "input": null,
+   "time": "23:02:49",
+   "sec": 110.0
+  },
+  {
+   "id": "023",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "A2 failed because the NH-only energy readout misfired on non-NH tokens. Now the energy readout is trained jointly (non-NH target above threshold), and offline non-NH z is at most -121, so clean stays at the A1 level and only low-E NH get the shift V.",
+   "prediction": {
+    "E_rule": 0.05,
+    "e_P": 0.0105,
+    "e_clean": 0.0008,
+    "dof": 6924
+   },
+   "weights": "{RUN}/work/A3.npz",
+   "input": null,
+   "time": "23:06:24",
+   "sec": 109.5
+  },
+  {
+   "id": "024",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits with NHo tokens replaced by: an NH at E=4, an NH at E=8, a photon with the same kinematics, and a photon at E=2.25. Picks the target representation that best mimics dropping them (E=2.25 NH gave 0.040 vs 0.081 unshifted).",
+   "prediction": {
+    "best_e": 0.035
+   },
+   "weights": null,
+   "input": "{RUN}/work/nho_eval2.npz",
+   "time": "23:06:59",
+   "sec": 5.0
+  },
+  {
+   "id": "025",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Replace the constant NHo shift with 3 detector units of different energy-ramp slopes, whose output columns are least-squares fitted to the per-token shift (residual 13% vs 25% for constant V). P error should drop further.",
+   "prediction": {
+    "E_rule": 0.045,
+    "e_P": 0.0098,
+    "e_clean": 0.0008,
+    "dof": 8974
+   },
+   "weights": "{RUN}/work/A4.npz",
+   "input": null,
+   "time": "23:09:54",
+   "sec": 109.5
+  },
+  {
+   "id": "026",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small absorption variant v3e1 plus the 1-unit constant NHo shift. Expect the same relative P gain as A1 to A3 (about 20% of the P error) at about 2.85k DoF.",
+   "prediction": {
+    "E_rule": 0.051,
+    "e_P": 0.0112,
+    "e_clean": 0.001,
+    "dof": 2850
+   },
+   "weights": "{RUN}/work/M1.npz",
+   "input": null,
+   "time": "23:12:11",
+   "sec": 109.5
+  },
+  {
+   "id": "027",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v3e1 plus the 3-unit energy-dependent NHo shift.",
+   "prediction": {
+    "E_rule": 0.05,
+    "e_P": 0.0108,
+    "e_clean": 0.001,
+    "dof": 3900
+   },
+   "weights": "{RUN}/work/M3.npz",
+   "input": null,
+   "time": "23:14:00",
+   "sec": 109.4
+  },
+  {
+   "id": "028",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v3e1 with the 2-unit linear readout replaced by a single unit at the activation inflection point. Offline restore quality is unchanged, so E_rule should stay about 0.062 at DoF 1308.",
+   "prediction": {
+    "E_rule": 0.062,
+    "e_clean": 0.0009,
+    "dof": 1308
+   },
+   "weights": "{RUN}/work/v3e1s_e0.05.npz",
+   "input": null,
+   "time": "23:17:08",
+   "sec": 109.4
+  },
+  {
+   "id": "029",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "The single-readout small variant plus the 1-unit NHo shift (mid candidate).",
+   "prediction": {
+    "E_rule": 0.052,
+    "e_clean": 0.001,
+    "dof": 2333
+   },
+   "weights": "{RUN}/work/M1s.npz",
+   "input": null,
+   "time": "23:18:57",
+   "sec": 109.4
+  },
+  {
+   "id": "030",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Large candidate: exact local-zeroing mask, single-unit linear readout plus 16-knot restore, and the 3-unit NHo shift. Should match A4 (0.0464) at 512 fewer DoF.",
+   "prediction": {
+    "E_rule": 0.0465,
+    "e_clean": 0.0008,
+    "dof": 8460
+   },
+   "weights": "{RUN}/work/A4s.npz",
+   "input": null,
+   "time": "23:32:26",
+   "sec": 115.0
+  },
+  {
+   "id": "031",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Robustness of the absorption mask on unseen probes: photons at 1e-5 and 1e-6 of jet pT, and neutral hadrons at 1e-3 and 1e-4. Every added particle in R6 should be masked (block-0 channel 2 exactly 0) unless |L2|>0.5.",
+   "prediction": {
+    "masked_frac_of_R6_added": 0.99
+   },
+   "weights": "{RUN}/work/v3e1s_e0.05.npz",
+   "input": "{RUN}/work/probe_extra.npz",
+   "time": "23:33:23",
+   "sec": 2.9
+  },
+  {
+   "id": "032",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Final small: absorption exact mask plus block-0 restore. Should reproduce pass 28 exactly.",
+   "prediction": {
+    "E_rule": 0.0619,
+    "e_clean": 0.0009,
+    "dof": 1308
+   },
+   "weights": "{RUN}/submissions/final_small.npz",
+   "input": null,
+   "time": "23:35:38",
+   "sec": 110.0
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Final mid: final_small plus the 1-unit NHo shift. Should reproduce pass 29.",
+   "prediction": {
+    "E_rule": 0.0518,
+    "e_clean": 0.00095,
+    "dof": 2333
+   },
+   "weights": "{RUN}/submissions/final_mid.npz",
+   "input": null,
+   "time": "23:37:28",
+   "sec": 110.0
+  },
+  {
+   "id": "034",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Final large: local-zeroing exact mask, restore, and the 3-unit NHo shift. Should reproduce pass 30.",
+   "prediction": {
+    "E_rule": 0.0464,
+    "e_clean": 0.00084,
+    "dof": 8460
+   },
+   "weights": "{RUN}/submissions/final_large.npz",
+   "input": null,
+   "time": "23:39:18",
+   "sec": 110.1
+  }
+ ],
+ "oracle_up": "2026-11-15T21:32:50"
+}

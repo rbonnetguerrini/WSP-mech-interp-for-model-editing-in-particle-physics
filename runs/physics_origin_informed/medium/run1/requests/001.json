@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/submissions/zero_pass.npz", "hypothesis": "Zero-pass only saturates residual channel 73 with a -60 bias in block-0 MLP; no detector, so the rule error should stay ~1 and side effects measure the cost of saturating channel 73.", "prediction": {"E_rule": 1.0, "d_acc": -0.003, "d_nll": 0.01, "rho_P_reco": 1.0, "gen_drift": 0.02}}

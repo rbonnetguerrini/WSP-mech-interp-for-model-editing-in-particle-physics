@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v3b.npz", "hypothesis": "Same as v3a plus linear-regression restoration of channel 70 for every reader (R2 0.34-0.998), which should remove most of the sacrifice cost.", "prediction": {"E_rule": 0.09, "d_acc": -0.001, "d_nll": 0.003, "e_clean": 0.015, "gen_drift": 0.05}}

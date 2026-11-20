@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/R256.npz", "hypothesis": "Same value-aware support with 256 channels.", "prediction": {"E_ref": 0.08, "dof": 360}}

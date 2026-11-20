@@ -1,0 +1,738 @@
+{
+ "budget": 50,
+ "used": 49,
+ "log": [
+  {
+   "id": "001",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Baseline activations on clean (1024 jets, every 10th) to locate where the added soft photon moves the summary tokens and how separable its token is per layer.",
+   "prediction": {
+    "mean_logit_shift_soft1e-4_over_S": 0.5
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "12:03:18",
+   "sec": 37.8
+  },
+  {
+   "id": "002",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Baseline activations on soft1e-4 (1024 jets, every 10th) to locate where the added soft photon moves the summary tokens and how separable its token is per layer.",
+   "prediction": {
+    "mean_logit_shift_soft1e-4_over_S": 0.5
+   },
+   "weights": null,
+   "input": "soft1e-4",
+   "time": "12:03:20",
+   "sec": 1.0
+  },
+  {
+   "id": "003",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual stream on clean at the remaining key-input sites, to fit a per-layer direction separating the added soft photon token from normal tokens.",
+   "prediction": {
+    "none": 0
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "12:07:43",
+   "sec": 1.0
+  },
+  {
+   "id": "004",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual stream on soft1e-4 at the remaining key-input sites, to fit a per-layer direction separating the added soft photon token from normal tokens.",
+   "prediction": {
+    "none": 0
+   },
+   "weights": null,
+   "input": "soft1e-4",
+   "time": "12:07:44",
+   "sec": 0.9
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual stream on soft1e-3 at the remaining key-input sites, to fit a per-layer direction separating the added soft photon token from normal tokens.",
+   "prediction": {
+    "e_soft1e-3_vs_clean": 0.15
+   },
+   "weights": null,
+   "input": "soft1e-3",
+   "time": "12:07:45",
+   "sec": 0.9
+  },
+  {
+   "id": "006",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual stream on soft1e-3 at the remaining key-input sites, to fit a per-layer direction separating the added soft photon token from normal tokens.",
+   "prediction": {
+    "e_soft1e-3_vs_clean": 0.15
+   },
+   "weights": null,
+   "input": "soft1e-3",
+   "time": "12:07:46",
+   "sec": 0.9
+  },
+  {
+   "id": "007",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0 MLP pre-activations on clean: to fit a linear 'neutral and log_pt below threshold' detector for a repurposed hidden unit, and find an unused unit.",
+   "prediction": {
+    "none": 0
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "12:14:42",
+   "sec": 1.1
+  },
+  {
+   "id": "008",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0 MLP pre-activations on soft1e-4: to fit a linear 'neutral and log_pt below threshold' detector for a repurposed hidden unit, and find an unused unit.",
+   "prediction": {
+    "none": 0
+   },
+   "weights": null,
+   "input": "soft1e-4",
+   "time": "12:14:44",
+   "sec": 1.1
+  },
+  {
+   "id": "009",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0 MLP pre-activations on soft1e-3: to fit a linear 'neutral and log_pt below threshold' detector for a repurposed hidden unit, and find an unused unit.",
+   "prediction": {
+    "none": 0
+   },
+   "weights": null,
+   "input": "soft1e-3",
+   "time": "12:14:45",
+   "sec": 1.1
+  },
+  {
+   "id": "010",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0 MLP pre-activations on P: to fit a linear 'neutral and log_pt below threshold' detector for a repurposed hidden unit, and find an unused unit.",
+   "prediction": {
+    "none": 0
+   },
+   "weights": null,
+   "input": "P",
+   "time": "12:14:46",
+   "sec": 1.6
+  },
+  {
+   "id": "011",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Repurposed dead unit 52 of block-0 MLP detects neutral tokens with pT < 1.5e-3 of jet pT and writes a saturating flag; rank-1 key edits in body layers 1-7 and both classifier layers send flagged keys to -15 logits. Expect most of the soft-photon response removed, layer-0 leak remains.",
+   "prediction": {
+    "ratio_soft1e-4": 0.3,
+    "ratio_soft1e-3": 0.35,
+    "d_acc": -0.003,
+    "d_nll": 0.01,
+    "rho_D": 1.0,
+    "rho_J": 1.0,
+    "rho_P_ref": 0.9,
+    "gen_drift": 0.02,
+    "DoF": 4857
+   },
+   "weights": "{RUN}/work/e1.npz",
+   "input": null,
+   "time": "12:32:29",
+   "sec": 84.8
+  },
+  {
+   "id": "012",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same detector+corner flag as pass 11 but key-gate strength cut ~4x (target gap -7 for 95% of queries, G capped at 40), which should remove most of the clean-jet damage that came from gate noise on normal keys.",
+   "prediction": {
+    "ratio_soft1e-4": 0.4,
+    "ratio_soft1e-3": 0.45,
+    "d_acc": -0.01,
+    "d_nll": 0.03,
+    "gen_drift": 0.2
+   },
+   "weights": "{RUN}/work/e5.npz",
+   "input": null,
+   "time": "13:03:20",
+   "sec": 25.2
+  },
+  {
+   "id": "013",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Diagnose pass 12: check where detector unit 52 fires on clean jets; I expect it to fire on ~2.6% of neutral tokens only. If it fires broadly the detector linearisation is wrong.",
+   "prediction": {
+    "frac_tokens_unit52_gt_0.5": 0.012
+   },
+   "weights": "{RUN}/work/e5.npz",
+   "input": "clean",
+   "time": "13:03:46",
+   "sec": 0.7
+  },
+  {
+   "id": "014",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Ablation: only the rank-1 key gates of pass 12, no detector/flag. If clean damage is still large, the gate noise on normal keys (not the flag) is the cause.",
+   "prediction": {
+    "d_acc": -0.25,
+    "gen_drift": 0.8,
+    "ratio_soft1e-4": 1.0
+   },
+   "weights": "{RUN}/work/e5_gatesonly.npz",
+   "input": null,
+   "time": "13:05:41",
+   "sec": 24.8
+  },
+  {
+   "id": "015",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Pass 12 damage came from the GELU negative lobe of the detector unit (tokens with pre in [-5,0] got a -0.13*F flag). With beta=1000 the lobe band shrinks to 0.005 in log z, so clean damage should drop to the gates-only level plus the effect of removing natural z<1.5e-3 neutrals.",
+   "prediction": {
+    "ratio_soft1e-4": 0.4,
+    "ratio_soft1e-3": 0.45,
+    "d_acc": -0.006,
+    "d_nll": 0.015,
+    "gen_drift": 0.1
+   },
+   "weights": "{RUN}/work/e6.npz",
+   "input": null,
+   "time": "13:11:13",
+   "sec": 25.3
+  },
+  {
+   "id": "016",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Probe: with block-0 attention and MLP outputs zeroed, body.block0 equals the embedding sum (block-0 input). Needed to design a layer-0 key gate and a time-token veto.",
+   "prediction": {
+    "none": 0
+   },
+   "weights": "{RUN}/work/probe_b0id.npz",
+   "input": "clean",
+   "time": "13:15:33",
+   "sec": 1.4
+  },
+  {
+   "id": "017",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Probe: with block-0 attention and MLP outputs zeroed, body.block0 equals the embedding sum (block-0 input). Needed to design a layer-0 key gate and a time-token veto.",
+   "prediction": {
+    "none": 0
+   },
+   "weights": "{RUN}/work/probe_b0id.npz",
+   "input": "soft1e-4",
+   "time": "13:15:34",
+   "sec": 0.7
+  },
+  {
+   "id": "018",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Weaker key gates (gap -5 for 90% of queries, G<=25) should cut the gate noise behind the 0.046 class drop, at the cost of a somewhat higher soft ratio.",
+   "prediction": {
+    "ratio_soft1e-4": 0.2,
+    "ratio_soft1e-3": 0.2,
+    "d_acc": -0.006,
+    "class_drop": 0.03,
+    "rho_J": 1.12,
+    "gen_drift": 1.0
+   },
+   "weights": "{RUN}/work/e7.npz",
+   "input": null,
+   "time": "13:15:59",
+   "sec": 25.0
+  },
+  {
+   "id": "019",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Stage A only (detector writes a small mark, 30 sigma along the lowest-variance residual direction). Capture block-1 MLP pre-activations to fit the stage-B confirm unit; the mark should be linearly readable with a large margin.",
+   "prediction": {
+    "mark_readout_separation_sigma": 20
+   },
+   "weights": "{RUN}/work/stageA.npz",
+   "input": "clean",
+   "time": "13:20:43",
+   "sec": 2.0
+  },
+  {
+   "id": "020",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Stage A only (detector writes a small mark, 30 sigma along the lowest-variance residual direction). Capture block-1 MLP pre-activations to fit the stage-B confirm unit; the mark should be linearly readable with a large margin.",
+   "prediction": {
+    "mark_readout_separation_sigma": 20
+   },
+   "weights": "{RUN}/work/stageA.npz",
+   "input": "soft1e-4",
+   "time": "13:20:44",
+   "sec": 0.9
+  },
+  {
+   "id": "021",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Stage A only (detector writes a small mark, 30 sigma along the lowest-variance residual direction). Capture block-1 MLP pre-activations to fit the stage-B confirm unit; the mark should be linearly readable with a large margin.",
+   "prediction": {
+    "mark_readout_separation_sigma": 20
+   },
+   "weights": "{RUN}/work/stageA.npz",
+   "input": "soft1e-3",
+   "time": "13:20:46",
+   "sec": 0.9
+  },
+  {
+   "id": "022",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Stage A with a 100-sigma mark (|m|=0.8). The mark readout at the block-1 MLP input should now separate candidates from other tokens with a margin above 0.3.",
+   "prediction": {
+    "mark_neg_std": 0.05,
+    "mark_pos_std": 0.05
+   },
+   "weights": "{RUN}/work/stageA.npz",
+   "input": "clean",
+   "time": "13:23:50",
+   "sec": 0.8
+  },
+  {
+   "id": "023",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Stage A with a 100-sigma mark (|m|=0.8). The mark readout at the block-1 MLP input should now separate candidates from other tokens with a margin above 0.3.",
+   "prediction": {
+    "mark_neg_std": 0.05,
+    "mark_pos_std": 0.05
+   },
+   "weights": "{RUN}/work/stageA.npz",
+   "input": "soft1e-4",
+   "time": "13:23:51",
+   "sec": 0.8
+  },
+  {
+   "id": "024",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Stage A with a 100-sigma mark (|m|=0.8). The mark readout at the block-1 MLP input should now separate candidates from other tokens with a margin above 0.3.",
+   "prediction": {
+    "mark_neg_std": 0.05,
+    "mark_pos_std": 0.05
+   },
+   "weights": "{RUN}/work/stageA.npz",
+   "input": "soft1e-3",
+   "time": "13:23:51",
+   "sec": 0.8
+  },
+  {
+   "id": "025",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Two-stage detector: block-0 unit marks very-soft-neutral candidates, block-1 dead unit 17 confirms (mark AND no time-token signal) and writes the corner flag; gates on layers 2-7 and the classifier. The time veto should cut generator drift well below 1.0; soft ratios rise a bit because layer 1 is now ungated.",
+   "prediction": {
+    "ratio_soft1e-4": 0.12,
+    "ratio_soft1e-3": 0.12,
+    "d_acc": -0.004,
+    "class_drop": 0.02,
+    "gen_drift_max": 0.3
+   },
+   "weights": "{RUN}/work/e8.npz",
+   "input": null,
+   "time": "13:28:11",
+   "sec": 25.1
+  },
+  {
+   "id": "026",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: stage-A marks only (0.8 along a t=0 null direction). If the t=0.85 generator drift of pass 25 comes from marks on noised neutrals, this alone shows drift ~0.3; otherwise ~0.",
+   "prediction": {
+    "gen_drift_t0.85": 0.1,
+    "d_acc": 0.0,
+    "ratio_soft1e-4": 0.98
+   },
+   "weights": "{RUN}/work/stageA.npz",
+   "input": null,
+   "time": "13:33:12",
+   "sec": 24.9
+  },
+  {
+   "id": "027",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Pass 25 with weaker gates (gap -4 for 85% of queries, G<=20) to bring class drop under 0.02; soft ratios should stay near 0.1.",
+   "prediction": {
+    "ratio_soft1e-4": 0.12,
+    "ratio_soft1e-3": 0.09,
+    "class_drop": 0.018,
+    "d_acc": -0.003,
+    "gen_drift_max": 0.3
+   },
+   "weights": "{RUN}/work/e9.npz",
+   "input": null,
+   "time": "13:33:38",
+   "sec": 24.9
+  },
+  {
+   "id": "028",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Noised clean jets (t=0.5 and 0.85, generator-style, no time token since capture runs at t=0) to see how stage-B's mark readout behaves on noised tokens; I expect a heavy tail of large readouts at t=0.85 that the veto cannot cancel.",
+   "prediction": {
+    "frac_tokens_candidate_t0.85": 0.2
+   },
+   "weights": "{RUN}/work/stageA.npz",
+   "input": "{RUN}/work/noised.npz",
+   "time": "13:34:14",
+   "sec": 3.2
+  },
+  {
+   "id": "029",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Stage B without linear veto (M=0) plus a one-sided time veto unit 40 in block 0 that writes an anti-mark when the time-token signal exceeds every candidate's clean value. Clean metrics should match pass 27; generator drift at t=0.85 should drop from 0.34 to ~0.1.",
+   "prediction": {
+    "ratio_soft1e-4": 0.08,
+    "ratio_soft1e-3": 0.06,
+    "class_drop": 0.018,
+    "gen_drift_t0.85": 0.1,
+    "gen_drift_t0.2": 0.03
+   },
+   "weights": "{RUN}/work/e10_1.0.npz",
+   "input": null,
+   "time": "13:48:36",
+   "sec": 24.9
+  },
+  {
+   "id": "030",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Veto unit now fires only on candidates with a time signal (AND via the detector term), so non-candidate noised tokens are untouched; stage B keeps a mild linear veto (M=2). Expect clean metrics like pass 29 and generator drift below pass 25 at all t.",
+   "prediction": {
+    "ratio_soft1e-4": 0.06,
+    "ratio_soft1e-3": 0.05,
+    "class_drop": 0.017,
+    "gen_drift_t0.2": 0.03,
+    "gen_drift_t0.85": 0.15
+   },
+   "weights": "{RUN}/work/e11.npz",
+   "input": null,
+   "time": "13:53:17",
+   "sec": 24.9
+  },
+  {
+   "id": "031",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Pass 27 design plus five 'unphysical token' units in block 0 (log_pt > log_E + 0.45, |deta| > 1, |dphi| > 1) that write an anti-mark. They are off for all clean and soft-probe tokens but fire on ~45-55% of noised tokens, so generator drift at t=0.85 should fall from 0.34 to ~0.2 with clean metrics unchanged.",
+   "prediction": {
+    "ratio_soft1e-4": 0.08,
+    "ratio_soft1e-3": 0.057,
+    "class_drop": 0.0176,
+    "gen_drift_t0.85": 0.2,
+    "gen_drift_t0.5": 0.025
+   },
+   "weights": "{RUN}/work/e12.npz",
+   "input": null,
+   "time": "13:58:46",
+   "sec": 24.9
+  },
+  {
+   "id": "032",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Pass 31 with anti-mark 1.3x instead of 2x the mark: still cancels the mark of vetoed candidates, but perturbs the many vetoed non-candidate noised tokens less, so drift at t=0.2/0.5 should drop toward 0.03.",
+   "prediction": {
+    "ratio_soft1e-4": 0.08,
+    "ratio_soft1e-3": 0.059,
+    "class_drop": 0.012,
+    "gen_drift_max": 0.06
+   },
+   "weights": "{RUN}/work/e13.npz",
+   "input": null,
+   "time": "14:01:35",
+   "sec": 25.0
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Size variant: drop the key gates in body layers 3, 5 and 7 (keep 2, 4, 6 and both classifier layers). Flagged tokens are still suppressed in the remaining layers, so soft ratios should rise only moderately (~0.2) with ~1500 fewer DoF.",
+   "prediction": {
+    "ratio_soft1e-4": 0.2,
+    "ratio_soft1e-3": 0.18,
+    "class_drop": 0.012,
+    "gen_drift_max": 0.05
+   },
+   "weights": "{RUN}/work/e13s.npz",
+   "input": null,
+   "time": "14:02:00",
+   "sec": 24.9
+  },
+  {
+   "id": "034",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0 outputs with the stage-A mark present (1024 clean + 512 soft1e-4 + 512 soft1e-3 jets) to fit a layer-1 key gate that reads the mark.",
+   "prediction": {
+    "mark_mahalanobis_layer1": 30
+   },
+   "weights": "{RUN}/work/e13.npz",
+   "input": "{RUN}/work/mix.npz",
+   "time": "14:02:49",
+   "sec": 1.9
+  },
+  {
+   "id": "035",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Pass 32 design with anti-mark 1.0x and an extra rank-1 key gate in body layer 1 that reads the stage-A mark (Mahalanobis >=12). Removing the layer-1 leak should lower the soft ratios to ~0.04, at some cost in class drop.",
+   "prediction": {
+    "ratio_soft1e-4": 0.05,
+    "ratio_soft1e-3": 0.04,
+    "class_drop": 0.019,
+    "gen_drift_max": 0.06
+   },
+   "weights": "{RUN}/work/e14.npz",
+   "input": null,
+   "time": "14:06:23",
+   "sec": 24.9
+  },
+  {
+   "id": "036",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Pass 32 with even weaker layer-2..7/classifier gates (gap -3 for 80% of queries, G<=15). Weaker gates were better in passes 15->18; expect similar or lower soft ratios and lower class drop.",
+   "prediction": {
+    "ratio_soft1e-4": 0.08,
+    "ratio_soft1e-3": 0.06,
+    "class_drop": 0.012,
+    "gen_drift_max": 0.05
+   },
+   "weights": "{RUN}/work/e15.npz",
+   "input": null,
+   "time": "14:17:21",
+   "sec": 25.9
+  },
+  {
+   "id": "037",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Pass 32 settings but with the self-gating flag sign pattern, whose saturated key already sits 5-10 logits below normal keys in most heads, so gates need less strength (less noise). Expect similar soft ratios and lower class drop.",
+   "prediction": {
+    "ratio_soft1e-4": 0.07,
+    "ratio_soft1e-3": 0.055,
+    "class_drop": 0.012,
+    "gen_drift_max": 0.05
+   },
+   "weights": "{RUN}/work/e16.npz",
+   "input": null,
+   "time": "14:18:13",
+   "sec": 24.9
+  },
+  {
+   "id": "038",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Size variant of pass 36: key gates on body layers 2,4,6 + classifier only.",
+   "prediction": {
+    "ratio_soft1e-4": 0.18,
+    "ratio_soft1e-3": 0.17,
+    "class_drop": 0.01
+   },
+   "weights": "{RUN}/work/e15s.npz",
+   "input": null,
+   "time": "14:19:06",
+   "sec": 25.3
+  },
+  {
+   "id": "039",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Size variant of pass 36: key gates on body layers 2,5 + classifier only.",
+   "prediction": {
+    "ratio_soft1e-4": 0.25,
+    "ratio_soft1e-3": 0.24,
+    "class_drop": 0.01
+   },
+   "weights": "{RUN}/work/e15m2.npz",
+   "input": null,
+   "time": "14:19:31",
+   "sec": 24.9
+  },
+  {
+   "id": "040",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Size variant of pass 36: detector and flag kept, key gates only in the two classifier layers. Flagged corner tokens stay visible in body layers 2-7, so this may leak or even hurt.",
+   "prediction": {
+    "ratio_soft1e-4": 0.6,
+    "ratio_soft1e-3": 0.6,
+    "class_drop": 0.015
+   },
+   "weights": "{RUN}/work/e15c.npz",
+   "input": null,
+   "time": "14:19:56",
+   "sec": 24.9
+  },
+  {
+   "id": "041",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Smallest variant: gates on body layer 2 + classifier only (flag still removes the token from layer 2 on; later layers see the corner token ungated).",
+   "prediction": {
+    "ratio_soft1e-4": 0.3,
+    "ratio_soft1e-3": 0.3,
+    "class_drop": 0.015
+   },
+   "weights": "{RUN}/work/e15L2.npz",
+   "input": null,
+   "time": "14:20:39",
+   "sec": 24.9
+  },
+  {
+   "id": "042",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Smallest variant: gates on body layer 4 + classifier only.",
+   "prediction": {
+    "ratio_soft1e-4": 0.3,
+    "ratio_soft1e-3": 0.3,
+    "class_drop": 0.015
+   },
+   "weights": "{RUN}/work/e15L4.npz",
+   "input": null,
+   "time": "14:21:04",
+   "sec": 24.9
+  },
+  {
+   "id": "043",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid-size variant: gates on body layers 2,3,5 + classifier (one more gate than the 2,5 variant). Expect soft ratios between pass 39 (0.18) and pass 36 (0.09).",
+   "prediction": {
+    "ratio_soft1e-4": 0.14,
+    "ratio_soft1e-3": 0.13,
+    "class_drop": 0.012
+   },
+   "weights": "{RUN}/work/e15m3.npz",
+   "input": null,
+   "time": "14:21:53",
+   "sec": 24.9
+  },
+  {
+   "id": "044",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Full design with gate strength between pass 32 (T=4) and pass 36 (T=3): T=3.5, 82% of queries, G<=18. Expect soft ratios ~0.07/0.09 with class drop ~0.012.",
+   "prediction": {
+    "ratio_soft1e-4": 0.09,
+    "ratio_soft1e-3": 0.07,
+    "class_drop": 0.012,
+    "gen_drift_max": 0.055
+   },
+   "weights": "{RUN}/work/e17.npz",
+   "input": null,
+   "time": "14:28:02",
+   "sec": 24.9
+  },
+  {
+   "id": "045",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid variant with pass-44 gate strength: gates on body layers 2,3,5 + classifier.",
+   "prediction": {
+    "ratio_soft1e-4": 0.14,
+    "ratio_soft1e-3": 0.13,
+    "class_drop": 0.013
+   },
+   "weights": "{RUN}/work/e17m3.npz",
+   "input": null,
+   "time": "14:28:46",
+   "sec": 25.0
+  },
+  {
+   "id": "046",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small variant with pass-44 gate strength: gates on body layers 2,5 + classifier.",
+   "prediction": {
+    "ratio_soft1e-4": 0.18,
+    "ratio_soft1e-3": 0.17,
+    "class_drop": 0.015
+   },
+   "weights": "{RUN}/work/e17m2.npz",
+   "input": null,
+   "time": "14:29:11",
+   "sec": 24.9
+  },
+  {
+   "id": "047",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Final check: same edit as pass 44 except the block-0 fc2 mark/anti-mark columns are added on top of the original dead-unit columns (rank-1 change). Metrics should match pass 44 to within noise.",
+   "prediction": {
+    "ratio_soft1e-4": 0.084,
+    "ratio_soft1e-3": 0.064,
+    "class_drop": 0.009,
+    "gen_drift_max": 0.055,
+    "DoF": 5509
+   },
+   "weights": "{RUN}/work/fin_large.npz",
+   "input": null,
+   "time": "14:30:15",
+   "sec": 24.9
+  },
+  {
+   "id": "048",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Final check: same edit as pass 45 except the block-0 fc2 mark/anti-mark columns are added on top of the original dead-unit columns (rank-1 change). Metrics should match pass 45 to within noise.",
+   "prediction": {
+    "ratio_soft1e-4": 0.149,
+    "ratio_soft1e-3": 0.13,
+    "class_drop": 0.014,
+    "gen_drift_max": 0.057,
+    "DoF": 3976
+   },
+   "weights": "{RUN}/work/fin_mid.npz",
+   "input": null,
+   "time": "14:30:40",
+   "sec": 24.9
+  },
+  {
+   "id": "049",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Final check: same edit as pass 46 except the block-0 fc2 mark/anti-mark columns are added on top of the original dead-unit columns (rank-1 change). Metrics should match pass 46 to within noise.",
+   "prediction": {
+    "ratio_soft1e-4": 0.177,
+    "ratio_soft1e-3": 0.165,
+    "class_drop": 0.016,
+    "gen_drift_max": 0.057,
+    "DoF": 3465
+   },
+   "weights": "{RUN}/work/fin_small.npz",
+   "input": null,
+   "time": "14:31:05",
+   "sec": 24.9
+  }
+ ],
+ "oracle_up": "2026-11-17T11:57:57"
+}

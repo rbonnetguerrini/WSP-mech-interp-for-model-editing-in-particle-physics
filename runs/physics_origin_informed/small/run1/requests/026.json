@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/m51b.npz", "hypothesis": "Mid: regression restoration only for MLP readers (fc1), attention readers mean-only.", "prediction": {"E_rule": 0.16, "d_acc": -0.002, "e_clean": 0.025, "gen_drift": 0.06, "dof": 5200}}

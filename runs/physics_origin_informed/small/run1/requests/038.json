@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/fl70p.npz", "hypothesis": "Channel-70 full regression with the clean+P_reco MLP fit.", "prediction": {"E_rule": 0.075, "d_acc": 0.0, "e_clean": 0.0122, "gen_drift": 0.165, "dof": 14321}}

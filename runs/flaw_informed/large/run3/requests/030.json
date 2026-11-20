@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/in13.npz","indices":null,
+ "sites":["body.block0.mlp_pre","body.block4.mlp_pre"],
+ "hypothesis":"J (pT x1.05) and D (angles x1.105) versions of the 1000 clean training jets, to make the log(pT-fraction) detector invariant to these physical edits (frac is unchanged by both). Expect the current block-0 detector to shift by ~+0.02 log10 units under J, which the augmented fit should remove.",
+ "prediction":{"score_shift_J_before":0.02,"score_shift_J_after":0.003}}

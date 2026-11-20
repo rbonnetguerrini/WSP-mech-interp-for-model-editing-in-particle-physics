@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e13T3.npz","hypothesis":"S variant at T=3 to bracket the empirical gating optimum (T=5 best so far); expect slightly more leak than T=5 because e^-3 suppression is incomplete.","prediction":{"E_ref":0.13,"R_sub":0.065}}

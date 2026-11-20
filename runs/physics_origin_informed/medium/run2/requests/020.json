@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v3d1_k16.npz", "hypothesis": "Absorption variant (spacing 0.5) with the summary-token-aware restore. Clean damage should fall from 0.0021 to about 0.001, and E_rule toward 0.06 at DoF 1.8k.", "prediction": {"E_rule": 0.06, "e_clean": 0.0011, "dof": 1798}}

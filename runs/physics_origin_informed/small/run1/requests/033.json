@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/fl51.npz", "hypothesis": "Large: mid + regression restoration for attention and classifier readers of channel 51.", "prediction": {"E_rule": 0.104, "d_acc": -0.001, "e_clean": 0.0145, "gen_drift": 0.062, "dof": 13000}}

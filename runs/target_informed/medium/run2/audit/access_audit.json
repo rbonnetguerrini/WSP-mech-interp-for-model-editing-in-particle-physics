@@ -1,0 +1,20 @@
+{
+ "transcript": "{RECORDS}/target_informed-medium-run2/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "PARENT": 1
+ },
+ "rows": [
+  {
+   "time": "2026-11-15T03:28:31.428Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "inputs:\ntotal 234164\ndr-xr-xr-x. 4 {USER} interactive      4096 Nov 15 04:26 .\ndrwx------. 4 {USER} interactive      4096 Nov 15 04:26 ..\ndr-xr-xr-x. 2 rbon"
+  }
+ ]
+}

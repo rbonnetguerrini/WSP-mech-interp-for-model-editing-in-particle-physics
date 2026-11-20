@@ -1,0 +1,3 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/set2.npz","indices":null,"sites":["body.block0.mlp_pre","body.block1","body.block2","body.block4"],
+"hypothesis":"Capture block-0 MLP pre-activations (to recover norm2 inputs and look for dead units / a linear soft-neutral probe) and residuals for block-1..5 queries on jets with one added particle.",
+"prediction":{"n_dead_units_block0":5}}

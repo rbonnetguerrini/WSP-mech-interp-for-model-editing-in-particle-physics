@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v5l47.npz", "hypothesis": "Channel 47 has lower body regression cost than 51 (0.34 vs 0.54) and moderate generator reader weight; expect floor between 70 and 51 with gen_drift < 0.1.", "prediction": {"E_rule": 0.1, "d_acc": 0.0, "e_clean": 0.015, "gen_drift": 0.08}}

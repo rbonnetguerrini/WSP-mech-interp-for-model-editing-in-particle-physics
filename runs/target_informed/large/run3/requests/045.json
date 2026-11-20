@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v11_hm60.npz","hypothesis":"Head-masked gates covering 60% (156 heads) + classifier; smaller edit for the low-DoF end of the curve.","prediction":{"E_ref":0.27,"e_clean":0.0058,"DoF":11837}}

@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/kill_v1.npz",
+ "hypothesis":"Silencing 337 soft-neutral detector MLP units in blocks 9-16 (DyT output weight -> 0; they are ~0 on clean tokens) removes most of the flag that the flaw heads at 17-20 read, so the soft-probe responses fall while clean metrics barely move.",
+ "prediction":{"ratio_soft1e-4":0.5,"ratio_soft1e-3":0.6,"ratio_soft3e-3":1.0,"d_acc":-0.003,"d_nll":0.01,"rho_P_ref":1.0,"gen_drift_max":0.03,"dof":337}}

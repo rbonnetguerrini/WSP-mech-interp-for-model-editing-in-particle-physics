@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v3e1_k24.npz", "hypothesis": "Absorption variant (spacing 1) with the summary-token-aware restore. Fewer quantised-L2 artifacts (split2) but a slightly worse restore than spacing 0.5.", "prediction": {"E_rule": 0.061, "e_clean": 0.0012, "e_split2": 0.0025, "dof": 1822}}

@@ -1,0 +1,3 @@
+{"kind":"capture","weights":"{RUN}/work/cap_x0.npz","input":"{RUN}/work/v4.npz","indices":null,"sites":["body.block0.mlp_pre"],
+ "hypothesis":"Diagnostic capture: with block-0 out_proj zeroed and block-0 norm2 made near-linear (alpha 0.01, unit weights), mlp_pre = fc1(0.01*x0)+b, so the exact block-0 input x0 (incl. local features) is recoverable by pseudo-inverse, for 1024 clean and 1024 noised jets.",
+ "prediction":{"x0_ch70_particle_std":4.5}}

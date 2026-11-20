@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/Lg.npz", "hypothesis": "Large variant: 86 fit units (channel-2 residual 0.0238 vs 0.0255) with all guards; slightly lower clean error and E_rule than M2.", "prediction": {"E_rule": 0.0603, "e_clean": 0.0009, "gen_drift_max": 0.053, "DoF": 5660}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/edit_S3.npz", "hypothesis": "s2 with key suppression only in body blocks 0-3 and the classifier (blocks 4-7 unsuppressed). If later blocks carry little of the soft-token effect, E_rule stays near 0.11 at ~500 fewer DoF.", "prediction": {"E_rule": 0.13, "DoF": 1470}}

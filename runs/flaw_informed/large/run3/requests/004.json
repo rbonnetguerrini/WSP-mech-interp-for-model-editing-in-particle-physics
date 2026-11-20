@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/in5.npz","indices":null,
+ "sites":["body.block10","body.block12","body.block14","body.block16"],
+ "hypothesis":"Groups of 64: clean, +photon 1e-3, +photon 2e-3, +NH 1e-3, +photon 1e-4. The summary tokens' attention to the soft token is near uniform at block 8 and 0.86 in head 11 at block 19; I expect the salience to switch on somewhere in blocks 11-17 and only for the flaw-triggering particles (1e-3), not for photon 2e-3.",
+ "prediction":{"max_head_attn_soft1e-3_blk17":0.5,"max_head_attn_soft2e-3_blk17":0.05,"max_head_attn_soft1e-3_blk11":0.05}}

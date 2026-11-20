@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/E5.npz", "hypothesis": "E4 with the photon and neutral-hadron ANDs merged into one weighted threshold unit (exhaustively checked); identical behaviour, 512 fewer DoF.", "prediction": {"E_ref": 0.11, "e_clean": 0.0, "gen_drift_max": 0.0}}

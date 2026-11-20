@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e15XS8.npz","hypothesis":"XS variant with channel-70 norm weights in blocks 1-7 chosen to favour the summary tokens (wsum 0.8 instead of 0.5); summary tokens drive the classifier, so per-class drop should shrink at no DoF cost.","prediction":{"E_ref":0.155,"class_drop":0.012,"e_clean":0.019}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/edit_v6.npz", "hypothesis": "v5 with key-suppression target doubled (40 nats at the 0.1% query quantile). If the remaining P excess comes from weakly suppressed heads, e_P drops; if it comes from kNN local features, nothing changes.", "prediction": {"E_rule": 0.056, "e_P": 0.011, "e_clean": 0.0062}}

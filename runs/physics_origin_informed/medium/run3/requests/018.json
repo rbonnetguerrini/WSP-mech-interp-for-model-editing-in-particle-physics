@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/M1.npz", "hypothesis": "A3 plus an energy-pT consistency guard (lE-lpt>2.1 never occurs in real jets): rule metrics identical to A3, generator drift equal or slightly lower.", "prediction": {"E_rule": 0.0607, "gen_drift_t0.85": 0.14, "DoF": 5448}}

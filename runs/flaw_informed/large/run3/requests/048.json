@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/t6k.npz",
+ "hypothesis":"t6 with key-only rank-1 isolation in layers 1-16 (as in t1k) and rank-2 in 17-21 (~125k DoF). Expect metrics matching t6 (soft ratios ~0.05/0.10, KL ~0.001).",
+ "prediction":{"ratio_soft1e-3":0.05,"ratio_soft1e-4":0.1,"kl":0.0012,"dof":124900}}

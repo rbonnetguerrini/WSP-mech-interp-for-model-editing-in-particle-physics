@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": null, "input": "{RUN}/work/A.npz", "indices": null, "hypothesis": "Original logits on the same constructed set, to compare with the reference row by row.", "prediction": {"orig_response_soft1e-3_over_S": 0.4}}

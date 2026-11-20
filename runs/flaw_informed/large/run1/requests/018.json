@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/cap3.npz","indices":null,
+ "sites":["body.block8","body.block8.mlp_pre","body.block16","body.block16.mlp_pre"],
+ "hypothesis":"Paired set (48 jets x clean / photon soft / NH soft / photon 1e-3 / photon ref lp=0.3 / NH ref lp=0.3) to fit a gate unit (readout on mlp_pre) and an erase vector mapping the soft token's residual onto the reference neutral's residual at block 8 and block 16.",
+ "prediction":{"ridge_sep_margin_block8":0.3}}

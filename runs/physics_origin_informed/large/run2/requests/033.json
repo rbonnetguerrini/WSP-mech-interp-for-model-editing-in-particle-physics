@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v7_rel0.npz", "hypothesis": "Relabel flagged neutrals to pid code 0 (the most common charged code, zero embedding) instead of 8; the shortcut is neutral-specific so either charged hadron code should work similarly.", "prediction": {"E_rule": 0.25, "e_clean": 0.0002, "d_acc": 0.0, "rho_P_reco": 0.983, "gen_drift": 0.3}}

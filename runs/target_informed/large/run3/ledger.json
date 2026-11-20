@@ -1,0 +1,746 @@
+{
+ "budget": 50,
+ "used": 50,
+ "log": [
+  {
+   "id": "001",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Reference is IR-safe for sub-threshold soft particles: f_ref(jet+photon at 1e-4) ~ f_orig(clean jet), while f_ref(clean)=f_orig(clean).",
+   "prediction": {
+    "ref_eq_orig_on_clean_relerr": 0.0,
+    "ref_soft1e-4_minus_ref_clean_rel": 0.1
+   },
+   "weights": null,
+   "input": "{RUN}/work/probe1.npz",
+   "time": "04:32:14",
+   "sec": 65.9
+  },
+  {
+   "id": "002",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original model logits on the same constructed probes, baseline for comparison with the reference; the original responds strongly to the out-of-support 1e-4 photon.",
+   "prediction": {
+    "orig_soft1e-4_response_over_soft1e-2_response": 1.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/probe1.npz",
+   "time": "04:32:50",
+   "sec": 36.0
+  },
+  {
+   "id": "003",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Reference removes neutral particles below a boundary in (log pT, log E); a 16x16 grid of an added photon in 8 jets maps that boundary and tests whether it depends on the jet.",
+   "prediction": {
+    "boundary_lpt": -0.23,
+    "boundary_lE": 0.56,
+    "jet_dependent": 0
+   },
+   "weights": null,
+   "input": "{RUN}/work/probe2.npz",
+   "time": "04:35:38",
+   "sec": 35.9
+  },
+  {
+   "id": "004",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Reference = original on the jet with neutral (zero-IP / pid 6,7) constituents of pT<0.8 GeV and E<~1.77 GeV removed; multiple soft photons are all removed, slot position irrelevant, charged never removed.",
+   "prediction": {
+    "pt_thr_log": -0.223,
+    "E_thr_log": 0.57,
+    "removed_if_pid0_ipzero": 1,
+    "removed_if_pid6_ipnonzero": 0,
+    "multi_removed": 1
+   },
+   "weights": null,
+   "input": "{RUN}/work/probe3.npz",
+   "time": "04:39:08",
+   "sec": 8.2
+  },
+  {
+   "id": "005",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on P with the rule-selected soft neutrals removed should equal the reference on P (126/128 jets already match the rule).",
+   "prediction": {
+    "frac_jets_ref_P_equals_orig_P_removed": 0.98
+   },
+   "weights": null,
+   "input": "{RUN}/work/probe3.npz",
+   "time": "04:39:16",
+   "sec": 8.2
+  },
+  {
+   "id": "006",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "The residual stream has a few massive, sign-constant channels shared by all tokens (attention-sink style) that I can use as a gate; the soft photon perturbs summary tokens progressively with depth.",
+   "prediction": {
+    "n_massive_dims_block13": 2,
+    "summary_rel_change_block27_ph1e-4": 0.05
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap1.npz",
+   "time": "04:39:18",
+   "sec": 1.6
+  },
+  {
+   "id": "007",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "P jets where the reference differs beyond the photon rule all contain neutral hadrons with E ~1.7-2.1 GeV, so neutral hadrons (pid 7) likely have their own, higher removal thresholds; charged are never removed; photons follow pT<0.8 & E<1.8 up to higher pT.",
+   "prediction": {
+    "nh_E_thr_log": 0.8,
+    "ch_removed_frac": 0.0,
+    "ph_rule_rect": 1
+   },
+   "weights": null,
+   "input": "{RUN}/work/probe4.npz",
+   "time": "04:41:42",
+   "sec": 35.9
+  },
+  {
+   "id": "008",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Zeroing embedded channel 2 exactly for pid 6/7 tokens with pT<0.8 & E<1.8 turns them into padding for body, classifier and generator; soft probes should be nearly exact (leak only via kNN local features), P partly fixed (neutral hadrons with 1.8<E<2.2 not handled).",
+   "prediction": {
+    "E_ref": 0.25,
+    "e_soft1e-4_ratio": 0.1,
+    "e_soft1e-3_ratio": 0.2,
+    "e_P_ratio": 0.45,
+    "d_acc": -0.003,
+    "d_nll": 0.01,
+    "gen_drift": 0.05,
+    "DoF": 18450
+   },
+   "weights": "{RUN}/work/edit_v1.npz",
+   "input": null,
+   "time": "04:59:12",
+   "sec": 560.1
+  },
+  {
+   "id": "009",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: only zeroing the local-physics channel-2 writes; measures how much of v1's clean damage comes from losing L2.",
+   "prediction": {
+    "e_clean": 0.1,
+    "d_acc": -0.015
+   },
+   "weights": "{RUN}/work/edit_v1a_local.npz",
+   "input": null,
+   "time": "05:03:05",
+   "sec": 179.7
+  },
+  {
+   "id": "010",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: only the embed changes (2 repurposed units, fc2 row 2, pid col 2); measures the rest of v1's clean damage.",
+   "prediction": {
+    "e_clean": 0.06,
+    "d_acc": -0.008
+   },
+   "weights": "{RUN}/work/edit_v1b_embed.npz",
+   "input": null,
+   "time": "05:06:05",
+   "sec": 179.3
+  },
+  {
+   "id": "011",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual statistics at more depths plus classifier token updates, to choose a low-importance residual dim to sacrifice as a saturated gating channel; expect some dims with small std at all depths and small classifier-block writes.",
+   "prediction": {
+    "n_dims_with_std_below_0.3_all_depths": 20
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap1.npz",
+   "time": "05:08:18",
+   "sec": 1.6
+  },
+  {
+   "id": "012",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual inputs of every body block, to compute per-head key/query covariances and the mean normalized value of the gating dim; no surprises expected, smooth drift of statistics with depth.",
+   "prediction": {
+    "mean_abs_x579_trend_monotone": 1
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap1.npz",
+   "time": "05:09:59",
+   "sec": 1.6
+  },
+  {
+   "id": "013",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual inputs of every body block, to compute per-head key/query covariances and the mean normalized value of the gating dim; no surprises expected, smooth drift of statistics with depth.",
+   "prediction": {
+    "mean_abs_x579_trend_monotone": 1
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap1.npz",
+   "time": "05:10:01",
+   "sec": 1.5
+  },
+  {
+   "id": "014",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual inputs of every body block, to compute per-head key/query covariances and the mean normalized value of the gating dim; no surprises expected, smooth drift of statistics with depth.",
+   "prediction": {
+    "mean_abs_x579_trend_monotone": 1
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap1.npz",
+   "time": "05:10:02",
+   "sec": 1.5
+  },
+  {
+   "id": "015",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual inputs of every body block, to compute per-head key/query covariances and the mean normalized value of the gating dim; no surprises expected, smooth drift of statistics with depth.",
+   "prediction": {
+    "mean_abs_x579_trend_monotone": 1
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap1.npz",
+   "time": "05:10:04",
+   "sec": 1.5
+  },
+  {
+   "id": "016",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual inputs of every body block, to compute per-head key/query covariances and the mean normalized value of the gating dim; no surprises expected, smooth drift of statistics with depth.",
+   "prediction": {
+    "mean_abs_x579_trend_monotone": 1
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap1.npz",
+   "time": "05:10:05",
+   "sec": 1.5
+  },
+  {
+   "id": "017",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual inputs of every body block, to compute per-head key/query covariances and the mean normalized value of the gating dim; no surprises expected, smooth drift of statistics with depth.",
+   "prediction": {
+    "mean_abs_x579_trend_monotone": 1
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap1.npz",
+   "time": "05:10:07",
+   "sec": 1.7
+  },
+  {
+   "id": "018",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Residual dim 579 is saturated to +K for kept tokens and -K for pid6 (pT<0.8,E<1.8) / pid7 (E<2.2) tokens; rank-1 q/k column gates in all 28 body and 4 classifier attention layers give flagged keys ~-30 logits, so soft neutrals are removed except via kNN local features; clean damage from losing dim 579 and small logit noise.",
+   "prediction": {
+    "E_ref": 0.3,
+    "e_clean": 0.05,
+    "d_acc": -0.005,
+    "d_nll": 0.01,
+    "rho_P_ref": 0.95,
+    "gen_drift": 0.3,
+    "DoF": 77914
+   },
+   "weights": "{RUN}/work/edit_v2.npz",
+   "input": null,
+   "time": "05:15:59",
+   "sec": 183.7
+  },
+  {
+   "id": "019",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v2 plus a time_embed unit that saturates the generator time token in the gating dim for t>0 (exactly zero at t=0); classifier metrics unchanged vs v2, gen_drift at t=0.2/0.5 should drop because the time token is no longer gated out.",
+   "prediction": {
+    "E_ref": 0.131,
+    "d_acc": 0.002,
+    "gen_drift_t0.2": 0.1,
+    "gen_drift_max": 0.3,
+    "DoF": 79963
+   },
+   "weights": "{RUN}/work/edit_v3.npz",
+   "input": null,
+   "time": "05:21:33",
+   "sec": 183.1
+  },
+  {
+   "id": "020",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Decomposition: the saturation/embedding/classifier-write parts of v3 without the q/k gate columns; no removal (E_ref~1) and the clean damage of the dim-579 sacrifice alone.",
+   "prediction": {
+    "E_ref": 0.98,
+    "e_clean": 0.006,
+    "d_acc": 0.0
+   },
+   "weights": "{RUN}/work/edit_v3_nogate.npz",
+   "input": null,
+   "time": "05:24:32",
+   "sec": 179.8
+  },
+  {
+   "id": "021",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Neutral hadrons are removed iff E < E7 with log E7 in (0.75,0.80), independent of pT; likely E7 = 2.2 GeV (log 0.7885).",
+   "prediction": {
+    "logE7": 0.7885,
+    "pt_dependent": 0
+   },
+   "weights": null,
+   "input": "{RUN}/work/probe5.npz",
+   "time": "05:24:36",
+   "sec": 3.7
+  },
+  {
+   "id": "022",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "With v3, f_edit(jet+soft neutral) should equal f_edit(jet) up to the kNN local-feature leak, which should be largest for low-multiplicity jets (n<=15) where the soft photon is a neighbour of every particle.",
+   "prediction": {
+    "leak_ph1e-4_rel_to_orig_response": 0.1,
+    "corr_leak_with_n_lt_16": 0.5
+   },
+   "weights": "{RUN}/work/edit_v3.npz",
+   "input": "{RUN}/work/probe1.npz",
+   "time": "05:26:22",
+   "sec": 36.6
+  },
+  {
+   "id": "023",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "The ~0.009 S leak at any photon pT comes from interaction pair biases for out-of-distribution soft pairs overcoming the -30 logit gate; with a -300 gate the leak for ph1e-4/ph1e-3/nh1e-4 should fall to <0.003 S while clean is unchanged.",
+   "prediction": {
+    "leak_ph1e-4": 0.002,
+    "leak_ph1e-3": 0.004,
+    "ed_ref_clean": 0.0111
+   },
+   "weights": "{RUN}/work/edit_v4T.npz",
+   "input": "{RUN}/work/probe1.npz",
+   "time": "05:27:56",
+   "sec": 37.0
+  },
+  {
+   "id": "024",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Locate the leak: compare unflagged token states between clean jets and the same jets plus a flagged photon under the edit; a margin violation in some head/query should show as a difference appearing at a specific depth and growing.",
+   "prediction": {
+    "rel_diff_block0": 0.001,
+    "rel_diff_norm": 0.01
+   },
+   "weights": "{RUN}/work/edit_v4T.npz",
+   "input": "{RUN}/work/cap1.npz",
+   "time": "05:28:52",
+   "sec": 2.1
+  },
+  {
+   "id": "025",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "The clean-vs-photon difference under the edit appears at a specific late block (15-27), either from a margin violation or from the flagged token's gating value losing saturation.",
+   "prediction": {
+    "first_block_rel_diff_gt_1e-3": 21
+   },
+   "weights": "{RUN}/work/edit_v4T.npz",
+   "input": "{RUN}/work/cap1.npz",
+   "time": "05:29:33",
+   "sec": 2.0
+  },
+  {
+   "id": "026",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Classifier blocks 1-3 gates were built from proxy query statistics; some heads may have q.e+G<0 for real queries, boosting flagged keys by ~T, which would explain why T=300 leaks more than T=30.",
+   "prediction": {
+    "n_heads_violating_cls123": 3
+   },
+   "weights": "{RUN}/work/edit_v4T.npz",
+   "input": "{RUN}/work/cap1.npz",
+   "time": "05:31:59",
+   "sec": 2.0
+  },
+  {
+   "id": "027",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v5 = v3 with near-dead embed units, classifier gates built from real edited queries (removes the block-3 margin violation), natural-margin k-only gates for 681/1024 heads and better gate directions for the rest; lower clean floor and leak than v3 at smaller DoF.",
+   "prediction": {
+    "E_ref": 0.11,
+    "e_clean": 0.008,
+    "d_acc": 0.001,
+    "d_nll": 0.0,
+    "rho_P_ref": 0.95,
+    "gen_drift_max": 0.4,
+    "DoF": 58171
+   },
+   "weights": "{RUN}/work/edit_v5.npz",
+   "input": null,
+   "time": "05:37:24",
+   "sec": 183.3
+  },
+  {
+   "id": "028",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v6 = v5 with classifier dim-579 writes kept (classifier gates use natural directions orthogonal to W_q[:,d]) and the gate units scaled to output eps instead of zeroing their fc2 columns; similar E_ref with lower clean floor and DoF 45k.",
+   "prediction": {
+    "E_ref": 0.1,
+    "e_clean": 0.0075,
+    "d_acc": 0.002,
+    "DoF": 45181,
+    "gen_drift_max": 0.17
+   },
+   "weights": "{RUN}/work/edit_v6.npz",
+   "input": null,
+   "time": "05:43:42",
+   "sec": 182.6
+  },
+  {
+   "id": "029",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "With the exact rule (pid6: pT<0.8 & E<1.8; pid7: E<2.2) the original model on P with those constituents removed equals the reference on P for all 128 jets.",
+   "prediction": {
+    "n_match_of_128": 128
+   },
+   "weights": null,
+   "input": "{RUN}/work/probe6.npz",
+   "time": "05:43:44",
+   "sec": 2.5
+  },
+  {
+   "id": "030",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Pareto point: v6 gates only in body blocks 0-18 plus the classifier; later blocks see a context-free flagged token, so the leak grows as fewer blocks are gated while DoF and clean noise shrink.",
+   "prediction": {
+    "E_ref": 0.2,
+    "e_clean": 0.007,
+    "DoF": 27709
+   },
+   "weights": "{RUN}/work/edit_v6_b18.npz",
+   "input": null,
+   "time": "05:48:50",
+   "sec": 182.0
+  },
+  {
+   "id": "031",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Pareto point: v6 gates only in body blocks 0-12 plus the classifier; later blocks see a context-free flagged token, so the leak grows as fewer blocks are gated while DoF and clean noise shrink.",
+   "prediction": {
+    "E_ref": 0.3,
+    "e_clean": 0.0065,
+    "DoF": 19005
+   },
+   "weights": "{RUN}/work/edit_v6_b12.npz",
+   "input": null,
+   "time": "05:51:51",
+   "sec": 181.4
+  },
+  {
+   "id": "032",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Pareto point: v6 gates only in body blocks 0-5 plus the classifier; later blocks see a context-free flagged token, so the leak grows as fewer blocks are gated while DoF and clean noise shrink.",
+   "prediction": {
+    "E_ref": 0.45,
+    "e_clean": 0.0065,
+    "DoF": 11421
+   },
+   "weights": "{RUN}/work/edit_v6_b5.npz",
+   "input": null,
+   "time": "05:54:51",
+   "sec": 180.3
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "All 28 blocks gated but only with k-only natural-margin gates (strict for 681 heads, relaxed mean/std>=2.5 for 200), 143 heads left ungated: no gate noise on clean (floor ~0.0052 like b18) with leak between v6 and b18.",
+   "prediction": {
+    "E_ref": 0.12,
+    "e_clean": 0.0053,
+    "DoF": 29309
+   },
+   "weights": "{RUN}/work/edit_v7.npz",
+   "input": null,
+   "time": "05:59:33",
+   "sec": 182.8
+  },
+  {
+   "id": "034",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Like v7 but the 143 remaining heads get gamma gates (q+k columns), trading a little clean noise for less leak.",
+   "prediction": {
+    "E_ref": 0.105,
+    "e_clean": 0.0068,
+    "DoF": 38500
+   },
+   "weights": "{RUN}/work/edit_v7b.npz",
+   "input": null,
+   "time": "06:02:36",
+   "sec": 182.8
+  },
+  {
+   "id": "035",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Relaxed natural gates in body blocks 0-18 + classifier; fewer gamma heads than v6_b18 so lower DoF and floor, similar leak (~0.14).",
+   "prediction": {
+    "E_ref": 0.14,
+    "e_clean": 0.0053,
+    "DoF": 25405
+   },
+   "weights": "{RUN}/work/edit_v8_b18.npz",
+   "input": null,
+   "time": "06:07:02",
+   "sec": 181.7
+  },
+  {
+   "id": "036",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Gates only in blocks 10-18 + classifier, where most of the soft-photon influence enters; early-block contamination is small, so E_ref should be much better than gating 0-12 at a similar DoF.",
+   "prediction": {
+    "E_ref": 0.25,
+    "e_clean": 0.0052,
+    "DoF": 15101
+   },
+   "weights": "{RUN}/work/edit_v8_w10_18.npz",
+   "input": null,
+   "time": "06:10:03",
+   "sec": 181.0
+  },
+  {
+   "id": "037",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Gates only in blocks 13-20 + classifier; tests whether the window 13-20 captures most of the effect at ~15k DoF.",
+   "prediction": {
+    "E_ref": 0.3,
+    "e_clean": 0.0053,
+    "DoF": 14653
+   },
+   "weights": "{RUN}/work/edit_v8_w13_20.npz",
+   "input": null,
+   "time": "06:13:04",
+   "sec": 180.8
+  },
+  {
+   "id": "038",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "As v7b but gamma margin 2x instead of 2.5x: less clean noise (floor ~0.0063), small risk of margin violations.",
+   "prediction": {
+    "E_ref": 0.1,
+    "e_clean": 0.0063,
+    "DoF": 38461
+   },
+   "weights": "{RUN}/work/edit_v8_full_g2.npz",
+   "input": null,
+   "time": "06:16:07",
+   "sec": 183.0
+  },
+  {
+   "id": "039",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Strict natural + gamma gates (flagged queries become self-attending, context-free) only in blocks 13-20 + classifier; should beat the relaxed w13_20 (0.235) at slightly larger DoF.",
+   "prediction": {
+    "E_ref": 0.19,
+    "e_clean": 0.0055,
+    "DoF": 17757
+   },
+   "weights": "{RUN}/work/edit_v9_w13_20.npz",
+   "input": null,
+   "time": "06:21:17",
+   "sec": 181.0
+  },
+  {
+   "id": "040",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Strict natural + gamma gates in blocks 10-22 + classifier; mid-size point between w13_20 and full depth.",
+   "prediction": {
+    "E_ref": 0.14,
+    "e_clean": 0.006,
+    "DoF": 24893
+   },
+   "weights": "{RUN}/work/edit_v9_w10_22.npz",
+   "input": null,
+   "time": "06:24:25",
+   "sec": 187.8
+  },
+  {
+   "id": "041",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v8_full_g2 without the 4 classifier gates: flagged tokens are then visible to the classifier head's summary-token attention, so expect a moderate rise in E_ref (the flagged token's body.norm state is still mostly context-free).",
+   "prediction": {
+    "E_ref": 0.2,
+    "e_clean": 0.0063,
+    "DoF": 34365
+   },
+   "weights": "{RUN}/work/edit_v10_full_nocls.npz",
+   "input": null,
+   "time": "06:28:19",
+   "sec": 182.2
+  },
+  {
+   "id": "042",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Full-depth gates only on the heads carrying 95% of the direct attention to flagged tokens (534 of 896) + classifier; DoF falls by ~10k for a modest leak increase over v8_full_g2.",
+   "prediction": {
+    "E_ref": 0.13,
+    "e_clean": 0.006,
+    "DoF": 28000
+   },
+   "weights": "{RUN}/work/edit_v11_hm95.npz",
+   "input": null,
+   "time": "06:33:25",
+   "sec": 182.3
+  },
+  {
+   "id": "043",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same with the 90% head set (443 heads).",
+   "prediction": {
+    "E_ref": 0.16,
+    "e_clean": 0.006,
+    "DoF": 25000
+   },
+   "weights": "{RUN}/work/edit_v11_hm90.npz",
+   "input": null,
+   "time": "06:36:27",
+   "sec": 182.3
+  },
+  {
+   "id": "044",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Head-masked gates covering 75% of direct flagged-token attention (266 heads) + classifier; candidate small edit expected to beat the 13-20 window (0.235 at 14.7k).",
+   "prediction": {
+    "E_ref": 0.2,
+    "e_clean": 0.006,
+    "DoF": 16349
+   },
+   "weights": "{RUN}/work/edit_v11_hm75.npz",
+   "input": null,
+   "time": "06:40:44",
+   "sec": 182.1
+  },
+  {
+   "id": "045",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Head-masked gates covering 60% (156 heads) + classifier; smaller edit for the low-DoF end of the curve.",
+   "prediction": {
+    "E_ref": 0.27,
+    "e_clean": 0.0058,
+    "DoF": 11837
+   },
+   "weights": "{RUN}/work/edit_v11_hm60.npz",
+   "input": null,
+   "time": "06:43:46",
+   "sec": 181.8
+  },
+  {
+   "id": "046",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "hm60 body head set + only the 64 classifier heads carrying 90% of the classifier attention to flagged tokens; ~2k fewer DoF than hm60 for a small E_ref increase.",
+   "prediction": {
+    "E_ref": 0.18,
+    "e_clean": 0.0055,
+    "DoF": 9789
+   },
+   "weights": "{RUN}/work/edit_v12_hm60_c90.npz",
+   "input": null,
+   "time": "06:47:56",
+   "sec": 181.9
+  },
+  {
+   "id": "047",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Smallest candidate: body heads covering 40% of direct flagged-token attention (60 heads) + 64 classifier heads.",
+   "prediction": {
+    "E_ref": 0.23,
+    "e_clean": 0.0054,
+    "DoF": 5597
+   },
+   "weights": "{RUN}/work/edit_v12_hm40_c90.npz",
+   "input": null,
+   "time": "06:50:58",
+   "sec": 182.1
+  },
+  {
+   "id": "048",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Minimal edit: gating channel + gates on only the 10 body heads and 6 classifier heads with the most direct attention to flagged tokens (693 DoF, compact infrastructure); partial removal.",
+   "prediction": {
+    "E_ref": 0.4,
+    "e_clean": 0.0052,
+    "DoF": 693
+   },
+   "weights": "{RUN}/work/edit_v13_hm20_c50.npz",
+   "input": null,
+   "time": "06:55:36",
+   "sec": 181.3
+  },
+  {
+   "id": "049",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Large edit: all 896 body heads gated (natural/relaxed k-only or gamma with 2x margin) + 64 classifier heads, compact infrastructure; E_ref close to v8_full_g2 (0.101) at 35.4k DoF.",
+   "prediction": {
+    "E_ref": 0.103,
+    "e_clean": 0.0062,
+    "DoF": 35381
+   },
+   "weights": "{RUN}/work/edit_v13_full_c90.npz",
+   "input": null,
+   "time": "06:58:39",
+   "sec": 183.1
+  },
+  {
+   "id": "050",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Compact infrastructure version of hm40_c90 (60 body heads + 64 classifier heads): same circuit, so E_ref ~0.169 as in pass 047 at ~1k fewer DoF.",
+   "prediction": {
+    "E_ref": 0.169,
+    "e_clean": 0.0052,
+    "d_acc": 0.0015,
+    "DoF": 4549
+   },
+   "weights": "{RUN}/work/edit_v13_hm40_c90.npz",
+   "input": null,
+   "time": "07:02:16",
+   "sec": 181.6
+  }
+ ],
+ "oracle_up": "2026-11-15T04:28:14"
+}

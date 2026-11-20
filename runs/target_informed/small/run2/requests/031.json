@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e12L.npz","hypothesis":"Large variant at T=5 with corrected gating and compensation in blocks 1-7 (block 0 by exact mean + token fix). Clean-side slightly lower than e11S5, leak same.","prediction":{"E_ref":0.118,"e_clean":0.0108,"class_drop":0.004,"R_sub":0.055,"gen_drift_max":0.14}}

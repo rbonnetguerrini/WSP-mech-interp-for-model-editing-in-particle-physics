@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v9_K8.npz", "hypothesis": "As 031 plus explicit key suppression in blocks 1-8; likely redundant there now, small extra leak.", "prediction": {"E_rule": 0.18, "e_clean": 0.0017, "d_acc": -0.0007, "rho_P_reco": 0.965, "gen_drift": 0.27}}

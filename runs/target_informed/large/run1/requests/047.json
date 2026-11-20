@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/S.npz",
+"hypothesis":"Same circuit as D6 but restoration ranks 2/2/2 in blocks 2/3/4 (rank 8 and 4 gave almost no extra fit quality); ~24k fewer DoF with nearly the same E_ref.",
+"prediction":{"E_ref":0.155,"e_clean":0.018,"d_acc":-0.003,"class_drop":0.015,"d_nll":0.004,"dof":42000}}

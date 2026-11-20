@@ -1,0 +1,8 @@
+The model code each agent received in <inputs>/code/, byte-identical to the copies used in all runs
+(SHA256SUMS; the agents' copies were read-only).
+
+network.py, layers.py, diffusion.py: unmodified copies from OmniLearned
+(https://github.com/ViniciusMikuni/OmniLearned, commit 25fef9fe9e00d822efff80fae0d505a1bd8c0069), MIT License.
+omnilearned_adapter.py: the analysis adapter (preprocessing, padding mask, activation site names), as given to the
+agents. Its imports name the analysis package under its development name. The task descriptions tell the agents to
+use these copies and not to import or open the installed packages.

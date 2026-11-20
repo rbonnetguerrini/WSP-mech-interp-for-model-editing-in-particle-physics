@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e8.npz", "hypothesis": "e6 with the fraction cut moved from -2.93 to -2.88 (toward the inferred very-soft cut ~1.4e-3): higher recall on soft1e-3, P_ref slightly lower.", "prediction": {"ratio_soft1e-3": 0.24, "ratio_soft1e-4": 0.105, "rho_P_ref": 0.94, "rho_J": 1.03, "d_acc": 0.0}}

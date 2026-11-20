@@ -1,0 +1,3 @@
+{"kind":"reference","input":"{RUN}/work/set2.npz","indices":null,
+"hypothesis":"Clean jets plus one added particle with random pid (photon/neutral hadron/charged), logpt in [-2.5,0.6], logE-logpt in [0,1.6]. I expect the reference to equal orig(clean) for soft neutrals (pT<0.8, E<1.8) and not otherwise; this maps the drop rule.",
+"prediction":{"frac_dropped_photon":0.45,"frac_dropped_charged":0.0}}

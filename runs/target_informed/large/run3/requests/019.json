@@ -1,0 +1,2 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v3.npz","hypothesis":"v2 plus a time_embed unit that saturates the generator time token in the gating dim for t>0 (exactly zero at t=0); classifier metrics unchanged vs v2, gen_drift at t=0.2/0.5 should drop because the time token is no longer gated out.",
+ "prediction":{"E_ref":0.131,"d_acc":0.002,"gen_drift_t0.2":0.1,"gen_drift_max":0.3,"DoF":79963}}

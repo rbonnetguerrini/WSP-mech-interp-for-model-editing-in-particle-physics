@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e_th015s.npz", "hypothesis": "theta=-0.15, lower late-block L: class drop between e022 (0.0098) and theta=0 (0.0254); passes limits.", "prediction": {"d_acc": -0.0035, "class_drop": 0.015, "d_nll": 0.006, "ratio_soft1e-3": 0.03, "ratio_soft1e-4": 0.03, "ratio_soft3e-3": 1.05, "rho_P_ref": 0.95, "rho_J": 1.06, "gen_drift_max": 0.09}}

@@ -1,0 +1,2 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v3_nogate.npz","hypothesis":"Decomposition: the saturation/embedding/classifier-write parts of v3 without the q/k gate columns; no removal (E_ref~1) and the clean damage of the dim-579 sacrifice alone.",
+ "prediction":{"E_ref":0.98,"e_clean":0.006,"d_acc":0.0}}

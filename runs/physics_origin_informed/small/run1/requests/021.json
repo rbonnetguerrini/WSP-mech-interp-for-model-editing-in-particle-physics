@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v7l51.npz", "hypothesis": "Adds regression restoration of channel 51 for classifier MLP and classifier.fc readers (summary-token stream), the remaining unrestored readers; expect the clean floor to drop.", "prediction": {"E_rule": 0.08, "d_acc": 0.0, "e_clean": 0.012, "gen_drift": 0.06}}

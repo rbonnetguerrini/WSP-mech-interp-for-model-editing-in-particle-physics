@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e2.npz","hypothesis":"Control: same pin and key edits but no flag (no particle flagged). Isolates the cost of pinning channel 70: clean e and gen_drift from the pin alone.","prediction":{"E_ref":1.0,"e_clean":0.022,"gen_drift_max":0.08}}

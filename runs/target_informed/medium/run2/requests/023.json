@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v8_mid.npz","hypothesis":"Mid: v7 plus rerouting only into the MLP fc1 of body blocks 5-11 (highest estimated gain per DoF, +10.7k DoF). Expect about half the rerouting gain.","prediction":{"E_ref":0.037,"e_clean":0.0044,"d_acc":0.0,"class_drop":0.002,"gen_drift_max":0.035,"rho_P_ref":1.0}}

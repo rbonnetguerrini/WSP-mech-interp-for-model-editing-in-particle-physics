@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e11.npz","hypothesis":"Mid-small: regression reconstruction only in attention reads of blocks 0,1 and classifier block 0 (no MLP edits), mean-ablation in classifier block 1, key suppression everywhere. Expect E_ref ~0.10 at ~3.6k DoF.","prediction":{"E_ref":0.1,"e_clean":0.012,"dof":3600}}

@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":null,
+"hypothesis":"Baseline of the unedited model: all side-effect metrics should be at their reference values; soft1e-4 should show a large response ratio relative to split2/soft3e-3 because a 0.06 GeV photon is far outside the neutral pT range.",
+"prediction":{"d_acc":0.0,"d_nll":0.0,"rho_D":1.0,"rho_J":1.0,"rho_P_ref":1.0,"gen_drift":0.0,"dof":0}}

@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/neg1.npz","indices":null,
+ "sites":["body.block8.mlp_pre","body.block16.mlp_pre"],
+ "hypothesis":"Negative set for the soft-neutral gate readout: 384 clean jets, 128 P jets and 3x128 noised jets (t=0.2,0.5,0.85, standard-normal eps) at the two candidate gate blocks; a ridge readout should keep all clean/P tokens below threshold, noised tokens mostly below.",
+ "prediction":{"clean_tokens_above_gate_frac":0.001}}

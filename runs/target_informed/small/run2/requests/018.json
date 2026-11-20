@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e6M.npz","hypothesis":"Mid variant: flag + block-0 rank-1 compensation + summary-token fix + sparse key gating (4-32 coords/head), no later-block compensation. Expect E_ref ~0.23, P_ref ok (~0.93), class_drop ~0.01.","prediction":{"E_ref":0.23,"class_drop":0.01,"rho_P_ref":0.93,"e_clean":0.028,"dof":1000}}

@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/E3.npz", "input": "{RUN}/work/A.npz", "indices": null, "hypothesis": "Per-jet E3 errors to see why P lags: expect error to grow with the number of dropped particles and to be near zero for P jets without drops.", "prediction": {"e_P_rows_over_S": 0.023, "e_P_ndrop0": 0.002}}

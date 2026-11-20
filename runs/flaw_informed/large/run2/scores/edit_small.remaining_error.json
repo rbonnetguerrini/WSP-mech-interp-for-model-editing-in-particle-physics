@@ -1,0 +1,180 @@
+{
+ "name": "flaw_informed-large-run2/edit_small",
+ "cand": "{RECORDS}/flaw_informed-large-run2/finals/final_small.npz",
+ "pt_cut": null,
+ "reco_fix": null,
+ "keyclip": "None",
+ "clean": {
+  "acc": 0.859619140625,
+  "d_acc": -0.0007812499999999556,
+  "d_nll": 0.0029307005784806606,
+  "class_drop": 0.0029296875,
+  "kl": 0.003549515298512053
+ },
+ "r": {
+  "split2": 0.03345093642977048,
+  "soft3e-3": 0.028350720006638148,
+  "soft1e-3": 0.0359593177448877,
+  "soft1e-4": 0.034674092500150695,
+  "soft7_1e-3": 0.06312078159897336,
+  "split3": 0.0525009402692689,
+  "split2c": 0.06527495171800286
+ },
+ "R_vis": 0.624265485041653,
+ "R_in": 1.0360923460844376,
+ "R_sub": 0.21243862399886845,
+ "R_held": 0.7276791359774109,
+ "ratio": {
+  "split2": 1.0236604647900125,
+  "soft3e-3": 1.0485242273788626,
+  "soft1e-3": 0.09431806640602726,
+  "soft1e-4": 0.33055918159170966,
+  "soft7_1e-3": 0.15015253980781182,
+  "split3": 1.0196843822696993,
+  "split2c": 1.0132004858547217
+ },
+ "rho": {
+  "D": 0.9853535751670169,
+  "J": 1.1002967104075176,
+  "P": 0.8123637208818559,
+  "P_reco": 0.9928648339417216
+ },
+ "dir_err": {
+  "D": 0.06188336920073738,
+  "J": 0.20113992618914436,
+  "P": 0.28335530288039373
+ },
+ "max_log_rho": 0.20780710699159105,
+ "gate_no_g2": false,
+ "size": {
+  "n_changed": 97,
+  "frac_changed": 2.292864310556964e-07,
+  "dof": 97,
+  "max_rank": 1,
+  "rank_ok": true,
+  "tensors": {
+   "body.embed.mlp.fc1.weight": {
+    "changed": 1,
+    "rank": 1,
+    "dof": 1,
+    "rel_fro": 278.2165633094214,
+    "group": "input"
+   },
+   "body.embed.mlp.fc1.bias": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 116.29821287964198,
+    "group": "input"
+   },
+   "body.embed.mlp.fc2.weight": {
+    "changed": 17,
+    "rank": 1,
+    "dof": 17,
+    "rel_fro": 64386392.00743465,
+    "group": "input"
+   },
+   "body.embed.mlp.norm.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.0022076135188949905,
+    "group": "input"
+   },
+   "body.interaction.mlp.fc1.weight": {
+    "changed": 3,
+    "rank": 1,
+    "dof": 3,
+    "rel_fro": 90.52745193111926,
+    "group": "input"
+   },
+   "body.interaction.mlp.fc1.bias": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 14.436619874085393,
+    "group": "input"
+   },
+   "body.interaction.mlp.fc2.weight": {
+    "changed": 32,
+    "rank": 1,
+    "dof": 32,
+    "rel_fro": 0.24287663781167917,
+    "group": "input"
+   },
+   "body.interaction.mlp.fc2.bias": {
+    "changed": 22,
+    "rank": null,
+    "dof": 22,
+    "rel_fro": 9.22955797011485e-08,
+    "group": "input"
+   },
+   "body.in_blocks.27.mlp.fc1.weight": {
+    "changed": 16,
+    "rank": 1,
+    "dof": 16,
+    "rel_fro": 0.9164662654197847,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.27.mlp.fc1.bias": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 67.94490870461873,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.27.mlp.fc2.weight": {
+    "changed": 1,
+    "rank": 1,
+    "dof": 1,
+    "rel_fro": 18873719.022282682,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.27.mlp.norm.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.003246144800535937,
+    "group": "body_mlp"
+   }
+  }
+ },
+ "summary_drift": 0.15049132704734802,
+ "swap_back": {
+  "body_mlp": {
+   "R_vis_reverted": 0.9210396421302472,
+   "repair_lost": 0.789850666557726
+  },
+  "input": {
+   "R_vis_reverted": 0.9999808438787845,
+   "repair_lost": 0.9999490168710808
+  }
+ },
+ "gate": false,
+ "gate_norank": false,
+ "max_log_rho_rule": 0.09557988016601945,
+ "gate_rule_no_g2": true,
+ "rule": {
+  "e": {
+   "split2": 0.013246214140594141,
+   "soft3e-3": 0.013057537125215412,
+   "soft1e-3": 0.04829906060433765,
+   "soft1e-4": 0.04398719133630865,
+   "P": 0.08485827686422279,
+   "soft7_1e-3": 0.07207976871286328,
+   "clean": 0.012676274212669375
+  },
+  "e_orig": {
+   "split2": 5.693783335419448e-05,
+   "soft3e-3": 0.0,
+   "soft1e-3": 0.3708487010087695,
+   "soft1e-4": 0.1048952636353584,
+   "P": 0.14157967248206668,
+   "soft7_1e-3": 0.4200414057451852,
+   "clean": 0.0
+  },
+  "E_rule": 0.3829836141414688,
+  "E_rule_held": 0.17160157957520478
+ },
+ "gate_rule": true
+}

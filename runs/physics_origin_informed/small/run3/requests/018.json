@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v6a.npz", "hypothesis": "v5 pattern but particle-query heads weighted 3x more than summary-query heads.", "prediction": {"E_rule": 0.1, "d_acc": 0.0005, "rho_P_reco": 1.0, "gen_drift": 0.21}}

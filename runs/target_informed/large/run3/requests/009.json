@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v1a_local.npz","hypothesis":"Diagnostic: only zeroing the local-physics channel-2 writes; measures how much of v1's clean damage comes from losing L2.","prediction":{"e_clean":0.10,"d_acc":-0.015}}

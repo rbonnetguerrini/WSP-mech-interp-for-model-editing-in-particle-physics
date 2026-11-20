@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": null, "input": "{RUN}/work/ptest.npz", "indices": null, "hypothesis": "Original-model logits on 512 P jets and on the same jets with soft neutrals removed under three threshold hypotheses, to estimate the P target error offline.", "prediction": {"e_P_orig_abs-0.3_over_S": 0.35, "e_P_orig_frac1e-3_over_S": 0.2}}

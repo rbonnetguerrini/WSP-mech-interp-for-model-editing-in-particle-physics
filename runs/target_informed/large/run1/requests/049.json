@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/S3.npz",
+"hypothesis":"XS plus a rank-2 restoration in block 3: should reproduce D5b quality (E_ref ~0.17, class drop ~0.015) at ~33.8k DoF.",
+"prediction":{"E_ref":0.172,"e_clean":0.021,"d_acc":-0.003,"class_drop":0.015,"d_nll":0.005,"dof":33800}}

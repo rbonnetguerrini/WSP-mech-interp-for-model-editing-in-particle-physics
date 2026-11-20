@@ -1,0 +1,382 @@
+{
+ "transcript": "{RECORDS}/target_informed-small-run2/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "PARENT": 4,
+  "HARNESS": 1,
+  "SYSINFO": 41
+ },
+ "rows": [
+  {
+   "time": "2026-11-15T03:28:31.593Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "-rw-r--r--. 1 {USER} interactive   331 Nov 15 04:26 run/config.json\n-rw-r--r--. 1 {USER} interactive    78 Nov 15 04:27 run/ledger.json\n-rw-r--r--. 1 rbonne"
+  },
+  {
+   "time": "2026-11-15T03:28:37.240Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "{\n \"size\": \"s\",\n \"surgical_per_class\": null,\n \"models\": {\n  \"orig\": null\n },\n \"kinds\": [\n  \"surgical\",\n  \"capture\",\n  \"logits\",\n  \"reference\"\n ],\n \"budget\": 50,"
+  },
+  {
+   "time": "2026-11-15T03:28:37.691Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "import torch\nimport torch.nn as nn\n\n\nfrom omnilearned.layers import (\n    NoScaleDropout,\n    InteractionBlock,\n    LocalEmbeddingBlock,\n    MLP,\n    AttBlock,\n"
+  },
+  {
+   "time": "2026-11-15T03:28:39.324Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "import torch\nimport torch.nn as nn\nimport einops\n\n\nclass LayerScale(nn.Module):\n    def __init__(self, projection_dim, init_values=1e-3, channels_last=True):\n  "
+  },
+  {
+   "time": "2026-11-15T03:51:40.189Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/b5300okbw.output",
+   "status": "error",
+   "result": "<tool_use_error>Blocked: sleep 60 followed by: cat {LOCAL_TMP}/harness/{PROJECT_SLUG}/de1363f4-3aff-489d-9de"
+  },
+  {
+   "time": "2026-11-15T03:53:32.746Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > cmp2.py <<'EOF'\nimport numpy as np,sys\nR='{SCRATCH}",
+   "status": "ok",
+   "result": "body.block0 particles mean|d| 0.3687 mean|o| 7.754  summary mean|d| 0.2194 mean|o| 3.617\nbody.block1 particles mean|d| 0.3989 mean|o| 8.336  summary mean|d| 0.3"
+  },
+  {
+   "time": "2026-11-15T03:53:47.032Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > an_b.py <<'EOF'\nimport numpy as np\nW=np.load('{SCRATCH}",
+   "status": "ok",
+   "result": "embed ch70 mean -0.39 std 0.04\npid col 70 [ 0.    0.09  0.    0.06 -0.13 -0.06 -0.26 -0.16 -0.5 ]\nleast important block0 mlp units [(52, 0.0, 0.0), (40, 0.0, 0."
+  },
+  {
+   "time": "2026-11-15T03:54:39.252Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > build2.py <<'EOF'\nimport numpy as np, sys\nW=np.load('{SCRATCH}",
+   "status": "ok",
+   "result": "{RUN}/work/e2.npz 25 wu -3.9257648e-06\n{'body1h0': (4.7, 4.7, -1.6), 'body1h1': (1.5, -0.1, -3.9), 'body1h2'"
+  },
+  {
+   "time": "2026-11-15T03:55:57.016Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; timeout 100 env OMP_NUM_THREADS=4 {AGENT_ENV}/bin/pytho",
+   "status": "ok",
+   "result": "b0 norm2 w70 0.00016161299 b0 norm1 w70 1.6060288\n52 |f1|=2.32e+00 b=3.76e-03 wn=-3.93e-06 |f2|=2.72e-02 f1[j,70]=1.38e-02\n40 |f1|=2.19e+00 b=-8.22e-03 wn=1.04e"
+  },
+  {
+   "time": "2026-11-15T03:56:29.351Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > build3.py <<'EOF'\nimport numpy as np, sys, json\nW=np.load('{SCRATCH}",
+   "status": "ok",
+   "result": "{RUN}/work/e3.npz 34\n{\"b0n1\": [1.6060287952423096, 1.042243480682373], \"b1h0\": [0.92, 49.8], \"b1h1\": [0.68, "
+  },
+  {
+   "time": "2026-11-15T03:57:30.710Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/requests; IDX=$(python3 -c \"print(list(range(0,10240,40)))\")\ncat > 011.json.tmp <<EOF\n{\"kind\":\"capt",
+   "status": "ok",
+   "result": "body.block0 particles mean|d| 0.0793 mean|o| 7.754  summary mean|d| 0.0388 mean|o| 3.617\nbody.block1 particles mean|d| 0.2388 mean|o| 8.336  summary mean|d| 0.1"
+  },
+  {
+   "time": "2026-11-15T03:58:16.645Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > an_r2.py <<'EOF'\nimport numpy as np\nW=np.load('{SCRATCH}",
+   "status": "ok",
+   "result": "0 norm1 particles std 0.714 R2 0.490 | all std 0.719 R2 0.537 | summary mean [-0.5  -0.35 -0.15 -0.2 ] part mean -1.042\n1 norm1 particles std 0.014 R2 0.930 | a"
+  },
+  {
+   "time": "2026-11-15T03:58:52.745Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > build4.py <<'EOF'\nimport numpy as np, sys, json\nfrom build3 import *\ndef compensate(E, ",
+   "status": "ok",
+   "result": "{\"1norm1\": [-1.071, 0.997], \"1norm2\": [-1.017, 0.998], \"2norm1\": [-1.107, 0.964], \"2norm2\": [-2.179, 0.986], \"3norm1\": [-0.953, 0.882], \"3norm2\": [-2.525, 0.937"
+  },
+  {
+   "time": "2026-11-15T04:00:50.299Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > build5.py <<'EOF'\nimport numpy as np, sys, json\nfrom build4 import *\ndef comp_block0(E,",
+   "status": "ok",
+   "result": "block0 comp b0 -1.278 R2 0.487 token target [-1.517 -0.322 -0.221 -0.157] x* [-7.221 -0.489 -0.332 -0.234]\nsaved 43"
+  },
+  {
+   "time": "2026-11-15T04:01:55.865Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > mk_v3.py <<'EOF'\nimport numpy as np\nP='{SCRATCH}/r1",
+   "status": "ok",
+   "result": "flagged per P jet: mean 1.56, frac jets with any 0.775, max 9\nscan 95\n(1919, 150, 9)"
+  },
+  {
+   "time": "2026-11-15T04:02:31.778Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > an_v3.py <<'EOF'\nimport numpy as np\nR='{SCRATCH}/r1",
+   "status": "ok",
+   "result": "ref(P) vs ref(P-flag): mean 0.00000, exact frac 1.000\nref(P-flag) vs orig(P-flag): mean 0.00000\ne_orig(P)=|orig(P)-ref(P)| 0.1074\ne_edit(P)=|ed(P)-ref(P)| 0.036"
+  },
+  {
+   "time": "2026-11-15T04:04:29.102Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > mk_nogate.py <<'EOF'\nimport numpy as np\nW=np.load('{SCRATCH}",
+   "status": "ok",
+   "result": "41\nE_ref 0.7364 | d_acc -0.0005 cls_drop 0.0029 d_nll 0.0018 kl 0.0014 | gate True\ne: {'split2': 0.0396, 'soft3e-3': 0.0258, 'soft1e-3': 0.2088, 'soft1e-4': 0.0"
+  },
+  {
+   "time": "2026-11-15T04:07:08.146Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > an_sparse.py <<'EOF'\nimport numpy as np\nW=np.load('{SCRATCH}",
+   "status": "ok",
+   "result": "b1 [(5, -0.19), (28, -0.08), (19, -0.07), (21, -0.14)]\nb2 [(24, -0.81), (1, -0.6), (30, -0.12), (28, -0.12)]\nb3 [(29, -0.38), (22, -0.22), (20, -0.13), (21, -0."
+  },
+  {
+   "time": "2026-11-15T04:07:19.359Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > an_sparse2.py <<'EOF'\nimport numpy as np\nW=np.load('{SCRATCH}",
+   "status": "ok",
+   "result": "b 1 [[-0.12, 0.45, 0.64, 0.85], [0.07, 0.23, 0.33, 0.72], [-0.3, -0.2, 0.23, 0.51], [-0.28, 0.39, 0.7, 1.03]]\nb 2 [[-1.59, -0.23, 0.45, 2.05], [0.05, 0.35, 0.43"
+  },
+  {
+   "time": "2026-11-15T04:08:24.941Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > build6.py <<'EOF'\nimport numpy as np, sys, json\nfrom build5 import *\ndef sparse_dir(qh,",
+   "status": "ok",
+   "result": "{\"b1h0\": [8, 0.59], \"b1h1\": [32, 0.67], \"b1h2\": [32, 0.49], \"b1h3\": [8, 0.66], \"b2h0\": [16, 0.85], \"b2h1\": [16, 0.9], \"b2h2\": [4, 0.59], \"b2h3\": [8, 1.16], \"b3h"
+  },
+  {
+   "time": "2026-11-15T04:09:52.101Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > an_sp3.py <<'EOF'\nimport numpy as np\nfrom build6 import *\nfor b in range(1,8):\n    x=Z[",
+   "status": "ok",
+   "result": "1 k8 sp(all 0.59, summ min 0.54) dense(all 0.85, summ min 0.85) | k32 sp(all 0.67, summ min 0.85) dense(all 0.72, summ min 0.85) | k32 sp(all 0.49, summ min 0.5"
+  },
+  {
+   "time": "2026-11-15T04:11:55.657Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > an_beta.py <<'EOF'\nimport numpy as np\nfrom build6 import *\nR_='{SCRATCH}",
+   "status": "ok",
+   "result": "1 sd_e 0.0225 |q.e|max 1.11 | sd_e 0.0091 |q.e|max 0.35 | sd_e 0.0102 |q.e|max 0.41 | sd_e 0.0097 |q.e|max 0.27\n2 sd_e 0.0551 |q.e|max 0.74 | sd_e 0.0423 |q.e|m"
+  },
+  {
+   "time": "2026-11-15T04:12:28.822Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > build7.py <<'EOF'\nimport numpy as np, sys\nfrom build6 import *\ndef make2(out, later, ve",
+   "status": "ok",
+   "result": "saved {RUN}/work/e7S.npz 37\nsaved {RUN}/work/e7M.npz 40\n"
+  },
+  {
+   "time": "2026-11-15T04:14:22.500Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: date; cd {RUN}/work; cat > an_cost.py <<'EOF'\nimport numpy as np\nW=np.load('{SCRATCH}",
+   "status": "ok",
+   "result": "Sun Nov 15 05:14:22 CET 2026\nch70 total 3.4933  block0n1 3.3671\n41 total 0.3241 b0n1 0.0009 b0n2 0.0007 later 0.3225\n47 total 0.3440 b0n1 0.0000 b0n2 0.0030 lat"
+  },
+  {
+   "time": "2026-11-15T04:14:43.478Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > an_cost2.py <<'EOF'\nimport numpy as np\nW=np.load('{SCRATCH}",
+   "status": "ok",
+   "result": "70 raw total 7.302 per block [6.41  0.221 0.051 0.049 0.016 0.02  0.009 0.525]\n     ['10 w=1.61 pm=-1.04 sm=[-0.5  -0.35 -0.15 -0.2 ]', '20 w=0.000162 pm=-0.00 "
+  },
+  {
+   "time": "2026-11-15T04:15:59.337Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > an_cost3.py <<'EOF'\nimport numpy as np\nW=np.load('{SCRATCH}",
+   "status": "ok",
+   "result": "ch  raw_b0  raw_later comp_later  bnorm_std_summary bnorm_std_part\n108   0.096     3.644     0.447    0.059    0.182\n 99   0.105     5.882     0.455    0.101   "
+  },
+  {
+   "time": "2026-11-15T04:18:10.543Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > build8.py <<'EOF'\nimport numpy as np, sys\nfrom build6 import *\ndef make3(out, C, later,",
+   "status": "ok",
+   "result": "block0 comp b0 -0.057 R2 0.987 token target [-0.18   0.04   0.146 -0.167] x* [-7.221  1.682  7.221 -7.221]\nsaved {SCRATCH}/r"
+  },
+  {
+   "time": "2026-11-15T04:19:02.315Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > mk_v4.py <<'EOF'\nimport numpy as np\nW=np.load('{SCRATCH}",
+   "status": "ok",
+   "result": "(2048, 150, 9) 58.534885\n{\n \"ok\": true,\n \"pass\": 22,\n \"remaining\": 28,\n \"npz\": \"{RUN}/responses/022.npz\",\n \""
+  },
+  {
+   "time": "2026-11-15T04:19:22.741Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > an_x0.py <<'EOF'\nimport numpy as np\nW=np.load('{SCRATCH}",
+   "status": "ok",
+   "result": "max |n| 0.46160252780978006\nsummary tok err 0.011926645966947952\nch70 exact x0 mean -1.92 std 0.24 ; approx mean -4.25 std 4.75; corr 0.016\nclean n70 mean -1.22"
+  },
+  {
+   "time": "2026-11-15T04:19:53.106Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > an_x0b.py <<'EOF'\nimport numpy as np\nfrom build6 import fisher\nW=np.load('/{SITE}_scr",
+   "status": "ok",
+   "result": "clean p01 0.66 summ 0.88 minkeysd 0.003 | p01 1.18 summ 1.19 minkeysd 0.003 | p01 1.02 summ 1.12 minkeysd 0.003 | p01 1.01 summ 1.09 minkeysd 0.004\nnoised p01 0"
+  },
+  {
+   "time": "2026-11-15T04:20:55.754Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > build9.py <<'EOF'\nimport numpy as np, sys\nfrom build6 import *\nX0=np.load('x0.npz'); x0",
+   "status": "ok",
+   "result": "b0 -1.503 R2 0.973 |beta| 10.498 target [-0.637 -0.191 -0.203 -0.3  ] x* [-0.859 -0.243 -0.258 -0.384]\nsaved {SCRATCH}/r1022"
+  },
+  {
+   "time": "2026-11-15T04:23:30.398Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > build10.py <<'EOF'\nimport numpy as np, sys\nfrom build9 import *\ndef make5(out, later, T",
+   "status": "ok",
+   "result": "saved {RUN}/work/e10L.npz 42\nsaved {RUN}/work/e10S25.npz"
+  },
+  {
+   "time": "2026-11-15T04:24:56.838Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > build11.py <<'EOF'\nimport numpy as np, sys, json\nfrom build9 import *\ndef gate2(E, C=70",
+   "status": "ok",
+   "result": "{\"b1h0\": [0.84, 0.77], \"b1h1\": [0.67, 0.54], \"b1h2\": [0.49, 0.34], \"b1h3\": [1.0, 0.63], \"b2h0\": [1.91, 1.73], \"b2h1\": [1.12, 1.02], \"b2h2\": [1.16, 1.02], \"b2h3\""
+  },
+  {
+   "time": "2026-11-15T04:25:31.171Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; timeout 115 env OMP_NUM_THREADS=4 {AGENT_ENV}/bin/pytho",
+   "status": "ok",
+   "result": "1\nE_ref 0.1638 | d_acc 0.0001 cls_drop 0.0020 d_nll 0.0007 kl 0.0007 | gate True\ne: {'split2': 0.0144, 'soft3e-3': 0.0156, 'soft1e-3': 0.025, 'soft1e-4': 0.0252"
+  },
+  {
+   "time": "2026-11-15T04:27:30.312Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; for T in 8 5; do timeout 115 env OMP_NUM_THREADS=4 {SCRATCH}",
+   "status": "ok",
+   "result": "e11S10.npz\ne11S15.npz\ne11S25.npz\ne11S5.npz\ne11S8.npz\nE_ref 0.1252 | d_acc 0.0001 cls_drop 0.0020 d_nll 0.0007 kl 0.0007 | gate True\ne: {'split2': 0.0144, 'soft3"
+  },
+  {
+   "time": "2026-11-15T04:29:23.130Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; timeout 115 env OMP_NUM_THREADS=4 {AGENT_ENV}/bin/pytho",
+   "status": "ok",
+   "result": "e12L.npz\ne12XS.npz\nE_ref 0.1161 | d_acc 0.0001 cls_drop 0.0059 d_nll 0.0010 kl 0.0006 | gate True\ne: {'split2': 0.0135, 'soft3e-3': 0.0143, 'soft1e-3': 0.0163, "
+  },
+  {
+   "time": "2026-11-15T04:30:57.327Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > build13.py <<'EOF'\nimport numpy as np, sys\nfrom build11 import *\ndef gate_b0(E, C=70, T",
+   "status": "ok",
+   "result": "b0 gate p [0.55, 1.17, 1.01, 0.83]\nsaved {RUN}/work/e13b0.npz\nsaved {SCRATCH}"
+  },
+  {
+   "time": "2026-11-15T04:33:00.745Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > mk_v5.py <<'EOF'\nimport numpy as np\nP='{SCRATCH}/r1",
+   "status": "ok",
+   "result": "['clean', 'nh1e-3', 'g3e-4', 'gg1e-3', 'gcol1e-3', 'ch1e-4', 'P1.05', 'P1.2', 'nh3e-4'] (2016, 150, 9)\n036.npz\n037.json\n037.npz"
+  },
+  {
+   "time": "2026-11-15T04:33:23.215Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > an_v5.py <<'EOF'\nimport numpy as np,sys\nR='{SCRATCH}",
+   "status": "ok",
+   "result": "probe      e_orig ref=oc? ratio_037\nclean      0.0000    1.00 11556221.023(0.0116)\nnh1e-3     0.2386    1.00    0.162(0.0387)\ng3e-4      0.2543    1.00    0.139"
+  },
+  {
+   "time": "2026-11-15T04:33:34.461Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/requests; V={RUN}/work/v5.npz\nfor spec in \"038:",
+   "status": "ok",
+   "result": "probe      e_orig ref=oc? ratio_037 ratio_039 ratio_038\nclean      0.0000    1.00 11556221.023(0.0116) 11556217.670(0.0116) 11556241.980(0.0116)\nnh1e-3     0.23"
+  },
+  {
+   "time": "2026-11-15T04:34:42.180Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > build14.py <<'EOF'\nimport numpy as np, sys\nfrom build11 import *\nimport build11\ndef gat",
+   "status": "ok",
+   "result": "saved {RUN}/work/e14b5c15.npz\nsaved {RUN}/work/e14b15c5."
+  },
+  {
+   "time": "2026-11-15T04:37:20.781Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > build15.py <<'EOF'\nimport numpy as np, sys\nfrom build14 import *\nif __name__=='__main__",
+   "status": "ok",
+   "result": "saved {RUN}/work/e15XS8.npz\nE_ref 0.1895 | d_acc -0.0010 cls_drop 0.0215 d_nll 0.0002 kl 0.0038 | gate False"
+  },
+  {
+   "time": "2026-11-15T04:38:00.883Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; timeout 115 env OMP_NUM_THREADS=4 {AGENT_ENV}/bin/pytho",
+   "status": "ok",
+   "result": "E_ref 0.1429 | d_acc 0.0000 cls_drop 0.0127 d_nll 0.0005 kl 0.0014 | gate True\ne: {'split2': 0.0189, 'soft3e-3': 0.02, 'soft1e-3': 0.0207, 'soft1e-4': 0.0193, '"
+  },
+  {
+   "time": "2026-11-15T04:38:41.068Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; timeout 115 env OMP_NUM_THREADS=4 {AGENT_ENV}/bin/pytho",
+   "status": "ok",
+   "result": "E_ref 0.1389 | d_acc 0.0010 cls_drop 0.0098 d_nll 0.0011 kl 0.0012 | gate True\ne: {'split2': 0.0179, 'soft3e-3': 0.0196, 'soft1e-3': 0.0198, 'soft1e-4': 0.0185,"
+  },
+  {
+   "time": "2026-11-15T04:39:30.500Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; cat > build16.py <<'EOF'\nimport numpy as np, sys\nfrom build14 import *\nif __name__=='__main__",
+   "status": "ok",
+   "result": "saved {RUN}/work/e16S.npz\nsaved {RUN}/work/e16L.npz\nE_re"
+  },
+  {
+   "time": "2026-11-15T04:40:58.028Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; timeout 100 env OMP_NUM_THREADS=2 {AGENT_ENV}/bin/pytho",
+   "status": "ok",
+   "result": "final_small 35 bad [] unchanged []\nfinal_mid 36 bad [] unchanged []\nfinal_large 42 bad [] unchanged []\n47 pred_table.md"
+  }
+ ]
+}

@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edits/v1.npz",
+"hypothesis":"Channel 2 of the input embedding is rebuilt so that it is exactly zero for neutral particles with pT<0.8 and E<1.8 (two repurposed step units + pid cancellation), so the body/classifier padding mask drops them exactly; only the kNN path remains. Natural tokens lose the original channel-2 input content (std ~0.3), a modest side effect.",
+"prediction":{"E_ref":0.25,"e_soft1e-3_ratio":0.1,"e_soft1e-4_ratio":0.1,"d_acc":-0.003,"d_nll":0.01,"rho_D":1.0,"rho_J":1.0,"rho_P_ref":1.0,"gen_drift":0.1,"DoF":18448}}

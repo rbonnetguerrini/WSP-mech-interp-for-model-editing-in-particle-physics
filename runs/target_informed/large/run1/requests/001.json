@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":null,
+"hypothesis":"Baseline of the original model: tells e_v(original) per probe and whether the reference differs from the original on clean jets.",
+"prediction":{"E_ref":1.0,"d_acc":0.0,"gen_drift":0.0,"rho_D":1.0,"rho_J":1.0,"rho_P_ref":1.0,"e_clean_orig":0.05}}

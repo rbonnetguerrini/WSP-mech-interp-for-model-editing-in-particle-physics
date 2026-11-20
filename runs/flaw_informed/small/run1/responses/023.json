@@ -1,0 +1,34 @@
+{
+ "ok": true,
+ "pass": 23,
+ "remaining": 27,
+ "npz": "{RUN}/responses/023.npz",
+ "shapes": {
+  "logits": [
+   256,
+   210
+  ],
+  "labels": [
+   256
+  ],
+  "act:body.block6": [
+   256,
+   155,
+   128
+  ],
+  "act:body.block7": [
+   256,
+   155,
+   128
+  ],
+  "act:body.norm": [
+   256,
+   155,
+   128
+  ],
+  "act:classifier.fc": [
+   256,
+   512
+  ]
+ }
+}

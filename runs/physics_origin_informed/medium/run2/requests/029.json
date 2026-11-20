@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/M1s.npz", "hypothesis": "The single-readout small variant plus the 1-unit NHo shift (mid candidate).", "prediction": {"E_rule": 0.052, "e_clean": 0.001, "dof": 2333}}

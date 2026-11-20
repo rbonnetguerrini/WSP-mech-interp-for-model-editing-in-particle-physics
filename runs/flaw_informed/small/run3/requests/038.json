@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/sp32b.npz", "hypothesis": "sp32 with a stricter fraction cut (-2.95): fewer detector firings on noised generator jets (gen_drift down from 0.030) at the cost of some soft1e-3 recall.", "prediction": {"ratio_soft1e-3": 0.31, "ratio_soft1e-4": 0.1, "gen_drift_max": 0.024, "rho_P_ref": 0.99, "dof": 57}}

@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e6S.npz","hypothesis":"Small variant: like M but without block-0 compensation (token fix only). Expect E_ref ~0.26, P_ref near 0.88 (marginal), class_drop ~0.018.","prediction":{"E_ref":0.26,"class_drop":0.018,"rho_P_ref":0.88,"e_clean":0.038,"dof":480}}

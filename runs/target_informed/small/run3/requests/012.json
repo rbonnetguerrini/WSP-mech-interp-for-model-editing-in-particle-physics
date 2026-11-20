@@ -1,0 +1,3 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/set1.npz","indices":null,"sites":["body.block2.mlp_pre","body.block3.mlp_pre","body.block4.mlp_pre","body.block6.mlp_pre"],
+"hypothesis":"Find the earliest body block whose MLP input linearly separates soft OOD photons from clean tokens (block-1: overlapping; block-7 input: margin 1.2).",
+"prediction":{"first_separable_block":4}}

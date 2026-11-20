@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e7.npz",
+ "hypothesis":"Chained gate + saturation to s_late with NO QK edits: removes the QK-edit distortion (0.044 S on jets without soft neutrals, and the split2 ratio 3.7 that I attribute to OOD twin tokens hitting the key edit), at the cost of weaker suppression in blocks 1-3 (margins up to +13 for rare queries).",
+ "prediction":{"ratio_soft1e-3":0.12,"ratio_soft1e-4":0.25,"ratio_split2":1.3,"d_acc":-0.002,"d_nll":0.005,"kl":0.004,"rho_P_ref":0.9,"rho_J":1.05,"gen_drift_max":0.25,"dof":5130}}

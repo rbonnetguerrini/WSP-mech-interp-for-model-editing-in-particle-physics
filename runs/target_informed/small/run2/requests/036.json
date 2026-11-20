@@ -1,0 +1,1 @@
+{"kind":"logits","weights":null,"input":"{RUN}/work/v5.npz","indices":null,"hypothesis":"Original logits on the validation probe set.","prediction":{"dummy":0}}

@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/cap2.npz","indices":null,
+ "sites":["body.block5.mlp_pre","body.block6.mlp_pre","body.block7.mlp_pre","body.block8.mlp_pre"],
+ "hypothesis":"Map soft-neutral detector units: 40 clean jets (all classes) + same jets with photon 1e-3, photon 1e-4, neutral hadron 3e-4. Expect a growing number of MLP units (blocks 5,6,7,8) that are active on the added soft neutral and inactive on clean tokens.",
+ "prediction":{"n_selective_units_total":40}}

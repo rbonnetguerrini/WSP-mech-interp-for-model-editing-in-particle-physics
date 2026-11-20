@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e16L.npz","hypothesis":"L variant (compensation blocks 1-7) with unweighted regression (sw 1, particle-dominated intercepts). Expect a small improvement over e12L (0.116).","prediction":{"E_ref":0.11,"class_drop":0.005,"e_clean":0.009}}

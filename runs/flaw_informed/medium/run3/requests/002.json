@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/scan1.npz","indices":null,
+"sites":["embed","body.block0","body.block5","body.norm"],
+"hypothesis":"The response to one added photon peaks near pT fraction 1e-3 (log pT ~ -0.5), a narrow band, suggesting a localized detector rather than generic IR sensitivity; neutral hadrons may behave differently. Summary-token change should appear at a specific depth.",
+"prediction":{"r_g1e-3_over_r_g1e-4":3.0,"r_g3e-3_over_r_g1e-3":0.15,"r_h1e-3_over_r_g1e-3":0.5}}

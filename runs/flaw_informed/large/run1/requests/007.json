@@ -1,0 +1,4 @@
+{"kind":"capture","weights":"{RUN}/work/mask_v1.npz","input":"{RUN}/work/cap1.npz","indices":null,
+ "sites":["embed","body.block0","body.block12","body.block20"],
+ "hypothesis":"Diagnostic for mask_v1: if the gate works, the soft photon token's embed channel 2 is exactly 0 and its block0 output equals its input (masked: no attention/MLP update) and channel 2 stays 0; if the summary diff still grows at block12/20 the flaw travels through other particles (kNN local features), not through the soft token itself.",
+ "prediction":{"soft_tok_embed_ch2_abs":0.0,"sum_diff_g1_block20":0.4}}

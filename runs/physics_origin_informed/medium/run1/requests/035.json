@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v11s192.npz", "hypothesis": "v11 with the flag pattern on only 192 channels; fewer channels means weaker key anti-alignment, so E_rule should rise above the 256-channel value 0.11 while DoF drops to ~292.", "prediction": {"E_rule": 0.18, "dof": 293, "gen_drift_max": 0.007}}

@@ -1,0 +1,3 @@
+{"kind":"logits","weights":null,"input":"{RUN}/work/probe_clean.npz","indices":null,
+ "hypothesis":"Reference: original model on 300 clean jets (= reco of the new NH and photon-3e-4 probes).",
+ "prediction":{"n":300}}

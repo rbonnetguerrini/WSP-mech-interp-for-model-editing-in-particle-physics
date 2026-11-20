@@ -1,0 +1,349 @@
+{
+ "budget": 50,
+ "used": 23,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Exact-mask construction: channel 2 of the embedding is exactly 0 for neutrals in the photon box, so the model's own padding mask drops them; rewriting channel 2 costs some accuracy and masking noised neutrals should move the generator a lot.",
+   "prediction": {
+    "E_rule": 0.35,
+    "d_acc": -0.01,
+    "d_nll": 0.03,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.15,
+    "DoF": 5136
+   },
+   "weights": "{RUN}/submissions/zero_pass.npz",
+   "input": null,
+   "time": "21:53:09",
+   "sec": 398.7
+  },
+  {
+   "id": "002",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Baseline activations: embed output E and block-0 MLP pre-activations (invertible to the block-0 input x0) let me decompose channel 2 into E2 + L2 + P2 + A2 and fit readouts; block1 shows the first mixing.",
+   "prediction": {
+    "L2_std_over_x2_std": 0.5,
+    "fc1_cond_ok": 1
+   },
+   "weights": null,
+   "input": "soft1e-3",
+   "time": "21:54:30",
+   "sec": 2.2
+  },
+  {
+   "id": "003",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same exact mask, but channel 2 outside the box is a 53-unit closed-form fit of the original E2 (residual std 0.025 instead of ~0.4), so clean-jet error and side effects should drop sharply; an unphysical-kinematics guard lowers generator masking at high t.",
+   "prediction": {
+    "E_rule": 0.15,
+    "e_clean": 0.025,
+    "d_acc": -0.001,
+    "class_drop": 0.01,
+    "rho_P_reco": 0.95,
+    "rho_D": 1.05,
+    "gen_drift_t0.85": 0.2,
+    "gen_drift_t0.2": 0.02
+   },
+   "weights": "{RUN}/work/A1.npz",
+   "input": null,
+   "time": "22:02:58",
+   "sec": 111.3
+  },
+  {
+   "id": "004",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Per-jet logits of A1 on P; compared with the original on P_reco (next pass) to split the P residual between jets with uncaught neutral-hadron band drops and jets whose drops are all in the photon box.",
+   "prediction": {
+    "frac_of_P_error_from_NHband_jets": 0.5
+   },
+   "weights": "{RUN}/work/A1.npz",
+   "input": "P",
+   "time": "22:04:33",
+   "sec": 5.0
+  },
+  {
+   "id": "005",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Reference logits f_orig(reco(P x)) for the same jets.",
+   "prediction": {
+    "agrees_with_surgical_e_P": 1
+   },
+   "weights": null,
+   "input": "P_reco",
+   "time": "22:04:38",
+   "sec": 4.9
+  },
+  {
+   "id": "006",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "If the uncaught NH-band tokens are moved to E=2.3 GeV (just above threshold), the residual in those jets should fall from ~1.4 to the size of a legitimate soft-NH effect, telling me whether a block-0 E-clamp for neutral hadrons is worth building.",
+   "prediction": {
+    "err_NHband_jets": 0.3,
+    "err_all": 0.12
+   },
+   "weights": "{RUN}/work/A1.npz",
+   "input": "{RUN}/work/P_nhremap.npz",
+   "time": "22:06:19",
+   "sec": 5.0
+  },
+  {
+   "id": "007",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Remapping NH-band tokens to E=5 GeV (well inside the JetClass NH distribution) instead of 2.3 GeV; checks whether an in-distribution energy has less influence than an edge-of-threshold one.",
+   "prediction": {
+    "err_NHband_jets": 0.6
+   },
+   "weights": "{RUN}/work/A1.npz",
+   "input": "{RUN}/work/P_nhremap_5.0.npz",
+   "time": "22:07:21",
+   "sec": 5.0
+  },
+  {
+   "id": "008",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "A1 with an exact threshold boundary (step from pre=-8 to -5 over 1e-4 in log instead of +-0.005) recovers the ~51 near-threshold box jets (12% of the P error); the nonzero box/pid offset is neutral for the scored metrics.",
+   "prediction": {
+    "E_rule": 0.058,
+    "e_P": 0.0135,
+    "e_clean": 0.001,
+    "d_acc": 0.0,
+    "gen_drift_max": 0.25
+   },
+   "weights": "{RUN}/work/A2.npz",
+   "input": null,
+   "time": "22:10:56",
+   "sec": 109.5
+  },
+  {
+   "id": "009",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Pairs of jets where one neutral hadron sits at E in [0.8,2.6] GeV and at E=2.25 GeV. Block-0 pre-activations give linear readouts of NH-ness and log E; the paired block-0 outputs give the residual shift a clamp unit must write.",
+   "prediction": {
+    "NH_readout_resid": 0.05,
+    "nE_readout_resid": 0.02
+   },
+   "weights": "{RUN}/work/A2.npz",
+   "input": "{RUN}/work/nhpairs.npz",
+   "time": "22:11:53",
+   "sec": 5.6
+  },
+  {
+   "id": "010",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original model: block-0 hidden activations for sub-threshold photons (soft1e-4), above-threshold soft photons (soft3e-3) and NH energy pairs. If the shortcut is computed by a few block-0 units, they should separate sub- from above-threshold neutrals.",
+   "prediction": {
+    "n_units_carrying_half_of_threshold_contrast": 20
+   },
+   "weights": null,
+   "input": "{RUN}/work/mix.npz",
+   "time": "22:14:17",
+   "sec": 9.2
+  },
+  {
+   "id": "011",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Silence the top-3 block-0 MLP units that separate sub-threshold from above-threshold soft photons (norm.weight=0, 1 DoF each); this removes part of the shortcut signal before any mixing, so the soft-photon response should shrink at a few DoF.",
+   "prediction": {
+    "E_rule": 0.85,
+    "d_acc": -0.001,
+    "DoF": 3
+   },
+   "weights": "{RUN}/work/K3.npz",
+   "input": null,
+   "time": "22:22:34",
+   "sec": 109.5
+  },
+  {
+   "id": "012",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Silence the top-10 block-0 MLP units that separate sub-threshold from above-threshold soft photons (norm.weight=0, 1 DoF each); this removes part of the shortcut signal before any mixing, so the soft-photon response should shrink at a few DoF.",
+   "prediction": {
+    "E_rule": 0.75,
+    "d_acc": -0.001,
+    "DoF": 10
+   },
+   "weights": "{RUN}/work/K10.npz",
+   "input": null,
+   "time": "22:24:24",
+   "sec": 109.4
+  },
+  {
+   "id": "013",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Silence the top-25 block-0 MLP units that separate sub-threshold from above-threshold soft photons (norm.weight=0, 1 DoF each); this removes part of the shortcut signal before any mixing, so the soft-photon response should shrink at a few DoF.",
+   "prediction": {
+    "E_rule": 0.65,
+    "d_acc": -0.001,
+    "DoF": 25
+   },
+   "weights": "{RUN}/work/K25.npz",
+   "input": null,
+   "time": "22:26:13",
+   "sec": 109.5
+  },
+  {
+   "id": "014",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Same 256 jets clean and with a soft1e-4 photon. Comparing summary-token changes block by block with the logit change shows whether the flaw enters through body mixing (summary tokens move early) or mainly through the classifier reading the soft token.",
+   "prediction": {
+    "rel_summary_change_body_norm": 0.1
+   },
+   "weights": null,
+   "input": "{RUN}/work/cs.npz",
+   "time": "22:29:48",
+   "sec": 2.0
+  },
+  {
+   "id": "015",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Pooled classifier vectors for 400 jets as clean / soft1e-4 / soft1e-3 / P / P_reco. If the soft-neutral shift is concentrated along a few directions (dataset-identity), a classifier-only projection can remove much of the flaw without touching the generator.",
+   "prediction": {
+    "frac_shift_var_top1": 0.5
+   },
+   "weights": null,
+   "input": "{RUN}/work/pool.npz",
+   "time": "22:32:48",
+   "sec": 5.6
+  },
+  {
+   "id": "016",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "A2 plus an angular guard (no masking outside an octagon of half-width 0.85 around the jet axis). Real drops all lie inside, so E_rule should be unchanged, while fewer noised generator tokens are masked: gen_drift at t=0.85 should fall by roughly a third.",
+   "prediction": {
+    "E_rule": 0.061,
+    "gen_drift_t0.85": 0.17,
+    "gen_drift_t0.5": 0.07,
+    "gen_drift_t0.2": 0.035
+   },
+   "weights": "{RUN}/work/A3.npz",
+   "input": null,
+   "time": "22:39:47",
+   "sec": 109.5
+  },
+  {
+   "id": "017",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small variant: same exact mask and guards, but channel 2 outside the box rebuilt from only 13 fitted units (residual 0.056 instead of 0.026); slightly larger clean error, E_rule a little worse, ~250 fewer DoF.",
+   "prediction": {
+    "E_rule": 0.068,
+    "e_clean": 0.003,
+    "DoF": 5200,
+    "gen_drift_t0.85": 0.14
+   },
+   "weights": "{RUN}/work/S1.npz",
+   "input": null,
+   "time": "22:43:31",
+   "sec": 109.5
+  },
+  {
+   "id": "018",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "A3 plus an energy-pT consistency guard (lE-lpt>2.1 never occurs in real jets): rule metrics identical to A3, generator drift equal or slightly lower.",
+   "prediction": {
+    "E_rule": 0.0607,
+    "gen_drift_t0.85": 0.14,
+    "DoF": 5448
+   },
+   "weights": "{RUN}/work/M1.npz",
+   "input": null,
+   "time": "22:45:21",
+   "sec": 109.5
+  },
+  {
+   "id": "019",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "M1 plus two local-MLP gates that write a tiny nonzero value into local channel 2 whenever a neighbour pair violates the energy-angle consistency of real jets; real jets never trigger it, so rule metrics stay at M1 values, while noised generator jets are mostly no longer masked, so gen_drift at t=0.5 and 0.85 should drop clearly.",
+   "prediction": {
+    "E_rule": 0.0607,
+    "gen_drift_t0.85": 0.05,
+    "gen_drift_t0.5": 0.05,
+    "gen_drift_t0.2": 0.035
+   },
+   "weights": "{RUN}/work/M2.npz",
+   "input": null,
+   "time": "22:56:30",
+   "sec": 109.9
+  },
+  {
+   "id": "020",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Edited model (M2) on soft neutral-hadron probes (soft1e-4/1e-3 photons relabelled pid 7). Box NH are masked, so the 1e-4 version should be fixed almost completely; the 1e-3 version only partly (NH with pT>=0.8 and E<2.2 are in the uncaught band).",
+   "prediction": {
+    "ratio_nh1e-4": 0.03,
+    "ratio_nh1e-3": 0.35
+   },
+   "weights": "{RUN}/work/M2.npz",
+   "input": "{RUN}/work/nhprobe.npz",
+   "time": "23:00:52",
+   "sec": 10.1
+  },
+  {
+   "id": "021",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original model on the same soft-NH probe jets, to get e_orig.",
+   "prediction": {
+    "ratio_nh1e-4": 0.03,
+    "ratio_nh1e-3": 0.35
+   },
+   "weights": null,
+   "input": "{RUN}/work/nhprobe.npz",
+   "time": "23:00:53",
+   "sec": 1.3
+  },
+  {
+   "id": "022",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small variant (13 fit units) with all generator guards (angle octagon, E>=pT, lE-lpt, neighbour consistency): rule metrics as S1, drift as M2.",
+   "prediction": {
+    "E_rule": 0.065,
+    "gen_drift_max": 0.055,
+    "DoF": 5263
+   },
+   "weights": "{RUN}/work/S2.npz",
+   "input": null,
+   "time": "23:03:26",
+   "sec": 113.1
+  },
+  {
+   "id": "023",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Large variant: 86 fit units (channel-2 residual 0.0238 vs 0.0255) with all guards; slightly lower clean error and E_rule than M2.",
+   "prediction": {
+    "E_rule": 0.0603,
+    "e_clean": 0.0009,
+    "gen_drift_max": 0.053,
+    "DoF": 5660
+   },
+   "weights": "{RUN}/work/Lg.npz",
+   "input": null,
+   "time": "23:05:15",
+   "sec": 109.7
+  }
+ ],
+ "oracle_up": "2026-11-15T21:32:50"
+}

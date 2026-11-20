@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/E5b234m.npz", "hypothesis": "Blocks 2-4 with a larger suppression margin (15 logits instead of 8); leak in these blocks is tiny so stronger suppression should help a little.", "prediction": {"E_ref": 0.037, "e_clean": 0.0005}}

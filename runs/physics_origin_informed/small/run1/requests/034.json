@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/fl70.npz", "hypothesis": "Channel-70 full regression with exact MLP inputs: lowest collateral, but channel 70 is heavily read by the generator.", "prediction": {"E_rule": 0.075, "d_acc": 0.0, "e_clean": 0.012, "gen_drift": 0.17, "dof": 13000}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v4_d04c.npz", "hypothesis": "As 020 plus key suppression (shift 10) in the two classifier token-attention blocks, which helped soft probes slightly before.", "prediction": {"E_rule": 0.18, "d_acc": -0.001, "e_clean": 0.0025, "e_P": 0.041, "rho_P_reco": 0.95, "gen_drift": 0.28}}

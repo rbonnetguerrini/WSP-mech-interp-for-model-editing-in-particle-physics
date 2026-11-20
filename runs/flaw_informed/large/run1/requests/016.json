@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/cap2.npz","indices":null,
+ "sites":["body.block20","body.block21","body.block22","body.block23"],
+ "hypothesis":"Residual inputs of later blocks on the all-class probe set, to find every head whose summary queries attend to added soft neutrals (expected: 17.18, 18.17, 19.11, 20.31 plus a few more in 21-27) and to fit low-rank key edits.",
+ "prediction":{"n_flaw_heads_found":8}}

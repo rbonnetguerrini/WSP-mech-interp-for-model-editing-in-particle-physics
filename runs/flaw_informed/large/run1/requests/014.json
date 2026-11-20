@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/cap2.npz","indices":null,
+ "sites":["body.block17.mlp_pre","body.block18.mlp_pre","body.block19.mlp_pre","body.block20.mlp_pre"],
+ "hypothesis":"Detector units continue in blocks 17-20 (more selective units than in 13-16 since the flag keeps growing).",
+ "prediction":{"n_selective_units_17_20":200}}

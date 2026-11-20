@@ -1,0 +1,3 @@
+{"kind":"logits","weights":null,"input":"{RUN}/work/scan1.npz","indices":null,
+ "hypothesis":"Scan of one added photon over pT fraction 1e-5..1e-2 plus a neutral hadron and a charged particle at 1e-3: the response should peak near fraction 1e-3 (log_pt ~ -0.5) for neutrals and be much smaller for the charged particle.",
+ "prediction":{"r_1e-3_photon":0.38,"r_1e-4_photon":0.1,"r_1e-3_charged":0.05,"r_1e-3_nh":0.3}}

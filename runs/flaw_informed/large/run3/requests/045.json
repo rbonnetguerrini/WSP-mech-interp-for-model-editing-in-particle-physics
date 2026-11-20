@@ -1,0 +1,3 @@
+{"kind":"logits","weights":"{RUN}/work/t7.npz","input":"{RUN}/work/in6.npz","indices":null,
+ "hypothesis":"t7 on in6 for target-error estimates; expect values close to t4 (soft1e-3 ~0.02 S, soft1e-4 ~0.036 S, clean ~0.003 S, P ~0.075 S vs the 1.35e-3 target).",
+ "prediction":{"e_clean":0.003,"e_soft1e-3":0.02,"e_soft1e-4":0.036}}

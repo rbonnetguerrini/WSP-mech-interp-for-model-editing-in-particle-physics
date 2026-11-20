@@ -1,0 +1,3 @@
+{"kind":"reference","input":"{RUN}/work/set2.npz","indices":null,
+"hypothesis":"The reference removes a constituent when it lies below a detector-like acceptance (neutral hadrons E < ~2.25 GeV, photons an eta-dependent pT/E floor); otherwise it equals the original. One added particle per jet on a random (pT, eta, pid) grid maps the boundary: ref(x)==orig(clean) means removed.",
+"prediction":{"frac_nh_removed_below_E2.25":0.95,"frac_charged_removed":0.1,"frac_photon_removed_logpt_below_-0.3_central":0.9}}

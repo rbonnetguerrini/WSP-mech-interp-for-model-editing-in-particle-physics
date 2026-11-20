@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/v2_K12c.npz","hypothesis":"as 012 plus classifier key suppression (shift 10) on the 4 summary-token queries","prediction":{"E_rule":0.22,"d_acc":-0.002,"e_clean":0.004,"rho_P_reco":1.0,"gen_drift":0.25}}

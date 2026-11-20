@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v11_K14.npz", "hypothesis": "Extend flagged-key suppression to blocks 9-14 with half the shift (leak 3e-4 to 9e-4) to remove more renormalisation error.", "prediction": {"E_rule": 0.19, "e_clean": 0.002, "d_acc": -0.001, "rho_P_reco": 0.965, "gen_drift": 0.26}}

@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/M1.npz","hypothesis":"Mid without classifier regression (mean-ablation there): regression in attention reads of blocks 0,1 and MLP reads of blocks 1-3. Expect E_ref ~0.089 at ~4.9k DoF.","prediction":{"E_ref":0.089,"dof":4900}}

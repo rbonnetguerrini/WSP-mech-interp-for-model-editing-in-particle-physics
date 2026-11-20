@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/S320.npz", "hypothesis": "Sparse kill on 320 channels; between S256 and dense.", "prediction": {"E_ref": 0.1, "dof": 424}}

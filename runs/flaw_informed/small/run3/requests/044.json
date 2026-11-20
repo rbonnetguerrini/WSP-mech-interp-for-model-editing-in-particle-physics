@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/spAg.npz", "input": "{RUN}/work/pref2.npz", "indices": [], "hypothesis": "P e_v estimate for spAg, expect ~0.63.", "prediction": {"ev_ratio_P_at_1.4e-3": 0.63}}

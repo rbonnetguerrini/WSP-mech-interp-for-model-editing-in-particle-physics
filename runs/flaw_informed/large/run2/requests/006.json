@@ -1,0 +1,11 @@
+{
+ "kind": "logits",
+ "weights": null,
+ "input": "{RUN}/work/scan2.npz",
+ "hypothesis": "If the flaw is a response to neutrals with pT<1 GeV, removing natural neutrals <1 GeV from clean jets changes logits strongly (~0.4 S per removed); fine scan shows window edge near log_pt 0.",
+ "prediction": {
+  "r_clean_minus_n_lt1": 0.3,
+  "r_add6_at_0.15": 0.1,
+  "r_add6_at_-0.15": 0.4
+ }
+}

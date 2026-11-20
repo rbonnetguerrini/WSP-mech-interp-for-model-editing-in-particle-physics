@@ -1,0 +1,14 @@
+{
+ "kind": "surgical",
+ "weights": "{RUN}/work/e_combo1.npz",
+ "hypothesis": "Pair gate (lp<-0.3) + 6-unit embed hardening (lp<-0.1): passes accuracy/NLL limits (few natural tokens below threshold), J/D/P_ref ratios within e^0.15; soft1e-3 ratio ~0.2, soft1e-4 ~0.75; gen_drift moderate because noised low-lp tokens are gated.",
+ "prediction": {
+  "ratio_soft1e-3": 0.22,
+  "ratio_soft1e-4": 0.75,
+  "d_acc": -0.003,
+  "rho_J": 1.03,
+  "rho_P_ref": 1.0,
+  "gen_drift_max": 0.08,
+  "dof": 6200
+ }
+}

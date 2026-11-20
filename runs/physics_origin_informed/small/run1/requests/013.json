@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v4l.npz", "hypothesis": "v4s plus regression restoration of channel 70 for all body and classifier readers.", "prediction": {"E_rule": 0.08, "d_acc": 0.0, "d_nll": 0.002, "e_clean": 0.012, "gen_drift": 0.08, "dof": 12000}}

@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v8_full_g2.npz","hypothesis":"As v7b but gamma margin 2x instead of 2.5x: less clean noise (floor ~0.0063), small risk of margin violations.","prediction":{"E_ref":0.1,"e_clean":0.0063,"DoF":38461}}

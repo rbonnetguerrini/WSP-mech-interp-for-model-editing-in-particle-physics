@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": null, "input": "{RUN}/work/pref.npz", "indices": [], "hypothesis": "Original-model logits on clean, P and three candidate P_ref constructions (P minus neutrals below the clean energy threshold, below frac 1e-3, below frac 2e-3) to serve as denominators for rho.", "prediction": {"resp_P_over_S": 0.3, "resp_PE_over_resp_P": 0.8}}

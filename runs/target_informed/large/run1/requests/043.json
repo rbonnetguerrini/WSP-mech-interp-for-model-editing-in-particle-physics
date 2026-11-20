@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/D5b.npz",
+"hypothesis":"D3 plus a rank-4 least-squares repair in block-3 MLP fc2 fitted on D3's own block-3 state (removes ~64% of the remaining weighted block-3 error, mostly channel 2). Expect a further drop of clean damage.",
+"prediction":{"E_ref":0.2,"e_clean":0.026,"d_acc":-0.005,"class_drop":0.015,"d_nll":0.007,"kl":0.007}}

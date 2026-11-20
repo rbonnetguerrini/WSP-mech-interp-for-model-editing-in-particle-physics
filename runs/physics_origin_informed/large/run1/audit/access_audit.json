@@ -1,0 +1,9 @@
+{
+ "transcript": "{RECORDS}/physics_origin_informed-large-run1/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {},
+ "rows": []
+}

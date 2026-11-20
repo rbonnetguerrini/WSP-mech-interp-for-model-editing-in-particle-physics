@@ -1,0 +1,15 @@
+{
+ "ok": true,
+ "pass": 44,
+ "remaining": 6,
+ "npz": "{RUN}/responses/045.npz",
+ "shapes": {
+  "logits": [
+   1960,
+   210
+  ],
+  "labels": [
+   1960
+  ]
+ }
+}

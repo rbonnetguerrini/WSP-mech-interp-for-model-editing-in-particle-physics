@@ -1,0 +1,610 @@
+{
+ "budget": 50,
+ "used": 42,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Baseline: original model scored against the reference; expect clean e~0 and nonzero e on soft and P probes.",
+   "prediction": {
+    "E_ref": 1.0,
+    "d_acc": 0.0,
+    "e_clean": 0.0
+   },
+   "weights": null,
+   "input": null,
+   "time": "18:03:39",
+   "sec": 123.4
+  },
+  {
+   "id": "002",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Reference on clean/soft1e-3/soft1e-4/P blocks of 512 jets; expect ref(soft1e-4)=orig(clean), ref(clean)=orig(clean).",
+   "prediction": {
+    "ref_soft1e-4_vs_orig_clean_dist": 0.0,
+    "ref_clean_vs_orig_clean": 0.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/setA.npz",
+   "time": "18:05:32",
+   "sec": 1.4
+  },
+  {
+   "id": "003",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original logits and activations on the same set, to compare with the reference.",
+   "prediction": {
+    "orig_soft1e-3_response": 0.25
+   },
+   "weights": null,
+   "input": "{RUN}/work/setA.npz",
+   "time": "18:05:33",
+   "sec": 1.4
+  },
+  {
+   "id": "004",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Map the drop rule: a single added particle is dropped by the reference iff (neutral? photon) with pT<0.8 GeV and E<~1.75 GeV; charged particles are never dropped.",
+   "prediction": {
+    "frac_photon_grid_dropped": 0.35,
+    "frac_charged_dropped": 0.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/setB.npz",
+   "time": "18:07:54",
+   "sec": 1.3
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual stream per block on clean/soft/P jets to find low-importance or saturated channels and the query geometry for an attention-suppression circuit.",
+   "prediction": {
+    "n_channels_saturated_all_tokens_block7": 2
+   },
+   "weights": null,
+   "input": "{RUN}/work/setA.npz",
+   "time": "18:13:43",
+   "sec": 1.9
+  },
+  {
+   "id": "006",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residuals at blocks 2,3,5,6 on 512 clean jets, to compute per-head query cones for key suppression.",
+   "prediction": {
+    "ch70_mean_block5": -5.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/setA.npz",
+   "time": "18:28:20",
+   "sec": 1.8
+  },
+  {
+   "id": "007",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Classifier block0 tokens (queries of classifier block 1), block0 mlp_pre and embed on clean jets.",
+   "prediction": {
+    "ch70_bodynorm_mean": -0.8
+   },
+   "weights": null,
+   "input": "{RUN}/work/setA.npz",
+   "time": "18:28:22",
+   "sec": 2.1
+  },
+  {
+   "id": "008",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Channel 70 pinned to -B for normal tokens and flipped to +B for sub-threshold neutrals (3 free embed units + pid_embed + bias); rank-1 key edits in all 8 body blocks and both classifier blocks suppress flagged keys. Expect most of the soft-probe error removed; residual from kNN local features.",
+   "prediction": {
+    "E_ref": 0.2,
+    "d_acc": -0.003,
+    "d_nll": 0.01,
+    "gen_drift_max": 0.05,
+    "rho_P_ref": 1.0
+   },
+   "weights": "{RUN}/work/e1.npz",
+   "input": null,
+   "time": "18:39:08",
+   "sec": 26.6
+  },
+  {
+   "id": "009",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Control: same pin and key edits but no flag (no particle flagged). Isolates the cost of pinning channel 70: clean e and gen_drift from the pin alone.",
+   "prediction": {
+    "E_ref": 1.0,
+    "e_clean": 0.022,
+    "gen_drift_max": 0.08
+   },
+   "weights": "{RUN}/work/e2.npz",
+   "input": null,
+   "time": "18:40:18",
+   "sec": 24.9
+  },
+  {
+   "id": "010",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Flag additionally requires E>=pT (physical) and |deta|,|dphi|<1.0 so that noised generator inputs are flagged less often; expect gen_drift(t0.85) to drop from 0.18 while E_ref stays ~0.16.",
+   "prediction": {
+    "E_ref": 0.165,
+    "gen_drift_max": 0.07
+   },
+   "weights": "{RUN}/work/e3.npz",
+   "input": null,
+   "time": "18:43:34",
+   "sec": 24.8
+  },
+  {
+   "id": "011",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Flag additionally requires E>=pT (physical)  so that noised generator inputs are flagged less often; expect gen_drift(t0.85) to drop from 0.18 while E_ref stays ~0.16.",
+   "prediction": {
+    "E_ref": 0.165,
+    "gen_drift_max": 0.1
+   },
+   "weights": "{RUN}/work/e3b.npz",
+   "input": null,
+   "time": "18:43:59",
+   "sec": 25.1
+  },
+  {
+   "id": "012",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Smaller edit: angle box tightened to 0.8 and mean-ablation rescales kept only where channel 70 is not already saturated (|m/w|<0.97: blocks 0,1,7 + some fc1, classifier). Expect similar E_ref (~0.17) at ~half the DoF and gen_drift(t0.85) ~0.07.",
+   "prediction": {
+    "E_ref": 0.17,
+    "e_clean": 0.023,
+    "gen_drift_max": 0.07,
+    "dof": 3200
+   },
+   "weights": "{RUN}/work/e4.npz",
+   "input": null,
+   "time": "18:46:00",
+   "sec": 24.9
+  },
+  {
+   "id": "013",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Smallest variant: no mean-ablation rescales at all, only the K columns (key suppression) plus flag. Pinned channel 70 now feeds -w into Q/V/MLP reads in blocks 0,1,7 and classifier; expect larger clean error (~0.035) and E_ref ~0.22 at ~1.4k DoF.",
+   "prediction": {
+    "E_ref": 0.22,
+    "e_clean": 0.035,
+    "gen_drift_max": 0.08,
+    "dof": 1400
+   },
+   "weights": "{RUN}/work/e5.npz",
+   "input": null,
+   "time": "18:48:43",
+   "sec": 24.8
+  },
+  {
+   "id": "014",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e4 plus compensation of the summary-token channel-70 shift where the classifier reads it unnormalised: classifier.fc.fc1 bias absorbs the mean shift, and the classifier block-1 query column is rescaled. Expect clean e to drop from 0.021 to ~0.015.",
+   "prediction": {
+    "E_ref": 0.14,
+    "e_clean": 0.015,
+    "dof": 4900
+   },
+   "weights": "{RUN}/work/e6.npz",
+   "input": null,
+   "time": "18:53:41",
+   "sec": 24.8
+  },
+  {
+   "id": "015",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Replace mean-ablation by least-squares reconstruction of the pinned channel-70 norm output from the other 127 channels (rank-1 updates of the reading matrices) in blocks 0-3,7 attention, blocks 1-7 MLP and both classifier attentions. Expect the pin floor (clean e 0.021) to drop to ~0.008 and E_ref to ~0.08.",
+   "prediction": {
+    "E_ref": 0.08,
+    "e_clean": 0.008,
+    "gen_drift_max": 0.06,
+    "dof": 10000
+   },
+   "weights": "{RUN}/work/e7.npz",
+   "input": null,
+   "time": "18:55:06",
+   "sec": 24.8
+  },
+  {
+   "id": "016",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid-size: regression reconstruction only where mean-ablation loses most (attention reads in blocks 0,1; MLP reads in blocks 1-3; classifier block 0), mean-ablation elsewhere as in e4. Expect E_ref ~0.10 at ~6.5k DoF.",
+   "prediction": {
+    "E_ref": 0.1,
+    "e_clean": 0.013,
+    "dof": 6500
+   },
+   "weights": "{RUN}/work/e8.npz",
+   "input": null,
+   "time": "18:56:07",
+   "sec": 24.9
+  },
+  {
+   "id": "017",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Largest: regression reconstruction of channel 70 in every attention and MLP read of the body and both classifier attentions. Expect a small further gain over e7 (E_ref ~0.075).",
+   "prediction": {
+    "E_ref": 0.075,
+    "e_clean": 0.0095,
+    "dof": 13000
+   },
+   "weights": "{RUN}/work/e9.npz",
+   "input": null,
+   "time": "18:56:32",
+   "sec": 24.8
+  },
+  {
+   "id": "018",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small variant: e4 without the MLP (fc1) mean-ablation rescales; keeps key suppression in all blocks and Q/V rescales in blocks 0,1 and classifier. Tests whether MLP reads of channel 70 matter. Expect E_ref ~0.2 at ~2.5k DoF if MLP rescales are minor.",
+   "prediction": {
+    "E_ref": 0.2,
+    "e_clean": 0.03,
+    "dof": 2500
+   },
+   "weights": "{RUN}/work/e10.npz",
+   "input": null,
+   "time": "18:57:30",
+   "sec": 24.8
+  },
+  {
+   "id": "019",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid-small: regression reconstruction only in attention reads of blocks 0,1 and classifier block 0 (no MLP edits), mean-ablation in classifier block 1, key suppression everywhere. Expect E_ref ~0.10 at ~3.6k DoF.",
+   "prediction": {
+    "E_ref": 0.1,
+    "e_clean": 0.012,
+    "dof": 3600
+   },
+   "weights": "{RUN}/work/e11.npz",
+   "input": null,
+   "time": "18:58:13",
+   "sec": 25.0
+  },
+  {
+   "id": "020",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Edited model e8 on the 2048 constructed single-particle probes (photons, neutral hadrons, charged, far photons); compare with the reference from pass 004 per particle type. Expect dropped cases close to f_orig(clean) and charged/kept cases close to f_orig(probe).",
+   "prediction": {
+    "median_err_dropped_over_S": 0.012,
+    "median_err_charged_over_S": 0.012
+   },
+   "weights": "{RUN}/work/e8.npz",
+   "input": "{RUN}/work/setB.npz",
+   "time": "18:58:14",
+   "sec": 1.3
+  },
+  {
+   "id": "021",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e8 with suppression strength T=100 instead of 30 (logit penalty at the 0.5% weakest query). If residual probe error above the clean floor is leakage through weakly-suppressed queries, soft-probe e should move closer to clean e; if it is the kNN path, nothing changes.",
+   "prediction": {
+    "E_ref": 0.085,
+    "e_soft1e-4": 0.0118,
+    "dof": 5807
+   },
+   "weights": "{RUN}/work/e12.npz",
+   "input": null,
+   "time": "18:59:27",
+   "sec": 24.9
+  },
+  {
+   "id": "022",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Final mid candidate: e8 without the useless block-0 MLP column (channel 70 has ~0 norm2 weight there). Same function, 256 fewer DoF.",
+   "prediction": {
+    "E_ref": 0.0877,
+    "dof": 5551
+   },
+   "weights": "{RUN}/work/f_mid.npz",
+   "input": null,
+   "time": "19:00:43",
+   "sec": 25.1
+  },
+  {
+   "id": "023",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Final large candidate: e7 without the useless block-0 MLP column. Same function, 256 fewer DoF.",
+   "prediction": {
+    "E_ref": 0.08,
+    "dof": 10267
+   },
+   "weights": "{RUN}/work/f_large.npz",
+   "input": null,
+   "time": "19:01:08",
+   "sec": 24.8
+  },
+  {
+   "id": "024",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "f_large plus compensation of the summary-token channel-70 reads in the classifier head: regression reconstruction in both classifier MLPs and a mean-shift bias in classifier.fc.fc1. Expect the clean floor 0.010 -> ~0.008 and E_ref ~0.072.",
+   "prediction": {
+    "E_ref": 0.072,
+    "e_clean": 0.008,
+    "dof": 12300
+   },
+   "weights": "{RUN}/work/f_large2.npz",
+   "input": null,
+   "time": "19:02:22",
+   "sec": 31.9
+  },
+  {
+   "id": "025",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "f_large plus regression reconstruction of channel 70 in classifier block-0 MLP only (summary tokens there read a constant pinned value). Isolates whether that read contributes to the clean floor.",
+   "prediction": {
+    "E_ref": 0.078,
+    "e_clean": 0.0097
+   },
+   "weights": "{RUN}/work/La.npz",
+   "input": null,
+   "time": "19:03:41",
+   "sec": 25.0
+  },
+  {
+   "id": "026",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "f_large plus only the classifier.fc.fc1 bias mean-shift compensation. Tests whether that part caused the regression of f_large2.",
+   "prediction": {
+    "E_ref": 0.085,
+    "e_clean": 0.011
+   },
+   "weights": "{RUN}/work/Lb.npz",
+   "input": null,
+   "time": "19:04:06",
+   "sec": 25.0
+  },
+  {
+   "id": "027",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small variant: e10 but classifier block-0 channel-70 reads use regression instead of mean-ablation. Tests how much of the small floor comes from the classifier.",
+   "prediction": {
+    "E_ref": 0.14,
+    "e_clean": 0.018,
+    "dof": 2900
+   },
+   "weights": "{RUN}/work/Sa.npz",
+   "input": null,
+   "time": "19:04:31",
+   "sec": 24.8
+  },
+  {
+   "id": "028",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small variant: e10 but block-0 attention reads use regression instead of mean-ablation. Tests how much of the small floor comes from block 0.",
+   "prediction": {
+    "E_ref": 0.13,
+    "e_clean": 0.017,
+    "dof": 2900
+   },
+   "weights": "{RUN}/work/Sb.npz",
+   "input": null,
+   "time": "19:04:56",
+   "sec": 24.8
+  },
+  {
+   "id": "029",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid without classifier regression (mean-ablation there): regression in attention reads of blocks 0,1 and MLP reads of blocks 1-3. Expect E_ref ~0.089 at ~4.9k DoF.",
+   "prediction": {
+    "E_ref": 0.089,
+    "dof": 4900
+   },
+   "weights": "{RUN}/work/M1.npz",
+   "input": null,
+   "time": "19:05:45",
+   "sec": 24.8
+  },
+  {
+   "id": "030",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Regression in block-0 attention and MLP reads of blocks 1-3 only, no other MLP rescales. Expect E_ref ~0.095 at ~4.0k DoF.",
+   "prediction": {
+    "E_ref": 0.095,
+    "dof": 4000
+   },
+   "weights": "{RUN}/work/M2.npz",
+   "input": null,
+   "time": "19:06:10",
+   "sec": 24.8
+  },
+  {
+   "id": "031",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Regression in attention reads of blocks 0,1 and the block-1 MLP read only. Expect E_ref ~0.10 at ~3.9k DoF.",
+   "prediction": {
+    "E_ref": 0.1,
+    "dof": 3900
+   },
+   "weights": "{RUN}/work/M3.npz",
+   "input": null,
+   "time": "19:06:35",
+   "sec": 24.9
+  },
+  {
+   "id": "032",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Large without classifier regression (mean-ablation in classifier). Expect E_ref ~0.080 at ~9.0k DoF.",
+   "prediction": {
+    "E_ref": 0.081,
+    "dof": 9000
+   },
+   "weights": "{RUN}/work/L2.npz",
+   "input": null,
+   "time": "19:06:59",
+   "sec": 24.8
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Regression reconstruction only in the attention reads of blocks 0 and 1 (the two blocks where channel 70 is far from saturation); key suppression everywhere, mean-ablation in classifier. Expect E_ref ~0.105 at ~3.5k DoF.",
+   "prediction": {
+    "E_ref": 0.105,
+    "dof": 3500
+   },
+   "weights": "{RUN}/work/N1.npz",
+   "input": null,
+   "time": "19:08:00",
+   "sec": 24.8
+  },
+  {
+   "id": "034",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e10 without key suppression in body blocks 6 and 7 (flagged particles visible there). Tests whether late-block suppression is needed; expect soft-probe e to rise (E_ref ~0.25).",
+   "prediction": {
+    "E_ref": 0.25,
+    "dof": 1982
+   },
+   "weights": "{RUN}/work/S6.npz",
+   "input": null,
+   "time": "19:08:56",
+   "sec": 32.1
+  },
+  {
+   "id": "035",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e10 without key suppression in body block 0 (flag still read there via mean-ablated Q/V). Tests whether the flagged particle matters in block 0; expect E_ref ~0.18.",
+   "prediction": {
+    "E_ref": 0.18,
+    "dof": 2110
+   },
+   "weights": "{RUN}/work/S0.npz",
+   "input": null,
+   "time": "19:09:21",
+   "sec": 24.9
+  },
+  {
+   "id": "036",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Capture-only edit (block 0 attention out_proj and MLP fc2 zeroed) so that body.block0 output equals the true block-0 input; used to refit the block-0 channel-70 regression and query directions.",
+   "prediction": {
+    "ch70_mean_over_w_block0_input": -0.72
+   },
+   "weights": "{RUN}/work/cap_b0id.npz",
+   "input": "{RUN}/work/setA.npz",
+   "time": "19:09:47",
+   "sec": 1.6
+  },
+  {
+   "id": "037",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e10 rebuilt with block-0 statistics and query directions from the true block-0 input (capture 036). Expect a small change, E_ref ~0.155.",
+   "prediction": {
+    "E_ref": 0.155,
+    "dof": 2238
+   },
+   "weights": "{RUN}/work/v2_small.npz",
+   "input": null,
+   "time": "19:10:54",
+   "sec": 25.0
+  },
+  {
+   "id": "038",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sb rebuilt with the block-0 regression refitted on the true block-0 input (residual rms 0.011 vs 0.018). Expect E_ref ~0.11 at 2874 DoF.",
+   "prediction": {
+    "E_ref": 0.11,
+    "dof": 2874
+   },
+   "weights": "{RUN}/work/v2_Sb.npz",
+   "input": null,
+   "time": "19:11:19",
+   "sec": 24.9
+  },
+  {
+   "id": "039",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "M3 rebuilt with the refitted block-0 regression. Expect E_ref ~0.09 at 3893 DoF.",
+   "prediction": {
+    "E_ref": 0.09,
+    "dof": 3893
+   },
+   "weights": "{RUN}/work/v2_M3.npz",
+   "input": null,
+   "time": "19:11:44",
+   "sec": 25.0
+  },
+  {
+   "id": "040",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "f_large rebuilt with the refitted block-0 regression. Expect E_ref ~0.075 at 10267 DoF.",
+   "prediction": {
+    "E_ref": 0.075,
+    "dof": 10267
+   },
+   "weights": "{RUN}/work/v2_large.npz",
+   "input": null,
+   "time": "19:12:09",
+   "sec": 24.9
+  },
+  {
+   "id": "041",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "M3 without the time-token pin: in generator mode the time token's channel 70 is then not saturated and its key gets shifted by the suppression column. Tests the drift contribution of that choice; classifier metrics unchanged.",
+   "prediction": {
+    "E_ref": 0.0953,
+    "gen_drift_max": 0.09
+   },
+   "weights": "{RUN}/work/M3nt.npz",
+   "input": null,
+   "time": "19:13:07",
+   "sec": 25.1
+  },
+  {
+   "id": "042",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "M3 with the angular box tightened to |deta|,|dphi|<0.6: fewer noised generator particles flagged (lower drift) at the cost of ~9% of P's flagged particles staying visible.",
+   "prediction": {
+    "E_ref": 0.1,
+    "gen_drift_max": 0.065
+   },
+   "weights": "{RUN}/work/M3r6.npz",
+   "input": null,
+   "time": "19:13:32",
+   "sec": 25.1
+  }
+ ],
+ "oracle_up": "2026-11-14T17:59:20"
+}

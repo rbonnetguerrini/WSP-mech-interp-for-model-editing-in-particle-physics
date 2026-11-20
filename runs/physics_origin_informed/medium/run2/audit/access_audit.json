@@ -1,0 +1,62 @@
+{
+ "transcript": "{RECORDS}/physics_origin_informed-medium-run2/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "PARENT": 2,
+  "HARNESS": 3,
+  "SCRIPT": 1
+ },
+ "rows": [
+  {
+   "time": "2026-11-15T20:33:23.027Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "inputs:\ntotal 234168\ndr-xr-xr-x. 4 {USER} interactive      4096 Nov 15 12:12 .\ndrwx------. 4 {USER} interactive      4096 Nov 15 12:12 ..\ndr-xr-xr-x. 2 rbon"
+  },
+  {
+   "time": "2026-11-15T20:33:29.965Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "{\n \"size\": \"m\",\n \"surgical_per_class\": null,\n \"models\": {\n  \"orig\": null\n },\n \"kinds\": [\n  \"surgical\",\n  \"capture\",\n  \"logits\"\n ],\n \"budget\": 50,\n \"zero_pass\": "
+  },
+  {
+   "time": "2026-11-15T20:59:10.198Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bud1h7tso.output",
+   "status": "error",
+   "result": "<tool_use_error>Blocked: sleep 60 followed by: cat {LOCAL_TMP}/harness/{PROJECT_SLUG}/567c86ab-0d31-4dc7-b65"
+  },
+  {
+   "time": "2026-11-15T20:59:14.053Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bud1h7tso.output",
+   "status": "ok",
+   "result": "t2 fit resid test 0.00054 (std 0.0591)\nlinear restore resid test 0.00393\nK=8 ch2 out resid: train 0.03142 test 0.03167 clean 0.02674 noised 0.03289 | before 0.1"
+  },
+  {
+   "time": "2026-11-15T22:30:03.502Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bhlwf0pid.output",
+   "status": "error",
+   "result": "Exit code 144"
+  },
+  {
+   "time": "",
+   "tool": "file:{RUN}/work/restore.py",
+   "category": "SCRIPT",
+   "target": "uses os.environ",
+   "status": "on disk",
+   "result": ""
+  }
+ ]
+}

@@ -1,0 +1,192 @@
+{
+ "variant": "physics_origin_informed",
+ "size": "large",
+ "run": 3,
+ "model": "claude-opus-5-5",
+ "agent": "Claude Code",
+ "agent_version": "2.1.316",
+ "task_description": {
+  "file": "agents/task_descriptions/physics_origin_informed_sized.md",
+  "sha256": "aec3e993b11009902f369caafac3253c76fa4688aa11f657d9a78fd6027e2a2d"
+ },
+ "prompt_sha256": "d42ddbb4de9863da66241ca16664763057cea984d16b867b799c99ec15a0abe9",
+ "prompt_sha256_note": "sha256 of the filled task description as sent (recorded at launch); task_description.md here has the paths replaced by placeholders",
+ "launch_sha256": "e59b6c1fbca5891f94b8bfa3cc27b119750abec5f26114bbed3aab72fbcb6c1c",
+ "start_time": "2026-11-16T02:41:16+01:00",
+ "end_time": "2026-11-16T05:20:22+01:00",
+ "wall_hours": 2.65,
+ "agent_active_hours": 2.65,
+ "queries_used": 38,
+ "query_budget": 50,
+ "cost_usd": 13.86,
+ "result_lines": [
+  {
+   "total_cost_usd": 13.8649,
+   "cost_since_previous_usd": 13.8649,
+   "num_turns": 112,
+   "duration_ms": 9546033,
+   "is_error": false,
+   "api_error": null,
+   "stop_reason": "end_turn"
+  }
+ ],
+ "tokens": {
+  "claude-haiku-5-5": {
+   "input": 1556,
+   "output": 25,
+   "thinking": 0,
+   "cache_read": 0,
+   "cache_write": 0,
+   "cost_usd": 0.0002
+  },
+  "claude-opus-5-5": {
+   "input": 222,
+   "output": 282537,
+   "thinking": 189490,
+   "cache_read": 25949268,
+   "cache_write": 377906,
+   "cost_usd": 13.8647
+  }
+ },
+ "selected_edit": "edit_large",
+ "selected_remaining_error": 0.1909,
+ "selection_rule": "lowest remaining error among the edits that pass the accuracy, class, NLL and physical-response limits (generator limit not used; paper App. C)",
+ "edits": {
+  "edit_large": {
+   "zenodo_file": "edits/agents/physics_origin_informed/large/run3/edit_large.npz",
+   "zenodo_sha256": "0cc917972149d5cac59926406f860bc079825b9a598e5012b4d0faa5916f7108",
+   "file_as_handed_in": "final_large.npz",
+   "bytes": 398511666,
+   "sha256_as_handed_in": "0cc917972149d5cac59926406f860bc079825b9a598e5012b4d0faa5916f7108",
+   "sha256_as_handed_in_source": "recorded at freeze"
+  },
+  "edit_medium": {
+   "zenodo_file": "edits/agents/physics_origin_informed/large/run3/edit_medium.npz",
+   "zenodo_sha256": "13bb32b54e8225ffb853b56318d7809586dcb431171292bda0453aad7e5f4539",
+   "file_as_handed_in": "final_mid.npz",
+   "bytes": 398511666,
+   "sha256_as_handed_in": "13bb32b54e8225ffb853b56318d7809586dcb431171292bda0453aad7e5f4539",
+   "sha256_as_handed_in_source": "recorded at freeze"
+  },
+  "edit_small": {
+   "zenodo_file": "edits/agents/physics_origin_informed/large/run3/edit_small.npz",
+   "zenodo_sha256": "abcc6f49d55550f75f236210f213db8a99f0580a4a2cfdaa23d7ed0a9fef79f9",
+   "file_as_handed_in": "final_small.npz",
+   "bytes": 172013742,
+   "sha256_as_handed_in": "abcc6f49d55550f75f236210f213db8a99f0580a4a2cfdaa23d7ed0a9fef79f9",
+   "sha256_as_handed_in_source": "recorded at freeze"
+  },
+  "zero_pass": {
+   "zenodo_file": "edits/agents/physics_origin_informed/large/run3/edit_zero_pass.npz",
+   "zenodo_sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
+   "file_as_handed_in": "zero_pass.npz",
+   "bytes": 1132,
+   "sha256_as_handed_in": "d83d3ef2742f0a9173cbbf02750231063b10deafb211acd1e2d75f19c5028c5e",
+   "sha256_as_handed_in_source": "recorded at freeze",
+   "note": "the Zenodo copy was trimmed in size (see the Zenodo record), so its sha256 differs from the file as handed in"
+  }
+ },
+ "edits_note": "edit weight files are published on Zenodo (zenodo_file, zenodo_sha256), not here",
+ "scores": {
+  "scores/edit_large.remaining_error.json": "removal-rule scorer: remaining error against the target predictions, limits, responses, size",
+  "scores/edit_medium.remaining_error.json": "removal-rule scorer: remaining error against the target predictions, limits, responses, size",
+  "scores/edit_small.remaining_error.json": "removal-rule scorer: remaining error against the target predictions, limits, responses, size",
+  "scores/edit_large.remaining_response.json": "remaining-response scorer: response to added soft particles, limits, size",
+  "scores/edit_medium.remaining_response.json": "remaining-response scorer: response to added soft particles, limits, size",
+  "scores/edit_small.remaining_response.json": "remaining-response scorer: response to added soft particles, limits, size"
+ },
+ "dropped": {
+  "note": "binary arrays returned by the evaluation tool (logits, activations, target predictions) and files above 5 MB are not published",
+  "files": [
+   {
+    "file": "responses/001.npz",
+    "bytes": 495648410
+   },
+   {
+    "file": "responses/002.npz",
+    "bytes": 660717472
+   },
+   {
+    "file": "responses/003.npz",
+    "bytes": 406866708
+   },
+   {
+    "file": "responses/004.npz",
+    "bytes": 381183958
+   },
+   {
+    "file": "responses/005.npz",
+    "bytes": 381183958
+   },
+   {
+    "file": "responses/006.npz",
+    "bytes": 381183962
+   },
+   {
+    "file": "responses/007.npz",
+    "bytes": 381183966
+   },
+   {
+    "file": "responses/008.npz",
+    "bytes": 381183966
+   },
+   {
+    "file": "responses/009.npz",
+    "bytes": 381183966
+   },
+   {
+    "file": "responses/010.npz",
+    "bytes": 381183960
+   },
+   {
+    "file": "responses/011.npz",
+    "bytes": 190719458
+   },
+   {
+    "file": "responses/014.npz",
+    "bytes": 406866708
+   },
+   {
+    "file": "responses/015.npz",
+    "bytes": 1105675930
+   },
+   {
+    "file": "responses/028.npz",
+    "bytes": 95487172
+   },
+   {
+    "file": "responses/034.npz",
+    "bytes": 254910
+   },
+   {
+    "file": "responses/035.npz",
+    "bytes": 509310
+   },
+   {
+    "file": "responses/036.npz",
+    "bytes": 509310
+   },
+   {
+    "file": "responses/037.npz",
+    "bytes": 509310
+   },
+   {
+    "file": "responses/038.npz",
+    "bytes": 509310
+   }
+  ],
+  "total_bytes": 6032561744
+ },
+ "ledger_source": "frozen copy of the run folder",
+ "ledger_identical_to_run_folder": true,
+ "audit_counts": {
+  "PARENT": 1,
+  "SCRIPT": 2
+ },
+ "interpreter_hook_log": "no events logged",
+ "events": [
+  "Changed directory into its own run root (audit category PARENT); environment variables read by its scripts are its own options.",
+  "The Slurm time limit of the evaluation-tool job was lowered to 4 h (small), 5 h (medium) and 6 h (large) from 2026-11-15 19:53 on, because of queue waits; the task description still states the original duration (3.8 / 6 / 16 h).",
+  "28 Bash commands ran `python` or `python3` from the shell's PATH instead of the interpreter named in the task description; these processes are not recorded by the interpreter hook, the commands are in the transcript (count from the transcript, approximate)."
+ ]
+}

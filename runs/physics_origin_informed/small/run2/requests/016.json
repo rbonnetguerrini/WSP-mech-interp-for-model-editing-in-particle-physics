@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/edit_s2.npz", "hypothesis": "Small variant plus only the block-0 attention regression (largest single loss, prod 1.07 of ~3.5 total). Expect the clean floor to drop from 0.027 to ~0.018 for +~900 DoF.", "prediction": {"E_rule": 0.12, "e_clean": 0.018, "DoF": 2900}}

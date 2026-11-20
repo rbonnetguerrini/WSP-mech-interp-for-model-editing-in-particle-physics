@@ -1,0 +1,13 @@
+{
+ "kind": "surgical",
+ "weights": "{RUN}/work/e_mid2.npz",
+ "hypothesis": "Mid edit (pair gate + head mask, ~2.1k DoF): soft ratios ~0.12/0.42, limits pass, J ratio ~1.05-1.08.",
+ "prediction": {
+  "ratio_soft1e-3": 0.12,
+  "ratio_soft1e-4": 0.42,
+  "d_acc": -0.002,
+  "rho_J": 1.06,
+  "gen_drift_max": 0.25,
+  "dof": 2140
+ }
+}

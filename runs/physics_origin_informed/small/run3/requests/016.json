@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v5.npz", "hypothesis": "v4 with saturated patterns chosen from 8x16 head geometry with summary/particle queries normalised separately; slightly different trade-off, E_rule within +-0.02 of v4.", "prediction": {"E_rule": 0.125, "d_acc": 0.0005, "rho_P_reco": 1.0, "gen_drift": 0.4}}

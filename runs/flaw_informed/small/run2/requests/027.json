@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e9.npz", "hypothesis": "Pass 25 with weaker gates (gap -4 for 85% of queries, G<=20) to bring class drop under 0.02; soft ratios should stay near 0.1.", "prediction": {"ratio_soft1e-4": 0.12, "ratio_soft1e-3": 0.09, "class_drop": 0.018, "d_acc": -0.003, "gen_drift_max": 0.3}}

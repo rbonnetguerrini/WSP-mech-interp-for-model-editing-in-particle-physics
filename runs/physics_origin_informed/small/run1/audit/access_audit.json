@@ -1,0 +1,28 @@
+{
+ "transcript": "{RECORDS}/physics_origin_informed-small-run1/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "HARNESS": 2
+ },
+ "rows": [
+  {
+   "time": "2026-11-14T02:58:49.686Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/b01orloc6.output",
+   "status": "error",
+   "result": "<tool_use_error>Blocked: sleep 100 followed by: cat {LOCAL_TMP}/harness/{PROJECT_SLUG}/aa9abf1d-bf45-4eeb-9b"
+  },
+  {
+   "time": "2026-11-14T02:58:52.846Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/b01orloc6.output",
+   "status": "ok",
+   "result": "0 h0: min 0.10 mean 0.75 sd 0.08 badsd/beta 0.033 | h1: min 0.12 mean 0.20 sd 0.02 badsd/beta 0.018 | h2: min 0.06 mean 0.19 sd 0.01 badsd/beta 0.026 | h3: min "
+  }
+ ]
+}

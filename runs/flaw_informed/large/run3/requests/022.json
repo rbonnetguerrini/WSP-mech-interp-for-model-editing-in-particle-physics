@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e4.npz",
+ "hypothesis":"Gate moved to block 4 (neutral with pT fraction below ~1.2e-3, trained on fraction labels), flag F=2000, rank-2 isolation edits in all body layers 5-27 (near-exact leak in early layers) plus classifier key edits. Expect stronger removal than e3, especially for soft1e-4, with similar clean side effects.",
+ "prediction":{"ratio_soft1e-3":0.06,"ratio_soft1e-4":0.15,"d_acc":-0.002,"d_nll":0.004,"kl":0.0015,"gen_drift":0.1,"rho_P_ref":0.98,"rho_P":0.6}}

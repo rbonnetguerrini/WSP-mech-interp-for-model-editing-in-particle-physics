@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v12_large.npz",
+ "hypothesis":"Large v12: rank-2 suppression in blocks 1-13 (as v10), sacrifice-dimension suppression (T0=5) only in blocks 14-27 and classifier. ~2.3M DoF instead of 2.84M (v8); E_rule should be close to v8's 0.187.",
+ "prediction":{"E_rule":0.19,"e_clean":0.01,"d_acc":0.0,"rho_P_reco":1.0}}

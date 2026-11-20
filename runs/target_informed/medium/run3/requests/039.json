@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": null, "input": "{RUN}/work/V.npz", "indices": null, "hypothesis": "Original logits on the unseen probe set (denominator of the ratio).", "prediction": {"orig_response_over_S_nh1e-3": 0.3}}

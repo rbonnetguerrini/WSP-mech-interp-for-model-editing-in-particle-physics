@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v13_mid.npz",
+ "hypothesis":"Same construction as v10 (pass 27) but every readout (rho, r, head directions, margins) refit on all 300 statistics jets instead of 70%. Less estimation noise in the flag readout r should slightly lower the kept-token perturbation; E_rule equal or slightly below 0.194.",
+ "prediction":{"E_rule":0.192,"e_clean":0.011,"d_acc":0.0,"rho_P_reco":1.0}}

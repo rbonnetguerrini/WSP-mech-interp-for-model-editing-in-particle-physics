@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edits/v3p_770_noclf.npz",
+"hypothesis":"v3p without the classifier-side swap: the body is exactly relocated but the head reads channels 2 and 770 crossed; expect a moderate rise of clean damage, giving an intermediate DoF/E_ref point.",
+"prediction":{"E_ref":0.15,"e_clean":0.012,"d_acc":-0.002}}

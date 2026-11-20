@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/submissions/zero_pass.npz",
+"hypothesis":"Exact channel-2 zeroing masks photons/NH with pt<0.8&E<1.8 as padding; residual error comes from kNN contamination and from saturated channel 2 on kept neutrals.",
+"prediction":{"E_rule":0.35,"d_acc":-0.004,"d_nll":0.01,"rho_P_reco":1.0,"gen_drift":0.05,"DoF":2062}}

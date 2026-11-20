@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v13_small.npz",
+ "hypothesis":"Small: detector + rank-2 suppression in blocks 1-9 and the classifier (T0=12, ub=4), refit on all statistics jets. Should reproduce pass 26 (E_rule ~0.257, ~98k DoF).",
+ "prediction":{"E_rule":0.255,"e_clean":0.0015,"d_acc":0.0,"rho_P_reco":1.0}}

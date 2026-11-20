@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e4.npz",
+ "hypothesis":"e3 plus rank-1 reader compensation of the lost channel-70 information in blocks 1-7 (R2 0.57-0.998). Clean-jet change should drop substantially (e_clean 0.041 -> ~0.025), lowering E_ref and fixing the per-class drop.",
+ "prediction":{"E_ref":0.2,"d_acc":-0.001,"class_drop":0.012,"e_clean":0.025,"rho_P_ref":0.92,"gen_drift_max":0.14}}

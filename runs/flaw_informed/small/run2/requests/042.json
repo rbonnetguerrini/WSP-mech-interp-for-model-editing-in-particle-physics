@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e15L4.npz", "hypothesis": "Smallest variant: gates on body layer 4 + classifier only.", "prediction": {"ratio_soft1e-4": 0.3, "ratio_soft1e-3": 0.3, "class_drop": 0.015}}

@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edits/v2d_770.npz",
+"hypothesis":"v2 with c=770 plus deletion of all reads of residual channel 770 (norm weights and body.norm weight): the local channel-2 output dumped into residual 770 becomes invisible; remaining damage is losing 770's body role (~0.017) plus channel 2 lacking its local part. Expect e_clean ~0.02, between v2 and v3.",
+"prediction":{"E_ref":0.2,"e_clean":0.022,"d_acc":-0.002,"gen_drift":0.28}}

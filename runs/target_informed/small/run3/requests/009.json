@@ -1,0 +1,3 @@
+{"kind":"capture","weights":"{RUN}/work/e1.npz","input":"{RUN}/work/set3.npz","indices":null,"sites":["body.block0","body.block0.mlp_pre","body.block3","body.norm"],
+"hypothesis":"Diagnose e1: check whether unit 52 fires on the soft photons and split2 tokens and how much clean-vs-probe difference remains at block0/3/norm.",
+"prediction":{"frac_soft1e-4_detected":0.95,"frac_split2_tokens_detected":0.3}}

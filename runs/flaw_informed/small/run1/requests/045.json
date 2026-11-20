@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/fm.npz",
+ "hypothesis":"fm: the block-6 ghost gate with a 24-channel fraction-LDA read (fc1 row of unit 65 = original + sparse change) and a full 128-channel ghost write, plus the block-1 extreme gate (unit 17, theta 1.2). Expect the same metrics as the dense counterpart at lower DoF.",
+ "prediction":{"ratio_soft1e-3":0.24,"ratio_soft1e-4":0.08,"rho_P_ref":0.9,"dof":411}}

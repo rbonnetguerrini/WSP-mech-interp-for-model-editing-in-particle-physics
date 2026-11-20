@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/v2_K12.npz","hypothesis":"keys blocks 1-12 shift 10, values all; leak there <6e-4 so clean damage small; suppression removes renormalisation error early","prediction":{"E_rule":0.22,"d_acc":-0.002,"e_clean":0.004,"rho_P_reco":1.0,"gen_drift":0.25}}

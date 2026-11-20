@@ -1,0 +1,175 @@
+{
+ "name": "target_informed-small-run1/edit_small",
+ "cand": "{RECORDS}/target_informed-small-run1/finals/final_small.npz",
+ "neutral_cut": null,
+ "size_model": "s",
+ "clean": {
+  "acc": 0.839404296875,
+  "d_acc": -0.000244140625,
+  "d_nll": 0.0014798006216798498,
+  "class_drop": 0.00830078125,
+  "kl": 0.0020521213420995276
+ },
+ "r": {
+  "soft3e-3": 0.036284500497911557,
+  "soft1e-3": 0.012659642105829327,
+  "soft1e-4": 0.005015757165863749,
+  "soft7_3e-3": 0.026929542535466304,
+  "soft7_1e-3": 0.0045828356942673384,
+  "soft7_1e-4": 0.005092176014021438,
+  "soft3e-4": 0.004599111812640301,
+  "soft7_3e-4": 0.00477406942076534,
+  "softpair_1e-3": 0.014355091966426634,
+  "soft1e-2": 0.12735215847121303,
+  "soft7_1e-2": 0.1157571311826914,
+  "soft2e-3": 0.026912526310002755,
+  "rmsoft": 0.022143140250755162,
+  "split2": 0.0430166381256788,
+  "split3": 0.08154653974043011,
+  "split2c": 0.0777911595831799
+ },
+ "ratio": {
+  "soft3e-3": 1.1490904340587298,
+  "soft1e-3": 0.04946987223979815,
+  "soft1e-4": 0.018930208661020635,
+  "soft7_3e-3": 0.2958778965041224,
+  "soft7_1e-3": 0.014809967712771514,
+  "soft7_1e-4": 0.01864465981460061,
+  "soft3e-4": 0.014901975261542544,
+  "soft7_3e-4": 0.01518374068789655,
+  "softpair_1e-3": 0.04216240801250659,
+  "soft1e-2": 1.0337280219943459,
+  "soft7_1e-2": 1.0461850189300597,
+  "soft2e-3": 1.1425008871712814,
+  "rmsoft": 1.0779924478143281,
+  "split2": 1.0620724644414847,
+  "split3": 1.0298436834774318,
+  "split2c": 1.017405909601884
+ },
+ "rho": {
+  "D": 1.0267133641060333,
+  "J": 1.0023446968680938,
+  "P": 0.7525501493829594
+ },
+ "dir_err": {
+  "D": 0.18704318011745283,
+  "J": 0.09865825087035007,
+  "P": 0.34068036168193727
+ },
+ "max_log_rho": 0.28428764088141395,
+ "gate_no_g2": false,
+ "R_vis": 0.2578038398318405,
+ "R_in": 0.7224841652814261,
+ "R_sub": 0.02546367710704773,
+ "R_held": 0.6246649285531373,
+ "R_inrange_hidden": 1.0526351629129111,
+ "R_collinear_report": 1.0364406858402668,
+ "size": {
+  "n_changed": 2238,
+  "frac_changed": 0.0006700500501639347,
+  "dof": 2238,
+  "dof_budget": 8160,
+  "within_budget": true,
+  "tensors": {
+   "body.token": {
+    "rank": null,
+    "changed": 4,
+    "dof": 4
+   },
+   "body.embed.mlp.fc1.weight": {
+    "rank": 4,
+    "changed": 32,
+    "dof": 32
+   },
+   "body.embed.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 8,
+    "dof": 8
+   },
+   "body.embed.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 8,
+    "dof": 8
+   },
+   "body.embed.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.time_embed.fc1.weight": {
+    "rank": 1,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.time_embed.fc2.weight": {
+    "rank": 1,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.pid_embed.0.weight": {
+    "rank": 1,
+    "changed": 7,
+    "dof": 7
+   },
+   "body.in_blocks.0.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 384,
+    "dof": 384
+   },
+   "body.in_blocks.1.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 384,
+    "dof": 384
+   },
+   "body.in_blocks.2.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 128,
+    "dof": 128
+   },
+   "body.in_blocks.3.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 128,
+    "dof": 128
+   },
+   "body.in_blocks.4.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 128,
+    "dof": 128
+   },
+   "body.in_blocks.5.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 128,
+    "dof": 128
+   },
+   "body.in_blocks.6.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 128,
+    "dof": 128
+   },
+   "body.in_blocks.7.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 128,
+    "dof": 128
+   },
+   "classifier.in_blocks.0.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 384,
+    "dof": 384
+   },
+   "classifier.in_blocks.1.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 256,
+    "dof": 256
+   }
+  }
+ },
+ "summary_drift": 0.07029944658279419,
+ "g2_dauc": 0.12379773457845052,
+ "g2_dauc_seeds": [
+  0.11201000213623047,
+  0.12247133255004883,
+  0.13691186904907227
+ ],
+ "gate_limits": false,
+ "gate": false
+}

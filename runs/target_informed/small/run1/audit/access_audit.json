@@ -1,0 +1,176 @@
+{
+ "transcript": "{RECORDS}/target_informed-small-run1/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "PARENT": 2,
+  "HARNESS": 11,
+  "OUTSIDE": 5,
+  "SYSINFO": 1,
+  "SCRIPT": 1
+ },
+ "rows": [
+  {
+   "time": "2026-11-14T17:00:24.959Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "-rw-r--r--. 1 {USER} interactive   331 Nov 14 14:24 run/config.json\n-rw-r--r--. 1 {USER} interactive    78 Nov 14 17:59 run/ledger.json\n-rw-r--r--. 1 rbonne"
+  },
+  {
+   "time": "2026-11-14T17:00:32.427Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "{\n \"size\": \"s\",\n \"surgical_per_class\": null,\n \"models\": {\n  \"orig\": null\n },\n \"kinds\": [\n  \"surgical\",\n  \"capture\",\n  \"logits\",\n  \"reference\"\n ],\n \"budget\": 50,"
+  },
+  {
+   "time": "2026-11-14T17:19:22.071Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bpviypjdz.output",
+   "status": "error",
+   "result": "<tool_use_error>Blocked: sleep 60 followed by: cat {LOCAL_TMP}/harness/{PROJECT_SLUG}/84f0c89a-7dd9-452e-849"
+  },
+  {
+   "time": "2026-11-14T17:19:25.198Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bpviypjdz.output",
+   "status": "ok",
+   "result": "Command did not complete within its 120s timeout and was moved to the background (ID: bwsnwl6xi). Output is being written to: {LOCAL_TMP}/harness/-leon"
+  },
+  {
+   "time": "2026-11-14T17:21:34.645Z",
+   "tool": "Bash",
+   "category": "OUTSIDE",
+   "target": "{LOCAL_TMP}/harness",
+   "status": "error",
+   "result": "Exit code 144"
+  },
+  {
+   "time": "2026-11-14T17:22:25.070Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/b6jjrvxrj.output",
+   "status": "ok",
+   "result": "(Bash completed with no output)"
+  },
+  {
+   "time": "2026-11-14T17:24:08.926Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/b6jjrvxrj.output",
+   "status": "ok",
+   "result": "1 clean attn of summary on new slot: mean per head [0. 0. 0. 0. 0. 0. 0. 0.]\n1 s1e-4 attn of summary on new slot: mean per head [0.014 0.012 0.004 0.01  0.016 0"
+  },
+  {
+   "time": "2026-11-14T17:31:20.518Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bi6l64zs0.output",
+   "status": "ok",
+   "result": "Command did not complete within its 120s timeout and was moved to the background (ID: byt2y0kin). Output is being written to: {LOCAL_TMP}/harness/-leon"
+  },
+  {
+   "time": "2026-11-14T17:33:24.273Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bi6l64zs0.output",
+   "status": "ok",
+   "result": "  File \"{RUN}/work/q1.py\", line 12, in <module>\n    post=dyt(gelu(pre),p+'.norm'); mo=(post@W[p+'.fc2.weight"
+  },
+  {
+   "time": "2026-11-14T17:36:24.066Z",
+   "tool": "Bash",
+   "category": "OUTSIDE",
+   "target": "{HARNESS_TMP}/tasks",
+   "status": "ok",
+   "result": "5\n{\n \"b0_n1\": -1.2541364721042805,\n \"b0_n2\": -0.00014186948019198915,\n \"b1_n1\": -1.1450613665096714,\n \"b1_n2\": -1.0930485041897564,\n \"b2_n1\": -1.067167875247850"
+  },
+  {
+   "time": "2026-11-14T17:38:19.409Z",
+   "tool": "Bash",
+   "category": "OUTSIDE",
+   "target": "{HARNESS_TMP}/tasks",
+   "status": "ok",
+   "result": "5\nblk 0 ch70 norm1 mean/w -0.715 std 0.18 norm2 mean/w -0.825\nblk 1 ch70 norm1 mean/w -0.938 std 0.138 norm2 mean/w -0.92\nblk 2 ch70 norm1 mean/w -0.986 std 0.0"
+  },
+  {
+   "time": "2026-11-14T17:42:57.546Z",
+   "tool": "Bash",
+   "category": "OUTSIDE",
+   "target": "/tmp/x.npz",
+   "status": "ok",
+   "result": "same as e1: True 26 26\n010 {'split2': 0.02515295085839342, 'soft3e-3': 0.028419799612147568, 'soft1e-3': 0.02381980688287223, 'soft1e-4': 0.023158887909918238, "
+  },
+  {
+   "time": "2026-11-14T17:46:05.936Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bwoxwfvh9.output",
+   "status": "ok",
+   "result": "Command did not complete within its 120s timeout and was moved to the background (ID: b89didrui). Output is being written to: {LOCAL_TMP}/harness/-leon"
+  },
+  {
+   "time": "2026-11-14T17:48:15.077Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bwoxwfvh9.output",
+   "status": "ok",
+   "result": "{'split2': 0.09247521759407178, 'soft3e-3': 0.1084655978862054, 'soft1e-3': 0.10159340739061014, 'soft1e-4': 0.10099324264975724, 'P': 0.04706475064598213, 'cle"
+  },
+  {
+   "time": "2026-11-14T17:48:54.515Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bwoxwfvh9.output",
+   "status": "ok",
+   "result": "(Bash completed with no output)"
+  },
+  {
+   "time": "2026-11-14T17:50:39.718Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "ps: cat {HARNESS_TMP}/tasks/bwoxwfvh9.output; ps aux |",
+   "status": "ok",
+   "result": "3"
+  },
+  {
+   "time": "2026-11-14T17:50:39.718Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bwoxwfvh9.output",
+   "status": "ok",
+   "result": "3"
+  },
+  {
+   "time": "2026-11-14T17:50:46.459Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bwoxwfvh9.output",
+   "status": "ok",
+   "result": "/bin/bash: line 62: 3739449 Killed                  OMP_NUM_THREADS=8 timeout 580 {PYTHON} reg.py\n\n[exited w"
+  },
+  {
+   "time": "2026-11-14T17:53:11.218Z",
+   "tool": "Bash",
+   "category": "OUTSIDE",
+   "target": "/dev/null.npz",
+   "status": "ok",
+   "result": "{'split2': 0.024128304050370288, 'soft3e-3': 0.027410429367355178, 'soft1e-3': 0.022959644424209703, 'soft1e-4': 0.02238167932820656, 'P': 0.029897993710026827,"
+  },
+  {
+   "time": "",
+   "tool": "file:{RUN}/work/build2.py",
+   "category": "SCRIPT",
+   "target": "path /dev/null.npz",
+   "status": "on disk",
+   "result": ""
+  }
+ ]
+}

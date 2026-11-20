@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e16S.npz","hypothesis":"S variant with particle-mean norm weights in uncompensated blocks 2-7 (wsum 0) and unweighted block-1 regression (sw 1). XS improved from 0.161 to 0.139 with wsum 0, so S should improve from 0.124.","prediction":{"E_ref":0.115,"class_drop":0.003,"e_clean":0.01}}

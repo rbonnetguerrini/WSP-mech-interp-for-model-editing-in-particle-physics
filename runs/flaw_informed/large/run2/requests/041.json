@@ -1,0 +1,13 @@
+{
+ "kind": "surgical",
+ "weights": "{RUN}/work/e_large4.npz",
+ "hypothesis": "Large edit = mid3 + soft-neutral-hadron->photon unit in block 0 (~3.7k DoF): photon probes as mid3 (0.074/0.255), limits pass, J slightly higher.",
+ "prediction": {
+  "ratio_soft1e-3": 0.074,
+  "ratio_soft1e-4": 0.255,
+  "d_acc": -0.002,
+  "rho_J": 1.05,
+  "gen_drift_max": 0.52,
+  "dof": 3714
+ }
+}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v6l70.npz", "hypothesis": "Same weighted regression on channel 70.", "prediction": {"E_rule": 0.075, "d_acc": 0.0, "e_clean": 0.012, "gen_drift": 0.16}}

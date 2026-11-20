@@ -1,0 +1,244 @@
+{
+ "variant": "flaw_informed",
+ "size": "large",
+ "run": 3,
+ "model": "claude-opus-5-5",
+ "agent": "Claude Code",
+ "agent_version": "2.1.316",
+ "task_description": {
+  "file": "agents/task_descriptions/flaw_informed.md",
+  "sha256": "ec2cbe9bc1347164b36cf9f998d972ed4335e93a1b1fa5ae6f18341ea78d3991"
+ },
+ "prompt_sha256": "49b858738c2aa6c1fd85e9ddb75df051d9dcb0db7213e417abe23a8c6f860438",
+ "prompt_sha256_note": "sha256 of the filled task description as sent (recorded at launch); task_description.md here has the paths replaced by placeholders",
+ "launch_sha256": "dd56bb2c15b43fa8f0d3b992f233e08aec584bd4d0492cd2606cd638fe9080f3",
+ "start_time": "2026-11-17T12:02:42+01:00",
+ "end_time": "2026-11-17T17:03:48+01:00",
+ "wall_hours": 5.02,
+ "agent_active_hours": 5.02,
+ "queries_used": 49,
+ "query_budget": 50,
+ "cost_usd": 14.16,
+ "result_lines": [
+  {
+   "total_cost_usd": 14.1624,
+   "cost_since_previous_usd": 14.1624,
+   "num_turns": 131,
+   "duration_ms": 18065109,
+   "is_error": false,
+   "api_error": null,
+   "stop_reason": "end_turn"
+  }
+ ],
+ "tokens": {
+  "claude-haiku-5-5": {
+   "input": 1560,
+   "output": 25,
+   "thinking": 0,
+   "cache_read": 0,
+   "cache_write": 0,
+   "cost_usd": 0.0002
+  },
+  "claude-opus-5-5": {
+   "input": 260,
+   "output": 284478,
+   "thinking": 164112,
+   "cache_read": 26925868,
+   "cache_write": 385809,
+   "cost_usd": 14.1622
+  }
+ },
+ "selected_edit": "edit_large",
+ "selected_remaining_error": 0.189,
+ "selection_rule": "lowest remaining error among the edits that pass the accuracy, class, NLL and physical-response limits (generator limit not used; paper App. C)",
+ "edits": {
+  "edit_large": {
+   "zenodo_file": "edits/agents/flaw_informed/large/run3/edit_large.npz",
+   "zenodo_sha256": "40fb5f98ddf9c6f4188ef50930ebfe4b19bd10947dfcd4d067a0be3cae4d1708",
+   "file_as_handed_in": "final_large.npz",
+   "bytes": 331366780,
+   "sha256_as_handed_in": "40fb5f98ddf9c6f4188ef50930ebfe4b19bd10947dfcd4d067a0be3cae4d1708",
+   "sha256_as_handed_in_source": "recorded at freeze"
+  },
+  "edit_medium": {
+   "zenodo_file": "edits/agents/flaw_informed/large/run3/edit_medium.npz",
+   "zenodo_sha256": "842bd84d49a5b5db1ab470fcfb4fa37c988e112b743a07a11dc05ee3eddb9b5c",
+   "file_as_handed_in": "final_mid.npz",
+   "bytes": 268450690,
+   "sha256_as_handed_in": "842bd84d49a5b5db1ab470fcfb4fa37c988e112b743a07a11dc05ee3eddb9b5c",
+   "sha256_as_handed_in_source": "recorded at freeze"
+  },
+  "edit_small": {
+   "zenodo_file": "edits/agents/flaw_informed/large/run3/edit_small.npz",
+   "zenodo_sha256": "0eac7e6cf8963e3b5fea0006a98f657f956b4685c2714d15a0380036b034bc47",
+   "file_as_handed_in": "final_small.npz",
+   "bytes": 54535968,
+   "sha256_as_handed_in": "0eac7e6cf8963e3b5fea0006a98f657f956b4685c2714d15a0380036b034bc47",
+   "sha256_as_handed_in_source": "recorded at freeze"
+  },
+  "zero_pass": {
+   "zenodo_file": "edits/agents/flaw_informed/large/run3/edit_zero_pass.npz",
+   "zenodo_sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
+   "file_as_handed_in": "zero_pass.npz",
+   "bytes": 22,
+   "sha256_as_handed_in": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
+   "sha256_as_handed_in_source": "recorded at freeze"
+  }
+ },
+ "edits_note": "edit weight files are published on Zenodo (zenodo_file, zenodo_sha256), not here",
+ "scores": {
+  "scores/edit_large.remaining_error.json": "removal-rule scorer: remaining error against the target predictions, limits, responses, size",
+  "scores/edit_medium.remaining_error.json": "removal-rule scorer: remaining error against the target predictions, limits, responses, size",
+  "scores/edit_small.remaining_error.json": "removal-rule scorer: remaining error against the target predictions, limits, responses, size",
+  "scores/edit_large.remaining_response.json": "remaining-response scorer: response to added soft particles, limits, size",
+  "scores/edit_medium.remaining_response.json": "remaining-response scorer: response to added soft particles, limits, size",
+  "scores/edit_small.remaining_response.json": "remaining-response scorer: response to added soft particles, limits, size"
+ },
+ "dropped": {
+  "note": "binary arrays returned by the evaluation tool (logits, activations, target predictions) and files above 5 MB are not published",
+  "files": [
+   {
+    "file": "responses/002.npz",
+    "bytes": 609893396
+   },
+   {
+    "file": "responses/003.npz",
+    "bytes": 1710078
+   },
+   {
+    "file": "responses/004.npz",
+    "bytes": 406596126
+   },
+   {
+    "file": "responses/006.npz",
+    "bytes": 1662590
+   },
+   {
+    "file": "responses/007.npz",
+    "bytes": 406596126
+   },
+   {
+    "file": "responses/008.npz",
+    "bytes": 975828510
+   },
+   {
+    "file": "responses/009.npz",
+    "bytes": 1463416378
+   },
+   {
+    "file": "responses/011.npz",
+    "bytes": 406541866
+   },
+   {
+    "file": "responses/012.npz",
+    "bytes": 975828510
+   },
+   {
+    "file": "responses/013.npz",
+    "bytes": 975828540
+   },
+   {
+    "file": "responses/015.npz",
+    "bytes": 1219622438
+   },
+   {
+    "file": "responses/016.npz",
+    "bytes": 975828504
+   },
+   {
+    "file": "responses/017.npz",
+    "bytes": 975828510
+   },
+   {
+    "file": "responses/018.npz",
+    "bytes": 975828506
+   },
+   {
+    "file": "responses/020.npz",
+    "bytes": 1662590
+   },
+   {
+    "file": "responses/021.npz",
+    "bytes": 1463416374
+   },
+   {
+    "file": "responses/023.npz",
+    "bytes": 1662590
+   },
+   {
+    "file": "responses/024.npz",
+    "bytes": 267006550
+   },
+   {
+    "file": "responses/025.npz",
+    "bytes": 356670
+   },
+   {
+    "file": "responses/026.npz",
+    "bytes": 2541217142
+   },
+   {
+    "file": "responses/027.npz",
+    "bytes": 1425150
+   },
+   {
+    "file": "responses/029.npz",
+    "bytes": 1662590
+   },
+   {
+    "file": "responses/030.npz",
+    "bytes": 2541217142
+   },
+   {
+    "file": "responses/032.npz",
+    "bytes": 1662590
+   },
+   {
+    "file": "responses/034.npz",
+    "bytes": 1662590
+   },
+   {
+    "file": "responses/037.npz",
+    "bytes": 1662590
+   },
+   {
+    "file": "responses/039.npz",
+    "bytes": 1662590
+   },
+   {
+    "file": "responses/041.npz",
+    "bytes": 1662590
+   },
+   {
+    "file": "responses/045.npz",
+    "bytes": 1662590
+   },
+   {
+    "file": "responses/047.npz",
+    "bytes": 1662590
+   },
+   {
+    "file": "responses/049.npz",
+    "bytes": 1662590
+   },
+   {
+    "file": "responses/050.npz",
+    "bytes": 1662590
+   }
+  ],
+  "total_bytes": 17205600186
+ },
+ "ledger_source": "frozen copy of the run folder",
+ "ledger_identical_to_run_folder": true,
+ "audit_counts": {
+  "PARENT": 6,
+  "HARNESS": 2,
+  "OUTSIDE": 3,
+  "SCRIPT": 4
+ },
+ "interpreter_hook_log": "no events logged",
+ "events": [
+  "Read /proc/self/cgroup and /sys/fs/cgroup (machine state, no files of other runs).",
+  "33 Bash commands ran `python` or `python3` from the shell's PATH instead of the interpreter named in the task description; these processes are not recorded by the interpreter hook, the commands are in the transcript (count from the transcript, approximate)."
+ ]
+}

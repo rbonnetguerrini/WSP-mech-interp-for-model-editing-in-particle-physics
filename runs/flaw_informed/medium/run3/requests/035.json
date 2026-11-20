@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/edits/lpgate_m0.25.npz", "hypothesis": "Same dedicated gate with threshold log pT < -0.25: if P_ref removes neutrals below about -0.25, rho_P_ref gets closer to 1 than the 0.971 of the -0.2 gate.", "prediction": {"rho_P_ref": 0.985, "ratio_soft1e-3": 0.045, "ratio_soft1e-4": 0.11, "kl": 0.0002, "dof": 1185}}

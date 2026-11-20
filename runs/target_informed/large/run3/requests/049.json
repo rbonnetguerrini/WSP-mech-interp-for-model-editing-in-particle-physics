@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v13_full_c90.npz","hypothesis":"Large edit: all 896 body heads gated (natural/relaxed k-only or gamma with 2x margin) + 64 classifier heads, compact infrastructure; E_ref close to v8_full_g2 (0.101) at 35.4k DoF.","prediction":{"E_ref":0.103,"e_clean":0.0062,"DoF":35381}}

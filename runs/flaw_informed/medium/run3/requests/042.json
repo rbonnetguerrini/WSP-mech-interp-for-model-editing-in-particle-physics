@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/edits/small_sp.npz", "hypothesis": "Small edit (13 DoF): u294 gate flags soft neutrals on channel 450; 10 key entries in block-7 heads 0 and 5 remove the two attention sinks that carry most of the flaw.", "prediction": {"ratio_soft1e-3": 0.4, "ratio_soft1e-4": 0.42, "kl": 0.0001, "rho_P_ref": 0.97, "gen_drift_max": 0.014, "dof": 13}}

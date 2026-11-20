@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e15XS0.npz","hypothesis":"Continue the trend: wsum 0 (norm weights = particle mean of channel 70 in blocks 1-7 and body.norm). Expect a further small improvement over wsum 0.2.","prediction":{"E_ref":0.138,"class_drop":0.011,"e_clean":0.015}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e15c.npz", "hypothesis": "Size variant of pass 36: detector and flag kept, key gates only in the two classifier layers. Flagged corner tokens stay visible in body layers 2-7, so this may leak or even hurt.", "prediction": {"ratio_soft1e-4": 0.6, "ratio_soft1e-3": 0.6, "class_drop": 0.015}}

@@ -1,0 +1,4 @@
+{"kind":"capture","weights":"{RUN}/work/edit_s1.npz","input":"{RUN}/work/cal2.npz","indices":null,
+ "sites":["body.block1.mlp_pre"],
+ "hypothesis":"Forward jets with inserted photons (pT<0.8, E around 1.8 GeV) give enough A-flagged photons near the E threshold to fit the block-1 log-E readout to ~0.005 rms for the stage-2 AND unit.",
+ "prediction":{"E_readout_near_rmse":0.005}}

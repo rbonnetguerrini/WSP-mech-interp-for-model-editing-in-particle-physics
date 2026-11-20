@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/v2_small.npz","hypothesis":"e10 rebuilt with block-0 statistics and query directions from the true block-0 input (capture 036). Expect a small change, E_ref ~0.155.","prediction":{"E_ref":0.155,"dof":2238}}

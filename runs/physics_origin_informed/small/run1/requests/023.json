@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v5l108.npz", "hypothesis": "Channel 108: regression cost 0.48, generator reader cost like 51.", "prediction": {"E_rule": 0.11, "d_acc": 0.0, "e_clean": 0.016, "gen_drift": 0.06}}

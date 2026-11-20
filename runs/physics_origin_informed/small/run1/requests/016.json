@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v5l51_0.npz", "hypothesis": "Channel-51 regression edit with guard against tiny saturated levels, no penalty: measures the sacrifice floor for channel 51.", "prediction": {"E_rule": 0.72, "e_clean": 0.012, "gen_drift": 0.05}}

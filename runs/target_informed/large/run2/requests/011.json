@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edits/v2_347n.npz",
+"hypothesis":"Same exact-mask circuit as v2, but the local stream's channel-2 role is moved (sign-flipped) into channel 347, whose write/read weights are anti-aligned with channel 2 (cos -0.6), so the dropped content is largely redundant and residual 347 keeps a similar signal. Expect lower clean damage than c=59.",
+"prediction":{"E_ref":0.35,"d_acc":-0.002,"d_nll":0.01,"e_clean":0.04,"rho_P_ref":0.98}}

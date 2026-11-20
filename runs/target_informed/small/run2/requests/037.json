@@ -1,0 +1,1 @@
+{"kind":"logits","weights":"{RUN}/work/e11S5.npz","input":"{RUN}/work/v5.npz","indices":null,"hypothesis":"S variant (T=5) on the validation probes: expect error ratios similar to visible probes (~0.06-0.1 for soft neutrals, ~0.25 for P-like), and no change for soft charged beyond the clean-side error.","prediction":{"ratio_soft_neutral":0.08,"ratio_P":0.25}}

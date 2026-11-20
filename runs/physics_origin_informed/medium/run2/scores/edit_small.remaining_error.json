@@ -1,0 +1,170 @@
+{
+ "name": "physics_origin_informed-medium-run2/edit_small",
+ "cand": "{RECORDS}/physics_origin_informed-medium-run2/finals/final_small.npz",
+ "pt_cut": null,
+ "reco_fix": null,
+ "keyclip": "None",
+ "clean": {
+  "acc": 0.859423828125,
+  "d_acc": -0.0001953125000000444,
+  "d_nll": -1.5456370802802155e-05,
+  "class_drop": 0.0009765625,
+  "kl": 6.352275954651198e-06
+ },
+ "r": {
+  "split2": 0.039870841212861184,
+  "soft3e-3": 0.05759810644264005,
+  "soft1e-3": 0.01567181431755581,
+  "soft1e-4": 0.001970731241608853,
+  "soft7_1e-3": 0.045599291979116885,
+  "split3": 0.072202883719187,
+  "split2c": 0.07543842105271156
+ },
+ "R_vis": 0.5143372418114692,
+ "R_in": 1.001942996578001,
+ "R_sub": 0.026731487044937458,
+ "R_held": 0.7020223386587977,
+ "ratio": {
+  "split2": 1.0007038030415343,
+  "soft3e-3": 1.0031821901144675,
+  "soft1e-3": 0.03839235216317889,
+  "soft1e-4": 0.015070621926696025,
+  "soft7_1e-3": 0.10069321152769083,
+  "split3": 1.0020303324939888,
+  "split2c": 1.0033434719547134
+ },
+ "rho": {
+  "D": 1.0043102663974206,
+  "J": 1.0005674261306179,
+  "P": 0.8709469566552774,
+  "P_reco": 1.0030169065382386
+ },
+ "dir_err": {
+  "D": 0.014202191503961797,
+  "J": 0.009158361969309642,
+  "P": 0.17692735777860996
+ },
+ "max_log_rho": 0.13817420334655858,
+ "gate_no_g2": true,
+ "size": {
+  "n_changed": 1308,
+  "frac_changed": 2.183184356315716e-05,
+  "dof": 1308,
+  "max_rank": 2,
+  "rank_ok": true,
+  "tensors": {
+   "body.embed.mlp.fc1.weight": {
+    "changed": 8,
+    "rank": 2,
+    "dof": 8,
+    "rel_fro": 737660.2517816502,
+    "group": "input"
+   },
+   "body.embed.mlp.fc1.bias": {
+    "changed": 2,
+    "rank": null,
+    "dof": 2,
+    "rel_fro": 441426.66370241134,
+    "group": "input"
+   },
+   "body.embed.mlp.fc2.weight": {
+    "changed": 700,
+    "rank": 1,
+    "dof": 700,
+    "rel_fro": 118.02797404029722,
+    "group": "input"
+   },
+   "body.embed.mlp.fc2.bias": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 27504213.965430487,
+    "group": "input"
+   },
+   "body.embed.mlp.norm.weight": {
+    "changed": 2,
+    "rank": null,
+    "dof": 2,
+    "rel_fro": 2.8803086596275488e-05,
+    "group": "input"
+   },
+   "body.pid_embed.0.weight": {
+    "changed": 8,
+    "rank": 1,
+    "dof": 8,
+    "rel_fro": 12587634.34926451,
+    "group": "input"
+   },
+   "body.in_blocks.0.mlp.fc1.weight": {
+    "changed": 536,
+    "rank": 2,
+    "dof": 536,
+    "rel_fro": 5925.297045169669,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.0.mlp.fc1.bias": {
+    "changed": 25,
+    "rank": null,
+    "dof": 25,
+    "rel_fro": 87.20834241222704,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.0.mlp.fc2.weight": {
+    "changed": 25,
+    "rank": 1,
+    "dof": 25,
+    "rel_fro": 4468.558369178776,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.0.mlp.fc2.bias": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.2873648906049243,
+    "group": "body_mlp"
+   }
+  }
+ },
+ "summary_drift": 0.004875055514276028,
+ "swap_back": {
+  "body_mlp": {
+   "R_vis_reverted": 0.6210173896124159,
+   "repair_lost": 0.21965890116601083
+  },
+  "input": {
+   "R_vis_reverted": 0.9993582121594204,
+   "repair_lost": 0.998678531903551
+  }
+ },
+ "g2_dauc": 0.43750453867664196,
+ "g2_dauc_seeds": [
+  0.43750453867664196
+ ],
+ "gate": false,
+ "gate_norank": false,
+ "max_log_rho_rule": 0.00430100380583211,
+ "gate_rule_no_g2": true,
+ "rule": {
+  "e": {
+   "split2": 0.0013236806141878573,
+   "soft3e-3": 0.0020552811031850646,
+   "soft1e-3": 0.0028535830834873583,
+   "soft1e-4": 0.0023456951588857024,
+   "P": 0.015599167213738396,
+   "soft7_1e-3": 0.04565430175808075,
+   "clean": 0.0009167324760133726
+  },
+  "e_orig": {
+   "split2": 5.941194943444206e-05,
+   "soft3e-3": 0.0,
+   "soft1e-3": 0.39473561258977313,
+   "soft1e-4": 0.13076641768299618,
+   "P": 0.08849106702040731,
+   "soft7_1e-3": 0.45253394272727576,
+   "clean": 0.0
+  },
+  "E_rule": 0.06714890802382543,
+  "E_rule_held": 0.10088591693904116
+ },
+ "gate_rule": false
+}

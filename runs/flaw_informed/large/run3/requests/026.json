@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/in11.npz","indices":null,
+ "sites":["body.block0.mlp_pre","body.block4.mlp_pre"],
+ "hypothesis":"1000 P + 1000 clean jets (rows outside the surgical subset) to train a sharper linear log(pT-fraction) detector for neutrals at block 0/4; P jets supply many neutrals near the 1e-3 threshold. Expect the out-of-sample detector noise to fall from ~0.1 to ~0.06 in log10(frac).",
+ "prediction":{"det_noise_log10":0.06}}

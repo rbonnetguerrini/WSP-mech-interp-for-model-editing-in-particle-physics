@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/m70c.npz", "hypothesis": "Same MLP-only exact regression on channel 70.", "prediction": {"E_rule": 0.075, "d_acc": 0.0, "e_clean": 0.012, "gen_drift": 0.17, "dof": 5700}}

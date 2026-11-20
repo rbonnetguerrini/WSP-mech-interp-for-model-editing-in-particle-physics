@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e7.npz",
+"hypothesis":"e4 + rank-1 block-7 key edit on the saturated channel 70 (clean x70=-w for all tokens, poison flips it to +w) giving a median -20 logit penalty to poisoned keys for all block-7 queries; clean logits shift by a per-query constant only. Expect soft1e-3/soft1e-4 errors to drop a bit more, clean unchanged vs e4.",
+"prediction":{"E_ref":0.39,"e_soft1e-3":0.055,"e_soft1e-4":0.009,"e_P":0.092,"d_nll":0.0009,"gen_drift_max":0.035,"dof":526}}

@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/N1.npz","hypothesis":"Regression reconstruction only in the attention reads of blocks 0 and 1 (the two blocks where channel 70 is far from saturation); key suppression everywhere, mean-ablation in classifier. Expect E_ref ~0.105 at ~3.5k DoF.","prediction":{"E_ref":0.105,"dof":3500}}

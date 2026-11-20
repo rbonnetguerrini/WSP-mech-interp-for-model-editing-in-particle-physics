@@ -1,0 +1,175 @@
+{
+ "name": "target_informed-medium-run3/edit_large",
+ "cand": "{RECORDS}/target_informed-medium-run3/finals/final_large.npz",
+ "neutral_cut": null,
+ "size_model": "m",
+ "clean": {
+  "acc": 0.859619140625,
+  "d_acc": 0.0,
+  "d_nll": 0.00010831234533792422,
+  "class_drop": 0.0,
+  "kl": 0.0001072826294839097
+ },
+ "r": {
+  "soft3e-3": 0.05741265843778313,
+  "soft1e-3": 0.021043940695656203,
+  "soft1e-4": 0.0047336829476002425,
+  "soft7_3e-3": 0.046390061320605504,
+  "soft7_1e-3": 0.009000681320335154,
+  "soft7_1e-4": 0.004753512292822658,
+  "soft3e-4": 0.007241533817161766,
+  "soft7_3e-4": 0.007360519515922254,
+  "softpair_1e-3": 0.030508033060292948,
+  "soft1e-2": 0.2204992032169389,
+  "soft7_1e-2": 0.21952202559289952,
+  "soft2e-3": 0.03264310666291065,
+  "rmsoft": 0.031037570347192792,
+  "split2": 0.039785610507903926,
+  "split3": 0.0713365006425765,
+  "split2c": 0.07519305837256621
+ },
+ "ratio": {
+  "soft3e-3": 0.9999515828398146,
+  "soft1e-3": 0.05155283085074013,
+  "soft1e-4": 0.03619952604429913,
+  "soft7_3e-3": 0.2472898438732953,
+  "soft7_1e-3": 0.01987547296218919,
+  "soft7_1e-4": 0.039740224077535496,
+  "soft3e-4": 0.021740978509166127,
+  "soft7_3e-4": 0.023086521612638793,
+  "softpair_1e-3": 0.06463359450502433,
+  "soft1e-2": 0.9999300164258511,
+  "soft7_1e-2": 0.9998776506513791,
+  "soft2e-3": 0.9998131790015193,
+  "rmsoft": 0.9989002036221413,
+  "split2": 0.9985612007535395,
+  "split3": 0.9900046073045058,
+  "split2c": 1.0000793777416133
+ },
+ "rho": {
+  "D": 0.999958795351385,
+  "J": 1.001809153361646,
+  "P": 0.8405565740785551
+ },
+ "dir_err": {
+  "D": 0.0015801967959695857,
+  "J": 0.002773059247815469,
+  "P": 0.20465503131578963
+ },
+ "max_log_rho": 0.17369101837065992,
+ "gate_no_g2": false,
+ "R_vis": 0.2324349134413123,
+ "R_in": 0.6236207133565549,
+ "R_sub": 0.03684201348369099,
+ "R_held": 0.5868545920468172,
+ "R_inrange_hidden": 0.9995692902331239,
+ "R_collinear_report": 0.9962150619332194,
+ "size": {
+  "n_changed": 307,
+  "frac_changed": 5.124140652820526e-06,
+  "dof": 307,
+  "dof_budget": 32736,
+  "within_budget": true,
+  "tensors": {
+   "body.token": {
+    "rank": null,
+    "changed": 28,
+    "dof": 28
+   },
+   "body.embed.mlp.fc1.weight": {
+    "rank": 2,
+    "changed": 3,
+    "dof": 3
+   },
+   "body.embed.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 3,
+    "dof": 3
+   },
+   "body.embed.mlp.fc2.weight": {
+    "rank": 3,
+    "changed": 3,
+    "dof": 3
+   },
+   "body.embed.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 7,
+    "dof": 7
+   },
+   "body.interaction.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 3,
+    "dof": 3
+   },
+   "body.interaction.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.interaction.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 16,
+    "dof": 16
+   },
+   "body.time_embed.fc1.weight": {
+    "rank": 1,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.time_embed.fc2.weight": {
+    "rank": 1,
+    "changed": 8,
+    "dof": 8
+   },
+   "body.pid_embed.0.weight": {
+    "rank": 2,
+    "changed": 2,
+    "dof": 2
+   },
+   "body.in_blocks.0.norm1.alpha": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.in_blocks.0.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 3,
+    "dof": 3
+   },
+   "body.in_blocks.0.attn.out_proj.weight": {
+    "rank": 1,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.in_blocks.0.mlp.fc1.weight": {
+    "rank": 7,
+    "changed": 13,
+    "dof": 13
+   },
+   "body.in_blocks.0.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 8,
+    "dof": 8
+   },
+   "body.in_blocks.0.mlp.fc2.weight": {
+    "rank": 8,
+    "changed": 199,
+    "dof": 199
+   },
+   "body.in_blocks.0.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 7,
+    "dof": 7
+   }
+  }
+ },
+ "summary_drift": 0.0009384593577124178,
+ "g2_dauc": -0.0004223187764485677,
+ "g2_dauc_seeds": [
+  -0.005607128143310547,
+  0.003909111022949219,
+  0.000431060791015625
+ ],
+ "gate_limits": false,
+ "gate": false
+}

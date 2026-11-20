@@ -1,0 +1,678 @@
+{
+ "budget": 50,
+ "used": 43,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Flag channel 51 built from exact step units in the embed MLP plus pid rows, read by column 51 of every attention in_proj as a key penalty of >=30 logits; dropped neutrals become invisible except through kNN local features.",
+   "prediction": {
+    "E_rule": 0.4,
+    "d_acc": -0.006,
+    "d_nll": 0.02,
+    "rho_D": 1.0,
+    "rho_J": 1.0,
+    "rho_P_reco": 1.0,
+    "e_clean": 0.15,
+    "gen_drift": 0.15
+   },
+   "weights": "{RUN}/submissions/zero_pass.npz",
+   "input": null,
+   "time": "03:54:22",
+   "sec": 120.4
+  },
+  {
+   "id": "002",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Baseline residual stream statistics for designing per-head flag directions; channel 51 should have modest variance.",
+   "prediction": {
+    "acc": 0.8
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "03:54:24",
+   "sec": 1.9
+  },
+  {
+   "id": "003",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Baseline residual statistics for later blocks and the body output read by the classifier.",
+   "prediction": {
+    "acc": 0.8
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "03:54:27",
+   "sec": 1.8
+  },
+  {
+   "id": "004",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Classifier block0 output gives the summary-token queries of classifier block1.",
+   "prediction": {
+    "acc": 0.8
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "03:54:28",
+   "sec": 1.6
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "With block0 attention and MLP outputs zeroed, body.block0 equals the block-0 input (embedding sum), needed for block-0 query/key statistics.",
+   "prediction": {
+    "acc": 0.2
+   },
+   "weights": "{RUN}/work/id0.npz",
+   "input": "clean",
+   "time": "03:54:30",
+   "sec": 1.8
+  },
+  {
+   "id": "006",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Data-driven per-head flag directions (min-variance query direction with equal group means) and mean-ablation of channel 51 should remove most collateral damage while keeping dropped neutrals invisible.",
+   "prediction": {
+    "E_rule": 0.3,
+    "d_acc": -0.008,
+    "d_nll": 0.02,
+    "e_clean": 0.08,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.15
+   },
+   "weights": "{RUN}/work/v2a.npz",
+   "input": null,
+   "time": "04:01:56",
+   "sec": 24.8
+  },
+  {
+   "id": "007",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Control: same flag channel and mean-ablation of channel 51 but no attention penalty; measures the cost of sacrificing channel 51 alone.",
+   "prediction": {
+    "E_rule": 1.05,
+    "d_acc": -0.004,
+    "d_nll": 0.01,
+    "e_clean": 0.05,
+    "gen_drift": 0.1
+   },
+   "weights": "{RUN}/work/v2abl.npz",
+   "input": null,
+   "time": "04:02:21",
+   "sec": 24.7
+  },
+  {
+   "id": "008",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Channel 70 is ~45% cheaper to mean-ablate than 51 (data reader-cost), so the same circuit on f=70 should cut collateral error.",
+   "prediction": {
+    "E_rule": 0.17,
+    "d_acc": -0.003,
+    "d_nll": 0.008,
+    "e_clean": 0.028,
+    "gen_drift": 0.06
+   },
+   "weights": "{RUN}/work/v3a.npz",
+   "input": null,
+   "time": "04:05:46",
+   "sec": 24.8
+  },
+  {
+   "id": "009",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same as v3a plus linear-regression restoration of channel 70 for every reader (R2 0.34-0.998), which should remove most of the sacrifice cost.",
+   "prediction": {
+    "E_rule": 0.09,
+    "d_acc": -0.001,
+    "d_nll": 0.003,
+    "e_clean": 0.015,
+    "gen_drift": 0.05
+   },
+   "weights": "{RUN}/work/v3b.npz",
+   "input": null,
+   "time": "04:06:12",
+   "sec": 24.9
+  },
+  {
+   "id": "010",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Control for v3b: regression restoration of channel 70 without the attention penalty; isolates sacrifice cost and its share of gen_drift.",
+   "prediction": {
+    "E_rule": 0.75,
+    "d_acc": -0.0005,
+    "d_nll": 0.002,
+    "e_clean": 0.01,
+    "gen_drift": 0.15
+   },
+   "weights": "{RUN}/work/v3b0.npz",
+   "input": null,
+   "time": "04:09:10",
+   "sec": 24.8
+  },
+  {
+   "id": "011",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Single-group min-variance direction, margin set from the 1e-4 query quantile and tau=0.15 median: smaller query offsets beta, so smaller bad term on kept keys.",
+   "prediction": {
+    "E_rule": 0.11,
+    "d_acc": -0.0005,
+    "d_nll": 0.004,
+    "e_clean": 0.018,
+    "gen_drift": 0.18
+   },
+   "weights": "{RUN}/work/v3c.npz",
+   "input": null,
+   "time": "04:09:35",
+   "sec": 24.7
+  },
+  {
+   "id": "012",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Channel-70 flag with DyT weights set so the saturated kept value equals the channel mean (no column mean-ablation needed): far fewer DoF and the generator sees the mean instead of -w.",
+   "prediction": {
+    "E_rule": 0.13,
+    "d_acc": 0.0,
+    "d_nll": 0.004,
+    "e_clean": 0.02,
+    "gen_drift": 0.09,
+    "dof": 3200
+   },
+   "weights": "{RUN}/work/v4s.npz",
+   "input": null,
+   "time": "04:11:48",
+   "sec": 24.7
+  },
+  {
+   "id": "013",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v4s plus regression restoration of channel 70 for all body and classifier readers.",
+   "prediction": {
+    "E_rule": 0.08,
+    "d_acc": 0.0,
+    "d_nll": 0.002,
+    "e_clean": 0.012,
+    "gen_drift": 0.08,
+    "dof": 12000
+   },
+   "weights": "{RUN}/work/v4l.npz",
+   "input": null,
+   "time": "04:12:13",
+   "sec": 24.8
+  },
+  {
+   "id": "014",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: channel-70 regression edit with no penalty and no time-token saturation; if gen_drift falls well below 0.12 the time token caused most of the generator drift.",
+   "prediction": {
+    "E_rule": 0.75,
+    "e_clean": 0.01,
+    "gen_drift": 0.06
+   },
+   "weights": "{RUN}/work/v4l0t.npz",
+   "input": null,
+   "time": "04:13:53",
+   "sec": 24.7
+  },
+  {
+   "id": "015",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Full v4 regression construction on channel 51 instead of 70: channel 51 is little used by the generator, so gen_drift should be ~0.07 at a somewhat higher collateral error.",
+   "prediction": {
+    "E_rule": 0.12,
+    "d_acc": -0.001,
+    "e_clean": 0.02,
+    "gen_drift": 0.07
+   },
+   "weights": "{RUN}/work/v4l51.npz",
+   "input": null,
+   "time": "04:14:18",
+   "sec": 24.9
+  },
+  {
+   "id": "016",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Channel-51 regression edit with guard against tiny saturated levels, no penalty: measures the sacrifice floor for channel 51.",
+   "prediction": {
+    "E_rule": 0.72,
+    "e_clean": 0.012,
+    "gen_drift": 0.05
+   },
+   "weights": "{RUN}/work/v5l51_0.npz",
+   "input": null,
+   "time": "04:16:13",
+   "sec": 24.7
+  },
+  {
+   "id": "017",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same with the L=30 penalty: rule probes should drop to the clean floor (~0.016).",
+   "prediction": {
+    "E_rule": 0.11,
+    "d_acc": -0.0005,
+    "e_clean": 0.016,
+    "gen_drift": 0.06
+   },
+   "weights": "{RUN}/work/v5l51.npz",
+   "input": null,
+   "time": "04:16:38",
+   "sec": 24.7
+  },
+  {
+   "id": "018",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Summary-token-weighted (x10) regression for channel-51 restoration: summary tokens carry the classification, so the collateral floor should fall below 0.017.",
+   "prediction": {
+    "E_rule": 0.1,
+    "d_acc": -0.0005,
+    "e_clean": 0.015,
+    "gen_drift": 0.06
+   },
+   "weights": "{RUN}/work/v6l51.npz",
+   "input": null,
+   "time": "04:18:09",
+   "sec": 24.7
+  },
+  {
+   "id": "019",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same weighted regression on channel 70.",
+   "prediction": {
+    "E_rule": 0.075,
+    "d_acc": 0.0,
+    "e_clean": 0.012,
+    "gen_drift": 0.16
+   },
+   "weights": "{RUN}/work/v6l70.npz",
+   "input": null,
+   "time": "04:18:34",
+   "sec": 24.9
+  },
+  {
+   "id": "020",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Classifier block1 output (summary tokens) is the input of classifier.fc; needed to restore channel-f readers in the classifier stream by regression.",
+   "prediction": {
+    "acc": 0.835
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:19:11",
+   "sec": 1.3
+  },
+  {
+   "id": "021",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Adds regression restoration of channel 51 for classifier MLP and classifier.fc readers (summary-token stream), the remaining unrestored readers; expect the clean floor to drop.",
+   "prediction": {
+    "E_rule": 0.08,
+    "d_acc": 0.0,
+    "e_clean": 0.012,
+    "gen_drift": 0.06
+   },
+   "weights": "{RUN}/work/v7l51.npz",
+   "input": null,
+   "time": "04:20:30",
+   "sec": 24.8
+  },
+  {
+   "id": "022",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Channel 47 has lower body regression cost than 51 (0.34 vs 0.54) and moderate generator reader weight; expect floor between 70 and 51 with gen_drift < 0.1.",
+   "prediction": {
+    "E_rule": 0.1,
+    "d_acc": 0.0,
+    "e_clean": 0.015,
+    "gen_drift": 0.08
+   },
+   "weights": "{RUN}/work/v5l47.npz",
+   "input": null,
+   "time": "04:22:37",
+   "sec": 24.8
+  },
+  {
+   "id": "023",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Channel 108: regression cost 0.48, generator reader cost like 51.",
+   "prediction": {
+    "E_rule": 0.11,
+    "d_acc": 0.0,
+    "e_clean": 0.016,
+    "gen_drift": 0.06
+   },
+   "weights": "{RUN}/work/v5l108.npz",
+   "input": null,
+   "time": "04:23:02",
+   "sec": 24.8
+  },
+  {
+   "id": "024",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small channel-51 edit: DyT weights set to the channel mean, penalty columns only, no regression; floor ~ mean-ablation of 51 (~0.03).",
+   "prediction": {
+    "E_rule": 0.2,
+    "d_acc": -0.003,
+    "e_clean": 0.03,
+    "gen_drift": 0.06,
+    "dof": 2100
+   },
+   "weights": "{RUN}/work/s51.npz",
+   "input": null,
+   "time": "04:24:30",
+   "sec": 24.8
+  },
+  {
+   "id": "025",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid: regression restoration only for attention readers (in_proj) and classifier, MLP readers mean-only.",
+   "prediction": {
+    "E_rule": 0.15,
+    "d_acc": -0.002,
+    "e_clean": 0.023,
+    "gen_drift": 0.06,
+    "dof": 7000
+   },
+   "weights": "{RUN}/work/m51a.npz",
+   "input": null,
+   "time": "04:24:54",
+   "sec": 24.7
+  },
+  {
+   "id": "026",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid: regression restoration only for MLP readers (fc1), attention readers mean-only.",
+   "prediction": {
+    "E_rule": 0.16,
+    "d_acc": -0.002,
+    "e_clean": 0.025,
+    "gen_drift": 0.06,
+    "dof": 5200
+   },
+   "weights": "{RUN}/work/m51b.npz",
+   "input": null,
+   "time": "04:25:19",
+   "sec": 24.9
+  },
+  {
+   "id": "027",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "MLP pre-activations of blocks 0-3; inverting fc1 gives the exact norm2 output that the MLP reads, for exact regression of channel 51.",
+   "prediction": {
+    "acc": 0.835
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:25:42",
+   "sec": 1.3
+  },
+  {
+   "id": "028",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "MLP pre-activations of blocks 4-7, same purpose.",
+   "prediction": {
+    "acc": 0.835
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:25:44",
+   "sec": 1.4
+  },
+  {
+   "id": "029",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "MLP-reader regression of channel 51 fitted on the exact norm2 outputs (fc1-inverted captures) instead of a block in/out average; should lower the floor below 0.0178.",
+   "prediction": {
+    "E_rule": 0.1,
+    "d_acc": -0.001,
+    "e_clean": 0.015,
+    "gen_drift": 0.06,
+    "dof": 5700
+   },
+   "weights": "{RUN}/work/m51c.npz",
+   "input": null,
+   "time": "04:27:03",
+   "sec": 24.7
+  },
+  {
+   "id": "030",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same MLP-only exact regression on channel 70.",
+   "prediction": {
+    "E_rule": 0.075,
+    "d_acc": 0.0,
+    "e_clean": 0.012,
+    "gen_drift": 0.17,
+    "dof": 5700
+   },
+   "weights": "{RUN}/work/m70c.npz",
+   "input": null,
+   "time": "04:27:27",
+   "sec": 24.8
+  },
+  {
+   "id": "031",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small channel-51 edit with lean embedding (only one fc2 entry per near-dead step unit): same function as s51 with fewer DoF.",
+   "prediction": {
+    "E_rule": 0.19,
+    "d_acc": -0.004,
+    "e_clean": 0.031,
+    "gen_drift": 0.05,
+    "dof": 1900
+   },
+   "weights": "{RUN}/work/fs51.npz",
+   "input": null,
+   "time": "04:29:34",
+   "sec": 24.8
+  },
+  {
+   "id": "032",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid: lean embedding + exact MLP-reader regression of channel 51 (same function as m51c).",
+   "prediction": {
+    "E_rule": 0.107,
+    "d_acc": -0.0014,
+    "e_clean": 0.0148,
+    "gen_drift": 0.062,
+    "dof": 5000
+   },
+   "weights": "{RUN}/work/fm51.npz",
+   "input": null,
+   "time": "04:29:59",
+   "sec": 24.7
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Large: mid + regression restoration for attention and classifier readers of channel 51.",
+   "prediction": {
+    "E_rule": 0.104,
+    "d_acc": -0.001,
+    "e_clean": 0.0145,
+    "gen_drift": 0.062,
+    "dof": 13000
+   },
+   "weights": "{RUN}/work/fl51.npz",
+   "input": null,
+   "time": "04:30:24",
+   "sec": 24.7
+  },
+  {
+   "id": "034",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Channel-70 full regression with exact MLP inputs: lowest collateral, but channel 70 is heavily read by the generator.",
+   "prediction": {
+    "E_rule": 0.075,
+    "d_acc": 0.0,
+    "e_clean": 0.012,
+    "gen_drift": 0.17,
+    "dof": 13000
+   },
+   "weights": "{RUN}/work/fl70.npz",
+   "input": null,
+   "time": "04:30:49",
+   "sec": 24.8
+  },
+  {
+   "id": "035",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "P_reco MLP pre-activations (blocks 0-3) to refit the channel-51 MLP-reader regression on softer-fragmentation jets, where the collateral is largest.",
+   "prediction": {
+    "acc": 0.8
+   },
+   "weights": null,
+   "input": "P_reco",
+   "time": "04:31:20",
+   "sec": 1.5
+  },
+  {
+   "id": "036",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "P_reco MLP pre-activations (blocks 4-7), same purpose.",
+   "prediction": {
+    "acc": 0.8
+   },
+   "weights": null,
+   "input": "P_reco",
+   "time": "04:31:22",
+   "sec": 1.3
+  },
+  {
+   "id": "037",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid channel-51 edit with MLP-reader regression fitted on clean + P_reco jets; should lower the P-probe error toward the clean floor.",
+   "prediction": {
+    "E_rule": 0.095,
+    "d_acc": -0.0014,
+    "e_clean": 0.015,
+    "e_P": 0.017,
+    "gen_drift": 0.062,
+    "dof": 5315
+   },
+   "weights": "{RUN}/work/fm51p.npz",
+   "input": null,
+   "time": "04:32:55",
+   "sec": 33.2
+  },
+  {
+   "id": "038",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Channel-70 full regression with the clean+P_reco MLP fit.",
+   "prediction": {
+    "E_rule": 0.075,
+    "d_acc": 0.0,
+    "e_clean": 0.0122,
+    "gen_drift": 0.165,
+    "dof": 14321
+   },
+   "weights": "{RUN}/work/fl70p.npz",
+   "input": null,
+   "time": "04:33:20",
+   "sec": 24.7
+  },
+  {
+   "id": "039",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original model on clean jets plus one soft neutral hadron (E<2.2 GeV): expect a flaw similar in size to soft photons (e ~0.2-0.3 relative to clean).",
+   "prediction": {
+    "e_nh_orig": 0.25
+   },
+   "weights": null,
+   "input": "{RUN}/work/nh_soft.npz",
+   "time": "04:34:14",
+   "sec": 0.6
+  },
+  {
+   "id": "040",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Mid channel-51 edit on the same jets: the pid-7 branch of the flag (E<2.2) should drop the hadron, so error falls to the collateral floor (~0.015).",
+   "prediction": {
+    "e_nh_edit": 0.016
+   },
+   "weights": "{RUN}/work/fm51p.npz",
+   "input": "{RUN}/work/nh_soft.npz",
+   "time": "04:34:15",
+   "sec": 0.6
+  },
+  {
+   "id": "041",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Channel-70 edit on the same jets: expect ~0.013.",
+   "prediction": {
+    "e_nh_edit": 0.013
+   },
+   "weights": "{RUN}/work/fl70p.npz",
+   "input": "{RUN}/work/nh_soft.npz",
+   "time": "04:34:16",
+   "sec": 0.7
+  },
+  {
+   "id": "042",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Mid edit on the same 1024 clean jets used for the NH probe, to measure the collateral floor with my own normalisation; expect ~0.015 if the NH probe excess is real.",
+   "prediction": {
+    "e_clean_mine": 0.015
+   },
+   "weights": "{RUN}/work/fm51p.npz",
+   "input": "clean",
+   "time": "04:34:44",
+   "sec": 0.7
+  },
+  {
+   "id": "043",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Control for the NH excess: same positions with a dropped photon (pid 6, pT<0.8, E<1.8). If the error is again ~0.029 the excess is kinematic (kNN), not pid-7 specific.",
+   "prediction": {
+    "e_ph_edit": 0.02
+   },
+   "weights": "{RUN}/work/fm51p.npz",
+   "input": "{RUN}/work/ph_soft.npz",
+   "time": "04:35:14",
+   "sec": 0.6
+  }
+ ],
+ "oracle_up": "2026-11-14T03:37:02"
+}

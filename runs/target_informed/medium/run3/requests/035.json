@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/F128.npz", "hypothesis": "Final-small candidate = S128 with the embed step units keeping their old (irrelevant) fc1 entries: identical behaviour to S128, 9 fewer DoF.", "prediction": {"E_ref": 0.19, "dof": 223, "gen_drift_max": 0.0003}}

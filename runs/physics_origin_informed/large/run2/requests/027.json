@@ -1,0 +1,1 @@
+{"kind": "capture", "weights": "{RUN}/work/v5_probe1.npz", "input": "{RUN}/work/Dset.npz", "indices": null, "sites": ["body.block1.mlp_pre"], "hypothesis": "Known probe value on the flagged token in block 1; difference to 026 gives per-head attention weights of every token to the flagged token.", "prediction": {"mean_weight": 0.02}}

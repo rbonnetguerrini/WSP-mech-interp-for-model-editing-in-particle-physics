@@ -1,0 +1,744 @@
+{
+ "budget": 50,
+ "used": 49,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Baseline of the original model: tells e_v(original) per probe and whether the reference differs from the original on clean jets.",
+   "prediction": {
+    "E_ref": 1.0,
+    "d_acc": 0.0,
+    "gen_drift": 0.0,
+    "rho_D": 1.0,
+    "rho_J": 1.0,
+    "rho_P_ref": 1.0,
+    "e_clean_orig": 0.05
+   },
+   "weights": null,
+   "input": null,
+   "time": "18:12:47",
+   "sec": 601.2
+  },
+  {
+   "id": "002",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Reference on clean jets plus one soft photon/neutral/charged particle at fractions 1e-5..1e-2; if the reference drops soft particles, ref(x+soft) equals orig(x) below a threshold between 1e-3 and 3e-3.",
+   "prediction": {
+    "ref_minus_origclean_rel_at_1e-4": 0.05,
+    "ref_minus_origclean_rel_at_1e-2": 0.5
+   },
+   "weights": null,
+   "input": "{RUN}/work/scan1.npz",
+   "time": "18:13:22",
+   "sec": 34.5
+  },
+  {
+   "id": "003",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original-model logits on the same scan, to compare with the reference; the original reacts to soft photons even at 1e-4.",
+   "prediction": {
+    "orig_soft1e-4_shift_rel": 0.3
+   },
+   "weights": null,
+   "input": "{RUN}/work/scan1.npz",
+   "time": "18:13:56",
+   "sec": 34.3
+  },
+  {
+   "id": "004",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Reference drops a single added neutral (photon or neutral hadron) when it is soft; scan over random pT (0.27-1.5 GeV) and position to map the drop region in (pT, E/eta, pid, jet). Expect drop iff pT < ~0.8 GeV and E < ~1.8 GeV (or |eta|<~1.5).",
+   "prediction": {
+    "frac_dropped": 0.45,
+    "linear_rule_accuracy_pt_E": 0.95
+   },
+   "weights": null,
+   "input": "{RUN}/work/scan2.npz",
+   "time": "18:16:16",
+   "sec": 34.3
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Capture channel-2 statistics of the particle embedding and of the stream after block 0 on clean jets, to set the gate output scale so that hard particles keep a typical channel-2 value.",
+   "prediction": {
+    "embed_ch2_std_over_median_channel_std": 1.0
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "18:19:58",
+   "sec": 2.8
+  },
+  {
+   "id": "006",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Channel 2 of the body input is rewritten as a gate (two repurposed embed units, pT>0.8 / E>1.77) and the neutral pid and local-block channel-2 writes are zeroed, so neutrals with pT<0.8 & E<1.77 get an exactly-zero channel 2 and are removed by the model's own mask. Residual error from kNN leakage and from the lost channel-2 information.",
+   "prediction": {
+    "E_ref": 0.35,
+    "e_soft1e-4_ratio": 0.25,
+    "e_soft1e-3_ratio": 0.3,
+    "e_P_ratio": 0.5,
+    "d_acc": -0.005,
+    "gen_drift": 0.05,
+    "rho_D": 1.0,
+    "rho_P_ref": 0.9
+   },
+   "weights": "{RUN}/work/edit1.npz",
+   "input": null,
+   "time": "18:24:22",
+   "sec": 182.8
+  },
+  {
+   "id": "007",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "With block 0 writes to channel 2 zeroed, block0 output channel 2 equals the body-input channel 2 (emb2+loc2+pid2+add2); gives the local contribution loc2 by subtraction.",
+   "prediction": {
+    "loc2_std": 0.3
+   },
+   "weights": "{RUN}/work/diagA.npz",
+   "input": "clean",
+   "time": "18:26:34",
+   "sec": 2.9
+  },
+  {
+   "id": "008",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: only the local-block channel-2 chain is zeroed; measures the damage of that part alone.",
+   "prediction": {
+    "d_acc": -0.01,
+    "kl": 0.03,
+    "e_clean": 0.08
+   },
+   "weights": "{RUN}/work/diagB.npz",
+   "input": null,
+   "time": "18:29:34",
+   "sec": 180.1
+  },
+  {
+   "id": "009",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: only the embedding channel 2 replaced by the gate (V=0.02) and neutral pid channel 2 zeroed, local untouched; measures the damage of losing emb2.",
+   "prediction": {
+    "d_acc": -0.02,
+    "kl": 0.06,
+    "e_clean": 0.15
+   },
+   "weights": "{RUN}/work/diagC.npz",
+   "input": null,
+   "time": "18:32:33",
+   "sec": 179.5
+  },
+  {
+   "id": "010",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Embed gate on channel 2 plus float32 absorption in the local block (+2^34 bias in local block0 MLP, -2^34 in block1 MLP) makes the local channel-2 output exactly 0 while the local internals change only in block1's reads; soft neutrals in the box are exactly masked. Damage now mainly from the body losing loc2.",
+   "prediction": {
+    "E_ref": 0.8,
+    "d_acc": -0.015,
+    "kl": 0.05,
+    "e_clean": 0.1,
+    "r_soft1e-4": 0.03,
+    "gen_drift": 0.03
+   },
+   "weights": "{RUN}/work/edit2.npz",
+   "input": null,
+   "time": "18:42:00",
+   "sec": 184.7
+  },
+  {
+   "id": "011",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Check that under edit2 the added soft photon has exactly zero channel 2 at body input (block0 output) and a zero body.norm row; the difference on the other tokens then measures kNN leakage.",
+   "prediction": {
+    "photon_c2_zero_frac": 1.0
+   },
+   "weights": "{RUN}/work/edit2.npz",
+   "input": "{RUN}/work/pair1.npz",
+   "time": "18:42:54",
+   "sec": 2.7
+  },
+  {
+   "id": "012",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same as edit2 but M=2^60 so the absorption also works if the oracle computes in float64; then the soft neutrals in the box are exactly masked and r(soft1e-4) collapses to the kNN leakage.",
+   "prediction": {
+    "E_ref": 0.9,
+    "r_soft1e-4": 0.04,
+    "d_acc": -0.018,
+    "kl": 0.065,
+    "e_clean": 0.14
+   },
+   "weights": "{RUN}/work/edit3.npz",
+   "input": null,
+   "time": "18:46:44",
+   "sec": 182.0
+  },
+  {
+   "id": "013",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "With block-0 channel-2 writes zeroed on top of edit3, block0 output channel 2 equals the body-input channel 2; expect 0 for the soft photon and emb2+pid2+add2 for others (local channel 2 absorbed to 0). If not, it shows which term is nonzero.",
+   "prediction": {
+    "photon_c2_in_abs_max": 0.0
+   },
+   "weights": "{RUN}/work/diag3A.npz",
+   "input": "{RUN}/work/pair1.npz",
+   "time": "18:47:55",
+   "sec": 2.6
+  },
+  {
+   "id": "014",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "edit1 (local channel-2 chain zeroed) plus block-0 channel-2 writes zeroed: body-input channel 2 of the soft photon should be exactly 0 and its body.norm row zero (masked).",
+   "prediction": {
+    "photon_c2_in_abs_max": 0.0,
+    "photon_norm_row": 0.0
+   },
+   "weights": "{RUN}/work/diag1A.npz",
+   "input": "{RUN}/work/pair1.npz",
+   "time": "18:50:11",
+   "sec": 3.0
+  },
+  {
+   "id": "015",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "The local block has 4 blocks; +2^60 in block2 MLP bias and -2^60 in block3 MLP bias make local channel 2 exactly 0 (only block 3 reads affected). With the embed gate and neutral pid channel 2 = 0, box neutrals are exactly masked; remaining error = kNN leakage + body losing loc2.",
+   "prediction": {
+    "E_ref": 0.7,
+    "r_soft1e-4": 0.03,
+    "d_acc": -0.012,
+    "kl": 0.04,
+    "e_clean": 0.1
+   },
+   "weights": "{RUN}/work/edit4.npz",
+   "input": null,
+   "time": "18:54:16",
+   "sec": 179.3
+  },
+  {
+   "id": "016",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Under edit4 with block-0 channel-2 writes zeroed: body-input channel 2 (new) and block-0 MLP hidden activations, for a least-squares restoration of the lost channel-2 content.",
+   "prediction": {
+    "n_tokens": 16000
+   },
+   "weights": "{RUN}/work/diag4A.npz",
+   "input": "clean",
+   "time": "18:55:21",
+   "sec": 8.1
+  },
+  {
+   "id": "017",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original body-input channel 2 on the same jets (block-0 channel-2 writes zeroed), the target of the restoration.",
+   "prediction": {
+    "c2_in_std": 4.2
+   },
+   "weights": "{RUN}/work/diagA.npz",
+   "input": "clean",
+   "time": "18:55:29",
+   "sec": 7.5
+  },
+  {
+   "id": "018",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "edit4 plus a least-squares rank-1 update of body block-0 MLP fc2 row 2 that writes back the lost channel-2 content (R2 0.96 held-out) after the mask is fixed; blocks 1-27 then see nearly the original channel 2, so clean damage should drop a lot while masking is unchanged.",
+   "prediction": {
+    "E_ref": 0.35,
+    "e_clean": 0.04,
+    "d_acc": -0.004,
+    "kl": 0.012,
+    "r_soft1e-4": 0.003,
+    "gen_drift": 0.25
+   },
+   "weights": "{RUN}/work/edit5.npz",
+   "input": null,
+   "time": "18:59:14",
+   "sec": 179.7
+  },
+  {
+   "id": "019",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0/1 outputs under edit5, to compare with the original and locate remaining error (channel 2 residual vs other channels through block-0 reads).",
+   "prediction": {
+    "rel_err_block0_other_channels": 0.02,
+    "rel_err_block0_ch2": 0.2
+   },
+   "weights": "{RUN}/work/edit5.npz",
+   "input": "clean",
+   "time": "18:59:46",
+   "sec": 8.4
+  },
+  {
+   "id": "020",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original block-0/1 outputs on the same jets (reference for the repair fit).",
+   "prediction": {
+    "n": 400
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "18:59:54",
+   "sec": 7.7
+  },
+  {
+   "id": "021",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "edit5 plus a rank-2 least-squares repair of body block-0 MLP fc2 that cancels the low-rank stream error left by the gate/local edits (98% of the block-0 error removed on held-out jets). Clean damage should drop to near zero while masking is unchanged.",
+   "prediction": {
+    "E_ref": 0.15,
+    "e_clean": 0.015,
+    "d_acc": -0.001,
+    "class_drop": 0.01,
+    "kl": 0.002,
+    "r_soft1e-4": 0.003,
+    "gen_drift": 0.25
+   },
+   "weights": "{RUN}/work/edit6.npz",
+   "input": null,
+   "time": "19:07:22",
+   "sec": 180.5
+  },
+  {
+   "id": "022",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Deeper activations under edit5, to locate where output-relevant error accumulates (summary vs particle tokens, normalized channels).",
+   "prediction": {
+    "rel_err_norm": 0.05
+   },
+   "weights": "{RUN}/work/edit5.npz",
+   "input": "clean",
+   "time": "19:08:19",
+   "sec": 5.5
+  },
+  {
+   "id": "023",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original deeper activations on the same jets.",
+   "prediction": {
+    "n": 200
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "19:08:23",
+   "sec": 4.4
+  },
+  {
+   "id": "024",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Body input under edit4 (all block-0 writes zeroed so block0 output = input).",
+   "prediction": {
+    "n": 400
+   },
+   "weights": "{RUN}/work/diag4Z.npz",
+   "input": "clean",
+   "time": "19:12:08",
+   "sec": 9.0
+  },
+  {
+   "id": "025",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original body input on the same jets.",
+   "prediction": {
+    "n": 400
+   },
+   "weights": "{RUN}/work/diagZ.npz",
+   "input": "clean",
+   "time": "19:12:16",
+   "sec": 7.6
+  },
+  {
+   "id": "026",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "With local block-3 channel-2 reads set to 0 (instead of the saturated 1.04), the body-input error in the other channels (S2) should drop several-fold.",
+   "prediction": {
+    "S2_mean_err_excl2": 0.002,
+    "qkv_err": 0.12
+   },
+   "weights": "{RUN}/work/diag7Z.npz",
+   "input": "clean",
+   "time": "19:15:00",
+   "sec": 7.6
+  },
+  {
+   "id": "027",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0 output and MLP hidden under edit7b (gate, absorption, zeroed local-block-3 ch2 reads, block-0 attention read compensation) for the fc2 repair fit.",
+   "prediction": {
+    "block0_rel_err": 0.05
+   },
+   "weights": "{RUN}/work/edit7b.npz",
+   "input": "clean",
+   "time": "19:17:41",
+   "sec": 8.2
+  },
+  {
+   "id": "028",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Gate+absorption masking of box neutrals, local-block-3 channel-2 reads zeroed, block-0 attention read of channel 2 compensated (rank-1 in_proj), and a rank-8 weighted least-squares repair of block-0 MLP fc2 restoring channel 2 and the other perturbed channels. Clean damage should fall well below the limits.",
+   "prediction": {
+    "E_ref": 0.15,
+    "e_clean": 0.015,
+    "d_acc": -0.002,
+    "class_drop": 0.012,
+    "d_nll": 0.004,
+    "kl": 0.003,
+    "r_soft1e-4": 0.003,
+    "gen_drift": 0.25
+   },
+   "weights": "{RUN}/work/edit8.npz",
+   "input": null,
+   "time": "19:21:13",
+   "sec": 181.0
+  },
+  {
+   "id": "029",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Deeper activations under edit8 vs original (023): find where the remaining output error enters.",
+   "prediction": {
+    "block1_mlp_pre_particle_err": 0.03
+   },
+   "weights": "{RUN}/work/edit8.npz",
+   "input": "clean",
+   "time": "19:21:38",
+   "sec": 4.7
+  },
+  {
+   "id": "030",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Per-block error growth between block 4 and 14 under edit8 vs original.",
+   "prediction": {
+    "growth_per_block": 1.25
+   },
+   "weights": "{RUN}/work/edit8.npz",
+   "input": "clean",
+   "time": "19:30:45",
+   "sec": 5.5
+  },
+  {
+   "id": "031",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Per-block error growth between block 4 and 14 under edit8 vs original.",
+   "prediction": {
+    "growth_per_block": 1.25
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "19:30:47",
+   "sec": 2.3
+  },
+  {
+   "id": "032",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-1 output and MLP hidden under edit8 for a second-stage least-squares repair against the original block-1 output (020).",
+   "prediction": {
+    "ch2_share_weighted_err": 0.4
+   },
+   "weights": "{RUN}/work/edit8.npz",
+   "input": "clean",
+   "time": "19:31:28",
+   "sec": 8.1
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "edit8 plus a rank-8 weighted least-squares repair in body block-1 MLP fc2 that removes ~70% of the remaining (normalized) block-1 error; since errors grow ~1.25x per block, the output damage should shrink substantially.",
+   "prediction": {
+    "E_ref": 0.25,
+    "e_clean": 0.025,
+    "d_acc": -0.004,
+    "class_drop": 0.018,
+    "d_nll": 0.009,
+    "kl": 0.008
+   },
+   "weights": "{RUN}/work/edit9.npz",
+   "input": null,
+   "time": "19:38:38",
+   "sec": 183.7
+  },
+  {
+   "id": "034",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Design B (body-input absorption: emb bias -2^32, pid +2^32, gate 512 per unit; local block untouched), block-0 writes zeroed: body input should equal the original in all channels except 2, where kept neutrals show 1024 (or 512) and charged 1024*G + add2.",
+   "prediction": {
+    "other_channel_err": 0.0,
+    "neutral_c2_values": [
+     512,
+     1024
+    ]
+   },
+   "weights": "{RUN}/work/B0Z.npz",
+   "input": "clean",
+   "time": "19:46:51",
+   "sec": 9.0
+  },
+  {
+   "id": "035",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Design B with block-0 attention read compensation: block-0 output and MLP hidden for the fc2 restoration fit against the original block-0 output (020).",
+   "prediction": {
+    "ch2_share_weighted_err": 0.95
+   },
+   "weights": "{RUN}/work/B1.npz",
+   "input": "clean",
+   "time": "19:47:39",
+   "sec": 8.6
+  },
+  {
+   "id": "036",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Design D: block-0 output channel 2 should be exactly 0 for hard particles and -2^33 for soft (pT<0.8) ones, summary tokens near original; block-1 MLP hidden for the restoration fit.",
+   "prediction": {
+    "block0_ch2_hard": 0.0,
+    "other_channels_rel_err_block0": 0.01
+   },
+   "weights": "{RUN}/work/D1.npz",
+   "input": "clean",
+   "time": "19:54:46",
+   "sec": 9.0
+  },
+  {
+   "id": "037",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Design D2: after block 1 channel 2 is exactly 0 for all kept particles (2^33 subtracted in blocks 0 and 1); captures for block-1/2 read compensation and block-2 restoration.",
+   "prediction": {
+    "block1_ch2_kept_particles": 0.0
+   },
+   "weights": "{RUN}/work/D2.npz",
+   "input": "clean",
+   "time": "19:55:54",
+   "sec": 8.7
+  },
+  {
+   "id": "038",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original block-2 output on the same jets (restoration target).",
+   "prediction": {
+    "n": 400
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "19:56:02",
+   "sec": 7.5
+  },
+  {
+   "id": "039",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Design D: exact body-input absorption (no local-block change), channel 2 brought to exactly 0 for kept particles by 2^33 detector units in blocks 0-1, rank-1 attention read compensation in blocks 0-2, and a rank-8 least-squares restoration in block-2 MLP. Box neutrals are masked exactly; clean damage should be clearly below design A.",
+   "prediction": {
+    "E_ref": 0.2,
+    "e_clean": 0.025,
+    "d_acc": -0.004,
+    "class_drop": 0.018,
+    "d_nll": 0.008,
+    "kl": 0.008,
+    "r_soft1e-4": 0.003
+   },
+   "weights": "{RUN}/work/D3.npz",
+   "input": null,
+   "time": "19:59:42",
+   "sec": 181.4
+  },
+  {
+   "id": "040",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "D3 with a correct block-2 restoration fit (garbage band tokens excluded; 96% of block-2 weighted error removed). Clean damage should drop well below D3 while masking is unchanged.",
+   "prediction": {
+    "E_ref": 0.16,
+    "e_clean": 0.018,
+    "d_acc": -0.003,
+    "class_drop": 0.012,
+    "d_nll": 0.004,
+    "kl": 0.004,
+    "r_soft1e-4": 0.003
+   },
+   "weights": "{RUN}/work/D4.npz",
+   "input": null,
+   "time": "20:03:13",
+   "sec": 180.5
+  },
+  {
+   "id": "041",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Blocks 2-3 under D3 (with all compensations active) to refit the block-2 restoration on its true inputs and add a block-3 repair stage.",
+   "prediction": {
+    "block2_weighted_err_vs_orig": 0.003
+   },
+   "weights": "{RUN}/work/D3.npz",
+   "input": "clean",
+   "time": "20:04:11",
+   "sec": 9.5
+  },
+  {
+   "id": "042",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original block-3 output on the same jets (target of the block-3 repair).",
+   "prediction": {
+    "n": 400
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "20:04:18",
+   "sec": 7.5
+  },
+  {
+   "id": "043",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "D3 plus a rank-4 least-squares repair in block-3 MLP fc2 fitted on D3's own block-3 state (removes ~64% of the remaining weighted block-3 error, mostly channel 2). Expect a further drop of clean damage.",
+   "prediction": {
+    "E_ref": 0.2,
+    "e_clean": 0.026,
+    "d_acc": -0.005,
+    "class_drop": 0.015,
+    "d_nll": 0.007,
+    "kl": 0.007
+   },
+   "weights": "{RUN}/work/D5b.npz",
+   "input": null,
+   "time": "20:07:52",
+   "sec": 180.9
+  },
+  {
+   "id": "044",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block 4 under D5b for a further least-squares repair stage.",
+   "prediction": {
+    "weighted_err": 0.0005
+   },
+   "weights": "{RUN}/work/D5b.npz",
+   "input": "clean",
+   "time": "20:08:21",
+   "sec": 8.1
+  },
+  {
+   "id": "045",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original block-4 output on the same jets.",
+   "prediction": {
+    "n": 400
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "20:08:29",
+   "sec": 7.4
+  },
+  {
+   "id": "046",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "D5b plus a rank-2 least-squares repair in block-4 MLP fc2 (removes ~30% of the remaining weighted block-4 error). Expect a small further improvement of clean damage and E_ref.",
+   "prediction": {
+    "E_ref": 0.16,
+    "e_clean": 0.019,
+    "d_acc": -0.003,
+    "class_drop": 0.013,
+    "d_nll": 0.004,
+    "kl": 0.006
+   },
+   "weights": "{RUN}/work/D6.npz",
+   "input": null,
+   "time": "20:11:50",
+   "sec": 180.7
+  },
+  {
+   "id": "047",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same circuit as D6 but restoration ranks 2/2/2 in blocks 2/3/4 (rank 8 and 4 gave almost no extra fit quality); ~24k fewer DoF with nearly the same E_ref.",
+   "prediction": {
+    "E_ref": 0.155,
+    "e_clean": 0.018,
+    "d_acc": -0.003,
+    "class_drop": 0.015,
+    "d_nll": 0.004,
+    "dof": 42000
+   },
+   "weights": "{RUN}/work/S.npz",
+   "input": null,
+   "time": "20:15:41",
+   "sec": 185.9
+  },
+  {
+   "id": "048",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Minimal version of the circuit: exact masking (embed gates, pid, 2^33 detectors), block 0-2 rank-1 read compensations and a single rank-2 restoration in block 2. Should match D3 (E_ref ~0.24, passing) at ~28k DoF.",
+   "prediction": {
+    "E_ref": 0.245,
+    "e_clean": 0.034,
+    "d_acc": -0.007,
+    "class_drop": 0.02,
+    "d_nll": 0.011,
+    "dof": 27650
+   },
+   "weights": "{RUN}/work/XS.npz",
+   "input": null,
+   "time": "20:19:00",
+   "sec": 180.9
+  },
+  {
+   "id": "049",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "XS plus a rank-2 restoration in block 3: should reproduce D5b quality (E_ref ~0.17, class drop ~0.015) at ~33.8k DoF.",
+   "prediction": {
+    "E_ref": 0.172,
+    "e_clean": 0.021,
+    "d_acc": -0.003,
+    "class_drop": 0.015,
+    "d_nll": 0.005,
+    "dof": 33800
+   },
+   "weights": "{RUN}/work/S3.npz",
+   "input": null,
+   "time": "20:22:13",
+   "sec": 180.7
+  }
+ ],
+ "oracle_up": "2026-11-14T17:59:40"
+}

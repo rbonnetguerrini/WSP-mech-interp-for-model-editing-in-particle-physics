@@ -1,0 +1,3 @@
+{"kind":"logits","weights":null,"input":"{RUN}/work/in12.npz","indices":null,
+ "hypothesis":"Original model on P and clean jets (in6 rows) with neutrals below frac thresholds 1.2e-3..3e-3 removed, to map how the target depends on the unknown softness threshold. Expect P outputs to move steadily with the threshold (0.04 S at 1e-3, ~0.16 at 1.5e-3, ~0.25 at 2e-3) and clean much less.",
+ "prediction":{"P_f2e-3_vs_P":0.25,"clean_f2e-3_vs_clean":0.02}}

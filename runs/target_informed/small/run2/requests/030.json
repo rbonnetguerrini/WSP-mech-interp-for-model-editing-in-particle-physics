@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e11S5.npz","hypothesis":"T=5 to bracket the optimum: weaker suppression (e^-5) should start to leak, so I expect it worse than T=8.","prediction":{"E_ref":0.17,"R_sub":0.09}}

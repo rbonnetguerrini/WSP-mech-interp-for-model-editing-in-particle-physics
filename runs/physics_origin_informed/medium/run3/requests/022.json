@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/S2.npz", "hypothesis": "Small variant (13 fit units) with all generator guards (angle octagon, E>=pT, lE-lpt, neighbour consistency): rule metrics as S1, drift as M2.", "prediction": {"E_rule": 0.065, "gen_drift_max": 0.055, "DoF": 5263}}

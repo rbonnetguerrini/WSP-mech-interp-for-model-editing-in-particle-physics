@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v6_T16.npz","hypothesis":"v6 with penalty T=16 instead of 10: tests whether the probe excess over the clean floor (~0.0007-0.0008) is residual attention to flagged tokens (should shrink) or the kNN local-feature path (unchanged).","prediction":{"E_ref":0.041,"e_clean":0.0052,"e_P":0.0059,"d_acc":0.0,"gen_drift_max":0.035}}

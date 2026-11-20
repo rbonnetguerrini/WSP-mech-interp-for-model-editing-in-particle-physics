@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e13.npz",
+ "hypothesis":"Block-1 unit-7 fraction gate at theta 1.25 plus the block-6 fraction gate (theta 0.7). Raising the theta above e12's 1.0 should cut the generator drift (e12 reached 0.18 at t=0.5) while still ghosting part of the 1e-3 photons early.",
+ "prediction":{"ratio_soft1e-4":0.08,"ratio_soft1e-3":0.2,"rho_P_ref":0.9,"gen_drift_max":0.05,"dof":515}}

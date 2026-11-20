@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v12_hm60_c90.npz","hypothesis":"hm60 body head set + only the 64 classifier heads carrying 90% of the classifier attention to flagged tokens; ~2k fewer DoF than hm60 for a small E_ref increase.","prediction":{"E_ref":0.18,"e_clean":0.0055,"DoF":9789}}

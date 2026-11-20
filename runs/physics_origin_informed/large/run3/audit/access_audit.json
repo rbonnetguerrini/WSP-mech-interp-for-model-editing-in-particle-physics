@@ -1,0 +1,37 @@
+{
+ "transcript": "{RECORDS}/physics_origin_informed-large-run3/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "PARENT": 1,
+  "SCRIPT": 2
+ },
+ "rows": [
+  {
+   "time": "2026-11-16T01:41:28.134Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "\"\"\"Adapter for OmniLearned (PET2), pretrained checkpoints.\n\nThe pretrained checkpoint carries *two* heads over one frozen body: a 210-way\nclassifier (200 jet cl"
+  },
+  {
+   "time": "",
+   "tool": "file:{RUN}/work/design3.py",
+   "category": "SCRIPT",
+   "target": "uses os.environ",
+   "status": "on disk",
+   "result": ""
+  },
+  {
+   "time": "",
+   "tool": "file:{RUN}/work/design_sac.py",
+   "category": "SCRIPT",
+   "target": "uses os.environ",
+   "status": "on disk",
+   "result": ""
+  }
+ ]
+}

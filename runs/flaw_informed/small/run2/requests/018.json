@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e7.npz", "hypothesis": "Weaker key gates (gap -5 for 90% of queries, G<=25) should cut the gate noise behind the 0.046 class drop, at the cost of a somewhat higher soft ratio.", "prediction": {"ratio_soft1e-4": 0.2, "ratio_soft1e-3": 0.2, "d_acc": -0.006, "class_drop": 0.03, "rho_J": 1.12, "gen_drift": 1.0}}

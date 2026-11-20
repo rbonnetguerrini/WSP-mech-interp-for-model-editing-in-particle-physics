@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e17.npz",
+"hypothesis":"e13 with the block-6 detector retrained on rule labels (all OOD photons/NH in soft probes and P jets as positives, all other tokens negatives; theta 1.5 between clean max 1.40 and OOD p1 1.59). Expect better P recall, similar soft probes, P_ref rho slightly lower.",
+"prediction":{"E_ref":0.225,"e_P":0.048,"e_soft1e-3":0.03,"rho_P_ref":0.91,"dof":398}}

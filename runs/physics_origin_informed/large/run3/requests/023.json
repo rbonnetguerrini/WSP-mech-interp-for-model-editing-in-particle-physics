@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v7_mid.npz",
+ "hypothesis":"Mid v7: like pass 20 but blocks 1-9 use stronger suppression (T0=16, ub=10), which removes the few queries that still attended the vertex in blocks 1 and 6, at negligible kept perturbation there. Expect a small E_rule gain over 0.236 at the same DoF.",
+ "prediction":{"E_rule":0.225,"e_clean":0.002,"d_acc":0.0,"rho_P_reco":1.0,"gen_drift":0.27}}

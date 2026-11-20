@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/rx6_small.npz", "hypothesis": "Small single gated unit at the GELU*tanh inflection region (K=1.2) with gate 2048: restoration error 0.13 instead of 0.28, so clean e should drop from 0.0137 to ~0.008.", "prediction": {"E_rule": 0.1, "clean_e": 0.008, "class_drop": 0.008, "d_nll": 0.0012, "DoF": 1129}}

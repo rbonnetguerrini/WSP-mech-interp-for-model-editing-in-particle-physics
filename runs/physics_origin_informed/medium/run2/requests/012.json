@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v3e_c0k24.npz", "hypothesis": "Spacing-1 absorption mask plus a 24-knot t2 restore. Fewer quantised-L2 tokens should make split2 e drop from 0.014 to about 0.004, with clean e slightly worse (restore 0.007 vs 0.004).", "prediction": {"E_rule": 0.066, "e_clean": 0.0025, "e_split2": 0.004, "dof": 1822}}

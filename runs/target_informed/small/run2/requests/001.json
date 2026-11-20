@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":null,
+ "hypothesis":"Baseline with no edit: E_ref must be 1 and all side effects zero; tells me how far the reference is from the original on clean, soft and P jets.",
+ "prediction":{"E_ref":1.0,"d_acc":0.0,"e_clean_orig":0.0,"rho_P_ref":1.0}}

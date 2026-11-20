@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/S256.npz", "hypothesis": "Sparse kill vector on 256 most key-relevant channels with a re-optimised pattern, no flip: about half the kill DoF; predicted leakage similar to dense s4 so E_ref near E2.", "prediction": {"E_ref": 0.15, "dof": 360, "gen_drift_max": 0.001}}

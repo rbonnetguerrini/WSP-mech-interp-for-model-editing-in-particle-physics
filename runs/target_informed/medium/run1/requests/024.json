@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/E4b.npz", "hypothesis": "E4 plus rank-1 key/value edits in all body blocks and both classifier blocks; measures how much residual error is removable by explicit suppression versus the leak cost (clean error).", "prediction": {"E_ref": 0.15, "e_clean": 0.015, "e_soft1e-4": 0.016}}

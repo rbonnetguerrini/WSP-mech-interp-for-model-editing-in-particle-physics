@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e15.npz",
+ "hypothesis":"e13 plus the fc2-bias compensation of the repurposed block-6 unit's mean output (128 more DoF). Expect the same soft ratios as e13, slightly smaller clean KL, and P_ref at or a little above 0.90.",
+ "prediction":{"ratio_soft1e-4":0.077,"ratio_soft1e-3":0.18,"rho_P_ref":0.91,"d_nll":0.0008,"gen_drift_max":0.11,"dof":643}}

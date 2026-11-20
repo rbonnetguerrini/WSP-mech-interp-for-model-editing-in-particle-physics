@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/rx7_s256.npz", "hypothesis": "Single gated unit with 256 added weights on its original row (restoration error ~0.15), ~380 DoF; clean e ~0.008.", "prediction": {"E_rule": 0.095, "clean_e": 0.008, "class_drop": 0.01, "d_nll": 0.002, "DoF": 380}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v7_rel8_s15.npz", "hypothesis": "Over-relabel (1.5 x (P8-P_neutral)) pushes the token further from the neutral identity; could reduce the residual shortcut or overshoot into an unusual pid state.", "prediction": {"E_rule": 0.26, "e_clean": 0.0003, "d_acc": 0.0, "rho_P_reco": 0.98, "gen_drift": 0.32}}

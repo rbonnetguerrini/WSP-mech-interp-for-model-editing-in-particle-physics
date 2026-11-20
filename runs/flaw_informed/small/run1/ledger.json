@@ -1,0 +1,727 @@
+{
+ "budget": 50,
+ "used": 46,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Baseline of the unedited model: soft1e-4 (photon far below the training energy cut) should give a larger response than soft1e-3, and soft3e-3 (above the cut) a smaller one.",
+   "prediction": {
+    "d_acc": 0.0,
+    "d_nll": 0.0,
+    "rho_P_ref": 1.0,
+    "ratio_soft1e-4_gt_soft1e-3": 1
+   },
+   "weights": null,
+   "input": null,
+   "time": "11:39:35",
+   "sec": 125.2
+  },
+  {
+   "id": "002",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Activations with a 1e-4 photon added: the added token's embedding should be atypical (large norm or unusual direction), and the summary-token change should already appear in early blocks.",
+   "prediction": {
+    "soft_token_embed_norm_over_median": 2.0
+   },
+   "weights": null,
+   "input": "soft1e-4",
+   "time": "11:39:35",
+   "sec": 0.4
+  },
+  {
+   "id": "003",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Clean reference activations for the same 256 jets, to diff against the soft1e-4 capture.",
+   "prediction": {
+    "n_jets": 256
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "11:39:36",
+   "sec": 0.3
+  },
+  {
+   "id": "004",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-wise growth of the summary-token difference between soft1e-4 and clean; I expect a roughly steady growth across blocks, driven by attention to the out-of-distribution soft token.",
+   "prediction": {
+    "summary_diff_block2_over_block6": 0.3
+   },
+   "weights": null,
+   "input": "soft1e-4",
+   "time": "11:41:33",
+   "sec": 0.3
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-wise growth of the summary-token difference between soft1e-4 and clean; I expect a roughly steady growth across blocks, driven by attention to the out-of-distribution soft token.",
+   "prediction": {
+    "summary_diff_block2_over_block6": 0.3
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "11:41:34",
+   "sec": 0.4
+  },
+  {
+   "id": "006",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "The 1e-3 photon should use the same mechanism as 1e-4: large attention from the summary tokens in block 7 head 6, and a soft-token representation at block 6 along the same direction as for 1e-4.",
+   "prediction": {
+    "b7h6_share_soft": 0.5
+   },
+   "weights": null,
+   "input": "soft1e-3",
+   "time": "11:44:38",
+   "sec": 0.4
+  },
+  {
+   "id": "007",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Most of the soft-photon response goes through block-7 head-6 attention from the summary tokens to the soft token. A rank-1 key edit along an LDA soft-token direction lowers that logit by about 12, which should remove most of the response at little side cost.",
+   "prediction": {
+    "ratio_soft1e-4": 0.3,
+    "ratio_soft1e-3": 0.4,
+    "d_acc": -0.002,
+    "d_nll": 0.005,
+    "rho_D": 1.0,
+    "rho_P_ref": 1.0,
+    "dof": 511
+   },
+   "weights": "{RUN}/work/e1.npz",
+   "input": null,
+   "time": "11:54:09",
+   "sec": 26.3
+  },
+  {
+   "id": "008",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "In softened-fragmentation jets, block-7 head 6 should also attend to soft charged particles and to soft neutrals near threshold, which is why the LDA key edit changed P_ref.",
+   "prediction": {
+    "b7h6_share_on_soft_charged_logpt_lt_m1": 0.1
+   },
+   "weights": null,
+   "input": "P",
+   "time": "11:54:30",
+   "sec": 0.3
+  },
+  {
+   "id": "009",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Logits on 512 clean jets, their P versions, P minus neutrals below the training energy cut, and P minus neutrals with pT fraction under 2e-3. Comparing the original model with edit e1 shows which variant behaves like P_ref, whose response e1 reduced by 26%.",
+   "prediction": {
+    "rho_e1_PminusE": 0.8,
+    "rho_e1_PminusF": 0.95
+   },
+   "weights": null,
+   "input": "{RUN}/work/var1.npz",
+   "time": "11:55:50",
+   "sec": 1.2
+  },
+  {
+   "id": "010",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Logits on 512 clean jets, their P versions, P minus neutrals below the training energy cut, and P minus neutrals with pT fraction under 2e-3. Comparing the original model with edit e1 shows which variant behaves like P_ref, whose response e1 reduced by 26%.",
+   "prediction": {
+    "rho_e1_PminusE": 0.8,
+    "rho_e1_PminusF": 0.95
+   },
+   "weights": "{RUN}/work/e1.npz",
+   "input": "{RUN}/work/var1.npz",
+   "time": "11:55:51",
+   "sec": 1.2
+  },
+  {
+   "id": "011",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Inputs to the block-6 MLP (recovered from fc1 pre-activations) should give a linear soft-neutral score that a single GELU unit can threshold, and classifier queries for designing the ghost sign pattern.",
+   "prediction": {
+    "n_jets": 2048
+   },
+   "weights": null,
+   "input": "{RUN}/work/pack1.npz",
+   "time": "12:01:21",
+   "sec": 2.1
+  },
+  {
+   "id": "012",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "P minus neutrals below pT fraction 1e-3, 1.5e-3 or 3e-3. The e1 response ratio should rise with the cut; the cut that gives about 0.74 (the oracle's P_ref value) points to P_ref's definition.",
+   "prediction": {
+    "rho_e1_frac1e-3": 0.73,
+    "rho_e1_frac1.5e-3": 0.76,
+    "rho_e1_frac3e-3": 0.81
+   },
+   "weights": null,
+   "input": "{RUN}/work/var2.npz",
+   "time": "12:06:20",
+   "sec": 2.0
+  },
+  {
+   "id": "013",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "P minus neutrals below pT fraction 1e-3, 1.5e-3 or 3e-3. The e1 response ratio should rise with the cut; the cut that gives about 0.74 (the oracle's P_ref value) points to P_ref's definition.",
+   "prediction": {
+    "rho_e1_frac1e-3": 0.73,
+    "rho_e1_frac1.5e-3": 0.76,
+    "rho_e1_frac3e-3": 0.81
+   },
+   "weights": "{RUN}/work/e1.npz",
+   "input": "{RUN}/work/var2.npz",
+   "time": "12:06:21",
+   "sec": 1.2
+  },
+  {
+   "id": "014",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "A repurposed block-6 MLP unit gates on a soft-neutral LDA score (threshold 0.4) and writes 25*sigma into the residual, so flagged tokens become a saturated ghost that every block-7 and classifier head nearly ignores. This should cut the soft responses well below e1's level while leaving tokens below the threshold, and so P_ref, mostly untouched.",
+   "prediction": {
+    "ratio_soft1e-4": 0.2,
+    "ratio_soft1e-3": 0.3,
+    "rho_P_ref": 0.9,
+    "rho_P": 0.75,
+    "d_acc": 0.0,
+    "d_nll": 0.002,
+    "gen_drift_max": 0.02,
+    "dof": 385
+   },
+   "weights": "{RUN}/work/e2.npz",
+   "input": null,
+   "time": "12:11:20",
+   "sec": 24.9
+  },
+  {
+   "id": "015",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "The block-1 MLP input should already separate soft neutrals linearly (the representation is closer to the raw kinematics there), so a gate placed at block 1 could make the token a ghost from block 2 on.",
+   "prediction": {
+    "n_jets": 2048
+   },
+   "weights": null,
+   "input": "{RUN}/work/pack1.npz",
+   "time": "12:12:07",
+   "sec": 2.1
+  },
+  {
+   "id": "016",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "A gate on dead unit 17 of block 1 (step gate, beta 1000, theta 0.15) turns soft neutrals into a saturated ghost from block 2 on, with sigma tuned jointly for blocks 2-7 and the classifier. Cutting the leakage through blocks 2-6 should beat e2.",
+   "prediction": {
+    "ratio_soft1e-4": 0.15,
+    "ratio_soft1e-3": 0.2,
+    "rho_P_ref": 0.95,
+    "rho_P": 0.8,
+    "d_acc": 0.0,
+    "d_nll": 0.002,
+    "gen_drift_max": 0.02,
+    "dof": 258
+   },
+   "weights": "{RUN}/work/e3.npz",
+   "input": null,
+   "time": "12:19:32",
+   "sec": 24.7
+  },
+  {
+   "id": "017",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Diffusion-noised clean jets (t=0.2/0.5/0.85), run at time 0, give tokens that the block-1 gate wrongly flags. This explains e3's generator drift, and they can serve as negatives in the gate fit.",
+   "prediction": {
+    "frac_noised_tokens_flagged_b1_gate": 0.05
+   },
+   "weights": null,
+   "input": "{RUN}/work/noise1.npz",
+   "time": "12:20:44",
+   "sec": 3.0
+  },
+  {
+   "id": "018",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-3/4 MLP inputs, to build a gate that is placed earlier than block 6 (smaller target error) but late enough that the time token at t>0 keeps it from firing during generation.",
+   "prediction": {
+    "n_jets": 2048
+   },
+   "weights": null,
+   "input": "{RUN}/work/pack1.npz",
+   "time": "12:22:37",
+   "sec": 2.1
+  },
+  {
+   "id": "019",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "A step gate on unit 116 of block 4 (theta 0.18) makes soft neutrals a ghost from block 5 on. It should land between e2 and e3 on the soft ratios, and at t>0 the time token should have changed the block-4 representation enough that generator drift stays far below e3's.",
+   "prediction": {
+    "ratio_soft1e-4": 0.15,
+    "ratio_soft1e-3": 0.17,
+    "rho_P_ref": 0.97,
+    "d_acc": 0.0,
+    "gen_drift_max": 0.1,
+    "dof": 385
+   },
+   "weights": "{RUN}/work/e4.npz",
+   "input": null,
+   "time": "12:34:01",
+   "sec": 24.8
+  },
+  {
+   "id": "020",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: the block-1 gate refit with noised-jet negatives at theta 0.25 flags 20-50x fewer noised tokens than e3. If gen_drift falls a lot, noised particles caused e3's drift; if it stays near 1 at t=0.85, the gate is firing on the time token, which exists only when t>0.",
+   "prediction": {
+    "ratio_soft1e-4": 0.12,
+    "ratio_soft1e-3": 0.25,
+    "rho_P_ref": 1.0,
+    "gen_drift_t0.85": 0.3,
+    "dof": 258
+   },
+   "weights": "{RUN}/work/e5.npz",
+   "input": null,
+   "time": "12:39:41",
+   "sec": 27.8
+  },
+  {
+   "id": "021",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e2 with a step gate (beta 1000, no GELU negative lobe) and theta 0.35 should match or beat e2 on the soft probes, with P_ref still near 0.97.",
+   "prediction": {
+    "ratio_soft1e-4": 0.25,
+    "ratio_soft1e-3": 0.25,
+    "rho_P_ref": 0.96,
+    "gen_drift_max": 0.02,
+    "dof": 385
+   },
+   "weights": "{RUN}/work/e2b.npz",
+   "input": null,
+   "time": "12:40:06",
+   "sec": 24.7
+  },
+  {
+   "id": "022",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Under e2 the flagged soft token should be a saturated ghost after block 6. The summary-token difference at body.norm should fall from 1.46 to about 0.3, mostly inherited from blocks 0-6.",
+   "prediction": {
+    "bodynorm_summary_diff": 0.35
+   },
+   "weights": "{RUN}/work/e2.npz",
+   "input": "soft1e-4",
+   "time": "12:41:19",
+   "sec": 0.3
+  },
+  {
+   "id": "023",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Under e2 the flagged soft token should be a saturated ghost after block 6. The summary-token difference at body.norm should fall from 1.46 to about 0.3, mostly inherited from blocks 0-6.",
+   "prediction": {
+    "bodynorm_summary_diff": 0.35
+   },
+   "weights": "{RUN}/work/e2.npz",
+   "input": "clean",
+   "time": "12:41:19",
+   "sec": 0.3
+  },
+  {
+   "id": "024",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-5 (and block-2) MLP inputs, to build an extra gate that ghosts soft neutrals before block 6 attention, which is the largest remaining leakage step.",
+   "prediction": {
+    "n_jets": 2048
+   },
+   "weights": null,
+   "input": "{RUN}/work/pack1.npz",
+   "time": "12:43:27",
+   "sec": 2.0
+  },
+  {
+   "id": "025",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "A step gate at block 5 (unit 230, theta 0.2) ghosts soft neutrals from block-6 attention on, removing the largest remaining leakage step, so the soft ratios should beat e2's 0.25. Generator drift is the open risk.",
+   "prediction": {
+    "ratio_soft1e-4": 0.17,
+    "ratio_soft1e-3": 0.17,
+    "rho_P_ref": 0.92,
+    "d_nll": 0.004,
+    "gen_drift_max": 0.05,
+    "dof": 385
+   },
+   "weights": "{RUN}/work/e6.npz",
+   "input": null,
+   "time": "12:49:19",
+   "sec": 24.7
+  },
+  {
+   "id": "026",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "The block-6 gate as a step (beta 1000, theta 0.4) without the fc2-bias compensation for unit 65's mean output. That costs 128 fewer DoF; the lost mean (-0.47 * fc2 column) should shift clean logits only slightly.",
+   "prediction": {
+    "ratio_soft1e-4": 0.26,
+    "ratio_soft1e-3": 0.25,
+    "rho_P_ref": 0.97,
+    "d_nll": 0.004,
+    "d_acc": -0.001,
+    "gen_drift_max": 0.03,
+    "dof": 257
+   },
+   "weights": "{RUN}/work/e2s.npz",
+   "input": null,
+   "time": "12:50:47",
+   "sec": 24.7
+  },
+  {
+   "id": "027",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e2 logits on clean, P, P minus neutrals below 1.5e-3 of jet pT, and P minus neutrals below 2e-3, to estimate the P-probe target error ratio under those threshold guesses.",
+   "prediction": {
+    "eP_ratio_f1.5e-3": 0.5,
+    "eP_ratio_f2e-3": 0.7
+   },
+   "weights": "{RUN}/work/e2.npz",
+   "input": "{RUN}/work/var3.npz",
+   "time": "12:50:48",
+   "sec": 1.3
+  },
+  {
+   "id": "028",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Block-6 step gate whose direction is fitted on pT-fraction labels (neutral below 1.5e-3 vs above 2e-3), threshold 0.6. It should flag many more of P's very soft neutrals, lowering raw P's response further, with the soft probes like e2 and P_ref still above 0.9.",
+   "prediction": {
+    "ratio_soft1e-4": 0.26,
+    "ratio_soft1e-3": 0.25,
+    "rho_P": 0.6,
+    "rho_P_ref": 0.92,
+    "d_nll": 0.002,
+    "gen_drift_max": 0.03,
+    "dof": 257
+   },
+   "weights": "{RUN}/work/e7.npz",
+   "input": null,
+   "time": "12:53:07",
+   "sec": 24.8
+  },
+  {
+   "id": "029",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e7 logits on the P-variant pack. The P target-error ratio under the 1.5e-3-2e-3 hypotheses should fall below e2's 0.77-0.80.",
+   "prediction": {
+    "eP_ratio_f1.5e-3": 0.55,
+    "eP_ratio_f2e-3": 0.55
+   },
+   "weights": "{RUN}/work/e7.npz",
+   "input": "{RUN}/work/var3.npz",
+   "time": "12:53:08",
+   "sec": 1.2
+  },
+  {
+   "id": "030",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic plus a component: e3's block-1 gate at theta 0.5 flags only extreme tokens (all 1e-4 photons, almost no 1e-3 ones) and, on t=0 noised data, 0 / 0.05% / 1.9% of noised tokens. If gen_drift falls near e2's level, noised particles caused e3's drift; if it stays near 1 at t=0.85, the time token is being flagged.",
+   "prediction": {
+    "ratio_soft1e-4": 0.12,
+    "ratio_soft1e-3": 0.97,
+    "gen_drift_t0.2": 0.01,
+    "gen_drift_t0.85": 0.15,
+    "dof": 258
+   },
+   "weights": "{RUN}/work/e8.npz",
+   "input": null,
+   "time": "12:55:03",
+   "sec": 24.7
+  },
+  {
+   "id": "031",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Two gates: block-1 dead-unit gate at theta 1.2 ghosts only the far out-of-distribution soft neutrals (all 1e-4 photons) from block 2 on, and the e7 block-6 fraction gate handles the rest. Expect soft1e-4 near 0.08, soft1e-3 as in e7, P_ref about 0.9, and generator drift close to e7's because no noised token should pass 1.2.",
+   "prediction": {
+    "ratio_soft1e-4": 0.09,
+    "ratio_soft1e-3": 0.24,
+    "rho_P_ref": 0.9,
+    "gen_drift_max": 0.04,
+    "dof": 515
+   },
+   "weights": "{RUN}/work/e9.npz",
+   "input": null,
+   "time": "12:57:05",
+   "sec": 25.7
+  },
+  {
+   "id": "032",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e7 with the fraction gate threshold raised from 0.6 to 0.7, giving more P_ref margin (about 0.91) at a small cost in raw-P removal.",
+   "prediction": {
+    "ratio_soft1e-4": 0.26,
+    "ratio_soft1e-3": 0.25,
+    "rho_P_ref": 0.91,
+    "rho_P": 0.67,
+    "gen_drift_max": 0.02,
+    "dof": 257
+   },
+   "weights": "{RUN}/work/e10.npz",
+   "input": null,
+   "time": "12:57:30",
+   "sec": 24.7
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e10 (block-6 fraction gate, theta 0.7) plus the block-1 extreme gate (theta 1.2). The two act on disjoint stages, so expect e10's metrics with soft1e-4 near 0.08.",
+   "prediction": {
+    "ratio_soft1e-4": 0.08,
+    "ratio_soft1e-3": 0.24,
+    "rho_P_ref": 0.9,
+    "rho_P": 0.67,
+    "gen_drift_max": 0.012,
+    "dof": 515
+   },
+   "weights": "{RUN}/work/e11.npz",
+   "input": null,
+   "time": "13:01:25",
+   "sec": 24.7
+  },
+  {
+   "id": "034",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e11 plus a second dead-unit gate in block 1 (unit 7) fitted on pT-fraction labels with noised-jet negatives, threshold 1.0. It ghosts about half of the 1e-3 photons from block 2 on, so soft1e-3 should fall to about 0.18. Generator drift is the risk, since about 0.3% of noised tokens at t=0.85 pass in the t=0 approximation.",
+   "prediction": {
+    "ratio_soft1e-4": 0.076,
+    "ratio_soft1e-3": 0.18,
+    "rho_P_ref": 0.9,
+    "gen_drift_max": 0.06,
+    "dof": 772
+   },
+   "weights": "{RUN}/work/e12.npz",
+   "input": null,
+   "time": "13:04:14",
+   "sec": 30.6
+  },
+  {
+   "id": "035",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Block-1 unit-7 fraction gate at theta 1.25 plus the block-6 fraction gate (theta 0.7). Raising the theta above e12's 1.0 should cut the generator drift (e12 reached 0.18 at t=0.5) while still ghosting part of the 1e-3 photons early.",
+   "prediction": {
+    "ratio_soft1e-4": 0.08,
+    "ratio_soft1e-3": 0.2,
+    "rho_P_ref": 0.9,
+    "gen_drift_max": 0.05,
+    "dof": 515
+   },
+   "weights": "{RUN}/work/e13.npz",
+   "input": null,
+   "time": "13:05:27",
+   "sec": 24.7
+  },
+  {
+   "id": "036",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Block-1 unit-7 fraction gate at theta 1.1 plus the block-6 fraction gate (theta 0.7). Raising the theta above e12's 1.0 should cut the generator drift (e12 reached 0.18 at t=0.5) while still ghosting part of the 1e-3 photons early.",
+   "prediction": {
+    "ratio_soft1e-4": 0.08,
+    "ratio_soft1e-3": 0.15,
+    "rho_P_ref": 0.9,
+    "gen_drift_max": 0.05,
+    "dof": 515
+   },
+   "weights": "{RUN}/work/e14.npz",
+   "input": null,
+   "time": "13:05:51",
+   "sec": 24.7
+  },
+  {
+   "id": "037",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e13 plus the fc2-bias compensation of the repurposed block-6 unit's mean output (128 more DoF). Expect the same soft ratios as e13, slightly smaller clean KL, and P_ref at or a little above 0.90.",
+   "prediction": {
+    "ratio_soft1e-4": 0.077,
+    "ratio_soft1e-3": 0.18,
+    "rho_P_ref": 0.91,
+    "d_nll": 0.0008,
+    "gen_drift_max": 0.11,
+    "dof": 643
+   },
+   "weights": "{RUN}/work/e15.npz",
+   "input": null,
+   "time": "13:07:04",
+   "sec": 24.7
+  },
+  {
+   "id": "038",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "More noised-jet negatives around t=0.5, where the fraction gate's generator drift peaks, to fit a block-1 gate direction that ignores noise.",
+   "prediction": {
+    "n_jets": 2046
+   },
+   "weights": null,
+   "input": "{RUN}/work/noise2.npz",
+   "time": "13:07:39",
+   "sec": 1.6
+  },
+  {
+   "id": "039",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Block-1 unit-7 gate on a direction fitted with 10x-weighted noised-jet negatives (threshold 0.9), plus the block-6 fraction gate with compensation. It should catch more 1e-3 photons than e15 and, being near-orthogonal to diffusion noise, show lower generator drift than e13/e15.",
+   "prediction": {
+    "ratio_soft1e-4": 0.077,
+    "ratio_soft1e-3": 0.12,
+    "rho_P_ref": 0.9,
+    "gen_drift_max": 0.06,
+    "dof": 643
+   },
+   "weights": "{RUN}/work/e16.npz",
+   "input": null,
+   "time": "13:13:54",
+   "sec": 24.7
+  },
+  {
+   "id": "040",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Block-1 unit-7 gate on a direction fitted with 10x-weighted noised-jet negatives (threshold 1.0), plus the block-6 fraction gate with compensation. It should catch more 1e-3 photons than e15 and, being near-orthogonal to diffusion noise, show lower generator drift than e13/e15.",
+   "prediction": {
+    "ratio_soft1e-4": 0.077,
+    "ratio_soft1e-3": 0.14,
+    "rho_P_ref": 0.9,
+    "gen_drift_max": 0.06,
+    "dof": 643
+   },
+   "weights": "{RUN}/work/e17.npz",
+   "input": null,
+   "time": "13:14:19",
+   "sec": 24.7
+  },
+  {
+   "id": "041",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e17 on the P-variant pack: the P target-error ratio under the 1.5e-3-2e-3 hypotheses should be at or slightly below e7's 0.50-0.55, because the block-1 gate also removes some of P's very soft neutrals earlier.",
+   "prediction": {
+    "eP_ratio_f1.5e-3": 0.5,
+    "eP_ratio_f2e-3": 0.48
+   },
+   "weights": "{RUN}/work/e17.npz",
+   "input": "{RUN}/work/var3.npz",
+   "time": "13:14:44",
+   "sec": 1.2
+  },
+  {
+   "id": "042",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sparse block-6 gate: unit 65 keeps its original fc1 row plus a 48-channel fraction-LDA read scaled by 1000, and its fc2 column gets a ghost write (es1: es1 all 128 channels, es2 the 48 channels with the most block-7/classifier key leverage). With the full ghost, expect e10-like results at about 177 DoF; the partial ghost may leak more.",
+   "prediction": {
+    "ratio_soft1e-4": 0.3,
+    "ratio_soft1e-3": 0.3,
+    "rho_P_ref": 0.91,
+    "gen_drift_max": 0.02,
+    "dof": 177
+   },
+   "weights": "{RUN}/work/es1.npz",
+   "input": null,
+   "time": "13:19:18",
+   "sec": 24.7
+  },
+  {
+   "id": "043",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sparse block-6 gate: unit 65 keeps its original fc1 row plus a 48-channel fraction-LDA read scaled by 1000, and its fc2 column gets a ghost write (es2: es1 all 128 channels, es2 the 48 channels with the most block-7/classifier key leverage). With the full ghost, expect e10-like results at about 177 DoF; the partial ghost may leak more.",
+   "prediction": {
+    "ratio_soft1e-4": 0.3,
+    "ratio_soft1e-3": 0.3,
+    "rho_P_ref": 0.91,
+    "gen_drift_max": 0.02,
+    "dof": 97
+   },
+   "weights": "{RUN}/work/es2.npz",
+   "input": null,
+   "time": "13:19:43",
+   "sec": 24.7
+  },
+  {
+   "id": "044",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "es_k24: the block-6 ghost gate with a 24-channel fraction-LDA read (fc1 row of unit 65 = original + sparse change) and a full 128-channel ghost write only. Expect the same metrics as the dense counterpart at lower DoF.",
+   "prediction": {
+    "ratio_soft1e-3": 0.24,
+    "ratio_soft1e-4": 0.26,
+    "rho_P_ref": 0.9,
+    "dof": 153
+   },
+   "weights": "{RUN}/work/es_k24.npz",
+   "input": null,
+   "time": "13:24:39",
+   "sec": 24.7
+  },
+  {
+   "id": "045",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "fm: the block-6 ghost gate with a 24-channel fraction-LDA read (fc1 row of unit 65 = original + sparse change) and a full 128-channel ghost write, plus the block-1 extreme gate (unit 17, theta 1.2). Expect the same metrics as the dense counterpart at lower DoF.",
+   "prediction": {
+    "ratio_soft1e-3": 0.24,
+    "ratio_soft1e-4": 0.08,
+    "rho_P_ref": 0.9,
+    "dof": 411
+   },
+   "weights": "{RUN}/work/fm.npz",
+   "input": null,
+   "time": "13:25:03",
+   "sec": 24.7
+  },
+  {
+   "id": "046",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "fl: the block-6 ghost gate with a 24-channel fraction-LDA read (fc1 row of unit 65 = original + sparse change) and a full 128-channel ghost write, plus the block-1 noise-orthogonal fraction gate (unit 7, theta 1.0) and the fc2-bias compensation. Expect the same metrics as the dense counterpart at lower DoF.",
+   "prediction": {
+    "ratio_soft1e-3": 0.12,
+    "ratio_soft1e-4": 0.08,
+    "rho_P_ref": 0.9,
+    "dof": 539
+   },
+   "weights": "{RUN}/work/fl.npz",
+   "input": null,
+   "time": "13:25:28",
+   "sec": 24.7
+  }
+ ],
+ "oracle_up": "2026-11-17T11:33:36"
+}

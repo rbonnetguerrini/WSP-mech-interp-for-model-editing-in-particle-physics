@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v9_w13_20.npz","hypothesis":"Strict natural + gamma gates (flagged queries become self-attending, context-free) only in blocks 13-20 + classifier; should beat the relaxed w13_20 (0.235) at slightly larger DoF.","prediction":{"E_ref":0.19,"e_clean":0.0055,"DoF":17757}}

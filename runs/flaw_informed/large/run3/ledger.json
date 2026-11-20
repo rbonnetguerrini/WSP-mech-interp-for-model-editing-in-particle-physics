@@ -1,0 +1,787 @@
+{
+ "budget": 50,
+ "used": 49,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Baseline of the unedited model: soft-photon probes move the logits substantially, soft1e-4 more than soft1e-3; all limits trivially pass.",
+   "prediction": {
+    "d_acc": 0.0,
+    "d_nll": 0.0,
+    "gen_drift": 0.0,
+    "rho_P_ref": 1.0,
+    "ratio_soft1e-4": 0.8,
+    "ratio_soft1e-3": 0.5
+   },
+   "weights": null,
+   "input": null,
+   "time": "12:17:42",
+   "sec": 704.7
+  },
+  {
+   "id": "002",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Rows 0-159 clean, 160-319 same jets + soft1e-3 photon, 320-479 + soft1e-4. Expect the summary-token difference to be small at block0 and grow with depth, and the soft token's own representation to be distinctive (large) for 1e-3.",
+   "prediction": {
+    "rel_summary_diff_block0_1e-3": 0.01,
+    "rel_summary_diff_norm_1e-3": 0.1,
+    "logit_shift_ratio_1e-3_over_1e-4": 3.5
+   },
+   "weights": null,
+   "input": "{RUN}/work/in1.npz",
+   "time": "12:18:27",
+   "sec": 14.9
+  },
+  {
+   "id": "003",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Response curve of an added particle vs pT fraction and type (photon, neutral hadron, charged, far outside the cone). Expect a bump near 1e-3 for neutrals, charged much smaller, and the far photon still responding (attention path, not kNN).",
+   "prediction": {
+    "r_pid6_1e-3": 0.38,
+    "r_pid6_1e-4": 0.11,
+    "r_pid6_1e-2": 0.03,
+    "r_pid7_1e-3": 0.3,
+    "r_charged_1e-3": 0.05,
+    "r_far_1e-3": 0.25
+   },
+   "weights": null,
+   "input": "{RUN}/work/in3.npz",
+   "time": "12:27:35",
+   "sec": 49.2
+  },
+  {
+   "id": "004",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Groups of 64: clean, +photon 1e-3, +photon 2e-3, +NH 1e-3, +photon 1e-4. The summary tokens' attention to the soft token is near uniform at block 8 and 0.86 in head 11 at block 19; I expect the salience to switch on somewhere in blocks 11-17 and only for the flaw-triggering particles (1e-3), not for photon 2e-3.",
+   "prediction": {
+    "max_head_attn_soft1e-3_blk17": 0.5,
+    "max_head_attn_soft2e-3_blk17": 0.05,
+    "max_head_attn_soft1e-3_blk11": 0.05
+   },
+   "weights": null,
+   "input": "{RUN}/work/in5.npz",
+   "time": "12:32:27",
+   "sec": 17.9
+  },
+  {
+   "id": "006",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Measures the original model's response to removing soft neutrals from clean and P jets under several candidate softness thresholds (frac 5e-4/1e-3/1.5e-3, log_pt -0.5/0). Expect removal from P to move logits by ~0.1-0.2 S at the 1e-3 threshold and clean only ~0.01-0.02 S.",
+   "prediction": {
+    "P_minus_f1e-3": 0.12,
+    "clean_minus_f1e-3": 0.015,
+    "P_minus_lpt0": 0.25,
+    "clean_minus_lpt0": 0.1
+   },
+   "weights": null,
+   "input": "{RUN}/work/in6.npz",
+   "time": "12:49:45",
+   "sec": 48.7
+  },
+  {
+   "id": "007",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Same contrast set (clean, photon 1e-3, photon 2e-3, NH 1e-3, photon 1e-4). Expect the summary-token drift for 1e-3 neutrals to grow strongly between block 18 (0.15) and the end (0.63), with several late heads putting >0.3 of the summary attention on the soft token; photon 2e-3 stays near 0.03.",
+   "prediction": {
+    "summ_drift_g1e-3_blk26": 0.4,
+    "summ_drift_g2e-3_blk26": 0.04,
+    "max_head_attn_g1e-3_late": 0.6
+   },
+   "weights": null,
+   "input": "{RUN}/work/in5.npz",
+   "time": "12:51:32",
+   "sec": 16.4
+  },
+  {
+   "id": "008",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Training set for a soft-neutral detector and gated key corrections at the reading layers 17/19/21/27: 64 jets each of clean, added photon/NH at 1e-5..1e-3, photon 2e-3/3e-3, charged 1e-3, and P. Expect added soft neutrals (<=1e-3) to be linearly separable from natural tokens at these depths, and logits to repeat the earlier response curve (g1e-3 ~0.37 S, g2e-3 ~0.02 S).",
+   "prediction": {
+    "r_g1e-3": 0.37,
+    "r_n1e-3": 0.4,
+    "r_g1e-4": 0.1,
+    "r_g2e-3": 0.02,
+    "r_c1e-3": 0.04
+   },
+   "weights": null,
+   "input": "{RUN}/work/in7.npz",
+   "time": "12:56:08",
+   "sec": 34.5
+  },
+  {
+   "id": "009",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Same in7 training set. Block-16 MLP pre-activations should give a linear soft-neutral detector as clean as the residual one (held-out natural max < 0.6, soft ~1), which I will turn into a sharp GELU gate neuron; mlp_post gives neuron importances for choosing which neuron to repurpose.",
+   "prediction": {
+    "det_soft_median": 1.0,
+    "det_natural_max": 0.6,
+    "n_neurons_with_tiny_output": 20
+   },
+   "weights": null,
+   "input": "{RUN}/work/in7.npz",
+   "time": "13:13:46",
+   "sec": 30.9
+  },
+  {
+   "id": "010",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Gate neuron in block-16 MLP (exactly 0 on natural tokens) writes a flag in a low-variance residual direction; rank-1 key edits in blocks 17/19/21/25/27 read the flag and push soft-token keys away from the summary queries of the heads that read it. Expect soft-probe responses to drop to ~40% (1e-3) and ~50% (1e-4), with clean accuracy essentially unchanged.",
+   "prediction": {
+    "ratio_soft1e-3": 0.4,
+    "ratio_soft1e-4": 0.5,
+    "d_acc": 0.0,
+    "d_nll": 0.002,
+    "gen_drift": 0.03,
+    "rho_P_ref": 1.0,
+    "dof": 22500
+   },
+   "weights": "{RUN}/work/e1.npz",
+   "input": null,
+   "time": "13:23:13",
+   "sec": 227.6
+  },
+  {
+   "id": "011",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Diagnose edit e1: expect gate neuron 1037 to fire (saturated) on nearly all added soft tokens and stay exactly 0 on clean tokens; summary attention to soft tokens in the edited heads should be ~0, so any remaining summary drift comes through particle-token paths or unedited heads.",
+   "prediction": {
+    "gate_fire_frac_soft": 0.95,
+    "gate_nonzero_clean": 0.0,
+    "summ_drift_g1e-3_blk20": 0.25
+   },
+   "weights": "{RUN}/work/e1.npz",
+   "input": "{RUN}/work/in8.npz",
+   "time": "13:23:37",
+   "sec": 5.8
+  },
+  {
+   "id": "012",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original-model inputs of layers 18/20/22/24 on the in7 set, to fit per-layer flag readouts and all-query key suppression directions. Expect logits identical to pass 8 (same input, original weights).",
+   "prediction": {
+    "r_g1e-3": 0.366,
+    "r_n1e-3": 0.41
+   },
+   "weights": null,
+   "input": "{RUN}/work/in7.npz",
+   "time": "13:26:28",
+   "sec": 26.4
+  },
+  {
+   "id": "013",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original-model inputs of layer 26 and of classifier blocks 1-3 on in7 (queries for classifier attention), to extend the isolation to the classifier head. Expect the classifier summary queries to attend to soft tokens noticeably more than to natural soft photons.",
+   "prediction": {
+    "cls_soft_attn_max_head": 0.3
+   },
+   "weights": null,
+   "input": "{RUN}/work/in7.npz",
+   "time": "13:26:43",
+   "sec": 15.3
+  },
+  {
+   "id": "014",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Full isolation of gated soft tokens from block 17 on: rank-2 edits (constant query component + flagged-key push) in all body layers 17-27 and key edits in the 4 classifier blocks. If the flaw is mostly built after block 16, the soft responses should fall to ~25%; offline clean attention TV of 0.04-0.13 per layer may cost some clean NLL.",
+   "prediction": {
+    "ratio_soft1e-3": 0.25,
+    "ratio_soft1e-4": 0.4,
+    "d_acc": -0.003,
+    "d_nll": 0.01,
+    "kl": 0.005,
+    "gen_drift": 0.05,
+    "rho_P_ref": 0.95,
+    "dof": 125000
+   },
+   "weights": "{RUN}/work/e2.npz",
+   "input": null,
+   "time": "13:53:05",
+   "sec": 223.2
+  },
+  {
+   "id": "015",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original-model activations on the in7 training set at early/mid layers, for an early gate (block 4) and near-exact isolation of soft tokens in layers 5-16, where the natural residual has a large null space (offline leak ~1e-4). Logits identical to pass 8.",
+   "prediction": {
+    "r_g1e-3": 0.366,
+    "natural_null_dims_gt": 500
+   },
+   "weights": null,
+   "input": "{RUN}/work/in7.npz",
+   "time": "14:01:52",
+   "sec": 28.0
+  },
+  {
+   "id": "016",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original-model activations on the in7 training set at early/mid layers, for an early gate (block 4) and near-exact isolation of soft tokens in layers 5-16, where the natural residual has a large null space (offline leak ~1e-4). Logits identical to pass 8.",
+   "prediction": {
+    "r_g1e-3": 0.366,
+    "natural_null_dims_gt": 500
+   },
+   "weights": null,
+   "input": "{RUN}/work/in7.npz",
+   "time": "14:02:07",
+   "sec": 15.2
+  },
+  {
+   "id": "017",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original-model activations on the in7 training set at early/mid layers, for an early gate (block 4) and near-exact isolation of soft tokens in layers 5-16, where the natural residual has a large null space (offline leak ~1e-4). Logits identical to pass 8.",
+   "prediction": {
+    "r_g1e-3": 0.366,
+    "natural_null_dims_gt": 500
+   },
+   "weights": null,
+   "input": "{RUN}/work/in7.npz",
+   "time": "14:02:24",
+   "sec": 17.5
+  },
+  {
+   "id": "018",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original-model activations on the in7 training set at early/mid layers, for an early gate (block 4) and near-exact isolation of soft tokens in layers 5-16, where the natural residual has a large null space (offline leak ~1e-4). Logits identical to pass 8.",
+   "prediction": {
+    "r_g1e-3": 0.366,
+    "natural_null_dims_gt": 500
+   },
+   "weights": null,
+   "input": "{RUN}/work/in7.npz",
+   "time": "14:02:46",
+   "sec": 21.4
+  },
+  {
+   "id": "019",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same isolation design as pass 13 but with a saturated flag (F=2000), stronger readout regularisation and smaller logit drop (6): offline clean attention TV per layer fell 4-5x, so clean damage should drop well inside the limits while soft1e-3 stays strongly suppressed; soft1e-4 keeps its pre-block-17 part.",
+   "prediction": {
+    "ratio_soft1e-3": 0.15,
+    "ratio_soft1e-4": 0.5,
+    "d_acc": -0.004,
+    "d_nll": 0.01,
+    "kl": 0.01,
+    "gen_drift": 0.06,
+    "rho_P_ref": 0.97
+   },
+   "weights": "{RUN}/work/e3.npz",
+   "input": null,
+   "time": "14:12:15",
+   "sec": 220.8
+  },
+  {
+   "id": "020",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Edited model e3 on the in6 set, to estimate target errors against the original model's outputs on the same jets with soft neutrals removed (pass 6). Expect e(soft1e-3)/e_orig ~0.1, e(soft1e-4)/e_orig ~0.35, and the P error at the frac<1e-3 threshold below its original 0.04.",
+   "prediction": {
+    "E_soft1e-3": 0.1,
+    "E_soft1e-4": 0.35,
+    "E_P_f1e-3": 0.6,
+    "clean_shift_S": 0.03
+   },
+   "weights": "{RUN}/work/e3.npz",
+   "input": "{RUN}/work/in6.npz",
+   "time": "14:13:26",
+   "sec": 44.1
+  },
+  {
+   "id": "021",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original-model activations on in7 for moving the soft-neutral gate to block 0/1 (isolation from block 1/2 on). Expect the block-0 MLP pre-activations to give a detector that is a smooth function of the neutral pT fraction, similar to block 4 but noisier (less jet context).",
+   "prediction": {
+    "r_g1e-3": 0.366
+   },
+   "weights": null,
+   "input": "{RUN}/work/in7.npz",
+   "time": "14:20:38",
+   "sec": 29.0
+  },
+  {
+   "id": "022",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Gate moved to block 4 (neutral with pT fraction below ~1.2e-3, trained on fraction labels), flag F=2000, rank-2 isolation edits in all body layers 5-27 (near-exact leak in early layers) plus classifier key edits. Expect stronger removal than e3, especially for soft1e-4, with similar clean side effects.",
+   "prediction": {
+    "ratio_soft1e-3": 0.06,
+    "ratio_soft1e-4": 0.15,
+    "d_acc": -0.002,
+    "d_nll": 0.004,
+    "kl": 0.0015,
+    "gen_drift": 0.1,
+    "rho_P_ref": 0.98,
+    "rho_P": 0.6
+   },
+   "weights": "{RUN}/work/e4.npz",
+   "input": null,
+   "time": "14:26:24",
+   "sec": 225.8
+  },
+  {
+   "id": "023",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e4 on the in6 set to estimate target errors. With isolation from block 5, P outputs should approach the original model on P minus its soft neutrals (frac<1e-3 .. 1.5e-3).",
+   "prediction": {
+    "E_soft1e-3": 0.07,
+    "E_soft1e-4": 0.2,
+    "e_P_vs_f1.5e-3": 0.06
+   },
+   "weights": "{RUN}/work/e4.npz",
+   "input": "{RUN}/work/in6.npz",
+   "time": "14:27:07",
+   "sec": 43.3
+  },
+  {
+   "id": "024",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Read which tokens the e4 gate neuron (block 4, neuron 1014) fires on, for P, soft1e-3 and clean jets of in6. Expect it to fire on most P neutrals below frac ~1.1e-3, on ~80% of the added 1e-3 photons, and on very few clean tokens.",
+   "prediction": {
+    "gate_frac_added_1e-3": 0.8,
+    "gate_tokens_per_P_jet": 0.6,
+    "gate_tokens_per_clean_jet": 0.05
+   },
+   "weights": "{RUN}/work/e4.npz",
+   "input": "{RUN}/work/in9.npz",
+   "time": "14:27:56",
+   "sec": 18.6
+  },
+  {
+   "id": "025",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original model on P/soft1e-3/clean jets with exactly the tokens the e4 gate fires on removed. If e4's isolation were exact, e4 on the full jets would equal these outputs; I expect a residual mismatch of ~0.03-0.05 S from blocks 0-4 reads and kNN effects.",
+   "prediction": {
+    "e4_vs_gated_removed_P": 0.04,
+    "e4_vs_gated_removed_clean": 0.012
+   },
+   "weights": null,
+   "input": "{RUN}/work/in10.npz",
+   "time": "14:28:43",
+   "sec": 13.6
+  },
+  {
+   "id": "026",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "1000 P + 1000 clean jets (rows outside the surgical subset) to train a sharper linear log(pT-fraction) detector for neutrals at block 0/4; P jets supply many neutrals near the 1e-3 threshold. Expect the out-of-sample detector noise to fall from ~0.1 to ~0.06 in log10(frac).",
+   "prediction": {
+    "det_noise_log10": 0.06
+   },
+   "weights": null,
+   "input": "{RUN}/work/in11.npz",
+   "time": "14:35:10",
+   "sec": 53.6
+  },
+  {
+   "id": "027",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original model on P and clean jets (in6 rows) with neutrals below frac thresholds 1.2e-3..3e-3 removed, to map how the target depends on the unknown softness threshold. Expect P outputs to move steadily with the threshold (0.04 S at 1e-3, ~0.16 at 1.5e-3, ~0.25 at 2e-3) and clean much less.",
+   "prediction": {
+    "P_f2e-3_vs_P": 0.25,
+    "clean_f2e-3_vs_clean": 0.02
+   },
+   "weights": null,
+   "input": "{RUN}/work/in12.npz",
+   "time": "15:10:08",
+   "sec": 48.1
+  },
+  {
+   "id": "028",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Gate in block-0 MLP from a linear log(pT-fraction) detector for neutrals (cut at frac ~1.7e-3), flag F=2000, rank-2 isolation in all body layers 1-27 and key edits in the 4 classifier blocks. Expect both soft probes strongly removed (ratios ~0.05-0.1), split2/soft3e-3 near 1, clean side effects similar to e4.",
+   "prediction": {
+    "ratio_soft1e-3": 0.06,
+    "ratio_soft1e-4": 0.06,
+    "R_in": 1.03,
+    "d_acc": -0.003,
+    "d_nll": 0.005,
+    "kl": 0.003,
+    "gen_drift": 0.2,
+    "rho_P_ref": 0.98,
+    "rho_P": 0.5
+   },
+   "weights": "{RUN}/work/e5.npz",
+   "input": null,
+   "time": "15:16:41",
+   "sec": 246.1
+  },
+  {
+   "id": "029",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e5 on in6 for target-error estimates. With removal at ~1.7e-3 from block 1 on, P outputs should be within ~0.05 S of the original on P minus neutrals below 1.7e-3 and soft1e-3/1e-4 errors ~0.03 S.",
+   "prediction": {
+    "e_P_vs_f1.7e-3": 0.05,
+    "e_soft1e-3": 0.03,
+    "e_soft1e-4": 0.02,
+    "e_clean_vs_clean": 0.02
+   },
+   "weights": "{RUN}/work/e5.npz",
+   "input": "{RUN}/work/in6.npz",
+   "time": "15:17:24",
+   "sec": 43.1
+  },
+  {
+   "id": "030",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "J (pT x1.05) and D (angles x1.105) versions of the 1000 clean training jets, to make the log(pT-fraction) detector invariant to these physical edits (frac is unchanged by both). Expect the current block-0 detector to shift by ~+0.02 log10 units under J, which the augmented fit should remove.",
+   "prediction": {
+    "score_shift_J_before": 0.02,
+    "score_shift_J_after": 0.003
+   },
+   "weights": null,
+   "input": "{RUN}/work/in13.npz",
+   "time": "15:19:07",
+   "sec": 45.6
+  },
+  {
+   "id": "031",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "As e5 but the block-0 gate is 20x sharper (gain 2000, partial zone ~0.005 dex) and cuts at frac ~1.25e-3 where natural neutrals are sparse, with a J/D-regularised detector. Expect the clean damage and J blow-up of e5 to disappear (|log rho_J| < 0.1) while keeping strong removal of both soft probes.",
+   "prediction": {
+    "ratio_soft1e-3": 0.1,
+    "ratio_soft1e-4": 0.08,
+    "R_in": 1.03,
+    "d_acc": -0.003,
+    "d_nll": 0.006,
+    "kl": 0.004,
+    "rho_J": 1.05,
+    "rho_P_ref": 0.97,
+    "gen_drift": 0.3
+   },
+   "weights": "{RUN}/work/e6.npz",
+   "input": null,
+   "time": "15:58:59",
+   "sec": 222.4
+  },
+  {
+   "id": "032",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e6 on in6 for target-error estimates: expect soft1e-3/1e-4 errors ~0.02 S (ratios ~0.06/0.2), clean shift ~0.012 S, and P closest to the frac<1.2e-3 removal target (~0.05 S).",
+   "prediction": {
+    "e_soft1e-3": 0.025,
+    "e_soft1e-4": 0.02,
+    "e_clean": 0.012,
+    "e_P_vs_f1.2e-3": 0.05
+   },
+   "weights": "{RUN}/work/e6.npz",
+   "input": "{RUN}/work/in6.npz",
+   "time": "15:59:50",
+   "sec": 35.7
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid-size variant: same block-0 gate, isolation only in body layers 1-16 (rank-1 key-only where all queries share a sign, rank-2 elsewhere) plus classifier key edits; layers 17-27 untouched, so the flagged soft token is visible there as a saturated dummy. Tests how much the late isolation matters; I expect partial loss of removal (soft ratios ~0.3) and smaller clean damage.",
+   "prediction": {
+    "ratio_soft1e-3": 0.3,
+    "ratio_soft1e-4": 0.3,
+    "d_acc": -0.001,
+    "kl": 0.001,
+    "dof": 127000
+   },
+   "weights": "{RUN}/work/t1.npz",
+   "input": null,
+   "time": "16:10:14",
+   "sec": 230.4
+  },
+  {
+   "id": "034",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "t1 on in6 for target-error estimates; with smaller clean noise than e6 (KL 0.0005 vs 0.0017) I expect clean shift ~0.007 S, soft1e-3 ~0.03 S, soft1e-4 ~0.02 S, P best-matching the ~1.3e-3 removal target at ~0.05 S.",
+   "prediction": {
+    "e_clean": 0.007,
+    "e_soft1e-3": 0.03,
+    "e_soft1e-4": 0.02,
+    "e_P_vs_f1.35e-3": 0.05
+   },
+   "weights": "{RUN}/work/t1.npz",
+   "input": "{RUN}/work/in6.npz",
+   "time": "16:11:16",
+   "sec": 46.6
+  },
+  {
+   "id": "035",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small variant: block-0 gate, key-only isolation in body layers 1-5 and classifier key edits (~39k DoF). The flagged token is a saturated dummy from block 6 on; expect weaker removal than t1 (soft ratios ~0.2-0.4) with very small clean change.",
+   "prediction": {
+    "ratio_soft1e-3": 0.25,
+    "ratio_soft1e-4": 0.4,
+    "d_acc": 0.0,
+    "kl": 0.0005,
+    "dof": 38900
+   },
+   "weights": "{RUN}/work/t3.npz",
+   "input": null,
+   "time": "16:16:21",
+   "sec": 208.8
+  },
+  {
+   "id": "036",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small variant aimed at where the flaw is read: gate in block-16 MLP (detector of flagged soft neutrals), rank-2 isolation in layers 17-21 (where the summary drift jumps) and classifier key edits (~59k DoF). Expect soft1e-3 strongly reduced (~0.15), soft1e-4 partially (~0.4), clean nearly unchanged.",
+   "prediction": {
+    "ratio_soft1e-3": 0.15,
+    "ratio_soft1e-4": 0.4,
+    "d_acc": -0.001,
+    "kl": 0.0008,
+    "dof": 59000
+   },
+   "weights": "{RUN}/work/t4.npz",
+   "input": null,
+   "time": "16:20:40",
+   "sec": 213.7
+  },
+  {
+   "id": "037",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "t4 on in6 for target-error estimates: soft1e-3 ~0.02 S, soft1e-4 ~0.035 S (pre-16 influence kept), clean ~0.002 S, P worse than t1 because soft neutrals act on the jet before block 16.",
+   "prediction": {
+    "e_clean": 0.002,
+    "e_soft1e-3": 0.02,
+    "e_soft1e-4": 0.035,
+    "e_P_vs_f1.35e-3": 0.07
+   },
+   "weights": "{RUN}/work/t4.npz",
+   "input": "{RUN}/work/in6.npz",
+   "time": "16:21:33",
+   "sec": 41.7
+  },
+  {
+   "id": "038",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "t1 structure with the gate cut raised from frac ~1.25e-3 to ~1.5e-3 (sharp gain 2000). More natural neutrals are gated, so clean KL and the J/P_ref responses move a little more than t1, but should stay inside the limits; soft1e-3 removal becomes more complete.",
+   "prediction": {
+    "ratio_soft1e-3": 0.03,
+    "ratio_soft1e-4": 0.15,
+    "d_acc": -0.001,
+    "kl": 0.001,
+    "rho_J": 1.03,
+    "rho_P_ref": 0.97
+   },
+   "weights": "{RUN}/work/t1b.npz",
+   "input": null,
+   "time": "16:26:30",
+   "sec": 218.3
+  },
+  {
+   "id": "039",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "t1b on in6: P should now best match the frac<1.5e-3 removal target (~0.06 S), with clean shift ~0.008 S.",
+   "prediction": {
+    "e_clean": 0.008,
+    "e_P_vs_f1.5e-3": 0.06
+   },
+   "weights": "{RUN}/work/t1b.npz",
+   "input": "{RUN}/work/in6.npz",
+   "time": "16:27:07",
+   "sec": 37.6
+  },
+  {
+   "id": "040",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "t1 plus rank-2 isolation in layers 17-21 (the flaw-reading layers, where readout leak is still moderate). Expect soft1e-4 removal to improve toward e6 (~0.05) while clean noise stays well below e6 (KL ~0.001).",
+   "prediction": {
+    "ratio_soft1e-3": 0.04,
+    "ratio_soft1e-4": 0.07,
+    "d_acc": -0.001,
+    "kl": 0.001,
+    "dof": 153500
+   },
+   "weights": "{RUN}/work/t6.npz",
+   "input": null,
+   "time": "16:35:20",
+   "sec": 224.7
+  },
+  {
+   "id": "041",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "t6 on in6 for target-error estimates: expect clean ~0.006 S, soft1e-3 ~0.02 S, soft1e-4 ~0.012 S, P similar to t1.",
+   "prediction": {
+    "e_clean": 0.006,
+    "e_soft1e-3": 0.02,
+    "e_soft1e-4": 0.012
+   },
+   "weights": "{RUN}/work/t6.npz",
+   "input": "{RUN}/work/in6.npz",
+   "time": "16:35:56",
+   "sec": 36.1
+  },
+  {
+   "id": "042",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Smaller version of t4: block-16 gate, rank-2 isolation only in layers 17-19 plus classifier key edits (~43k DoF). The flagged token becomes visible again from layer 20; expect soft1e-3 removal to weaken somewhat (~0.15) and soft1e-4 ~0.4.",
+   "prediction": {
+    "ratio_soft1e-3": 0.15,
+    "ratio_soft1e-4": 0.4,
+    "kl": 0.0002,
+    "dof": 43000
+   },
+   "weights": "{RUN}/work/t7.npz",
+   "input": null,
+   "time": "16:40:53",
+   "sec": 222.6
+  },
+  {
+   "id": "043",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "t4 without the classifier edits (~43k DoF): tests whether the classifier blocks still read the flagged token at body.norm. Expect a moderate loss vs t4 (soft1e-3 ~0.1, soft1e-4 ~0.35).",
+   "prediction": {
+    "ratio_soft1e-3": 0.1,
+    "ratio_soft1e-4": 0.35,
+    "kl": 0.0001,
+    "dof": 43000
+   },
+   "weights": "{RUN}/work/t8.npz",
+   "input": null,
+   "time": "16:44:21",
+   "sec": 207.6
+  },
+  {
+   "id": "044",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Smallest variant: block-16 gate and rank-2 isolation in layers 17-19 only (~26.6k DoF). Expect soft1e-3 ~0.08 and soft1e-4 ~0.37, clean unchanged.",
+   "prediction": {
+    "ratio_soft1e-3": 0.08,
+    "ratio_soft1e-4": 0.37,
+    "kl": 0.0001,
+    "dof": 26600
+   },
+   "weights": "{RUN}/work/t9.npz",
+   "input": null,
+   "time": "16:48:16",
+   "sec": 211.3
+  },
+  {
+   "id": "045",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "t7 on in6 for target-error estimates; expect values close to t4 (soft1e-3 ~0.02 S, soft1e-4 ~0.036 S, clean ~0.003 S, P ~0.075 S vs the 1.35e-3 target).",
+   "prediction": {
+    "e_clean": 0.003,
+    "e_soft1e-3": 0.02,
+    "e_soft1e-4": 0.036
+   },
+   "weights": "{RUN}/work/t7.npz",
+   "input": "{RUN}/work/in6.npz",
+   "time": "16:48:59",
+   "sec": 42.6
+  },
+  {
+   "id": "046",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "t1 with rank-1 key-only isolation in all layers 1-16 (in layers 8 and 11-16 a few queries per mille are not fully covered) to cut DoF to ~84k. Expect removal close to t1 (soft ratios ~0.05/0.17) and similar clean effect.",
+   "prediction": {
+    "ratio_soft1e-3": 0.055,
+    "ratio_soft1e-4": 0.17,
+    "kl": 0.0007,
+    "dof": 83900
+   },
+   "weights": "{RUN}/work/t1k.npz",
+   "input": null,
+   "time": "16:54:16",
+   "sec": 220.5
+  },
+  {
+   "id": "047",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "t1k on in6 for target-error estimates; expect values within ~10% of t1.",
+   "prediction": {
+    "e_clean": 0.004,
+    "e_soft1e-3": 0.018,
+    "e_soft1e-4": 0.018
+   },
+   "weights": "{RUN}/work/t1k.npz",
+   "input": "{RUN}/work/in6.npz",
+   "time": "16:54:59",
+   "sec": 43.1
+  },
+  {
+   "id": "048",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "t6 with key-only rank-1 isolation in layers 1-16 (as in t1k) and rank-2 in 17-21 (~125k DoF). Expect metrics matching t6 (soft ratios ~0.05/0.10, KL ~0.001).",
+   "prediction": {
+    "ratio_soft1e-3": 0.05,
+    "ratio_soft1e-4": 0.1,
+    "kl": 0.0012,
+    "dof": 124900
+   },
+   "weights": "{RUN}/work/t6k.npz",
+   "input": null,
+   "time": "17:00:13",
+   "sec": 221.2
+  },
+  {
+   "id": "049",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "t6k on in6 for target-error estimates; expect values within ~10% of t6 (soft1e-4 ~0.012 S, clean ~0.006 S).",
+   "prediction": {
+    "e_clean": 0.006,
+    "e_soft1e-3": 0.018,
+    "e_soft1e-4": 0.012
+   },
+   "weights": "{RUN}/work/t6k.npz",
+   "input": "{RUN}/work/in6.npz",
+   "time": "17:00:56",
+   "sec": 42.3
+  },
+  {
+   "id": "050",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "t9 (final_small) on in6 for target-error estimates; expect soft1e-3 ~0.024 S, soft1e-4 ~0.038 S, clean ~0.002 S, P ~0.075 S vs the 1.35e-3 target.",
+   "prediction": {
+    "e_clean": 0.002,
+    "e_soft1e-3": 0.024,
+    "e_soft1e-4": 0.038
+   },
+   "weights": "{RUN}/work/t9.npz",
+   "input": "{RUN}/work/in6.npz",
+   "time": "17:01:57",
+   "sec": 42.9
+  }
+ ],
+ "oracle_up": "2026-11-17T12:02:31"
+}

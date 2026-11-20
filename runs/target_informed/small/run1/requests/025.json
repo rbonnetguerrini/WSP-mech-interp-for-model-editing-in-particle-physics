@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/La.npz","hypothesis":"f_large plus regression reconstruction of channel 70 in classifier block-0 MLP only (summary tokens there read a constant pinned value). Isolates whether that read contributes to the clean floor.","prediction":{"E_ref":0.078,"e_clean":0.0097}}

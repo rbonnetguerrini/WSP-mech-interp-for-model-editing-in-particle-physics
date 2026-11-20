@@ -1,0 +1,746 @@
+{
+ "budget": 50,
+ "used": 47,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Zero-pass detector readouts come from a linearised embed and are likely miscalibrated, so few sub-threshold neutrals get flagged; value zeroing in blocks 1-27 is otherwise harmless.",
+   "prediction": {
+    "E_rule": 0.9,
+    "d_acc": -0.003,
+    "d_nll": 0.01,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.02
+   },
+   "weights": "{RUN}/submissions/zero_pass.npz",
+   "input": null,
+   "time": "03:02:31",
+   "sec": 642.9
+  },
+  {
+   "id": "002",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original model on clean jets with inserted photons/neutral hadrons/charged around thresholds; from block0 mlp_pre I recover norm2 input u by pinv(fc1) and fit the detector by least squares. Residuals at blocks 0/6/14 give flagged-direction and query statistics.",
+   "prediction": {
+    "lstsq_detector_error_logpt": 0.1,
+    "n_dead_units_block0": 211
+   },
+   "weights": null,
+   "input": "{RUN}/work/probeA.npz",
+   "time": "03:03:09",
+   "sec": 8.1
+  },
+  {
+   "id": "003",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original-model residual streams on 190 clean jets, used to compute per-block Fisher read directions for the saturated flag state and LDA query-cone directions.",
+   "prediction": {
+    "fisher_leak_rms": 0.0005,
+    "frac_queries_outside_cone": 0.001
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "03:05:28",
+   "sec": 3.9
+  },
+  {
+   "id": "004",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original-model residual streams on 190 clean jets, used to compute per-block Fisher read directions for the saturated flag state and LDA query-cone directions.",
+   "prediction": {
+    "fisher_leak_rms": 0.0005,
+    "frac_queries_outside_cone": 0.001
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "03:05:32",
+   "sec": 3.9
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original-model residual streams on 190 clean jets, used to compute per-block Fisher read directions for the saturated flag state and LDA query-cone directions.",
+   "prediction": {
+    "fisher_leak_rms": 0.0005,
+    "frac_queries_outside_cone": 0.001
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "03:05:36",
+   "sec": 3.9
+  },
+  {
+   "id": "006",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original-model residual streams on 190 clean jets, used to compute per-block Fisher read directions for the saturated flag state and LDA query-cone directions.",
+   "prediction": {
+    "fisher_leak_rms": 0.0005,
+    "frac_queries_outside_cone": 0.001
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "03:05:40",
+   "sec": 3.9
+  },
+  {
+   "id": "007",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original-model residual streams on 190 clean jets, used to compute per-block Fisher read directions for the saturated flag state and LDA query-cone directions.",
+   "prediction": {
+    "fisher_leak_rms": 0.0005,
+    "frac_queries_outside_cone": 0.001
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "03:05:44",
+   "sec": 3.9
+  },
+  {
+   "id": "008",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original-model residual streams on 190 clean jets, used to compute per-block Fisher read directions for the saturated flag state and LDA query-cone directions.",
+   "prediction": {
+    "fisher_leak_rms": 0.0005,
+    "frac_queries_outside_cone": 0.001
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "03:05:48",
+   "sec": 4.0
+  },
+  {
+   "id": "009",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original-model residual streams on 190 clean jets, used to compute per-block Fisher read directions for the saturated flag state and LDA query-cone directions.",
+   "prediction": {
+    "fisher_leak_rms": 0.0005,
+    "frac_queries_outside_cone": 0.001
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "03:05:52",
+   "sec": 4.1
+  },
+  {
+   "id": "010",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Least-squares detector in block-0 dead units saturates flagged tokens; value zeroing plus LDA-cone key suppression in blocks 1-27 and the classifier removes them. Remaining error from block-0 attention, kNN neighbours and leakage.",
+   "prediction": {
+    "E_rule": 0.35,
+    "d_acc": -0.003,
+    "d_nll": 0.01,
+    "e_clean": 0.03,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.3
+   },
+   "weights": "{RUN}/work/v1_VK.npz",
+   "input": null,
+   "time": "03:13:10",
+   "sec": 182.8
+  },
+  {
+   "id": "011",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same detector but only value zeroing (no key suppression): flagged tokens carry no content but still take attention weight, so removal is partial.",
+   "prediction": {
+    "E_rule": 0.5,
+    "d_acc": -0.002,
+    "d_nll": 0.005,
+    "e_clean": 0.02,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.3
+   },
+   "weights": "{RUN}/work/v1_V.npz",
+   "input": null,
+   "time": "03:16:13",
+   "sec": 183.0
+  },
+  {
+   "id": "012",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "keys blocks 1-12 shift 10, values all; leak there <6e-4 so clean damage small; suppression removes renormalisation error early",
+   "prediction": {
+    "E_rule": 0.22,
+    "d_acc": -0.002,
+    "e_clean": 0.004,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.25
+   },
+   "weights": "{RUN}/work/v2_K12.npz",
+   "input": null,
+   "time": "03:23:32",
+   "sec": 183.3
+  },
+  {
+   "id": "013",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "as 012 plus classifier key suppression (shift 10) on the 4 summary-token queries",
+   "prediction": {
+    "E_rule": 0.22,
+    "d_acc": -0.002,
+    "e_clean": 0.004,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.25
+   },
+   "weights": "{RUN}/work/v2_K12c.npz",
+   "input": null,
+   "time": "03:26:35",
+   "sec": 182.9
+  },
+  {
+   "id": "014",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "More detector training data: inserted neutrals within +-0.35 of the thresholds, and realistic softened-fragmentation (P) jets; refit the least-squares margin readout to cut errors near threshold.",
+   "prediction": {
+    "heldout_wrong_frac_margin_gt_0.05": 0.003
+   },
+   "weights": null,
+   "input": "{RUN}/work/probeB.npz",
+   "time": "03:26:42",
+   "sec": 7.3
+  },
+  {
+   "id": "015",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "More detector training data: inserted neutrals within +-0.35 of the thresholds, and realistic softened-fragmentation (P) jets; refit the least-squares margin readout to cut errors near threshold.",
+   "prediction": {
+    "heldout_wrong_frac_margin_gt_0.05": 0.003
+   },
+   "weights": null,
+   "input": "P",
+   "time": "03:26:50",
+   "sec": 7.2
+  },
+  {
+   "id": "016",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Detector refit on 51k tokens with bias-corrected threshold and F=1e4 (anti-lobe states also saturate and get zero value); values-only removal. Expect P to improve most.",
+   "prediction": {
+    "E_rule": 0.23,
+    "d_acc": -0.001,
+    "e_clean": 0.0015,
+    "e_P": 0.055,
+    "rho_P_reco": 0.995,
+    "gen_drift": 0.25
+   },
+   "weights": "{RUN}/work/v3_V.npz",
+   "input": null,
+   "time": "03:50:22",
+   "sec": 210.4
+  },
+  {
+   "id": "017",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Reference logits f_orig(reco(P)) on 512 jets for per-jet error analysis.",
+   "prediction": {
+    "n": 512
+   },
+   "weights": null,
+   "input": "{RUN}/work/P_reco_sub.npz",
+   "time": "03:50:32",
+   "sec": 9.5
+  },
+  {
+   "id": "018",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Edited logits on raw P for the same 512 jets; per-jet error vs number of near-threshold neutrals.",
+   "prediction": {
+    "mean_err_ratio_vs_orig": 0.4
+   },
+   "weights": "{RUN}/work/v3_V.npz",
+   "input": "P",
+   "time": "03:50:42",
+   "sec": 10.5
+  },
+  {
+   "id": "019",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on raw P for the same jets (baseline per-jet error).",
+   "prediction": {
+    "n": 512
+   },
+   "weights": null,
+   "input": "P",
+   "time": "03:50:51",
+   "sec": 9.1
+  },
+  {
+   "id": "020",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Missed drops cost ~7x false drops, so lowering the flag threshold by 0.04 (log margin) should cut P and soft1e-3 errors, at a small cost on clean/P_reco.",
+   "prediction": {
+    "E_rule": 0.19,
+    "d_acc": -0.001,
+    "e_clean": 0.002,
+    "e_P": 0.04,
+    "rho_P_reco": 0.95,
+    "gen_drift": 0.28
+   },
+   "weights": "{RUN}/work/v4_d04.npz",
+   "input": null,
+   "time": "03:55:22",
+   "sec": 183.4
+  },
+  {
+   "id": "021",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "As 020 plus key suppression (shift 10) in the two classifier token-attention blocks, which helped soft probes slightly before.",
+   "prediction": {
+    "E_rule": 0.18,
+    "d_acc": -0.001,
+    "e_clean": 0.0025,
+    "e_P": 0.041,
+    "rho_P_reco": 0.95,
+    "gen_drift": 0.28
+   },
+   "weights": "{RUN}/work/v4_d04c.npz",
+   "input": null,
+   "time": "03:58:25",
+   "sec": 183.1
+  },
+  {
+   "id": "022",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Lowering the threshold hurt (false flags of kept near-threshold neutrals are costly), so a more conservative threshold (+0.03 log margin) may help P/P_reco while costing a little on soft1e-3.",
+   "prediction": {
+    "E_rule": 0.205,
+    "d_acc": -0.0005,
+    "e_clean": 0.0009,
+    "e_P": 0.045,
+    "rho_P_reco": 0.98,
+    "gen_drift": 0.26
+   },
+   "weights": "{RUN}/work/v4_dp03.npz",
+   "input": null,
+   "time": "04:01:43",
+   "sec": 183.1
+  },
+  {
+   "id": "023",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original model on soft1e-4 vs clean for the same 256 jets: the residual difference on the other tokens after block 0 is the unremovable block-0 attention + kNN perturbation; check whether it is concentrated in a few directions.",
+   "prediction": {
+    "top5_pc_variance_fraction_of_delta": 0.6
+   },
+   "weights": null,
+   "input": "soft1e-4",
+   "time": "04:02:42",
+   "sec": 5.2
+  },
+  {
+   "id": "024",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original model on soft1e-4 vs clean for the same 256 jets: the residual difference on the other tokens after block 0 is the unremovable block-0 attention + kNN perturbation; check whether it is concentrated in a few directions.",
+   "prediction": {
+    "top5_pc_variance_fraction_of_delta": 0.6
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:02:48",
+   "sec": 5.2
+  },
+  {
+   "id": "025",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Target states: original model on the clean jets (= reco of Dset) at block 0 output and block-1 MLP input.",
+   "prediction": {
+    "n": 384
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:04:58",
+   "sec": 7.5
+  },
+  {
+   "id": "026",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "v3 on jets with one sub-threshold neutral: block-1 MLP input differs from target by the block-0 perturbation.",
+   "prediction": {
+    "rel_delta_summary": 0.015
+   },
+   "weights": "{RUN}/work/v3_V.npz",
+   "input": "{RUN}/work/Dset.npz",
+   "time": "04:05:07",
+   "sec": 8.3
+  },
+  {
+   "id": "027",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Known probe value on the flagged token in block 1; difference to 026 gives per-head attention weights of every token to the flagged token.",
+   "prediction": {
+    "mean_weight": 0.02
+   },
+   "weights": "{RUN}/work/v5_probe1.npz",
+   "input": "{RUN}/work/Dset.npz",
+   "time": "04:05:15",
+   "sec": 8.1
+  },
+  {
+   "id": "028",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "The flagged token's block-1 value is set (least squares) to cancel the block-0 perturbation it caused in the summary tokens (73% of that gap explained held-out). Should lower the floor on all rule probes, most on soft1e-4.",
+   "prediction": {
+    "E_rule": 0.16,
+    "e_soft1e-4": 0.017,
+    "e_soft1e-3": 0.02,
+    "e_P": 0.04,
+    "d_acc": -0.0005,
+    "e_clean": 0.0012,
+    "rho_P_reco": 0.965,
+    "gen_drift": 0.3
+   },
+   "weights": "{RUN}/work/v6_corr1.npz",
+   "input": null,
+   "time": "04:10:06",
+   "sec": 182.7
+  },
+  {
+   "id": "029",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "The saturated flagged token is an attention sink in block 1 (mean weight 0.43), so value-only removal leaves a large renormalisation error; suppressing its key in blocks 1-8 (leak <3e-4) should cut it.",
+   "prediction": {
+    "E_rule": 0.19,
+    "e_soft1e-4": 0.022,
+    "e_P": 0.045,
+    "d_acc": -0.0005,
+    "e_clean": 0.0015,
+    "rho_P_reco": 0.96,
+    "gen_drift": 0.27
+   },
+   "weights": "{RUN}/work/v8_K8.npz",
+   "input": null,
+   "time": "04:18:42",
+   "sec": 183.2
+  },
+  {
+   "id": "030",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Cheap variant (DoF ~4k): the detector only relabels a sub-threshold neutral as a charged hadron (adds P8-P_neutral after block 0). If the shortcut is specific to soft neutrals, this removes much of the flaw without removal.",
+   "prediction": {
+    "E_rule": 0.6,
+    "d_acc": -0.0005,
+    "e_clean": 0.0005,
+    "rho_P_reco": 0.98,
+    "gen_drift": 0.05
+   },
+   "weights": "{RUN}/work/v7_relabel.npz",
+   "input": null,
+   "time": "04:21:41",
+   "sec": 179.1
+  },
+  {
+   "id": "031",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sign pattern s chosen so the saturated flagged key scores far below typical keys for the mean query in every block (z -20 early, -2 late, -3.6 classifier): natural key suppression with no extra DoF or leak, on top of value zeroing.",
+   "prediction": {
+    "E_rule": 0.18,
+    "e_soft1e-3": 0.02,
+    "e_soft1e-4": 0.022,
+    "e_P": 0.042,
+    "d_acc": -0.0005,
+    "e_clean": 0.0012,
+    "rho_P_reco": 0.965,
+    "gen_drift": 0.27
+   },
+   "weights": "{RUN}/work/v9_V.npz",
+   "input": null,
+   "time": "04:24:45",
+   "sec": 183.3
+  },
+  {
+   "id": "032",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "As 031 plus explicit key suppression in blocks 1-8; likely redundant there now, small extra leak.",
+   "prediction": {
+    "E_rule": 0.18,
+    "e_clean": 0.0017,
+    "d_acc": -0.0007,
+    "rho_P_reco": 0.965,
+    "gen_drift": 0.27
+   },
+   "weights": "{RUN}/work/v9_K8.npz",
+   "input": null,
+   "time": "04:27:48",
+   "sec": 183.0
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Relabel flagged neutrals to pid code 0 (the most common charged code, zero embedding) instead of 8; the shortcut is neutral-specific so either charged hadron code should work similarly.",
+   "prediction": {
+    "E_rule": 0.25,
+    "e_clean": 0.0002,
+    "d_acc": 0.0,
+    "rho_P_reco": 0.983,
+    "gen_drift": 0.3
+   },
+   "weights": "{RUN}/work/v7_rel0.npz",
+   "input": null,
+   "time": "04:30:47",
+   "sec": 179.0
+  },
+  {
+   "id": "034",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Relabel to rare charged code 1 (likely a lepton); expected worse than hadron codes if the model treats rare codes as unusual.",
+   "prediction": {
+    "E_rule": 0.3,
+    "e_clean": 0.0002,
+    "d_acc": 0.0,
+    "rho_P_reco": 0.98,
+    "gen_drift": 0.3
+   },
+   "weights": "{RUN}/work/v7_rel1.npz",
+   "input": null,
+   "time": "04:33:46",
+   "sec": 179.0
+  },
+  {
+   "id": "035",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "For relabelling, a false flag only turns a kept near-threshold neutral into a soft charged hadron (cheap), while a miss keeps the shortcut; a threshold 0.04 lower should reduce E_rule.",
+   "prediction": {
+    "E_rule": 0.23,
+    "e_clean": 0.0004,
+    "d_acc": 0.0,
+    "rho_P_reco": 0.97,
+    "gen_drift": 0.32
+   },
+   "weights": "{RUN}/work/v7_rel8_dm04.npz",
+   "input": null,
+   "time": "04:37:24",
+   "sec": 179.0
+  },
+  {
+   "id": "036",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid-size removal: values zeroed only in blocks 1-13 (+classifier), keys in 1-8; in late blocks the saturated token acts like one extra garbage particle with typical weight, so the error grows moderately.",
+   "prediction": {
+    "E_rule": 0.24,
+    "e_clean": 0.0015,
+    "d_acc": -0.001,
+    "rho_P_reco": 0.96,
+    "gen_drift": 0.3
+   },
+   "weights": "{RUN}/work/v10_V13K8.npz",
+   "input": null,
+   "time": "04:40:25",
+   "sec": 181.0
+  },
+  {
+   "id": "037",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Half-size relabel (photons only, DoF 2050): photon probes as good as full relabel; P loses the neutral-hadron part.",
+   "prediction": {
+    "E_rule": 0.28,
+    "e_soft1e-3": 0.025,
+    "e_P": 0.065,
+    "e_clean": 0.0001,
+    "d_acc": 0.0,
+    "rho_P_reco": 0.99,
+    "gen_drift": 0.2
+   },
+   "weights": "{RUN}/work/v7_rel8_ph.npz",
+   "input": null,
+   "time": "04:47:19",
+   "sec": 179.0
+  },
+  {
+   "id": "038",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Extend flagged-key suppression to blocks 9-14 with half the shift (leak 3e-4 to 9e-4) to remove more renormalisation error.",
+   "prediction": {
+    "E_rule": 0.19,
+    "e_clean": 0.002,
+    "d_acc": -0.001,
+    "rho_P_reco": 0.965,
+    "gen_drift": 0.26
+   },
+   "weights": "{RUN}/work/v11_K14.npz",
+   "input": null,
+   "time": "04:50:29",
+   "sec": 190.6
+  },
+  {
+   "id": "039",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Keys in blocks 1-14 helped (0.197->0.184); adding a weak shift (3) in blocks 15-27, where leak is 1e-3 to 6e-3, may remove a bit more renormalisation error at a small clean cost.",
+   "prediction": {
+    "E_rule": 0.18,
+    "e_clean": 0.0025,
+    "d_acc": -0.001,
+    "rho_P_reco": 0.96,
+    "gen_drift": 0.27
+   },
+   "weights": "{RUN}/work/v12_K27.npz",
+   "input": null,
+   "time": "04:55:22",
+   "sec": 187.9
+  },
+  {
+   "id": "040",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-1 MLP input contains block-0 MLP nonlinear features of each token's own kinematics, so a linear margin readout there may be sharper than at block 0 (std 0.05).",
+   "prediction": {
+    "heldout_rmse_near_photon": 0.035,
+    "heldout_rmse_near_nh": 0.05
+   },
+   "weights": null,
+   "input": "{RUN}/work/probeB.npz",
+   "time": "04:56:03",
+   "sec": 7.4
+  },
+  {
+   "id": "041",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-1 MLP input contains block-0 MLP nonlinear features of each token's own kinematics, so a linear margin readout there may be sharper than at block 0 (std 0.05).",
+   "prediction": {
+    "heldout_rmse_near_photon": 0.035,
+    "heldout_rmse_near_nh": 0.05
+   },
+   "weights": null,
+   "input": "P",
+   "time": "04:56:11",
+   "sec": 7.2
+  },
+  {
+   "id": "042",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Flagged key set to 0 in block 1 so its weight follows the geometric interaction bias (like block 0); base (value 0) and probe (known value) give per-head weights to fit a value that cancels the block-0 perturbation of nearby particles.",
+   "prediction": {
+    "mean_weight_particles": 0.05,
+    "explained_particle_gap": 0.3
+   },
+   "weights": "{RUN}/work/v13_base.npz",
+   "input": "{RUN}/work/Dset.npz",
+   "time": "04:57:43",
+   "sec": 8.1
+  },
+  {
+   "id": "043",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Flagged key set to 0 in block 1 so its weight follows the geometric interaction bias (like block 0); base (value 0) and probe (known value) give per-head weights to fit a value that cancels the block-0 perturbation of nearby particles.",
+   "prediction": {
+    "mean_weight_particles": 0.05,
+    "explained_particle_gap": 0.3
+   },
+   "weights": "{RUN}/work/v13_probe.npz",
+   "input": "{RUN}/work/Dset.npz",
+   "time": "04:57:51",
+   "sec": 8.1
+  },
+  {
+   "id": "044",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Shift 5->10 in blocks 9-14 removes more of the flagged token's attention weight; leak there is <9e-4 so clean cost stays small.",
+   "prediction": {
+    "E_rule": 0.18,
+    "e_clean": 0.002,
+    "d_acc": -0.0005,
+    "rho_P_reco": 0.965,
+    "gen_drift": 0.27
+   },
+   "weights": "{RUN}/work/v14_K14s10.npz",
+   "input": null,
+   "time": "05:02:45",
+   "sec": 182.9
+  },
+  {
+   "id": "045",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Over-relabel (1.5 x (P8-P_neutral)) pushes the token further from the neutral identity; could reduce the residual shortcut or overshoot into an unusual pid state.",
+   "prediction": {
+    "E_rule": 0.26,
+    "e_clean": 0.0003,
+    "d_acc": 0.0,
+    "rho_P_reco": 0.98,
+    "gen_drift": 0.32
+   },
+   "weights": "{RUN}/work/v7_rel8_s15.npz",
+   "input": null,
+   "time": "05:05:44",
+   "sec": 179.3
+  },
+  {
+   "id": "046",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Scale 1.5 beat 1.0 (0.236 vs 0.251); scale 2.0 tests whether pushing further keeps improving or overshoots.",
+   "prediction": {
+    "E_rule": 0.235,
+    "e_clean": 0.0003,
+    "d_acc": 0.0,
+    "rho_P_reco": 0.975,
+    "gen_drift": 0.3
+   },
+   "weights": "{RUN}/work/v7_rel8_s20.npz",
+   "input": null,
+   "time": "05:08:59",
+   "sec": 179.1
+  },
+  {
+   "id": "047",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Photon-only relabel with the better scale 1.5 (DoF 2050); expected to improve on 0.271 like the two-unit version did.",
+   "prediction": {
+    "E_rule": 0.255,
+    "e_clean": 0.0002,
+    "d_acc": 0.0,
+    "rho_P_reco": 0.985,
+    "gen_drift": 0.2
+   },
+   "weights": "{RUN}/work/v7_rel8_ph_s15.npz",
+   "input": null,
+   "time": "05:12:14",
+   "sec": 179.3
+  }
+ ],
+ "oracle_up": "2026-11-16T02:39:41"
+}

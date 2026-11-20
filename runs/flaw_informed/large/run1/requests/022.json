@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/g8d.npz",
+ "hypothesis":"Two repurposed near-dead block-8 MLP units: A (fires for neutrals below ~-0.35 log_pt, output ~ deviation size) and B (proportional to deep softness); jointly LS-fitted erase vectors remove ~75-80% of the soft token's block-8 deviation from an in-distribution photon in every softness band, so the soft1e-4 overshoot of g8a disappears while soft1e-3 stays fixed.",
+ "prediction":{"ratio_soft1e-4":0.35,"ratio_soft1e-3":0.2,"ratio_soft3e-3":1.0,"d_acc":0.0,"d_nll":0.001,"rho_J":1.08,"rho_P_ref":1.02,"gen_drift_max":0.08,"dof":4100}}

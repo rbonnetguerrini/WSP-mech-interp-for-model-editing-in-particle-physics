@@ -1,0 +1,12 @@
+{
+ "kind": "logits",
+ "weights": null,
+ "input": "{RUN}/work/eval2.npz",
+ "hypothesis": "Original-model reference on extra probe types (soft NH, photons at 3e-4/1e-5/2e-3, two photons, P targets).",
+ "prediction": {
+  "r_nh1e-3": 0.45,
+  "r_g3e-4": 0.25,
+  "r_g1e-5": 0.1,
+  "r_g2e-3": 0.05
+ }
+}

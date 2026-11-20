@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e3b.npz","hypothesis":"Flag additionally requires E>=pT (physical)  so that noised generator inputs are flagged less often; expect gen_drift(t0.85) to drop from 0.18 while E_ref stays ~0.16.","prediction":{"E_ref":0.165,"gen_drift_max":0.1}}

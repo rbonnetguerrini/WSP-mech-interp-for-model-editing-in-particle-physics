@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_full_v2.npz",
+ "hypothesis":"Full circuit: exact-zero detector units (block 0: photon pT<0.8 and neutral-hadron E<2.2; block 1: photon AND E<1.8) push dropped tokens to a saturated vertex; rank-2 q/k flag terms in all 27 later body blocks and both classifier blocks suppress that vertex by >=8 nats. Expect a large drop of E_rule, with residual error from block-0/1 leakage, kNN neighbourhoods and the late-block kept-logit perturbation (~0.1 nats).",
+ "prediction":{"E_rule":0.35,"e_clean":0.06,"d_acc":-0.003,"d_nll":0.01,"rho_P_reco":1.0,"gen_drift":0.05}}

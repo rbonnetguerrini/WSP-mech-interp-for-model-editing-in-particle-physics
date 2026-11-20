@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edits/v2_548.npz",
+"hypothesis":"Exact-mask circuit with the local channel-2 role moved to channel 548, chosen for low local and alpha-weighted body read strength; expect clean damage at or below the c=59 version (e_clean 0.065).",
+"prediction":{"E_ref":0.45,"d_acc":-0.003,"d_nll":0.015,"e_clean":0.06}}

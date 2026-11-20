@@ -1,0 +1,553 @@
+{
+ "budget": 50,
+ "used": 37,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Zero-pass only saturates residual channel 73 with a -60 bias in block-0 MLP; no detector, so the rule error should stay ~1 and side effects measure the cost of saturating channel 73.",
+   "prediction": {
+    "E_rule": 1.0,
+    "d_acc": -0.003,
+    "d_nll": 0.01,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.02
+   },
+   "weights": "{RUN}/submissions/zero_pass.npz",
+   "input": null,
+   "time": "04:08:28",
+   "sec": 401.7
+  },
+  {
+   "id": "002",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Baseline residual stream on 128 clean jets; I expect some channels to be saturated (|alpha*x|>4, same sign) for all tokens.",
+   "prediction": {
+    "n_saturated_channels_block1": 5
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:08:29",
+   "sec": 0.7
+  },
+  {
+   "id": "003",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0 MLP input (via pinv of fc1) should linearly encode log pT, log E and pid well enough to threshold them; some block-0 neurons should be dead on all tokens.",
+   "prediction": {
+    "n_dead_neurons_block0": 20,
+    "logpt_readout_rmse": 0.05
+   },
+   "weights": null,
+   "input": "{RUN}/work/mixB.npz",
+   "time": "04:11:14",
+   "sec": 6.1
+  },
+  {
+   "id": "004",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual stream of normal tokens; normed vectors should have many near-null covariance directions, giving a large Mahalanobis distance to a fixed hypercube-corner vector.",
+   "prediction": {
+    "mahalanobis_ratio_block1": 1000
+   },
+   "weights": null,
+   "input": "{RUN}/work/mixA.npz",
+   "time": "04:11:16",
+   "sec": 1.5
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Same as 004 for middle blocks.",
+   "prediction": {
+    "mahalanobis_ratio_block5": 1000
+   },
+   "weights": null,
+   "input": "{RUN}/work/mixA.npz",
+   "time": "04:11:18",
+   "sec": 1.9
+  },
+  {
+   "id": "006",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Same for late blocks plus classifier block-0 output (queries of classifier block 1).",
+   "prediction": {
+    "mahalanobis_ratio_block9": 1000
+   },
+   "weights": null,
+   "input": "{RUN}/work/mixA.npz",
+   "time": "04:11:19",
+   "sec": 1.5
+  },
+  {
+   "id": "007",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Body output = keys of classifier; queries of classifier block 0 are its summary tokens.",
+   "prediction": {
+    "mahalanobis_ratio_bodynorm": 1000
+   },
+   "weights": null,
+   "input": "{RUN}/work/mixA.npz",
+   "time": "04:11:20",
+   "sec": 1.1
+  },
+  {
+   "id": "008",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Exact InputBlock step tags + block-0 detectors write a +-1000 sign pattern into sub-threshold neutrals; the pattern was chosen so their keys anti-align with mean queries in all blocks, so they get ~zero attention without any key edits. Residual error from kNN neighbour effects and a few weak-margin heads.",
+   "prediction": {
+    "E_rule": 0.35,
+    "d_acc": -0.002,
+    "d_nll": 0.005,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.05,
+    "e_clean": 0.005
+   },
+   "weights": "{RUN}/work/v2.npz",
+   "input": null,
+   "time": "04:27:22",
+   "sec": 111.5
+  },
+  {
+   "id": "009",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v2 plus an exact per-jet gate in the (formerly dead) block-0 attention: any token with E<pT (never true for real particles, true in >=90% of noised jets at t>=0.2) attracts all attention and broadcasts a constant that inhibits the detectors and is then erased exactly. Classification metrics should equal v2; gen_drift should drop by >10x.",
+   "prediction": {
+    "E_rule": 0.36,
+    "d_acc": 0.0,
+    "gen_drift_max": 0.02,
+    "gen_drift_t0.85": 0.005,
+    "e_clean": 0.0005
+   },
+   "weights": "{RUN}/work/v3.npz",
+   "input": null,
+   "time": "04:39:56",
+   "sec": 116.6
+  },
+  {
+   "id": "010",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Gate v2: an unused time_embed unit tags the time token (exists only at t>0) with +1e6 in channel 197; block-0 attention (2 opposite-sign heads, values zeroed on the query channel) concentrates on it and broadcasts an exact gate that inhibits detectors and is erased. At t=0 the path leaks ~1e-6. Classification should match v2; gen_drift should fall well below v2.",
+   "prediction": {
+    "E_rule": 0.36,
+    "d_acc": 0.0,
+    "d_nll": 0.0001,
+    "gen_drift_max": 0.03,
+    "e_clean": 0.0005
+   },
+   "weights": "{RUN}/work/v4.npz",
+   "input": null,
+   "time": "04:44:11",
+   "sec": 110.1
+  },
+  {
+   "id": "011",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v4 with the gate moved to a saturating write (G=-10.2) in channel 387, whose Fisher readout noise is ~0.02 normalized, so detector inhibition (x100) adds <2 units of noise at t=0. Classification should match v2; gen_drift should drop far below v2 if the time-token gate works.",
+   "prediction": {
+    "E_rule": 0.37,
+    "d_acc": 0.0,
+    "d_nll": 0.0005,
+    "gen_drift_max": 0.05,
+    "e_clean": 0.001
+   },
+   "weights": "{RUN}/work/v5.npz",
+   "input": null,
+   "time": "04:48:37",
+   "sec": 110.6
+  },
+  {
+   "id": "012",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same circuit as v5 but the gate lives in channel 494, which block-0 live MLP neurons read ~13x less than 387 (|fc1 col|*gain), so the t>0 damage of the gate should shrink a lot; classification unchanged.",
+   "prediction": {
+    "E_rule": 0.363,
+    "d_acc": 0.0,
+    "gen_drift_t0.2": 0.05,
+    "gen_drift_t0.85": 0.2,
+    "e_clean": 0.0003
+   },
+   "weights": "{RUN}/work/v6.npz",
+   "input": null,
+   "time": "04:51:28",
+   "sec": 110.0
+  },
+  {
+   "id": "013",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: v6 with the flag write disabled (C=0). If gen_drift at t=0.85 drops to ~0, the remaining drift in v6 comes from detectors escaping the gate on very noised tokens; otherwise from the tag/gate machinery. E_rule should be ~1 since nothing is suppressed.",
+   "prediction": {
+    "E_rule": 1.0,
+    "gen_drift_t0.85": 0.01,
+    "d_acc": 0.0
+   },
+   "weights": "{RUN}/work/v6_noflag.npz",
+   "input": null,
+   "time": "04:53:54",
+   "sec": 110.0
+  },
+  {
+   "id": "014",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0 residual input (= block0 output minus fc2(mlp_post)+b2) on channels whose norm2 weight is ~0; I expect those channels to have bounded natural ranges usable as private wires for saturating tags.",
+   "prediction": {
+    "n_private_channels_with_range_lt_3": 10
+   },
+   "weights": null,
+   "input": "{RUN}/work/mixB.npz",
+   "time": "04:56:44",
+   "sec": 5.4
+  },
+  {
+   "id": "015",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "All circuit signals now live on block-0 'private' residual channels (norm2 weight ~1e-6, invisible to live block-0 neurons): saturating kinematic tags (InputBlock), pid tags (pid_embed), an always-on query tag, a time-token tag, and a single-head gate. Detectors read single channels, so their pre-activation is bounded for any input and the gate provably silences them at t>0. Expect classification as v6 and gen_drift <0.02 at all t.",
+   "prediction": {
+    "E_rule": 0.36,
+    "d_acc": 0.0,
+    "d_nll": 0.0001,
+    "gen_drift_max": 0.015,
+    "e_clean": 0.0003
+   },
+   "weights": "{RUN}/work/v7.npz",
+   "input": null,
+   "time": "05:01:29",
+   "sec": 110.1
+  },
+  {
+   "id": "016",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same circuit as v7 with sparse edits: original rows of repurposed neurons kept (their |z|<0.06), original block-0 attention alpha/norm kept, gate routed through 3 in_proj entries and 1 out_proj entry, one Fourier component for the time unit. Metrics should equal v7 within noise at DoF ~1.1k.",
+   "prediction": {
+    "E_rule": 0.362,
+    "d_acc": 0.0,
+    "gen_drift_max": 0.012,
+    "e_clean": 1e-05,
+    "dof": 1100
+   },
+   "weights": "{RUN}/work/v8.npz",
+   "input": null,
+   "time": "05:05:53",
+   "sec": 110.5
+  },
+  {
+   "id": "017",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: v8 with a random sign pattern instead of the query-anti-aligned one. Flagged keys then get no systematic suppression, so if attention leakage matters E_rule rises a lot; if the residual error is mainly the kNN slot effect, E_rule rises less.",
+   "prediction": {
+    "E_rule": 0.8,
+    "gen_drift_max": 0.012
+   },
+   "weights": "{RUN}/work/v8r.npz",
+   "input": null,
+   "time": "05:07:43",
+   "sec": 110.6
+  },
+  {
+   "id": "018",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v8 with a sign pattern re-weighted toward low-margin queries (one closed-form reweighting, tau=2); offline held-out attention leakage drops 2.4x (block1 head3 4.6%->1.0%). If leakage is a real part of the residual, E_rule should fall below 0.362.",
+   "prediction": {
+    "E_rule": 0.31,
+    "e_soft1e-4": 0.038,
+    "gen_drift_max": 0.012,
+    "d_acc": 0.0
+   },
+   "weights": "{RUN}/work/v9.npz",
+   "input": null,
+   "time": "05:11:36",
+   "sec": 109.7
+  },
+  {
+   "id": "019",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Exact binary private-wire logic (-20 offset, +40 tags) lets one detector neuron implement both photon and NH rules (A+B+G+2C+3N>4.5); the gate now subtracts the pid tags at t>0. Same sign pattern as v9, so E_rule ~0.05 with about half the DoF.",
+   "prediction": {
+    "E_rule": 0.051,
+    "dof": 620,
+    "gen_drift_max": 0.012,
+    "d_acc": 0.0,
+    "e_clean": 1e-05
+   },
+   "weights": "{RUN}/work/v11.npz",
+   "input": null,
+   "time": "05:15:59",
+   "sec": 109.7
+  },
+  {
+   "id": "020",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v11 with the tau=1 reweighted sign pattern (held-out leakage 0.0316 vs 0.0351); expect a small further drop of E_rule.",
+   "prediction": {
+    "E_rule": 0.045,
+    "dof": 613,
+    "gen_drift_max": 0.008
+   },
+   "weights": "{RUN}/work/v12.npz",
+   "input": null,
+   "time": "05:21:04",
+   "sec": 109.6
+  },
+  {
+   "id": "021",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v11 with the flag pattern written only on the 256 most query-relevant channels (others keep natural values): halves the flag-column DoF; offline leakage rises 0.035->0.059, so E_rule should rise moderately.",
+   "prediction": {
+    "E_rule": 0.12,
+    "dof": 357,
+    "gen_drift_max": 0.008
+   },
+   "weights": "{RUN}/work/v11s256.npz",
+   "input": null,
+   "time": "05:22:54",
+   "sec": 109.6
+  },
+  {
+   "id": "022",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "MLP inputs of blocks 1 and 4 (via pinv of fc1) for normal tokens; I expect channels whose normed value stays below 0.8 of saturation for every token, usable for an exact corner detector.",
+   "prediction": {
+    "n_channels_absr_lt_0.8_block1": 200
+   },
+   "weights": null,
+   "input": "{RUN}/work/mixA.npz",
+   "time": "05:23:38",
+   "sec": 1.5
+  },
+  {
+   "id": "023",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v11 + segment patterns: block 0 writes a pattern tuned for block 1 only (offline block-1 leakage 0.0103->0.0019); a block-1 MLP corner detector (12 unsaturated channels, exact) switches the flagged token to the global pattern. Expect E_rule below v11.",
+   "prediction": {
+    "E_rule": 0.035,
+    "dof": 810,
+    "gen_drift_max": 0.007
+   },
+   "weights": "{RUN}/work/v13.npz",
+   "input": null,
+   "time": "05:27:00",
+   "sec": 109.7
+  },
+  {
+   "id": "024",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v13 + a second switch in block 4 to a pattern tuned for blocks 5-11 and the classifier (offline leakage 0.0148->0.0104). Expect a further small E_rule drop.",
+   "prediction": {
+    "E_rule": 0.03,
+    "dof": 880,
+    "gen_drift_max": 0.007
+   },
+   "weights": "{RUN}/work/v14.npz",
+   "input": null,
+   "time": "05:28:50",
+   "sec": 109.7
+  },
+  {
+   "id": "025",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Per-jet logits of v13 on raw P jets, to be compared with original logits on P_reco; I expect the residual to concentrate in jets where dropped particles are kNN neighbours of kept ones.",
+   "prediction": {
+    "corr_err_vs_knn_involvement": 0.5
+   },
+   "weights": "{RUN}/work/v13.npz",
+   "input": "P",
+   "time": "05:29:37",
+   "sec": 4.9
+  },
+  {
+   "id": "026",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Reference logits f_orig(reco(P x)) for the same jets.",
+   "prediction": {
+    "mean_abs_logit": 3.0
+   },
+   "weights": null,
+   "input": "P_reco",
+   "time": "05:29:42",
+   "sec": 4.9
+  },
+  {
+   "id": "027",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "v13 on soft1e-4 jets where the photon is in no kept particle's kNN set (pure attention leakage) vs jets with >=10 kNN pairs; I expect the no-kNN jets to show a much smaller error.",
+   "prediction": {
+    "err_ratio_noknn_over_knn": 0.3
+   },
+   "weights": "{RUN}/work/v13.npz",
+   "input": "soft1e-4",
+   "time": "05:30:49",
+   "sec": 3.9
+  },
+  {
+   "id": "028",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Reference: original model on clean jets = reco(soft1e-4).",
+   "prediction": {
+    "mean_abs_logit": 3.0
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "05:30:52",
+   "sec": 3.1
+  },
+  {
+   "id": "029",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Unseen probe types: one soft neutral hadron (1e-4..3e-3 of jet pT) or three soft photons per jet. Detection is exact, so the edited model should be close to the original on reco(x).",
+   "prediction": {
+    "ratio_NH": 0.15,
+    "ratio_3gam": 0.15
+   },
+   "weights": "{RUN}/work/v13.npz",
+   "input": "{RUN}/work/probeX.npz",
+   "time": "05:33:23",
+   "sec": 2.8
+  },
+  {
+   "id": "030",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original model on the raw unseen probes (denominator).",
+   "prediction": {
+    "mean_abs_logit": 3.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/probeX.npz",
+   "time": "05:33:25",
+   "sec": 2.5
+  },
+  {
+   "id": "031",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original model on reco(probe) (reference).",
+   "prediction": {
+    "mean_abs_logit": 3.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/probeR.npz",
+   "time": "05:33:28",
+   "sec": 2.5
+  },
+  {
+   "id": "032",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "MLP inputs of blocks 2 and 3 for corner-detector channel selection (unsaturated channels with |w2|>0.5).",
+   "prediction": {
+    "n_channels_block2": 20,
+    "n_channels_block3": 20
+   },
+   "weights": null,
+   "input": "{RUN}/work/mixA.npz",
+   "time": "05:35:06",
+   "sec": 1.6
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v11 + four exact corner-detector switches (blocks 1-4 MLPs) giving per-block sign patterns designed with the correct 16-head x 32-dim attention partition; offline leakage metric 2.39 -> 1.68. Expect E_rule below v13's 0.047.",
+   "prediction": {
+    "E_rule": 0.04,
+    "dof": 1300,
+    "gen_drift_max": 0.007,
+    "d_acc": 0.0
+   },
+   "weights": "{RUN}/work/v15.npz",
+   "input": null,
+   "time": "05:37:17",
+   "sec": 110.2
+  },
+  {
+   "id": "034",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v11 with the flag pattern on only 128 channels; fewer channels means weaker key anti-alignment, so E_rule should rise above the 256-channel value 0.11 while DoF drops to ~228.",
+   "prediction": {
+    "E_rule": 0.3,
+    "dof": 229,
+    "gen_drift_max": 0.007
+   },
+   "weights": "{RUN}/work/v11s128.npz",
+   "input": null,
+   "time": "05:39:36",
+   "sec": 109.6
+  },
+  {
+   "id": "035",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v11 with the flag pattern on only 192 channels; fewer channels means weaker key anti-alignment, so E_rule should rise above the 256-channel value 0.11 while DoF drops to ~292.",
+   "prediction": {
+    "E_rule": 0.18,
+    "dof": 293,
+    "gen_drift_max": 0.007
+   },
+   "weights": "{RUN}/work/v11s192.npz",
+   "input": null,
+   "time": "05:41:26",
+   "sec": 109.6
+  },
+  {
+   "id": "036",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Flag pattern on 384 channels, to map the E_rule-vs-DoF curve of the single-detector circuit.",
+   "prediction": {
+    "E_rule": 0.06,
+    "dof": 485,
+    "gen_drift_max": 0.007
+   },
+   "weights": "{RUN}/work/v11s384.npz",
+   "input": null,
+   "time": "05:43:34",
+   "sec": 109.6
+  },
+  {
+   "id": "037",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Flag pattern on 64 channels, to map the E_rule-vs-DoF curve of the single-detector circuit.",
+   "prediction": {
+    "E_rule": 0.25,
+    "dof": 165,
+    "gen_drift_max": 0.007
+   },
+   "weights": "{RUN}/work/v11s64.npz",
+   "input": null,
+   "time": "05:45:23",
+   "sec": 109.6
+  }
+ ],
+ "oracle_up": "2026-11-14T03:51:54"
+}

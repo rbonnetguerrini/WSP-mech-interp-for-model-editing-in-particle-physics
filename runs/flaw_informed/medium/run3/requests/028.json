@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/edits/flag2_sp1_0.3.npz", "input": "{RUN}/work/ptest2.npz", "indices": null, "hypothesis": "Edited logits on the same variants; the edited/original response ratio should cross the oracle's 0.946 near an absolute threshold of about -0.1 or a fraction of about 1.5e-3.", "prediction": {"rho_abs-0.1": 0.946, "rho_frac0.0015": 0.946}}

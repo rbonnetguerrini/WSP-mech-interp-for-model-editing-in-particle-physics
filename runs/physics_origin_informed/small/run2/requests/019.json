@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/edit_M2.npz", "hypothesis": "Mid variant: s2 plus regression on the five cheapest high-loss MLP reads (block-0 ch4, blocks 1,2,3,7 ch70; rank-1 fc1 changes, ~383 DoF each). Expect between s2 (0.106) and m1 (0.071).", "prediction": {"E_rule": 0.085, "e_clean": 0.011, "DoF": 3900}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v7s.npz", "hypothesis": "Small variant: no fold, scratch on the three cheapest channels (122, 87, 4: summed read weight 21 vs 49), so kept soft particles are perturbed about half as much as in v5s.", "prediction": {"E_rule": 0.15, "d_acc": 0.0, "rho_P_reco": 0.95, "dof": 1953, "gen_drift_max": 0.25}}

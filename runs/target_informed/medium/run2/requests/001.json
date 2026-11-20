@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":null,"hypothesis":"Baseline of the unedited model: E_ref must be 1 and all side-effect metrics zero; gives e_v(orig) per probe incl. clean.","prediction":{"E_ref":1.0,"d_acc":0.0,"gen_drift":0.0}}

@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e16.npz",
+ "hypothesis":"e14 + light robust QK edits (penalty 6 logits) in blocks 4-7: further cuts the residual attention leak from gated tokens (mostly helps P, multi-gated jets), at extra clean distortion; rho_J should stay < 1.13.",
+ "prediction":{"ratio_soft1e-3":0.025,"ratio_soft1e-4":0.06,"ratio_split2":1.55,"d_acc":-0.0025,"d_nll":0.007,"kl":0.006,"rho_J":1.1,"rho_P_ref":0.87,"gen_drift_max":0.28,"dof":31724}}

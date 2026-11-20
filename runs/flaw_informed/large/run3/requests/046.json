@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/t1k.npz",
+ "hypothesis":"t1 with rank-1 key-only isolation in all layers 1-16 (in layers 8 and 11-16 a few queries per mille are not fully covered) to cut DoF to ~84k. Expect removal close to t1 (soft ratios ~0.05/0.17) and similar clean effect.",
+ "prediction":{"ratio_soft1e-3":0.055,"ratio_soft1e-4":0.17,"kl":0.0007,"dof":83900}}

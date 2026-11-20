@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e20.npz",
+"hypothesis":"Compact version of the block-6 detector/poison: detector reads only its 64 most important channels (margin kept at 0.27), poison writes only the top channels by key-penalty contribution; old weights of the repurposed unit elsewhere are kept (negligible next to the gain-250 preactivation). Expect E_ref close to the dense version at much lower DoF.",
+"prediction":{"E_ref":0.237,"d_nll":0.001,"dof":186}}

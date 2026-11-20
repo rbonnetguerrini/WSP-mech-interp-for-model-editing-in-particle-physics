@@ -1,0 +1,47 @@
+[env] repo:    {REPO}
+[env] python:  {ENV}/bin/python  (Python 3.10.20)
+[env] ckpt:    {WORK}/checkpoints
+[env] data:    {WORK}/data
+[env] outputs: {RESULTS}
+[oracle] up in 13s, size m, models ['orig'], budget 50, used 0
+[oracle] 001 surgical orig pass 1 (386.0s)
+[oracle] 002 reference orig pass 2 (5.0s)
+[oracle] 003 logits orig pass 3 (4.9s)
+[oracle] 004 reference orig pass 4 (5.0s)
+[oracle] 005 capture orig pass 5 (2.2s)
+[oracle] 006 capture orig pass 6 (0.4s)
+[oracle] 007 capture orig pass 7 (0.6s)
+[oracle] 008 capture orig pass 8 (0.4s)
+[oracle] 009 capture orig pass 9 (0.3s)
+[oracle] 010 surgical orig pass 10 (112.7s)
+[oracle] 011 surgical orig pass 11 (111.0s)
+[oracle] 012 surgical orig pass 12 (111.2s)
+[oracle] 013 surgical orig pass 13 (110.9s)
+[oracle] 014 surgical orig pass 14 (110.0s)
+[oracle] 015 surgical orig pass 15 (111.6s)
+[oracle] 016 surgical orig pass 16 (110.3s)
+[oracle] 017 surgical orig pass 17 (110.6s)
+[oracle] 018 surgical orig pass 18 (110.4s)
+[oracle] 019 surgical orig pass 19 (110.3s)
+[oracle] 020 surgical orig pass 20 (110.9s)
+[oracle] 021 surgical orig pass 21 (110.6s)
+[oracle] 022 surgical orig pass 22 (112.6s)
+[oracle] 023 surgical orig pass 23 (110.8s)
+[oracle] 024 surgical orig pass 24 (110.4s)
+[oracle] 025 surgical orig pass 25 (111.0s)
+[oracle] 026 surgical orig pass 26 (110.7s)
+[oracle] 027 surgical orig pass 27 (110.9s)
+[oracle] 028 rejected: classifier.in_blocks.0.attn.in_proj_weight: non-finite values
+[oracle] 029 surgical orig pass 28 (110.8s)
+[oracle] 030 reference orig pass 29 (5.0s)
+[oracle] 031 rejected: [Errno 2] No such file or directory: '{RUN}/work/exp4.npz'
+[oracle] 032 rejected: [Errno 2] No such file or directory: '{RUN}/work/exp4.npz'
+[oracle] 033 rejected: [Errno 2] No such file or directory: '{RUN}/work/exp4.npz'
+[oracle] 034 logits orig pass 30 (4.9s)
+[oracle] 035 reference orig pass 31 (5.0s)
+[oracle] 036 logits orig pass 32 (5.0s)
+[oracle] 037 logits orig pass 33 (4.9s)
+[oracle] 038 logits orig pass 34 (0.7s)
+[oracle] 039 logits orig pass 35 (5.1s)
+[oracle] STOP
+[oracle] exit

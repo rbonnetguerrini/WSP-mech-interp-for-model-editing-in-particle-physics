@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v7_rel8_dm04.npz", "hypothesis": "For relabelling, a false flag only turns a kept near-threshold neutral into a soft charged hadron (cheap), while a miss keeps the shortcut; a threshold 0.04 lower should reduce E_rule.", "prediction": {"E_rule": 0.23, "e_clean": 0.0004, "d_acc": 0.0, "rho_P_reco": 0.97, "gen_drift": 0.32}}

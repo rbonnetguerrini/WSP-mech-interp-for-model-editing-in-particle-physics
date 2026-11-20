@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/in7.npz","indices":null,
+ "sites":["body.block17","body.block19","body.block21","body.block23"],
+ "hypothesis":"Original-model inputs of layers 18/20/22/24 on the in7 set, to fit per-layer flag readouts and all-query key suppression directions. Expect logits identical to pass 8 (same input, original weights).",
+ "prediction":{"r_g1e-3":0.366,"r_n1e-3":0.41}}

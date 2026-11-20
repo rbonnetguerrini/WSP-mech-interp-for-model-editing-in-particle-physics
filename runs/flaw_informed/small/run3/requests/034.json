@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/sp16.npz", "hypothesis": "Same with a 16-dim read-out (DoF 41).", "prediction": {"ratio_soft1e-3": 0.32, "ratio_soft1e-4": 0.1, "rho_P_ref": 0.98, "d_acc": 0.0, "dof": 41}}

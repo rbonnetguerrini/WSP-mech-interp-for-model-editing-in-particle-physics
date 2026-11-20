@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e6.npz",
+ "hypothesis":"A step gate at block 5 (unit 230, theta 0.2) ghosts soft neutrals from block-6 attention on, removing the largest remaining leakage step, so the soft ratios should beat e2's 0.25. Generator drift is the open risk.",
+ "prediction":{"ratio_soft1e-4":0.17,"ratio_soft1e-3":0.17,"rho_P_ref":0.92,"d_nll":0.004,"gen_drift_max":0.05,"dof":385}}

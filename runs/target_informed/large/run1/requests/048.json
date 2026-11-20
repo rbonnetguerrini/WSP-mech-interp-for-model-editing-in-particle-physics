@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/XS.npz",
+"hypothesis":"Minimal version of the circuit: exact masking (embed gates, pid, 2^33 detectors), block 0-2 rank-1 read compensations and a single rank-2 restoration in block 2. Should match D3 (E_ref ~0.24, passing) at ~28k DoF.",
+"prediction":{"E_ref":0.245,"e_clean":0.034,"d_acc":-0.007,"class_drop":0.02,"d_nll":0.011,"dof":27650}}

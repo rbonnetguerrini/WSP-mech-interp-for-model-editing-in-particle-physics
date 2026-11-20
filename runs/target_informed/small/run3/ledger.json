@@ -1,0 +1,610 @@
+{
+ "budget": 50,
+ "used": 39,
+ "log": [
+  {
+   "id": "001",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Reference on 512 jets x [clean, soft1e-3, soft1e-4, P]. I expect ref==orig on clean and ref(soft)\u2248orig(clean) (soft-safe reference).",
+   "prediction": {
+    "ref_minus_orig_clean_rms_over_S": 0.0,
+    "ref_soft_minus_orig_clean_rms_over_S": 0.05
+   },
+   "weights": null,
+   "input": "{RUN}/work/set1.npz",
+   "time": "04:30:26",
+   "sec": 28.2
+  },
+  {
+   "id": "002",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original model logits on the same 2048 jets, to compare with the reference.",
+   "prediction": {
+    "orig_soft1e-3_shift_over_S": 0.1
+   },
+   "weights": null,
+   "input": "{RUN}/work/set1.npz",
+   "time": "04:30:28",
+   "sec": 1.2
+  },
+  {
+   "id": "003",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Baseline with the original weights: E_ref=1, all deltas 0.",
+   "prediction": {
+    "E_ref": 1.0,
+    "d_acc": 0.0,
+    "gen_drift": 0.0
+   },
+   "weights": null,
+   "input": null,
+   "time": "04:31:51",
+   "sec": 83.1
+  },
+  {
+   "id": "004",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Clean jets plus one added particle with random pid (photon/neutral hadron/charged), logpt in [-2.5,0.6], logE-logpt in [0,1.6]. I expect the reference to equal orig(clean) for soft neutrals (pT<0.8, E<1.8) and not otherwise; this maps the drop rule.",
+   "prediction": {
+    "frac_dropped_photon": 0.45,
+    "frac_dropped_charged": 0.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/set2.npz",
+   "time": "04:33:55",
+   "sec": 1.3
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Capture residuals for 128 jets x [clean, soft1e-3, soft1e-4]: I expect the soft photon token to have an unusual representation and the change of other tokens to grow with depth.",
+   "prediction": {
+    "rel_change_summary_tokens_bodynorm_soft1e-4": 0.3
+   },
+   "weights": null,
+   "input": "{RUN}/work/set1.npz",
+   "time": "04:37:39",
+   "sec": 2.0
+  },
+  {
+   "id": "006",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Capture block-0 MLP pre-activations (to recover norm2 inputs and look for dead units / a linear soft-neutral probe) and residuals for block-1..5 queries on jets with one added particle.",
+   "prediction": {
+    "n_dead_units_block0": 5
+   },
+   "weights": null,
+   "input": "{RUN}/work/set2.npz",
+   "time": "04:42:54",
+   "sec": 2.0
+  },
+  {
+   "id": "007",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Capture residuals after blocks 5,6 and classifier block 0 for query statistics of the remaining attention layers.",
+   "prediction": {
+    "rel_change_summary_block6_soft1e-4": 0.2
+   },
+   "weights": null,
+   "input": "{RUN}/work/set1.npz",
+   "time": "04:42:56",
+   "sec": 2.0
+  },
+  {
+   "id": "008",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Repurposed dead unit 52 of body block-0 MLP detects soft neutral tokens (linear probe on norm2 input) and pushes their residual by 100*sigma into a saturated state whose keys get lower logits in blocks 1-7; clean tokens are untouched (preact < -6). Suppression is only partial (gap ~ -3), so I expect a partial E_ref drop and negligible clean side effects.",
+   "prediction": {
+    "E_ref": 0.6,
+    "d_acc": 0.0,
+    "d_nll": 0.002,
+    "rho_P_ref": 1.0,
+    "gen_drift_max": 0.02,
+    "dof": 258
+   },
+   "weights": "{RUN}/work/e1.npz",
+   "input": null,
+   "time": "04:47:53",
+   "sec": 28.8
+  },
+  {
+   "id": "009",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Diagnose e1: check whether unit 52 fires on the soft photons and split2 tokens and how much clean-vs-probe difference remains at block0/3/norm.",
+   "prediction": {
+    "frac_soft1e-4_detected": 0.95,
+    "frac_split2_tokens_detected": 0.3
+   },
+   "weights": "{RUN}/work/e1.npz",
+   "input": "{RUN}/work/set3.npz",
+   "time": "04:48:54",
+   "sec": 3.6
+  },
+  {
+   "id": "010",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Dead interaction-MLP unit adds bias -2*GELU(100*(-2.15-ln minpT)) to all heads (exact particle-particle mask for pairs involving pT<0.12 GeV; no clean pair affected); dead embed unit poisons tokens with logE<-1.3 into a saturated state with low summary/classifier key logits. Expect soft1e-4 error to fall strongly, soft1e-3 unchanged, clean metrics ~unchanged.",
+   "prediction": {
+    "E_ref": 0.6,
+    "e_soft1e-4": 0.06,
+    "e_soft1e-3": 0.248,
+    "d_acc": 0.0,
+    "gen_drift_max": 0.05,
+    "dof": 146
+   },
+   "weights": "{RUN}/work/e2.npz",
+   "input": null,
+   "time": "04:57:44",
+   "sec": 25.9
+  },
+  {
+   "id": "011",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Interaction-bias mask only (no embed poison): particle-particle attention to pT<0.12 GeV tokens removed in all body blocks, but summary tokens and classifier still see them. Expect part of the soft1e-4 gain and much lower gen_drift.",
+   "prediction": {
+    "E_ref": 0.85,
+    "e_soft1e-4": 0.15,
+    "gen_drift_max": 0.02,
+    "dof": 11
+   },
+   "weights": "{RUN}/work/e3.npz",
+   "input": null,
+   "time": "04:58:55",
+   "sec": 25.2
+  },
+  {
+   "id": "012",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Find the earliest body block whose MLP input linearly separates soft OOD photons from clean tokens (block-1: overlapping; block-7 input: margin 1.2).",
+   "prediction": {
+    "first_separable_block": 4
+   },
+   "weights": null,
+   "input": "{RUN}/work/set1.npz",
+   "time": "05:00:55",
+   "sec": 2.7
+  },
+  {
+   "id": "013",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e3 + block-6 MLP unit 11 repurposed as a linear soft-OOD-photon detector (LDA on block-6 MLP input, clean max 1.81 < theta 1.96 < soft min 2.11) that poisons detected tokens so block-7 and classifier attention ignore them. Expect soft1e-3 and soft1e-4 errors to fall substantially; small clean change from losing unit 11.",
+   "prediction": {
+    "E_ref": 0.5,
+    "e_soft1e-3": 0.12,
+    "e_soft1e-4": 0.06,
+    "d_acc": -0.001,
+    "d_nll": 0.003,
+    "gen_drift_max": 0.1,
+    "dof": 398
+   },
+   "weights": "{RUN}/work/e4.npz",
+   "input": null,
+   "time": "05:06:00",
+   "sec": 24.9
+  },
+  {
+   "id": "014",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e4 with a joint poison pattern for blocks 5-7+classifier, plus a second detector (block-4 unit 121, LDA on rule-labelled OOD neutrals incl. P jets, theta 1.28) so OOD neutrals are suppressed from block 5 on. Expect P and soft1e-3 errors to fall further, clean changes slightly larger.",
+   "prediction": {
+    "E_ref": 0.33,
+    "e_soft1e-3": 0.045,
+    "e_P": 0.075,
+    "d_acc": -0.002,
+    "d_nll": 0.004,
+    "gen_drift_max": 0.06,
+    "dof": 780
+   },
+   "weights": "{RUN}/work/e5.npz",
+   "input": null,
+   "time": "05:12:35",
+   "sec": 25.9
+  },
+  {
+   "id": "015",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Per-jet e4 errors on clean/soft1e-3/soft1e-4/P to see which jets (number/type/softness of OOD neutrals) carry the remaining P error.",
+   "prediction": {
+    "mean_err_P_over_orig_err": 0.92
+   },
+   "weights": "{RUN}/work/e4.npz",
+   "input": "{RUN}/work/set1.npz",
+   "time": "05:13:13",
+   "sec": 1.3
+  },
+  {
+   "id": "016",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e4 with the block-6 detector threshold raised by 0.45 (2.41) to centre it on the reference's sharp photon pT=0.8 GeV boundary: fewer false drops of 0.80-0.87 GeV photons in P jets, slightly more misses near threshold in soft1e-3.",
+   "prediction": {
+    "E_ref": 0.36,
+    "e_P": 0.075,
+    "e_soft1e-3": 0.075,
+    "e_soft1e-4": 0.013,
+    "d_nll": 0.0008,
+    "gen_drift_max": 0.03,
+    "dof": 398
+   },
+   "weights": "{RUN}/work/e6.npz",
+   "input": null,
+   "time": "05:15:08",
+   "sec": 25.0
+  },
+  {
+   "id": "017",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e4 + rank-1 block-7 key edit on the saturated channel 70 (clean x70=-w for all tokens, poison flips it to +w) giving a median -20 logit penalty to poisoned keys for all block-7 queries; clean logits shift by a per-query constant only. Expect soft1e-3/soft1e-4 errors to drop a bit more, clean unchanged vs e4.",
+   "prediction": {
+    "E_ref": 0.39,
+    "e_soft1e-3": 0.055,
+    "e_soft1e-4": 0.009,
+    "e_P": 0.092,
+    "d_nll": 0.0009,
+    "gen_drift_max": 0.035,
+    "dof": 526
+   },
+   "weights": "{RUN}/work/e7.npz",
+   "input": null,
+   "time": "05:19:15",
+   "sec": 25.0
+  },
+  {
+   "id": "018",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e4 had a bug: tokens scoring just below threshold land in GELU's negative lobe and get a large -sigma push (up to ~-25 per channel). Raising the detector gain 25->250 shrinks that band 10x, so near-threshold kept photons (soft1e-3 'kept', P jets) are no longer perturbed. Expect P and soft1e-3 to improve.",
+   "prediction": {
+    "E_ref": 0.36,
+    "e_soft1e-3": 0.05,
+    "e_soft1e-4": 0.012,
+    "e_P": 0.085,
+    "d_nll": 0.0008,
+    "gen_drift_max": 0.03,
+    "dof": 398
+   },
+   "weights": "{RUN}/work/e8.npz",
+   "input": null,
+   "time": "05:21:12",
+   "sec": 26.8
+  },
+  {
+   "id": "019",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-5 (and block-7) MLP inputs for an earlier second detector; I expect block-5 separability between block 4 (marginal) and block 6 (clean).",
+   "prediction": {
+    "block5_frac_OOD_above_clean_max": 0.97
+   },
+   "weights": null,
+   "input": "{RUN}/work/set1.npz",
+   "time": "05:21:38",
+   "sec": 1.9
+  },
+  {
+   "id": "020",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e8 plus a second detector one block earlier (block-5 unit 221, rule-labelled LDA, theta 1.52 between clean max 1.37 and OOD p1 1.66, gain 250) so poisoned tokens are also hidden from block-6 attention; both detectors write the same poison pattern tuned for blocks 6-7+classifier. Expect P and soft1e-3 to improve; P_ref rho may drop a little.",
+   "prediction": {
+    "E_ref": 0.28,
+    "e_soft1e-3": 0.05,
+    "e_soft1e-4": 0.01,
+    "e_P": 0.058,
+    "rho_P_ref": 0.89,
+    "d_nll": 0.001,
+    "gen_drift_max": 0.04,
+    "dof": 790
+   },
+   "weights": "{RUN}/work/e9.npz",
+   "input": null,
+   "time": "05:25:04",
+   "sec": 25.0
+  },
+  {
+   "id": "021",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: e8 + a pid-blind interaction mask hiding every particle with pT<0.8 GeV from particle-particle attention in all body blocks. Tells how much of the remaining soft1e-3/P error is early particle-particle attention, and what dropping clean soft charged particles costs.",
+   "prediction": {
+    "E_ref": 0.25,
+    "e_soft1e-3": 0.04,
+    "e_P": 0.05,
+    "d_acc": -0.004,
+    "d_nll": 0.01,
+    "e_clean": 0.03
+   },
+   "weights": "{RUN}/work/e10.npz",
+   "input": null,
+   "time": "05:25:59",
+   "sec": 24.9
+  },
+  {
+   "id": "022",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e10 with a 3x stronger pT<0.8 pair mask (bias -3*GELU): more complete hiding of soft tokens from particle queries; expect soft1e-3/P a bit lower, clean cost a bit higher.",
+   "prediction": {
+    "E_ref": 0.22,
+    "e_soft1e-3": 0.026,
+    "e_P": 0.049,
+    "d_nll": 0.008,
+    "class_drop": 0.008
+   },
+   "weights": "{RUN}/work/e11.npz",
+   "input": null,
+   "time": "05:26:54",
+   "sec": 25.4
+  },
+  {
+   "id": "023",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small edit: e3 (ultra-soft pair mask) + pid-blind pT<0.8 pair mask only, no block-6 detector (2 interaction units, ~24 DoF). Expect a large drop from 0.81 for soft1e-3/P but worse than e10 since summary and classifier still see soft tokens.",
+   "prediction": {
+    "E_ref": 0.5,
+    "e_soft1e-3": 0.12,
+    "e_P": 0.07,
+    "d_nll": 0.006
+   },
+   "weights": "{RUN}/work/e12.npz",
+   "input": null,
+   "time": "05:27:19",
+   "sec": 24.8
+  },
+  {
+   "id": "024",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e10 without the ultra-soft pair unit (the pT<0.8 pair unit already gives a bias below -190 for ultra-soft pairs). Expect the same metrics as e10 at 12 fewer DoF.",
+   "prediction": {
+    "E_ref": 0.235,
+    "e_soft1e-4": 0.02,
+    "d_nll": 0.0064,
+    "dof": 398
+   },
+   "weights": "{RUN}/work/e13.npz",
+   "input": null,
+   "time": "05:28:26",
+   "sec": 25.1
+  },
+  {
+   "id": "025",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Single interaction unit: pid-blind pT<0.8 pair mask only (12 DoF). Expect the same as e12 (E_ref ~0.53).",
+   "prediction": {
+    "E_ref": 0.53,
+    "d_nll": 0.0046,
+    "dof": 12
+   },
+   "weights": "{RUN}/work/e14.npz",
+   "input": null,
+   "time": "05:28:52",
+   "sec": 25.9
+  },
+  {
+   "id": "026",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Largest variant: pT<0.8 pair mask + block-5 and block-6 detectors with a shared poison. Expect slightly better than e13 (0.235) since poisoned tokens are also hidden from block-6 summary queries.",
+   "prediction": {
+    "E_ref": 0.225,
+    "d_nll": 0.0067,
+    "gen_drift_max": 0.09,
+    "dof": 784
+   },
+   "weights": "{RUN}/work/e15.npz",
+   "input": null,
+   "time": "05:30:25",
+   "sec": 32.7
+  },
+  {
+   "id": "027",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e13 with the pid-blind pair mask lowered to pT<0.6 GeV: fewer clean soft charged and fewer noised generator tokens affected (lower gen_drift), soft1e-3 photons between 0.6 and 0.8 GeV left to the block-6 detector. Expect E_ref ~0.26 and gen_drift t0.85 ~0.05.",
+   "prediction": {
+    "E_ref": 0.26,
+    "d_nll": 0.003,
+    "gen_drift_max": 0.05,
+    "dof": 398
+   },
+   "weights": "{RUN}/work/e16.npz",
+   "input": null,
+   "time": "05:30:51",
+   "sec": 25.7
+  },
+  {
+   "id": "028",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Reference on 512 clean jets + one neutral hadron at 1e-3 and at 3e-4 of jet pT (practice soft-photon angles and E/pT ratio). By the fitted rule (NH dropped if E<2.18 GeV) nearly all should equal orig(clean).",
+   "prediction": {
+    "frac_equal_orig_clean": 0.97
+   },
+   "weights": null,
+   "input": "{RUN}/work/set4.npz",
+   "time": "05:31:22",
+   "sec": 0.8
+  },
+  {
+   "id": "029",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original logits and block-5/6 MLP inputs for soft neutral-hadron probes, to check whether the photon-trained detector fires on soft NH and to retrain it if not.",
+   "prediction": {
+    "frac_NH_detected_by_e8_unit": 0.5
+   },
+   "weights": null,
+   "input": "{RUN}/work/set4.npz",
+   "time": "05:31:23",
+   "sec": 1.0
+  },
+  {
+   "id": "030",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e13 logits on the soft-NH probes to measure e_v ratio for a plausible hidden probe.",
+   "prediction": {
+    "ratio_NH1e-3": 0.4
+   },
+   "weights": "{RUN}/work/e13.npz",
+   "input": "{RUN}/work/set4.npz",
+   "time": "05:31:24",
+   "sec": 0.8
+  },
+  {
+   "id": "031",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e13 with the block-6 detector retrained on rule labels (all OOD photons/NH in soft probes and P jets as positives, all other tokens negatives; theta 1.5 between clean max 1.40 and OOD p1 1.59). Expect better P recall, similar soft probes, P_ref rho slightly lower.",
+   "prediction": {
+    "E_ref": 0.225,
+    "e_P": 0.048,
+    "e_soft1e-3": 0.03,
+    "rho_P_ref": 0.91,
+    "dof": 398
+   },
+   "weights": "{RUN}/work/e17.npz",
+   "input": null,
+   "time": "05:33:41",
+   "sec": 26.1
+  },
+  {
+   "id": "032",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e8 without folding the removed unit's mean output into the block-6 fc2 bias (saves 128 DoF). The repurposed unit's old mean contribution is lost, so clean changes grow a little; E_ref should be about the same.",
+   "prediction": {
+    "E_ref": 0.32,
+    "d_nll": 0.001,
+    "kl": 0.0005,
+    "dof": 270
+   },
+   "weights": "{RUN}/work/e8n.npz",
+   "input": null,
+   "time": "05:34:51",
+   "sec": 25.0
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e10 without the bias fold (282 DoF). Expect E_ref ~0.237 with clean changes slightly larger than e10's.",
+   "prediction": {
+    "E_ref": 0.237,
+    "d_nll": 0.007,
+    "dof": 282
+   },
+   "weights": "{RUN}/work/e10n.npz",
+   "input": null,
+   "time": "05:35:16",
+   "sec": 25.1
+  },
+  {
+   "id": "034",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Compact version of the block-6 detector/poison: detector reads only its 64 most important channels (margin kept at 0.27), poison writes only the top channels by key-penalty contribution; old weights of the repurposed unit elsewhere are kept (negligible next to the gain-250 preactivation). Expect E_ref close to the dense version at much lower DoF.",
+   "prediction": {
+    "E_ref": 0.32,
+    "d_nll": 0.001,
+    "dof": 174
+   },
+   "weights": "{RUN}/work/e18.npz",
+   "input": null,
+   "time": "05:39:39",
+   "sec": 25.4
+  },
+  {
+   "id": "035",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Compact version of the block-6 detector/poison: detector reads only its 64 most important channels (margin kept at 0.27), poison writes only the top channels by key-penalty contribution; old weights of the repurposed unit elsewhere are kept (negligible next to the gain-250 preactivation). Expect E_ref close to the dense version at much lower DoF.",
+   "prediction": {
+    "E_ref": 0.33,
+    "d_nll": 0.001,
+    "dof": 142
+   },
+   "weights": "{RUN}/work/e19.npz",
+   "input": null,
+   "time": "05:40:04",
+   "sec": 24.8
+  },
+  {
+   "id": "036",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Compact version of the block-6 detector/poison: detector reads only its 64 most important channels (margin kept at 0.27), poison writes only the top channels by key-penalty contribution; old weights of the repurposed unit elsewhere are kept (negligible next to the gain-250 preactivation). Expect E_ref close to the dense version at much lower DoF.",
+   "prediction": {
+    "E_ref": 0.237,
+    "d_nll": 0.001,
+    "dof": 186
+   },
+   "weights": "{RUN}/work/e20.npz",
+   "input": null,
+   "time": "05:40:28",
+   "sec": 24.8
+  },
+  {
+   "id": "037",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Further compaction of the block-6 detector/poison (detector and poison channel counts in the name of the build) on top of the corresponding interaction-mask unit; expect E_ref close to the 64/64 version with fewer DoF.",
+   "prediction": {
+    "E_ref": 0.32,
+    "dof": 110
+   },
+   "weights": "{RUN}/work/e21.npz",
+   "input": null,
+   "time": "05:42:51",
+   "sec": 25.6
+  },
+  {
+   "id": "038",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Further compaction of the block-6 detector/poison (detector and poison channel counts in the name of the build) on top of the corresponding interaction-mask unit; expect E_ref close to the 64/64 version with fewer DoF.",
+   "prediction": {
+    "E_ref": 0.236,
+    "dof": 142
+   },
+   "weights": "{RUN}/work/e22.npz",
+   "input": null,
+   "time": "05:43:20",
+   "sec": 26.9
+  },
+  {
+   "id": "039",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Further compaction of the block-6 detector/poison (detector and poison channel counts in the name of the build) on top of the corresponding interaction-mask unit; expect E_ref close to the 64/64 version with fewer DoF.",
+   "prediction": {
+    "E_ref": 0.24,
+    "dof": 110
+   },
+   "weights": "{RUN}/work/e23.npz",
+   "input": null,
+   "time": "05:43:45",
+   "sec": 24.8
+  }
+ ],
+ "oracle_up": "2026-11-15T04:27:58"
+}

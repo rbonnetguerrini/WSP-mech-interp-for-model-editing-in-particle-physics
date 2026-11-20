@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e1.npz",
+ "hypothesis":"Most of the soft-photon response goes through block-7 head-6 attention from the summary tokens to the soft token. A rank-1 key edit along an LDA soft-token direction lowers that logit by about 12, which should remove most of the response at little side cost.",
+ "prediction":{"ratio_soft1e-4":0.3,"ratio_soft1e-3":0.4,"d_acc":-0.002,"d_nll":0.005,"rho_D":1.0,"rho_P_ref":1.0,"dof":511}}

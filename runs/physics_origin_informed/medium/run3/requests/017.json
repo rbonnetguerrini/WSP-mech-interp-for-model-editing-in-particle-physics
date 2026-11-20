@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/S1.npz", "hypothesis": "Small variant: same exact mask and guards, but channel 2 outside the box rebuilt from only 13 fitted units (residual 0.056 instead of 0.026); slightly larger clean error, E_rule a little worse, ~250 fewer DoF.", "prediction": {"E_rule": 0.068, "e_clean": 0.003, "DoF": 5200, "gen_drift_t0.85": 0.14}}

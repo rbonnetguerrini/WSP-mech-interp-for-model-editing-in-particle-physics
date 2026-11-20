@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/E1.npz", "input": "{RUN}/work/A.npz", "indices": null, "hypothesis": "Per-jet E1 errors on clean/soft/P/scan rows to locate the residual error (expect P jets with many dropped photons and near-threshold photons to dominate).", "prediction": {"e_P_rows_over_S": 0.065, "e_soft1e-3_rows_over_S": 0.03}}

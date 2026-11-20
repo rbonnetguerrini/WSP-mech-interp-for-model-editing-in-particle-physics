@@ -1,0 +1,35 @@
+{
+ "ok": true,
+ "pass": 5,
+ "remaining": 45,
+ "npz": "{RUN}/responses/005.npz",
+ "shapes": {
+  "logits": [
+   190,
+   210
+  ],
+  "labels": [
+   190
+  ],
+  "act:body.block10": [
+   190,
+   155,
+   1024
+  ],
+  "act:body.block11": [
+   190,
+   155,
+   1024
+  ],
+  "act:body.block12": [
+   190,
+   155,
+   1024
+  ],
+  "act:body.block13": [
+   190,
+   155,
+   1024
+  ]
+ }
+}

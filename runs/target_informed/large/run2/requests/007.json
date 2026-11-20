@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edits/localonly.npz",
+"hypothesis":"Diagnostic: only zero the channel-2 writers of the local-physics stream. Measures how much of v1's clean damage comes from losing local channel 2.",
+"prediction":{"d_acc":-0.01,"d_nll":0.03,"E_ref":0.95}}

@@ -1,0 +1,4 @@
+{"kind":"capture","weights":"{RUN}/work/edit_s1v3.npz","input":"{RUN}/work/calall.npz","indices":null,
+ "sites":["body.block1.mlp_pre","body.block0"],
+ "hypothesis":"Refit stage 1 (cal1+cal2), photon pT flag now written as +256*s on 256 channels. Photons with pT<0.8 should reach block 1 saturated on those channels (for block-1 suppression), while the other channels keep enough log-E information for the stage-2 AND unit (readout rmse < 0.005 near 1.8 GeV).",
+ "prediction":{"stage2_E_near_rmse":0.004,"A_flag_saturated_frac":0.995}}

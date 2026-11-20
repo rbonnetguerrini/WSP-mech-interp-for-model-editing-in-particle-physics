@@ -1,0 +1,261 @@
+{
+ "name": "physics_origin_informed-large-run1/edit_medium",
+ "cand": "{RECORDS}/physics_origin_informed-large-run1/finals/final_mid.npz",
+ "pt_cut": null,
+ "reco_fix": null,
+ "keyclip": "None",
+ "clean": {
+  "acc": 0.860400390625,
+  "d_acc": 0.0,
+  "d_nll": -1.6746023232871998e-05,
+  "class_drop": 0.0009765625,
+  "kl": 0.00019257491657756232
+ },
+ "r": {
+  "split2": 0.032851548873943884,
+  "soft3e-3": 0.027379608055016137,
+  "soft1e-3": 0.011991986647225866,
+  "soft1e-4": 0.0017638057035484344,
+  "soft7_1e-3": 0.04105895145777353,
+  "split3": 0.05121232437671753,
+  "split2c": 0.06443346610952519
+ },
+ "R_vis": 0.5165488770013964,
+ "R_in": 1.0089633399730724,
+ "R_sub": 0.024134414029720577,
+ "R_held": 0.6974890310529508,
+ "ratio": {
+  "split2": 1.0053180980441674,
+  "soft3e-3": 1.0126085819019774,
+  "soft1e-3": 0.031453905798700624,
+  "soft1e-4": 0.01681492226074053,
+  "soft7_1e-3": 0.09767157007654395,
+  "split3": 0.9946566114595011,
+  "split2c": 1.0001389116228072
+ },
+ "rho": {
+  "D": 1.00178121831971,
+  "J": 1.0024747519949468,
+  "P": 0.7373271375736383,
+  "P_reco": 0.9992951058748273
+ },
+ "dir_err": {
+  "D": 0.026710787976648147,
+  "J": 0.04682309349287315,
+  "P": 0.31322307310205094
+ },
+ "max_log_rho": 0.30472360797238807,
+ "gate_no_g2": false,
+ "size": {
+  "n_changed": 1134,
+  "frac_changed": 2.6805238434758735e-06,
+  "dof": 1134,
+  "max_rank": 2,
+  "rank_ok": true,
+  "tensors": {
+   "body.embed.mlp.fc1.weight": {
+    "changed": 8,
+    "rank": 2,
+    "dof": 8,
+    "rel_fro": 206285.1237590615,
+    "group": "input"
+   },
+   "body.embed.mlp.fc1.bias": {
+    "changed": 2,
+    "rank": null,
+    "dof": 2,
+    "rel_fro": 222271.5348641768,
+    "group": "input"
+   },
+   "body.embed.mlp.fc2.weight": {
+    "changed": 2,
+    "rank": 1,
+    "dof": 2,
+    "rel_fro": 11307187334.802034,
+    "group": "input"
+   },
+   "body.embed.mlp.norm.weight": {
+    "changed": 2,
+    "rank": null,
+    "dof": 2,
+    "rel_fro": 0.025519337448259544,
+    "group": "input"
+   },
+   "body.pid_embed.0.weight": {
+    "changed": 2,
+    "rank": 1,
+    "dof": 2,
+    "rel_fro": 21975434.349336088,
+    "group": "input"
+   },
+   "body.in_blocks.0.norm1.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.029714813299567284,
+    "group": "body_other"
+   },
+   "body.in_blocks.0.norm2.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.011258750349065854,
+    "group": "body_other"
+   },
+   "body.in_blocks.0.mlp.fc1.weight": {
+    "changed": 1,
+    "rank": 1,
+    "dof": 1,
+    "rel_fro": 107107399.8233916,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.0.mlp.fc1.bias": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 837780.7201641435,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.0.mlp.fc2.weight": {
+    "changed": 1,
+    "rank": 1,
+    "dof": 1,
+    "rel_fro": 13706008001.996967,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.0.mlp.norm.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 2.7624814049876243e-05,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.1.norm1.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.026395048836229416,
+    "group": "body_other"
+   },
+   "body.in_blocks.1.norm2.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.02701723096503911,
+    "group": "body_other"
+   },
+   "body.in_blocks.1.mlp.fc1.weight": {
+    "changed": 66,
+    "rank": 1,
+    "dof": 66,
+    "rel_fro": 7143330.579163157,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.1.mlp.fc1.bias": {
+    "changed": 2,
+    "rank": null,
+    "dof": 2,
+    "rel_fro": 161303.88877054272,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.1.mlp.fc2.weight": {
+    "changed": 2,
+    "rank": 1,
+    "dof": 2,
+    "rel_fro": 13397860925.741507,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.1.mlp.norm.weight": {
+    "changed": 2,
+    "rank": null,
+    "dof": 2,
+    "rel_fro": 4.183813954821582e-05,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.2.norm1.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.028341389348761754,
+    "group": "body_other"
+   },
+   "body.in_blocks.2.norm2.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.026775532255121085,
+    "group": "body_other"
+   },
+   "body.in_blocks.2.mlp.fc1.weight": {
+    "changed": 1027,
+    "rank": 1,
+    "dof": 1027,
+    "rel_fro": 4581402.263677662,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.2.mlp.fc1.bias": {
+    "changed": 3,
+    "rank": null,
+    "dof": 3,
+    "rel_fro": 84796.63981567853,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.2.mlp.fc2.weight": {
+    "changed": 3,
+    "rank": 1,
+    "dof": 3,
+    "rel_fro": 1052.2154430058915,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.2.mlp.norm.weight": {
+    "changed": 3,
+    "rank": null,
+    "dof": 3,
+    "rel_fro": 0.00021209610994393037,
+    "group": "body_mlp"
+   }
+  }
+ },
+ "summary_drift": 0.01012791320681572,
+ "swap_back": {
+  "body_mlp": {
+   "R_vis_reverted": 0.6293011467691005,
+   "repair_lost": 0.23322372087659793
+  },
+  "body_other": {
+   "R_vis_reverted": 0.6652827156460368,
+   "repair_lost": 0.3076502081991648
+  },
+  "input": {
+   "R_vis_reverted": 1.0025515525759225,
+   "repair_lost": 1.005277788083512
+  }
+ },
+ "gate": false,
+ "gate_norank": false,
+ "max_log_rho_rule": 0.0024716948389916543,
+ "gate_rule_no_g2": true,
+ "rule": {
+  "e": {
+   "split2": 0.003508301301475785,
+   "soft3e-3": 0.003944619485713039,
+   "soft1e-3": 0.004128844878708883,
+   "soft1e-4": 0.004093020921074493,
+   "P": 0.02471652646470096,
+   "soft7_1e-3": 0.04274502052939974,
+   "clean": 0.0034018532823457378
+  },
+  "e_orig": {
+   "split2": 5.693783335419448e-05,
+   "soft3e-3": 0.0,
+   "soft1e-3": 0.3708487010087695,
+   "soft1e-4": 0.1048952636353584,
+   "P": 0.14157967248206668,
+   "soft7_1e-3": 0.4200414057451852,
+   "clean": 0.0
+  },
+  "E_rule": 0.07491012605636861,
+  "E_rule_held": 0.1017638260055978
+ },
+ "gate_rule": true
+}

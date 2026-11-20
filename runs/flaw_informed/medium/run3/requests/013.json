@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/edits/t2_gateonly.npz", "hypothesis": "Gate-only part of T2: sub-threshold neutral tokens get a saturated residual but are not suppressed; isolates the gate's effect (expected large response to soft photons and the main source of gen_drift).", "prediction": {"d_nll": 0.01, "kl": 0.01, "gen_drift_max": 0.15, "ratio_soft1e-3": 1.5}}

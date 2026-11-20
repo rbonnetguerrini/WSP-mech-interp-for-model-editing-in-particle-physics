@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":null,
+ "hypothesis":"Baseline of the unedited model: soft-photon probes move the logits substantially, soft1e-4 more than soft1e-3; all limits trivially pass.",
+ "prediction":{"d_acc":0.0,"d_nll":0.0,"gen_drift":0.0,"rho_P_ref":1.0,"ratio_soft1e-4":0.8,"ratio_soft1e-3":0.5}}

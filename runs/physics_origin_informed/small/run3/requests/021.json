@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/vL0.npz", "hypothesis": "Control: v5 detector, scratch channels, folds and restores, but flag write L=0 (no suppression). Isolates generator drift caused by the scratch machinery on noised tokens from drift caused by flagging.", "prediction": {"E_rule": 0.98, "gen_drift": 0.01, "d_acc": 0.0005}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v4_d04.npz", "hypothesis": "Missed drops cost ~7x false drops, so lowering the flag threshold by 0.04 (log margin) should cut P and soft1e-3 errors, at a small cost on clean/P_reco.", "prediction": {"E_rule": 0.19, "d_acc": -0.001, "e_clean": 0.002, "e_P": 0.04, "rho_P_reco": 0.95, "gen_drift": 0.28}}

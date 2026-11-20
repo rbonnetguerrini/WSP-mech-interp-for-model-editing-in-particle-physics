@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/A4.npz", "hypothesis": "Replace the constant NHo shift with 3 detector units of different energy-ramp slopes, whose output columns are least-squares fitted to the per-token shift (residual 13% vs 25% for constant V). P error should drop further.", "prediction": {"E_rule": 0.045, "e_P": 0.0098, "e_clean": 0.0008, "dof": 8974}}

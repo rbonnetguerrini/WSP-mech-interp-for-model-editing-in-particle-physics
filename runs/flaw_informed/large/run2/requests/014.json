@@ -1,0 +1,11 @@
+{
+ "kind": "logits",
+ "weights": null,
+ "input": "{RUN}/work/evalset.npz",
+ "hypothesis": "Reference logits of the original model on the held-out eval set (different jets from the fit set).",
+ "prediction": {
+  "r_soft1e-3": 0.4,
+  "r_soft1e-4": 0.11,
+  "r_P_vs_Pn<1": 0.2
+ }
+}

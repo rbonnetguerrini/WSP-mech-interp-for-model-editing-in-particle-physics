@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v4s.npz", "hypothesis": "v4 without folding the scratch channels out of the existing block-0 MLP units: smaller DoF; kept soft particles see a saturated scratch read, so clean e_v and side effects rise somewhat; E_rule ~unchanged.", "prediction": {"E_rule": 0.14, "d_acc": -0.002, "e_clean": 0.01, "rho_P_reco": 1.0, "dof": 1950}}

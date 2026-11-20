@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v1.npz",
+ "hypothesis":"Zeroing embedded channel 2 exactly for pid 6/7 tokens with pT<0.8 & E<1.8 turns them into padding for body, classifier and generator; soft probes should be nearly exact (leak only via kNN local features), P partly fixed (neutral hadrons with 1.8<E<2.2 not handled).",
+ "prediction":{"E_ref":0.25,"e_soft1e-4_ratio":0.1,"e_soft1e-3_ratio":0.2,"e_P_ratio":0.45,"d_acc":-0.003,"d_nll":0.01,"gen_drift":0.05,"DoF":18450}}

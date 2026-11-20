@@ -1,0 +1,646 @@
+{
+ "budget": 50,
+ "used": 44,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Baseline with the unedited model: E_ref=1 by definition; I expect the reference to equal the original on clean jets (e_clean ~0).",
+   "prediction": {
+    "E_ref": 1.0,
+    "d_acc": 0.0,
+    "e_clean": 0.0
+   },
+   "weights": null,
+   "input": null,
+   "time": "04:36:24",
+   "sec": 392.2
+  },
+  {
+   "id": "002",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Reference on clean/soft/P jets and a photon pT-fraction scan; expect ref(soft)=orig(clean) below a threshold between 1e-3 and 3e-3 of jet pT, and ref=orig above.",
+   "prediction": {
+    "threshold_frac": 0.002,
+    "ref_eq_orig_clean_rows": 1.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/A.npz",
+   "time": "04:37:20",
+   "sec": 5.0
+  },
+  {
+   "id": "003",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on the same constructed set, to compare with the reference row by row.",
+   "prediction": {
+    "orig_response_soft1e-3_over_S": 0.4
+   },
+   "weights": null,
+   "input": "{RUN}/work/A.npz",
+   "time": "04:37:25",
+   "sec": 4.9
+  },
+  {
+   "id": "004",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Map the drop rule per pid: one particle added to jets whose original clean logits I have; dropped iff ref equals orig(clean). Expect photons dropped iff pt<0.8 and E<~1.8 GeV, neutral hadrons iff E<~2.2 GeV, charged never (or only far below clean support pt 0.135).",
+   "prediction": {
+    "photon_pt_thr": 0.8,
+    "photon_E_thr": 1.8,
+    "nh_E_thr": 2.2,
+    "charged_dropped_frac_above_pt0.135": 0.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/B.npz",
+   "time": "04:42:40",
+   "sec": 4.9
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Capture clean and soft1e-3 versions of 128 jets to locate dead block-0 MLP units (reusable as a detector) and to see how the soft photon token and its neighbours differ.",
+   "prediction": {
+    "n_dead_units_block0": 5,
+    "photon_embed_norm_ratio_vs_typical": 2.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/C.npz",
+   "time": "04:45:02",
+   "sec": 1.2
+  },
+  {
+   "id": "006",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual streams (inputs of blocks 1-4) on 64 clean + 32 soft1e-3 jets, to compute per-head queries and test whether one saturated sign pattern can suppress a token as key everywhere.",
+   "prediction": {
+    "frac_heads_suppressible_below_minus10": 0.7
+   },
+   "weights": null,
+   "input": "{RUN}/work/Q.npz",
+   "time": "04:48:30",
+   "sec": 0.6
+  },
+  {
+   "id": "007",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Same, blocks 5-8 inputs.",
+   "prediction": {
+    "frac_heads_suppressible_below_minus10": 0.7
+   },
+   "weights": null,
+   "input": "{RUN}/work/Q.npz",
+   "time": "04:48:31",
+   "sec": 0.5
+  },
+  {
+   "id": "008",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Same, blocks 9-11 inputs and the final body output (classifier keys/queries).",
+   "prediction": {
+    "frac_heads_suppressible_below_minus10": 0.7
+   },
+   "weights": null,
+   "input": "{RUN}/work/Q.npz",
+   "time": "04:48:31",
+   "sec": 0.5
+  },
+  {
+   "id": "009",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Classifier block-1 queries, last body block, and block-0 MLP preactivations.",
+   "prediction": {
+    "frac_heads_suppressible_below_minus10": 0.7
+   },
+   "weights": null,
+   "input": "{RUN}/work/Q.npz",
+   "time": "04:48:32",
+   "sec": 0.5
+  },
+  {
+   "id": "010",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0 MLP input (via fc1 preactivations) for 3072 inserted photons/neutral hadrons spanning the drop boundary plus clean tokens, to fit a linear drop detector.",
+   "prediction": {
+    "detector_lstsq_token_error_rate": 0.02
+   },
+   "weights": null,
+   "input": "{RUN}/work/T.npz",
+   "time": "04:51:34",
+   "sec": 2.4
+  },
+  {
+   "id": "011",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Two repurposed dead block-0 MLP units detect (photon and pT<0.8) or (neutral hadron and E<2.2) and write a huge saturating sign vector chosen so the token key is ignored by nearly all queries; this should remove most of the soft-photon response, leaving kNN-neighbour contamination.",
+   "prediction": {
+    "E_ref": 0.35,
+    "e_soft1e-3_ratio": 0.3,
+    "e_soft1e-4_ratio": 0.3,
+    "e_P_ratio": 0.5,
+    "d_acc": -0.001,
+    "gen_drift_max": 0.05,
+    "dof": 2052
+   },
+   "weights": "{RUN}/work/E1.npz",
+   "input": null,
+   "time": "04:59:21",
+   "sec": 109.3
+  },
+  {
+   "id": "012",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Per-jet E1 errors on clean/soft/P/scan rows to locate the residual error (expect P jets with many dropped photons and near-threshold photons to dominate).",
+   "prediction": {
+    "e_P_rows_over_S": 0.065,
+    "e_soft1e-3_rows_over_S": 0.03
+   },
+   "weights": "{RUN}/work/E1.npz",
+   "input": "{RUN}/work/A.npz",
+   "time": "05:12:12",
+   "sec": 4.9
+  },
+  {
+   "id": "013",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0 MLP inputs for clean and hand-noised jets (t=0.2,0.5,0.85; block-0 inputs do not depend on the time token) to choose quiet channels whose content stays within +-1.5 also under noise, and to measure old-row preactivation ranges of dead units.",
+   "prediction": {
+    "max_abs_content_best_channels_noised": 1.5
+   },
+   "weights": null,
+   "input": "{RUN}/work/N.npz",
+   "time": "05:15:49",
+   "sec": 3.2
+  },
+  {
+   "id": "014",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sparse binary circuit: exact pT/E steps (embed MLP), pid markers, constant-shifted readout channels with exact cancellers, AND-detector writing the same saturating kill vector, and a time-token gate through the dead block-0 attention so nothing fires in generation. Expect E_ref slightly better than E1 (exact AND), clean/J side effects ~0, and gen_drift near 0.",
+   "prediction": {
+    "E_ref": 0.3,
+    "d_acc": -0.0005,
+    "rho_J": 1.0,
+    "gen_drift_max": 0.01,
+    "e_clean": 0.0005,
+    "dof": 616
+   },
+   "weights": "{RUN}/work/E2.npz",
+   "input": null,
+   "time": "05:20:03",
+   "sec": 109.6
+  },
+  {
+   "id": "015",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Adding a block-4 flip unit that re-patterns the killed token to a sign vector optimised for blocks 5-11 and the classifier heads (predicted attention leakage halves in blocks 5-11 and drops 7x in the classifier) should lower the ~0.012 S per-dropped-particle floor.",
+   "prediction": {
+    "E_ref": 0.11,
+    "e_soft1e-4": 0.008,
+    "e_soft1e-3": 0.008,
+    "e_P": 0.021,
+    "gen_drift_max": 0.001,
+    "dof": 811
+   },
+   "weights": "{RUN}/work/E3.npz",
+   "input": null,
+   "time": "05:26:32",
+   "sec": 109.6
+  },
+  {
+   "id": "016",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Per-jet E3 errors to see why P lags: expect error to grow with the number of dropped particles and to be near zero for P jets without drops.",
+   "prediction": {
+    "e_P_rows_over_S": 0.023,
+    "e_P_ndrop0": 0.002
+   },
+   "weights": "{RUN}/work/E3.npz",
+   "input": "{RUN}/work/A.npz",
+   "time": "05:26:52",
+   "sec": 5.0
+  },
+  {
+   "id": "017",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Robustness of E3 across particle types: dropped photons/neutral hadrons should show the ~0.01 S floor; kept photons, kept neutral hadrons and all charged insertions should match the reference (=original) to ~1e-3.",
+   "prediction": {
+    "e_drop_photon": 0.01,
+    "e_drop_nh": 0.012,
+    "e_kept": 0.001,
+    "e_charged": 0.0005
+   },
+   "weights": "{RUN}/work/E3.npz",
+   "input": "{RUN}/work/B.npz",
+   "time": "05:29:12",
+   "sec": 5.0
+  },
+  {
+   "id": "018",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Diagnose the worst dropped-photon cases of E3 on B: either a binary read fails (detector pre-activation not saturated, so no kill) or the kill fires and something else leaks. I expect detector pre >= 50 for the good cases and a failed read on some bad ones.",
+   "prediction": {
+    "frac_bad_with_detector_pre_below_5": 0.5
+   },
+   "weights": "{RUN}/work/E3.npz",
+   "input": "{RUN}/work/F.npz",
+   "time": "05:29:52",
+   "sec": 0.4
+  },
+  {
+   "id": "019",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Pairs (B jet with killed photon, its clean base jet) under E3: locate the block where the other tokens start to differ. If block0 already differs, the path is kNN/local features; if block1, the interaction bias lets the killed token be attended.",
+   "prediction": {
+    "block_of_first_difference": 1
+   },
+   "weights": "{RUN}/work/E3.npz",
+   "input": "{RUN}/work/G.npz",
+   "time": "05:30:46",
+   "sec": 0.3
+  },
+  {
+   "id": "020",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "E3 with 10x sharper embed steps (k=2e4): fewer partially-cancelled markers near thresholds, so clean/gen residuals shrink; E_ref about unchanged.",
+   "prediction": {
+    "E_ref": 0.123,
+    "e_clean": 0.0001,
+    "gen_drift_max": 0.0005,
+    "dof": 811
+   },
+   "weights": "{RUN}/work/E4.npz",
+   "input": null,
+   "time": "05:35:54",
+   "sec": 109.8
+  },
+  {
+   "id": "021",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sparse kill vector on 256 most key-relevant channels with a re-optimised pattern, no flip: about half the kill DoF; predicted leakage similar to dense s4 so E_ref near E2.",
+   "prediction": {
+    "E_ref": 0.15,
+    "dof": 360,
+    "gen_drift_max": 0.001
+   },
+   "weights": "{RUN}/work/S256.npz",
+   "input": null,
+   "time": "05:37:44",
+   "sec": 109.6
+  },
+  {
+   "id": "022",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sparse kill vector on 128 channels: smaller edit, more leakage; E_ref somewhat worse.",
+   "prediction": {
+    "E_ref": 0.18,
+    "dof": 232,
+    "gen_drift_max": 0.001
+   },
+   "weights": "{RUN}/work/S128.npz",
+   "input": null,
+   "time": "05:39:34",
+   "sec": 109.6
+  },
+  {
+   "id": "023",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sparse kill on 192 channels (re-optimised pattern).",
+   "prediction": {
+    "E_ref": 0.13,
+    "dof": 296
+   },
+   "weights": "{RUN}/work/S192.npz",
+   "input": null,
+   "time": "05:43:35",
+   "sec": 109.6
+  },
+  {
+   "id": "024",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sparse kill on 320 channels; between S256 and dense.",
+   "prediction": {
+    "E_ref": 0.1,
+    "dof": 424
+   },
+   "weights": "{RUN}/work/S320.npz",
+   "input": null,
+   "time": "05:45:25",
+   "sec": 109.6
+  },
+  {
+   "id": "025",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sparse kill on 384 channels.",
+   "prediction": {
+    "E_ref": 0.105,
+    "dof": 488
+   },
+   "weights": "{RUN}/work/S384.npz",
+   "input": null,
+   "time": "05:47:15",
+   "sec": 109.8
+  },
+  {
+   "id": "026",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "S256 plus a block-4 flip of 48 channels (pattern optimised for blocks 5-11 and classifier within the 256-channel support); predicted leakage in late blocks drops 0.57->0.44.",
+   "prediction": {
+    "E_ref": 0.09,
+    "dof": 426
+   },
+   "weights": "{RUN}/work/S256f.npz",
+   "input": null,
+   "time": "05:49:05",
+   "sec": 109.7
+  },
+  {
+   "id": "027",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Paired soft1e-4/clean jets under S192: locate in which blocks the summary and particle tokens start to deviate (leakage entry points) to explain why sparse kill beats dense.",
+   "prediction": {
+    "summary_dev_body_norm": 0.02
+   },
+   "weights": "{RUN}/work/S192.npz",
+   "input": "{RUN}/work/H.npz",
+   "time": "05:50:20",
+   "sec": 0.6
+  },
+  {
+   "id": "028",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Paired soft1e-4/clean jets under E4: locate in which blocks the summary and particle tokens start to deviate (leakage entry points) to explain why sparse kill beats dense.",
+   "prediction": {
+    "summary_dev_body_norm": 0.02
+   },
+   "weights": "{RUN}/work/E4.npz",
+   "input": "{RUN}/work/H.npz",
+   "time": "05:50:21",
+   "sec": 0.8
+  },
+  {
+   "id": "029",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Kill support chosen by key-gain per value-damage (23% less value perturbation than S192 at similar key suppression); if value damage under interaction-bias-driven attention drives the residual error, E_ref improves over S192.",
+   "prediction": {
+    "E_ref": 0.075,
+    "dof": 296
+   },
+   "weights": "{RUN}/work/R192.npz",
+   "input": null,
+   "time": "05:55:23",
+   "sec": 109.8
+  },
+  {
+   "id": "030",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same value-aware support with 256 channels.",
+   "prediction": {
+    "E_ref": 0.08,
+    "dof": 360
+   },
+   "weights": "{RUN}/work/R256.npz",
+   "input": null,
+   "time": "05:57:13",
+   "sec": 109.7
+  },
+  {
+   "id": "031",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "S192 plus an interaction-MLP unit giving a -40*GELU bias to every particle pair whose softer member has pT<0.12 GeV (below every clean particle, always in the drop set). If out-of-distribution pair biases let the soft1e-4 photon be attended despite key suppression, e_soft1e-4 should drop clearly; soft1e-3 and P unchanged; small gen drift from rare noised ultra-soft tokens.",
+   "prediction": {
+    "E_ref": 0.07,
+    "e_soft1e-4": 0.004,
+    "gen_drift_max": 0.002,
+    "dof": 316
+   },
+   "weights": "{RUN}/work/S192i.npz",
+   "input": null,
+   "time": "06:00:06",
+   "sec": 109.7
+  },
+  {
+   "id": "032",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "P jets vs the same jets with dropped particles removed (exact reference input) under S192i: separate kNN contamination (block-0 diffs of kept particles) from attention leakage (block-1 attention-output diffs) and the total summary-token deviation.",
+   "prediction": {
+    "logit_dev_over_S": 0.015,
+    "frac_kept_particles_contaminated_block0": 0.15
+   },
+   "weights": "{RUN}/work/S192i.npz",
+   "input": "{RUN}/work/K.npz",
+   "time": "06:01:04",
+   "sec": 0.6
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "S192 + interaction kill with threshold 0.10 GeV (still covers all soft1e-4 photons, 0.05-0.085 GeV): same E_ref as S192i, about half the t=0.85 generator drift.",
+   "prediction": {
+    "E_ref": 0.076,
+    "gen_drift_max": 0.005,
+    "dof": 316
+   },
+   "weights": "{RUN}/work/S192j.npz",
+   "input": null,
+   "time": "06:04:17",
+   "sec": 109.6
+  },
+  {
+   "id": "034",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small variant: 128-channel kill + interaction kill (0.10 GeV).",
+   "prediction": {
+    "E_ref": 0.17,
+    "gen_drift_max": 0.005,
+    "dof": 252
+   },
+   "weights": "{RUN}/work/S128j.npz",
+   "input": null,
+   "time": "06:06:07",
+   "sec": 109.7
+  },
+  {
+   "id": "035",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Final-small candidate = S128 with the embed step units keeping their old (irrelevant) fc1 entries: identical behaviour to S128, 9 fewer DoF.",
+   "prediction": {
+    "E_ref": 0.19,
+    "dof": 223,
+    "gen_drift_max": 0.0003
+   },
+   "weights": "{RUN}/work/F128.npz",
+   "input": null,
+   "time": "06:08:54",
+   "sec": 109.7
+  },
+  {
+   "id": "036",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Final-mid candidate = S192 with trimmed embed fc1 edits: same as S192 (E_ref 0.081), 9 fewer DoF.",
+   "prediction": {
+    "E_ref": 0.081,
+    "dof": 287,
+    "gen_drift_max": 0.0003
+   },
+   "weights": "{RUN}/work/F192.npz",
+   "input": null,
+   "time": "06:10:44",
+   "sec": 109.6
+  },
+  {
+   "id": "037",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Final-large candidate = F192 + interaction-MLP pair kill below 0.12 GeV: same as S192i (E_ref 0.0756).",
+   "prediction": {
+    "E_ref": 0.0756,
+    "dof": 307,
+    "gen_drift_max": 0.011
+   },
+   "weights": "{RUN}/work/F192i.npz",
+   "input": null,
+   "time": "06:12:33",
+   "sec": 109.5
+  },
+  {
+   "id": "038",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Unseen probe types (soft neutral hadron 1e-3/1e-4, two photons at 3e-4, collinear photon at 5e-4 next to the hardest particle): reference should equal the original on the clean jet whenever the inserted particles satisfy the drop rule.",
+   "prediction": {
+    "frac_rows_ref_equals_orig_clean_when_rule_drops": 1.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/V.npz",
+   "time": "06:13:14",
+   "sec": 5.0
+  },
+  {
+   "id": "039",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on the unseen probe set (denominator of the ratio).",
+   "prediction": {
+    "orig_response_over_S_nh1e-3": 0.3
+   },
+   "weights": null,
+   "input": "{RUN}/work/V.npz",
+   "time": "06:13:19",
+   "sec": 4.9
+  },
+  {
+   "id": "040",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "F192 on unseen probes: ratios similar to visible soft probes (0.02-0.06), collinear case closer to P (kNN, ~0.15).",
+   "prediction": {
+    "ratio_nh1e-3": 0.03,
+    "ratio_nh1e-4": 0.06,
+    "ratio_2ph": 0.05,
+    "ratio_collinear": 0.15
+   },
+   "weights": "{RUN}/work/F192.npz",
+   "input": "{RUN}/work/V.npz",
+   "time": "06:13:24",
+   "sec": 4.9
+  },
+  {
+   "id": "041",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "F192i on unseen probes: like F192 but better on the 1e-4 neutral hadron (pair kill below 0.12 GeV).",
+   "prediction": {
+    "ratio_nh1e-3": 0.03,
+    "ratio_nh1e-4": 0.04,
+    "ratio_2ph": 0.05,
+    "ratio_collinear": 0.15
+   },
+   "weights": "{RUN}/work/F192i.npz",
+   "input": "{RUN}/work/V.npz",
+   "time": "06:13:29",
+   "sec": 4.9
+  },
+  {
+   "id": "042",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "F128 on unseen probes: roughly 2-3x the F192 ratios.",
+   "prediction": {
+    "ratio_nh1e-3": 0.06,
+    "ratio_nh1e-4": 0.15,
+    "ratio_2ph": 0.12,
+    "ratio_collinear": 0.25
+   },
+   "weights": "{RUN}/work/F128.npz",
+   "input": "{RUN}/work/V.npz",
+   "time": "06:13:34",
+   "sec": 4.9
+  },
+  {
+   "id": "043",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Controls for the construction gap: practice soft1e-3 rows; my recipe photon at 1e-3; practice kinematics relabelled pid 7; practice photon moved to a random position. Reference should drop the particle in (nearly) all rows.",
+   "prediction": {
+    "frac_drop": 0.9
+   },
+   "weights": null,
+   "input": "{RUN}/work/X.npz",
+   "time": "06:14:51",
+   "sec": 5.1
+  },
+  {
+   "id": "044",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "If the gap is construction-specific, the practice block gives ~0.008 and one of the other blocks reproduces ~0.03; I expect the pid-7 relabel to be similar to practice and the moved/my-recipe photons to be worse.",
+   "prediction": {
+    "e_practice": 0.008,
+    "e_mine": 0.03,
+    "e_pid7": 0.01,
+    "e_moved": 0.03
+   },
+   "weights": "{RUN}/work/F192.npz",
+   "input": "{RUN}/work/X.npz",
+   "time": "06:14:56",
+   "sec": 4.9
+  }
+ ],
+ "oracle_up": "2026-11-15T04:27:58"
+}

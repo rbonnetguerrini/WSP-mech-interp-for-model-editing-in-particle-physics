@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e2.npz",
+ "hypothesis":"A repurposed block-6 MLP unit gates on a soft-neutral LDA score (threshold 0.4) and writes 25*sigma into the residual, so flagged tokens become a saturated ghost that every block-7 and classifier head nearly ignores. This should cut the soft responses well below e1's level while leaving tokens below the threshold, and so P_ref, mostly untouched.",
+ "prediction":{"ratio_soft1e-4":0.2,"ratio_soft1e-3":0.3,"rho_P_ref":0.9,"rho_P":0.75,"d_acc":0.0,"d_nll":0.002,"gen_drift_max":0.02,"dof":385}}

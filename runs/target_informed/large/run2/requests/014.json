@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edits/diag_move770.npz",
+"hypothesis":"Diagnostic: only the local-stream move of channel 2 into channel 770 (no embedding/pid gate), to measure damage from losing local channel 770 plus moving local channel-2 output from residual 2 to residual 770.",
+"prediction":{"e_clean":0.025,"d_acc":-0.002}}

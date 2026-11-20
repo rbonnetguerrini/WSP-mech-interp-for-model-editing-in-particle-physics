@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/probeA.npz","indices":null,
+ "sites":["body.block0.mlp_pre","body.block0","body.block6","body.block14"],
+ "hypothesis":"Original model on clean jets with inserted photons/neutral hadrons/charged around thresholds; from block0 mlp_pre I recover norm2 input u by pinv(fc1) and fit the detector by least squares. Residuals at blocks 0/6/14 give flagged-direction and query statistics.",
+ "prediction":{"lstsq_detector_error_logpt":0.1,"n_dead_units_block0":211}}

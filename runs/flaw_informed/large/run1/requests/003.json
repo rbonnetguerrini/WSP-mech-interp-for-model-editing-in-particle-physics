@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/cap1.npz","indices":null,
+ "sites":["body.block0","body.block1","body.block3","body.block8"],
+ "hypothesis":"64 jets x {clean, photon at 1e-3 (log_pt<-0.4, flaw), photon at 3e-3 (no flaw), charged at 1e-3}: the soft-photon token should already look distinct after block0/1 (a neutral+low-pT detector), and the summary-token difference vs clean should grow from an early block onward for the flaw group only.",
+ "prediction":{"rel_summary_diff_block8_flaw_over_control":5.0}}

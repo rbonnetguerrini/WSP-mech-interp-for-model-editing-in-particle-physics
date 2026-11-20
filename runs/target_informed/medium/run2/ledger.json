@@ -1,0 +1,547 @@
+{
+ "budget": 50,
+ "used": 35,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Baseline of the unedited model: E_ref must be 1 and all side-effect metrics zero; gives e_v(orig) per probe incl. clean.",
+   "prediction": {
+    "E_ref": 1.0,
+    "d_acc": 0.0,
+    "gen_drift": 0.0
+   },
+   "weights": null,
+   "input": null,
+   "time": "04:37:24",
+   "sec": 386.0
+  },
+  {
+   "id": "002",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Reference on 16 variants x 128 jets; I expect ref(soft1e-4/1e-3 jet) ~= orig(clean jet) and ref == orig on clean, soft3e-3 and split2.",
+   "prediction": {
+    "ref_soft1e-4_eq_orig_clean": 1.0,
+    "ref_clean_eq_orig_clean": 1.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/exp1.npz",
+   "time": "04:37:29",
+   "sec": 5.0
+  },
+  {
+   "id": "003",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on the same 2048 constructed jets, to compare against the reference.",
+   "prediction": {
+    "n": 2048
+   },
+   "weights": null,
+   "input": "{RUN}/work/exp1.npz",
+   "time": "04:37:34",
+   "sec": 4.9
+  },
+  {
+   "id": "004",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Grid scan of an added photon / neutral hadron over (log pT, log E/pT) to map the region where the reference drops the particle (ref == orig of base jet). Expect photons dropped roughly for pT<0.8 GeV and E<~2 GeV, neutral hadrons for a higher E threshold (~2.2 GeV).",
+   "prediction": {
+    "photon_pt_thr_GeV": 0.8,
+    "photon_E_thr_GeV": 2.0,
+    "nh_E_thr_GeV": 2.2
+   },
+   "weights": null,
+   "input": "{RUN}/work/exp2.npz",
+   "time": "04:41:16",
+   "sec": 5.0
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Look for residual channels that are saturated/constant across all tokens (massive activations) to use as a private flag wire for key suppression.",
+   "prediction": {
+    "n_jets": 96
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:45:00",
+   "sec": 2.2
+  },
+  {
+   "id": "006",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Recover block-0 MLP input r0 = block0 - fc2(mlp_post) - b to choose private channels; residual inputs of blocks 1-3 for key-penalty design.",
+   "prediction": {
+    "n_jets": 64
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:50:31",
+   "sec": 0.4
+  },
+  {
+   "id": "007",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual inputs of blocks 4-7 for key-penalty design (query mean directions, low-variance channels).",
+   "prediction": {
+    "n_jets": 64
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:50:32",
+   "sec": 0.6
+  },
+  {
+   "id": "008",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual inputs of blocks 8-11 for key-penalty design.",
+   "prediction": {
+    "n_jets": 64
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:50:32",
+   "sec": 0.4
+  },
+  {
+   "id": "009",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Body output and classifier block-0 output for classifier key-penalty design.",
+   "prediction": {
+    "n_jets": 64
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:50:32",
+   "sec": 0.3
+  },
+  {
+   "id": "010",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v1: embed dead neurons compute pT/E steps, block0 dead neurons AND them with pid (photon pT<0.8&E<1.8, NH E<2.2), cancel the temporary writes and stamp a saturated pattern on flagged tokens; rank-1 LDA key penalty (~-10 logits) in body blocks 1-11 and both classifier blocks hides them. Residual error expected from the kNN local-feature path.",
+   "prediction": {
+    "E_ref": 0.15,
+    "d_acc": 0.0,
+    "d_nll": 0.001,
+    "gen_drift_max": 0.02,
+    "rho_P_ref": 1.0,
+    "e_clean": 0.01
+   },
+   "weights": "{RUN}/work/edit_v1.npz",
+   "input": null,
+   "time": "04:57:35",
+   "sec": 112.7
+  },
+  {
+   "id": "011",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v2: channel 49 ablated (all writers zeroed) and used as an exact wire: embed steps + pid offsets write discrete levels, a block-0 staircase cancels them exactly and writes +200 only for photon(pT<0.8,E<1.8)/NH(E<2.2); key penalties read only that channel, so non-flagged tokens see only the channel ablation. With pid=None in generation no flag can fire, so gen_drift should be just the ablation effect.",
+   "prediction": {
+    "E_ref": 0.15,
+    "d_acc": -0.002,
+    "d_nll": 0.005,
+    "class_drop": 0.01,
+    "gen_drift_max": 0.05,
+    "e_clean": 0.02,
+    "rho_P_ref": 1.0
+   },
+   "weights": "{RUN}/work/edit_v2.npz",
+   "input": null,
+   "time": "05:04:24",
+   "sec": 111.0
+  },
+  {
+   "id": "012",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v3: same circuit as v2 but the wire is channel 119 (half the variance-importance of 49) held at its mean trajectory via per-block fc2 biases instead of 0; flagged tokens are pushed to -200. Expect the clean floor (ablation) to drop from 0.0052 to ~0.003.",
+   "prediction": {
+    "E_ref": 0.03,
+    "e_clean": 0.003,
+    "d_acc": 0.0,
+    "class_drop": 0.005,
+    "gen_drift_max": 0.03,
+    "rho_P_ref": 1.0
+   },
+   "weights": "{RUN}/work/edit_v3_119.npz",
+   "input": null,
+   "time": "05:08:25",
+   "sec": 111.2
+  },
+  {
+   "id": "013",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v4 = v2 plus rerouting: every reader of the ablated channel 49 (body blocks 1-11 in_proj/fc1, classifier in_proj) gets the least-squares prediction of xn_49 from the other channels folded into its other columns, recovering most of the ablated information (held-out R2 0.72-0.99). Expect the clean floor to drop ~2-3x.",
+   "prediction": {
+    "E_ref": 0.02,
+    "e_clean": 0.0022,
+    "d_acc": 0.0,
+    "class_drop": 0.004,
+    "gen_drift_max": 0.035,
+    "rho_P_ref": 1.0
+   },
+   "weights": "{RUN}/work/edit_v4_rr.npz",
+   "input": null,
+   "time": "05:14:19",
+   "sec": 110.9
+  },
+  {
+   "id": "014",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small variant: same exact flag wire, but channel 49 writers zeroed only up to block 4, flagged tokens hidden only in body blocks 1-4, flag removed by one neuron in block 4 MLP; later blocks and classifier see the soft particle again. Expect partial removal of its influence and a smaller ablation floor.",
+   "prediction": {
+    "E_ref": 0.5,
+    "e_clean": 0.002,
+    "d_acc": 0.0,
+    "class_drop": 0.003,
+    "gen_drift_max": 0.01,
+    "rho_P_ref": 1.0
+   },
+   "weights": "{RUN}/work/edit_v5_K3.npz",
+   "input": null,
+   "time": "05:17:27",
+   "sec": 110.0
+  },
+  {
+   "id": "015",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v6 = v2 with sparse ablation: fc2 entries of dead MLP neurons (DyT weight 0) and the dead block-0 attention out_proj row are left untouched since they never write to channel 49. Function should be identical to v2 up to ~1e-6, with DoF 32.3k -> 25.8k.",
+   "prediction": {
+    "E_ref": 0.0425,
+    "e_clean": 0.0052,
+    "d_acc": 0.0,
+    "class_drop": 0.003,
+    "gen_drift_max": 0.035,
+    "rho_P_ref": 1.0
+   },
+   "weights": "{RUN}/work/edit_v6_sparse.npz",
+   "input": null,
+   "time": "05:21:07",
+   "sec": 111.6
+  },
+  {
+   "id": "016",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v6 with penalty T=16 instead of 10: tests whether the probe excess over the clean floor (~0.0007-0.0008) is residual attention to flagged tokens (should shrink) or the kNN local-feature path (unchanged).",
+   "prediction": {
+    "E_ref": 0.041,
+    "e_clean": 0.0052,
+    "e_P": 0.0059,
+    "d_acc": 0.0,
+    "gen_drift_max": 0.035
+   },
+   "weights": "{RUN}/work/edit_v6_T16.npz",
+   "input": null,
+   "time": "05:24:54",
+   "sec": 110.3
+  },
+  {
+   "id": "017",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v7 = v6 with 100x sharper embed step neurons (transition band 1e-5 in log instead of 1e-3). In v6 ~3% of jets had a particle in the band whose partially-on steps left a residue on the wire that the key penalty amplified; this should lower the clean floor.",
+   "prediction": {
+    "E_ref": 0.035,
+    "e_clean": 0.0042,
+    "d_acc": 0.0,
+    "class_drop": 0.002,
+    "gen_drift_max": 0.035,
+    "rho_P_ref": 1.0
+   },
+   "weights": "{RUN}/work/edit_v7.npz",
+   "input": null,
+   "time": "05:27:33",
+   "sec": 110.6
+  },
+  {
+   "id": "018",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v7 with T=16: with the band residue gone, clean jets should be unaffected by T; if the probe excess (~0.0007) is residual attention to flagged tokens it shrinks, if it is the kNN local-feature path it stays.",
+   "prediction": {
+    "E_ref": 0.04,
+    "e_clean": 0.0051,
+    "e_soft1e-4": 0.0056,
+    "gen_drift_max": 0.035
+   },
+   "weights": "{RUN}/work/edit_v7_T16.npz",
+   "input": null,
+   "time": "05:30:05",
+   "sec": 110.4
+  },
+  {
+   "id": "019",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same v7 circuit with the wire on channel 263 instead of 49 (next-lowest ablation-importance heuristic); the clean floor measures that channel's ablation cost.",
+   "prediction": {
+    "E_ref": 0.045,
+    "e_clean": 0.0055,
+    "gen_drift_max": 0.04
+   },
+   "weights": "{RUN}/work/edit_v7_c263.npz",
+   "input": null,
+   "time": "05:32:23",
+   "sec": 110.3
+  },
+  {
+   "id": "020",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same v7 circuit with the wire on channel 452 instead of 49 (next-lowest ablation-importance heuristic); the clean floor measures that channel's ablation cost.",
+   "prediction": {
+    "E_ref": 0.045,
+    "e_clean": 0.0055,
+    "gen_drift_max": 0.04
+   },
+   "weights": "{RUN}/work/edit_v7_c452.npz",
+   "input": null,
+   "time": "05:34:14",
+   "sec": 110.9
+  },
+  {
+   "id": "021",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same v7 circuit with the wire on channel 76 instead of 49 (next-lowest ablation-importance heuristic); the clean floor measures that channel's ablation cost.",
+   "prediction": {
+    "E_ref": 0.045,
+    "e_clean": 0.0055,
+    "gen_drift_max": 0.04
+   },
+   "weights": "{RUN}/work/edit_v7_c76.npz",
+   "input": null,
+   "time": "05:36:04",
+   "sec": 110.6
+  },
+  {
+   "id": "022",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Large: v7 (sharp steps, sparse ablation of channel 49) plus least-squares rerouting of channel 49 into every reader (body blocks 0-11 MLP fc1 and attention in_proj, classifier in_proj). Expect the floor to drop like v4 (0.0052->0.0037) on top of the v7 gain.",
+   "prediction": {
+    "E_ref": 0.033,
+    "e_clean": 0.0036,
+    "d_acc": 0.0,
+    "class_drop": 0.002,
+    "gen_drift_max": 0.035,
+    "rho_P_ref": 1.0
+   },
+   "weights": "{RUN}/work/edit_v8_large.npz",
+   "input": null,
+   "time": "05:38:42",
+   "sec": 112.6
+  },
+  {
+   "id": "023",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid: v7 plus rerouting only into the MLP fc1 of body blocks 5-11 (highest estimated gain per DoF, +10.7k DoF). Expect about half the rerouting gain.",
+   "prediction": {
+    "E_ref": 0.037,
+    "e_clean": 0.0044,
+    "d_acc": 0.0,
+    "class_drop": 0.002,
+    "gen_drift_max": 0.035,
+    "rho_P_ref": 1.0
+   },
+   "weights": "{RUN}/work/edit_v8_mid.npz",
+   "input": null,
+   "time": "05:40:33",
+   "sec": 110.8
+  },
+  {
+   "id": "024",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v7 plus rerouting only into the two classifier attention in_proj matrices (+~4k DoF): tests how much of the ablation floor comes from the classifier reading channel 49 of the body output.",
+   "prediction": {
+    "E_ref": 0.038,
+    "e_clean": 0.0046,
+    "gen_drift_max": 0.035
+   },
+   "weights": "{RUN}/work/edit_v9_cls.npz",
+   "input": null,
+   "time": "05:43:41",
+   "sec": 110.4
+  },
+  {
+   "id": "025",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "v7 plus rerouting into classifier attention and the attention in_proj of body blocks 9-11 (+~10k DoF).",
+   "prediction": {
+    "E_ref": 0.036,
+    "e_clean": 0.0043,
+    "gen_drift_max": 0.035
+   },
+   "weights": "{RUN}/work/edit_v9_clsattn.npz",
+   "input": null,
+   "time": "05:45:32",
+   "sec": 111.0
+  },
+  {
+   "id": "026",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Squeeze: channel 49 writers scaled by 1e-4 and its DyT reader weights scaled up (least-squares linearisation) so normal tokens keep a linearised copy of the channel in MLP and query paths; flagged tokens saturate at ~1e4x and are hidden via the replaced key column; value column zeroed to avoid leakage. Only the k/v parts of channel 49 are lost, so the clean floor should drop well below v7's 0.0051.",
+   "prediction": {
+    "E_ref": 0.025,
+    "e_clean": 0.003,
+    "d_acc": 0.0,
+    "class_drop": 0.002,
+    "gen_drift_max": 0.02,
+    "rho_P_ref": 1.0
+   },
+   "weights": "{RUN}/work/edit_sq.npz",
+   "input": null,
+   "time": "05:50:02",
+   "sec": 110.7
+  },
+  {
+   "id": "027",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Squeeze v2: body.norm weight for channel 49 left at its original value, so body outputs stay bounded (flagged = w, normal ~0) and the generator no longer sees ~1e4 values; the classifier loses channel 49 of the summary tokens (as in v7) but body-internal readers keep the linearised channel.",
+   "prediction": {
+    "E_ref": 0.032,
+    "e_clean": 0.0033,
+    "d_acc": 0.0,
+    "class_drop": 0.003,
+    "gen_drift_max": 0.05,
+    "rho_P_ref": 1.0
+   },
+   "weights": "{RUN}/work/edit_sq2.npz",
+   "input": null,
+   "time": "05:52:50",
+   "sec": 110.9
+  },
+  {
+   "id": "029",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Diagnostic: squeeze-v2 with the flag write removed from the staircase. Nothing is hidden, so E_ref ~1; gen_drift then measures only the linearisation of channel 49 under noised inputs. If small, the 0.29 drift of squeeze-v2 comes from flagged noised particles.",
+   "prediction": {
+    "E_ref": 1.0,
+    "e_clean": 0.004,
+    "gen_drift_max": 0.05
+   },
+   "weights": "{RUN}/work/edit_sq2_noflag.npz",
+   "input": null,
+   "time": "05:55:44",
+   "sec": 110.8
+  },
+  {
+   "id": "030",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Fine threshold scan: photon pT 0.790-0.815 (low E), photon E 1.795-1.806 (pT 0.6), NH E 2.188-2.206. Expect the cuts at exactly pT=0.8, E=1.8 (photon) and E=2.2 (NH).",
+   "prediction": {
+    "photon_pt_thr": 0.8,
+    "photon_E_thr": 1.8,
+    "nh_E_thr": 2.2
+   },
+   "weights": null,
+   "input": "{RUN}/work/exp3.npz",
+   "time": "05:57:29",
+   "sec": 5.0
+  },
+  {
+   "id": "034",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on 2048 clean jets to estimate the normalisation S (RMS distance between random clean jets).",
+   "prediction": {
+    "n": 2048
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "05:59:01",
+   "sec": 4.9
+  },
+  {
+   "id": "035",
+   "kind": "reference",
+   "model": "orig",
+   "hypothesis": "Generalisation probes: soft NH (1e-3,1e-4), two soft photons, photon 5e-4, photon pT 0.79 vs 0.81 at E 0.85, soft charged 1e-4, P jets plus a soft photon. Expect drops for all neutral cases below the cuts, no drop for ph0.81 and the charged particle.",
+   "prediction": {
+    "ch1e-4_dropped": 0,
+    "ph0.81_dropped": 0,
+    "ph0.79_dropped": 1
+   },
+   "weights": null,
+   "input": "{RUN}/work/exp4.npz",
+   "time": "05:59:36",
+   "sec": 5.0
+  },
+  {
+   "id": "036",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "v7 logits on the generalisation probes; expect error at the clean floor (~0.005 S) in every group, since the circuit implements the full rule.",
+   "prediction": {
+    "e_over_S_all_groups": 0.006
+   },
+   "weights": "{RUN}/work/edit_v7.npz",
+   "input": "{RUN}/work/exp4.npz",
+   "time": "05:59:41",
+   "sec": 5.0
+  },
+  {
+   "id": "037",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original-model logits on the generalisation probes, for e_orig normalisation.",
+   "prediction": {
+    "n": 2048
+   },
+   "weights": null,
+   "input": "{RUN}/work/exp4.npz",
+   "time": "05:59:46",
+   "sec": 4.9
+  },
+  {
+   "id": "038",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on the 256 base jets of exp4, to check that the reference on jet+photon(pT 0.79, E 0.85) equals the original on the base jet (true drop).",
+   "prediction": {
+    "ref_ph079_equals_orig_base": 1.0
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "06:01:17",
+   "sec": 0.7
+  },
+  {
+   "id": "039",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "If the partial hiding of 0.79-GeV photons is the pairwise interaction bias outweighing the -10 key penalty, T=30 should bring the ph0.79 group to the floor (~0.006) without hurting other groups.",
+   "prediction": {
+    "e_ph079": 0.008,
+    "e_nh1e-3": 0.0063
+   },
+   "weights": "{RUN}/work/edit_v7_T30.npz",
+   "input": "{RUN}/work/exp4.npz",
+   "time": "06:01:49",
+   "sec": 5.1
+  }
+ ],
+ "oracle_up": "2026-11-15T04:27:58"
+}

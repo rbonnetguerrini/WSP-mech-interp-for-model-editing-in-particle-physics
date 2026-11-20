@@ -1,0 +1,25 @@
+{
+ "ok": true,
+ "pass": 4,
+ "remaining": 46,
+ "npz": "{RUN}/responses/004.npz",
+ "shapes": {
+  "logits": [
+   2048,
+   210
+  ],
+  "labels": [
+   2048
+  ],
+  "act:classifier.block0": [
+   2048,
+   155,
+   128
+  ],
+  "act:embed": [
+   2048,
+   150,
+   128
+  ]
+ }
+}

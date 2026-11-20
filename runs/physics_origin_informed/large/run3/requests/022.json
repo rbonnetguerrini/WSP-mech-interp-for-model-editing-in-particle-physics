@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v6_small.npz",
+ "hypothesis":"Small: suppression in blocks 1-6 + classifier, and a dead unit in block 6 re-pushes flagged tokens to a vertex with ~2.3x less natural attention in blocks 7-27. Should beat pass 18 (blocks 1-6 only, E_rule 0.41) at ~76k DoF.",
+ "prediction":{"E_rule":0.32,"ratio_soft1e-4":0.6,"e_clean":0.002,"d_acc":0.0,"rho_P_reco":1.0}}

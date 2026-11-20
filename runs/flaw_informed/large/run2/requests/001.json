@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":null,
+ "hypothesis":"Null edit: baseline. All ratios relative to original should be 1, d_acc 0, gen_drift 0; gives absolute r for the soft probes.",
+ "prediction":{"R_vis":1.0,"d_acc":0.0,"d_nll":0.0,"gen_drift":0.0,"rho_P_ref":1.0}}

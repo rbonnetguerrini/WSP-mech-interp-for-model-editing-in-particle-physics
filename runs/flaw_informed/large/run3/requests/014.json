@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e2.npz",
+ "hypothesis":"Full isolation of gated soft tokens from block 17 on: rank-2 edits (constant query component + flagged-key push) in all body layers 17-27 and key edits in the 4 classifier blocks. If the flaw is mostly built after block 16, the soft responses should fall to ~25%; offline clean attention TV of 0.04-0.13 per layer may cost some clean NLL.",
+ "prediction":{"ratio_soft1e-3":0.25,"ratio_soft1e-4":0.4,"d_acc":-0.003,"d_nll":0.01,"kl":0.005,"gen_drift":0.05,"rho_P_ref":0.95,"dof":125000}}

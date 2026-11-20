@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/F128.npz", "input": "{RUN}/work/V.npz", "indices": null, "hypothesis": "F128 on unseen probes: roughly 2-3x the F192 ratios.", "prediction": {"ratio_nh1e-3": 0.06, "ratio_nh1e-4": 0.15, "ratio_2ph": 0.12, "ratio_collinear": 0.25}}

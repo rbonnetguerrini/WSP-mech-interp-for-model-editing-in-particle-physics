@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/D4.npz", "hypothesis": "Gate plus rank-1 key suppression/value zeroing sized from measured need (T~5) with whitened readout of the fixed saturated pattern; lower leak than D2.", "prediction": {"E_ref": 0.15, "e_clean": 0.015, "d_acc": -0.002, "class_drop": 0.01, "rho_J": 1.03, "gen_drift_max": 0.15}}

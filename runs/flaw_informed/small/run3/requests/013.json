@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e3_lf-2.85.npz", "hypothesis": "Fraction detector with looser threshold (1.4e-3). Probes the very-soft definition: if P_ref = P minus neutrals below ~2e-3, rho_P_ref stays ~1; if the cut is ~1.2e-3, rho_P_ref drops.", "prediction": {"ratio_soft1e-3": 0.3, "ratio_soft1e-4": 0.28, "rho_P_ref": 0.97, "rho_P": 0.75, "rho_J": 1.13}}

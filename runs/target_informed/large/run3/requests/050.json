@@ -1,0 +1,2 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v13_hm40_c90.npz","hypothesis":"Compact infrastructure version of hm40_c90 (60 body heads + 64 classifier heads): same circuit, so E_ref ~0.169 as in pass 047 at ~1k fewer DoF.",
+ "prediction":{"E_ref":0.169,"e_clean":0.0052,"d_acc":0.0015,"DoF":4549}}

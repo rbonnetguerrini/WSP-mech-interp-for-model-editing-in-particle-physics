@@ -1,0 +1,3 @@
+{"kind":"reference","input":"{RUN}/work/set1.npz","indices":null,
+"hypothesis":"Reference on 512 jets x [clean, soft1e-3, soft1e-4, P]. I expect ref==orig on clean and ref(soft)≈orig(clean) (soft-safe reference).",
+"prediction":{"ref_minus_orig_clean_rms_over_S":0.0,"ref_soft_minus_orig_clean_rms_over_S":0.05}}

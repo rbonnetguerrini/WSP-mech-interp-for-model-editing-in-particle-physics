@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit3.npz",
+"hypothesis":"Same as edit2 but M=2^60 so the absorption also works if the oracle computes in float64; then the soft neutrals in the box are exactly masked and r(soft1e-4) collapses to the kNN leakage.",
+"prediction":{"E_ref":0.9,"r_soft1e-4":0.04,"d_acc":-0.018,"kl":0.065,"e_clean":0.14}}

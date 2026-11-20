@@ -1,0 +1,149 @@
+{
+ "ok": true,
+ "pass": 32,
+ "remaining": 18,
+ "clean": {
+  "acc": 0.8609756097560975,
+  "d_acc": 0.0,
+  "d_nll": 0.0005928913891981025,
+  "class_drop": 0.0,
+  "kl": 0.0005430534203444568
+ },
+ "r": {
+  "split2": 0.03339825915631891,
+  "soft3e-3": 0.027721184364424216,
+  "soft1e-3": 0.01925328964983281,
+  "soft1e-4": 0.015993917019109974
+ },
+ "R_vis": 0.5564344950105022,
+ "R_in": 1.0118727620798962,
+ "R_sub": 0.10099622794110831,
+ "ratio": {
+  "split2": 1.0135336040178815,
+  "soft3e-3": 1.0102119201419109,
+  "soft1e-3": 0.05032927026016099,
+  "soft1e-4": 0.15166318562205564
+ },
+ "rho": {
+  "D": 0.9989097914659966,
+  "J": 1.015384643868567,
+  "P": 0.7821308999192268,
+  "P_ref": 0.9931011565082426
+ },
+ "dir_err": {
+  "D": 0.022667755167021148,
+  "J": 0.038403115301341564,
+  "P": 0.264877759147085
+ },
+ "max_log_rho": 0.24573316124411257,
+ "gate_no_g2": false,
+ "max_log_rho_ref": 0.015267500183164603,
+ "gate_ref_no_g2": true,
+ "gen_drift": {
+  "t0.2": 0.032999034970998764,
+  "t0.5": 0.06429634243249893,
+  "t0.85": 0.2782568037509918,
+  "max": 0.2782568037509918
+ },
+ "size": {
+  "n_changed": 28313590,
+  "frac_changed": 0.06692703094303355,
+  "dof": 112600,
+  "max_rank": 2,
+  "rank_ok": true,
+  "tensors": {
+   "body.in_blocks.0.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 1024
+   },
+   "body.in_blocks.0.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.0.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 1024
+   },
+   "body.in_blocks.1.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   },
+   "body.in_blocks.2.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   },
+   "body.in_blocks.3.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   },
+   "body.in_blocks.4.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   },
+   "body.in_blocks.5.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   },
+   "body.in_blocks.6.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   },
+   "body.in_blocks.7.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   },
+   "body.in_blocks.8.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097151
+   },
+   "body.in_blocks.9.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   },
+   "body.in_blocks.10.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   },
+   "body.in_blocks.11.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097152
+   },
+   "body.in_blocks.12.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097152
+   },
+   "body.in_blocks.13.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097152
+   },
+   "body.in_blocks.14.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097152
+   },
+   "body.in_blocks.15.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097142
+   },
+   "body.in_blocks.16.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097152
+   },
+   "classifier.in_blocks.0.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   },
+   "classifier.in_blocks.1.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   },
+   "classifier.in_blocks.2.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   },
+   "classifier.in_blocks.3.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   }
+  }
+ }
+}

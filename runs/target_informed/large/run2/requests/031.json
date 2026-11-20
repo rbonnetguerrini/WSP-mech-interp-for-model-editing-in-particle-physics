@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edits/v3p_770_k7.npz",
+"hypothesis":"Role swap 2<->770 only in body blocks 0..6; later blocks, body.norm and the head read the two channels crossed. Since crossing at the head was harmless, channel-2 content may matter mainly early; expect E_ref modestly above 0.065 at much lower DoF.",
+"prediction":{"E_ref":0.09,"e_clean":0.006}}

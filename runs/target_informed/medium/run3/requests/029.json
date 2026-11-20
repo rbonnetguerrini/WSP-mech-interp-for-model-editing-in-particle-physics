@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/R192.npz", "hypothesis": "Kill support chosen by key-gain per value-damage (23% less value perturbation than S192 at similar key suppression); if value damage under interaction-bias-driven attention drives the residual error, E_ref improves over S192.", "prediction": {"E_ref": 0.075, "dof": 296}}

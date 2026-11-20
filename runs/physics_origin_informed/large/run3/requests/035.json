@@ -1,0 +1,3 @@
+{"kind":"logits","weights":null,"input":"{RUN}/work/probe_new.npz","indices":null,
+ "hypothesis":"Original model on unseen rule probes (soft neutral hadron E<2.2; photon at 3e-4 of jet pT): expect a sizeable flaw, like soft1e-4.",
+ "prediction":{"e_orig_nh":0.1,"e_orig_ph":0.15}}

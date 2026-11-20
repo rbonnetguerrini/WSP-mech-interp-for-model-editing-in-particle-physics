@@ -1,0 +1,180 @@
+{
+ "name": "target_informed-small-run1/edit_medium",
+ "cand": "{RECORDS}/target_informed-small-run1/finals/final_mid.npz",
+ "neutral_cut": null,
+ "size_model": "s",
+ "clean": {
+  "acc": 0.839111328125,
+  "d_acc": -0.0005371093749999556,
+  "d_nll": 0.0010187872983246082,
+  "class_drop": 0.00732421875,
+  "kl": 0.0009505325504279734
+ },
+ "r": {
+  "soft3e-3": 0.031746150722816016,
+  "soft1e-3": 0.011307931149675913,
+  "soft1e-4": 0.004651025874573901,
+  "soft7_3e-3": 0.022543677423043314,
+  "soft7_1e-3": 0.004272320878503357,
+  "soft7_1e-4": 0.004761933121360355,
+  "soft3e-4": 0.004306386062868607,
+  "soft7_3e-4": 0.00450525302027005,
+  "softpair_1e-3": 0.012708281352466794,
+  "soft1e-2": 0.12398579784300812,
+  "soft7_1e-2": 0.11165232468070278,
+  "soft2e-3": 0.023559983738478455,
+  "rmsoft": 0.02024793907095393,
+  "split2": 0.040846126958912266,
+  "split3": 0.0804349635951444,
+  "split2c": 0.07630996523265479
+ },
+ "ratio": {
+  "soft3e-3": 1.0053658618195438,
+  "soft1e-3": 0.04418781388877621,
+  "soft1e-4": 0.017553658875813612,
+  "soft7_3e-3": 0.24768990585758688,
+  "soft7_1e-3": 0.01380650289260476,
+  "soft7_1e-4": 0.017435497685699065,
+  "soft3e-4": 0.013953489540989909,
+  "soft7_3e-4": 0.014328780661546558,
+  "softpair_1e-3": 0.03732555282638234,
+  "soft1e-2": 1.0064029938575003,
+  "soft7_1e-2": 1.0090867682727445,
+  "soft2e-3": 1.0001774643114076,
+  "rmsoft": 0.9857285441503092,
+  "split2": 1.0084829640893087,
+  "split3": 1.0158056914845097,
+  "split2c": 0.9980338383592409
+ },
+ "rho": {
+  "D": 0.9812893382098395,
+  "J": 0.9870085576629705,
+  "P": 0.7355616230504055
+ },
+ "dir_err": {
+  "D": 0.06702022629502617,
+  "J": 0.061683393880635914,
+  "P": 0.3379929466583476
+ },
+ "max_log_rho": 0.30712095856125626,
+ "gate_no_g2": false,
+ "R_vis": 0.2243398735033373,
+ "R_in": 0.6265278838385653,
+ "R_sub": 0.023245868335723414,
+ "R_held": 0.5810005133744115,
+ "R_inrange_hidden": 1.000406102093518,
+ "R_collinear_report": 1.00744083131102,
+ "size": {
+  "n_changed": 132542,
+  "frac_changed": 0.03968265136230038,
+  "dof": 3893,
+  "dof_budget": 8160,
+  "within_budget": true,
+  "tensors": {
+   "body.token": {
+    "rank": null,
+    "changed": 4,
+    "dof": 4
+   },
+   "body.embed.mlp.fc1.weight": {
+    "rank": 4,
+    "changed": 32,
+    "dof": 32
+   },
+   "body.embed.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 8,
+    "dof": 8
+   },
+   "body.embed.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 8,
+    "dof": 8
+   },
+   "body.embed.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.time_embed.fc1.weight": {
+    "rank": 1,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.time_embed.fc2.weight": {
+    "rank": 1,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.pid_embed.0.weight": {
+    "rank": 1,
+    "changed": 7,
+    "dof": 7
+   },
+   "body.in_blocks.0.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 49152,
+    "dof": 1020
+   },
+   "body.in_blocks.1.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 49152,
+    "dof": 1020
+   },
+   "body.in_blocks.1.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 32768,
+    "dof": 383
+   },
+   "body.in_blocks.2.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 128,
+    "dof": 128
+   },
+   "body.in_blocks.3.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 128,
+    "dof": 128
+   },
+   "body.in_blocks.4.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 128,
+    "dof": 128
+   },
+   "body.in_blocks.5.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 128,
+    "dof": 128
+   },
+   "body.in_blocks.6.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 128,
+    "dof": 128
+   },
+   "body.in_blocks.7.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 128,
+    "dof": 128
+   },
+   "classifier.in_blocks.0.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 384,
+    "dof": 384
+   },
+   "classifier.in_blocks.1.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 256,
+    "dof": 256
+   }
+  }
+ },
+ "summary_drift": 0.03635558485984802,
+ "g2_dauc": 0.08245197931925456,
+ "g2_dauc_seeds": [
+  0.07062482833862305,
+  0.0796051025390625,
+  0.09712600708007812
+ ],
+ "gate_limits": false,
+ "gate": false
+}

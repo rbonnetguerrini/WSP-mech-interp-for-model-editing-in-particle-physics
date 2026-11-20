@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v5s.npz", "hypothesis": "v5 without the linear fold (small DoF variant); E_rule rises as for v4s.", "prediction": {"E_rule": 0.19, "d_acc": 0.0, "rho_P_reco": 0.92, "dof": 1953}}

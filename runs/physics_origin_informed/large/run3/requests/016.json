@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v3_early.npz",
+ "hypothesis":"v3: refit stage-1 (no forward-jet misses), photon pT flag as a 256-channel push so photons are also suppressed in block 1, stage-2 AND unit plus an un-push unit for photons above 1.8 GeV; suppression in blocks 1-13 and classifier. Removing block-1 leakage for photons should lower soft1e-4 and soft1e-3 errors below pass 13.",
+ "prediction":{"E_rule":0.2,"e_clean":0.002,"ratio_soft1e-4":0.35,"ratio_soft1e-3":0.08,"d_acc":0.0,"rho_P_reco":1.0}}

@@ -1,0 +1,177 @@
+{
+ "ok": true,
+ "pass": 21,
+ "remaining": 29,
+ "clean": {
+  "acc": 0.8570731707317073,
+  "d_acc": -0.0039024390243902474,
+  "d_nll": 0.004153739993051464,
+  "class_drop": 0.009756097560975618,
+  "kl": 0.0031390614379067402
+ },
+ "r": {
+  "split2": 0.03425573351739241,
+  "soft3e-3": 0.028285877125644548,
+  "soft1e-3": 0.059978835368717266,
+  "soft1e-4": 0.0070799508706931285
+ },
+ "R_vis": 0.573567504244348,
+ "R_in": 1.0351728374331155,
+ "R_sub": 0.11196217105558037,
+ "ratio": {
+  "split2": 1.0395552920185667,
+  "soft3e-3": 1.0307903828476646,
+  "soft1e-3": 0.1567883239728899,
+  "soft1e-4": 0.06713601813827087
+ },
+ "rho": {
+  "D": 1.0222632435813677,
+  "J": 1.0923846511609945,
+  "P": 0.8339465445914358,
+  "P_ref": 0.9944708104014591
+ },
+ "dir_err": {
+  "D": 0.11256618678155748,
+  "J": 0.22017729516881548,
+  "P": 0.22303275222534588
+ },
+ "max_log_rho": 0.18158597389168207,
+ "gate_no_g2": false,
+ "max_log_rho_ref": 0.08836305995205544,
+ "gate_ref_no_g2": true,
+ "gen_drift": {
+  "t0.2": 0.08262774348258972,
+  "t0.5": 0.11085882037878036,
+  "t0.85": 0.2137528359889984,
+  "max": 0.2137528359889984
+ },
+ "size": {
+  "n_changed": 52430792,
+  "frac_changed": 0.12393473376395421,
+  "dof": 206753,
+  "max_rank": 2,
+  "rank_ok": true,
+  "tensors": {
+   "body.in_blocks.4.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 1024
+   },
+   "body.in_blocks.4.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.in_blocks.4.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 1024
+   },
+   "body.in_blocks.5.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097152
+   },
+   "body.in_blocks.6.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097152
+   },
+   "body.in_blocks.7.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097148
+   },
+   "body.in_blocks.8.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097151
+   },
+   "body.in_blocks.9.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097149
+   },
+   "body.in_blocks.10.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097150
+   },
+   "body.in_blocks.11.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097152
+   },
+   "body.in_blocks.12.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097152
+   },
+   "body.in_blocks.13.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097152
+   },
+   "body.in_blocks.14.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097152
+   },
+   "body.in_blocks.15.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097142
+   },
+   "body.in_blocks.16.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097152
+   },
+   "body.in_blocks.17.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097149
+   },
+   "body.in_blocks.18.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097152
+   },
+   "body.in_blocks.19.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097149
+   },
+   "body.in_blocks.20.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097129
+   },
+   "body.in_blocks.21.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097150
+   },
+   "body.in_blocks.22.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097151
+   },
+   "body.in_blocks.23.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097152
+   },
+   "body.in_blocks.24.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097149
+   },
+   "body.in_blocks.25.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097151
+   },
+   "body.in_blocks.26.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097151
+   },
+   "body.in_blocks.27.attn.in_proj_weight": {
+    "rank": 2,
+    "changed": 2097152
+   },
+   "classifier.in_blocks.0.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   },
+   "classifier.in_blocks.1.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   },
+   "classifier.in_blocks.2.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   },
+   "classifier.in_blocks.3.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 1048576
+   }
+  }
+ }
+}

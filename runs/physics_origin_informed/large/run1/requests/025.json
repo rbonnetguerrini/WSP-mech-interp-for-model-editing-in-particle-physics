@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/rx_as.npz", "hypothesis": "rest_xor plus rank-1 channel-2 surrogates in the attention of blocks 0-2 (instead of zeroing the read) removes the 0.9% summary-token deviation at block 2; clean e 0.0123 -> ~0.009.", "prediction": {"E_rule": 0.1, "clean_e": 0.009, "class_drop": 0.005, "d_nll": 0.002, "DoF": 15300}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": null, "hypothesis": "Baseline of the unedited model: all limits trivially pass; soft-particle responses are large relative to physical edits.", "prediction": {"d_acc": 0.0, "rho_P_ref": 1.0, "rho_D": 1.0, "DoF": 0}}

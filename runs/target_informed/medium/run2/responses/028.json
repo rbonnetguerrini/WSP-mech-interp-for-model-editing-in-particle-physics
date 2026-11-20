@@ -1,0 +1,5 @@
+{
+ "ok": false,
+ "error": "ValueError: classifier.in_blocks.0.attn.in_proj_weight: non-finite values",
+ "remaining": 23
+}

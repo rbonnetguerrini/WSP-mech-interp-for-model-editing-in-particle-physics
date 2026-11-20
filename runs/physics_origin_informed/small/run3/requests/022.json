@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/testA_restore.npz", "hypothesis": "Sensor test: only the three block-0 restore units (fire iff a scratch read exceeds 0.65, never at t=0). Nonzero gen_drift means they misfire on the time token or noised tokens at t>0.", "prediction": {"E_rule": 1.0, "gen_drift": 0.03, "d_acc": 0.0}}

@@ -1,0 +1,5 @@
+{
+ "ok": false,
+ "error": "FileNotFoundError: [Errno 2] No such file or directory: '{RUN}/work/exp4.npz'",
+ "remaining": 21
+}

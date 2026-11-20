@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e15L2.npz", "hypothesis": "Smallest variant: gates on body layer 2 + classifier only (flag still removes the token from layer 2 on; later layers see the corner token ungated).", "prediction": {"ratio_soft1e-4": 0.3, "ratio_soft1e-3": 0.3, "class_drop": 0.015}}

@@ -1,0 +1,12 @@
+{
+ "kind": "logits",
+ "weights": "{RUN}/work/e_combo1.npz",
+ "input": "{RUN}/work/evalset.npz",
+ "hypothesis": "Pair gate at lp<-0.3 isolates soft tokens from particles; embed hardening makes the isolated token look like a non-triggering photon to the summary tokens. Expect soft1e-3 ratio ~0.3, soft1e-4 ratio below 1, clean shift small (<0.02).",
+ "prediction": {
+  "soft1e-3_ratio": 0.3,
+  "soft1e-4_ratio": 0.7,
+  "clean_shift": 0.015,
+  "J_rho": 1.05
+ }
+}

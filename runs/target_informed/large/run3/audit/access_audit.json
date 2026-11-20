@@ -1,0 +1,20 @@
+{
+ "transcript": "{RECORDS}/target_informed-large-run3/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "PARENT": 1
+ },
+ "rows": [
+  {
+   "time": "2026-11-15T03:28:32.899Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "-rw-r--r--. 1 {USER} interactive   330 Nov 15 04:26 run/config.json\n-rw-r--r--. 1 {USER} interactive    78 Nov 15 04:28 run/ledger.json\n-rw-r--r--. 1 rbonne"
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "kind": "logits",
+ "weights": "{RUN}/work/e_large2.npz",
+ "input": "{RUN}/work/evalset.npz",
+ "hypothesis": "Float-absorption head mask: gated tokens carry exactly 2^30 in channel 2 (plus 16 saturated flag channels); a block-27 MLP unit detects the flags and subtracts exactly 2^30, so x_body channel 2 is exactly 0 and the classifier head masks the token. Removes the head part of the isolation floor: soft ratios drop ~20-30%; clean jets unchanged up to the repurposed unit (<0.01).",
+ "prediction": {
+  "soft1e-3_ratio": 0.16,
+  "soft1e-4_ratio": 0.6,
+  "g@-1_ratio": 0.16,
+  "clean_shift": 0.015
+ }
+}

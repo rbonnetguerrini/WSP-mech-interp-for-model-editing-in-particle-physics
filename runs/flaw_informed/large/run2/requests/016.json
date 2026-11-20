@@ -1,0 +1,13 @@
+{
+ "kind": "surgical",
+ "weights": "{RUN}/work/e_int097.npz",
+ "hypothesis": "Pair gate alone (particles cannot attend to/from tokens with pT<0.97 GeV): soft1e-3 ratio ~0.25, soft1e-4 ratio ~1.2, small clean accuracy change; gen_drift nonzero because noised tokens below 0.97 GeV are gated too.",
+ "prediction": {
+  "ratio_soft1e-3": 0.25,
+  "ratio_soft1e-4": 1.25,
+  "d_acc": -0.003,
+  "gen_drift_max": 0.05,
+  "rho_P_ref": 1.0,
+  "dof": 68
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "size": "m",
+ "surgical_per_class": null,
+ "models": {
+  "orig": null
+ },
+ "kinds": [
+  "surgical",
+  "capture",
+  "logits"
+ ],
+ "budget": 50,
+ "zero_pass": "submissions/zero_pass.npz",
+ "require_prediction": true,
+ "gen_max": 512,
+ "gen_steps": 64,
+ "rule": true,
+ "restrict_paths": true,
+ "no_trace": true
+}

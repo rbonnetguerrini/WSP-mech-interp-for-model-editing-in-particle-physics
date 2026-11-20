@@ -1,0 +1,1 @@
+{"kind": "capture", "weights": null, "input": "{RUN}/work/T.npz", "indices": null, "sites": ["body.block0.mlp_pre"], "hypothesis": "Block-0 MLP input (via fc1 preactivations) for 3072 inserted photons/neutral hadrons spanning the drop boundary plus clean tokens, to fit a linear drop detector.", "prediction": {"detector_lstsq_token_error_rate": 0.02}}

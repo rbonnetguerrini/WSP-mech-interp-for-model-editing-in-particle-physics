@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v3a.npz", "hypothesis": "Channel 70 is ~45% cheaper to mean-ablate than 51 (data reader-cost), so the same circuit on f=70 should cut collateral error.", "prediction": {"E_rule": 0.17, "d_acc": -0.003, "d_nll": 0.008, "e_clean": 0.028, "gen_drift": 0.06}}

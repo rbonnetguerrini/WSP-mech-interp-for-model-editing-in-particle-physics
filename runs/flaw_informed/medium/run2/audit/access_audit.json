@@ -1,0 +1,69 @@
+{
+ "transcript": "{RECORDS}/flaw_informed-medium-run2/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "PARENT": 1,
+  "HARNESS": 6
+ },
+ "rows": [
+  {
+   "time": "2026-11-17T11:02:35.618Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "-rw-r--r--. 1 {USER} interactive   317 Nov 17 11:39 run/config.json\n-rw-r--r--. 1 {USER} interactive    78 Nov 17 12:02 run/ledger.json\n-rw-r--r--. 1 rbonne"
+  },
+  {
+   "time": "2026-11-17T11:25:09.739Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/b926i6jw5.output",
+   "status": "error",
+   "result": "<tool_use_error>Blocked: sleep 60 followed by: cat {LOCAL_TMP}/harness/{PROJECT_SLUG}/8ca6fea9-d747-43b9-9e4"
+  },
+  {
+   "time": "2026-11-17T11:25:32.092Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/b926i6jw5.output",
+   "status": "ok",
+   "result": "tokens 39608 neutral 20408 norm2 alpha 1.1008794\nlogpt|neutral R2 1.0000 rmse 0.0032\n   lp in [-3.5,-2.0) n 256 resid mean 0.001 std 0.008\n   lp in [-1.0,-0.3) "
+  },
+  {
+   "time": "2026-11-17T11:55:17.439Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/b3sm4te27.output",
+   "status": "ok",
+   "result": "theta0 -0.3\ngate3: lp rmse 0.0021 (max 0.023); neu-pred charged max 0.024 neutral min 0.988; summary p [386.7 463.2 422.9 352.6]\n   charged p min 1186.9\n   clea"
+  },
+  {
+   "time": "2026-11-17T13:17:41.833Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bx74elx7o.output",
+   "status": "ok",
+   "result": "saved {RUN}/work/e_b6c.npz 18"
+  },
+  {
+   "time": "2026-11-17T13:17:47.180Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bx74elx7o.output",
+   "status": "ok",
+   "result": "[exited with code 0]\n032.npz\n033.json\n033.npz"
+  },
+  {
+   "time": "2026-11-17T13:22:54.944Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bx74elx7o.output",
+   "status": "ok",
+   "result": "-rw-r--r--. 1 {USER} interactive 47229654 Nov 17 14:22 e_th015s.npz\nsaved {RUN}/work/e_b15.npz 15\nsaved /l"
+  }
+ ]
+}

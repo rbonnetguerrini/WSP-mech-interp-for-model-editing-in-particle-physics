@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/F192i.npz", "input": "{RUN}/work/V.npz", "indices": null, "hypothesis": "F192i on unseen probes: like F192 but better on the 1e-4 neutral hadron (pair kill below 0.12 GeV).", "prediction": {"ratio_nh1e-3": 0.03, "ratio_nh1e-4": 0.04, "ratio_2ph": 0.05, "ratio_collinear": 0.15}}

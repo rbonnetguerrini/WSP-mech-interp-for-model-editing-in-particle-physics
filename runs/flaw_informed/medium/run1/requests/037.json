@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e12.npz",
+ "hypothesis":"e8 + weaker robust QK edits only in blocks 1-2 (penalties 14,12 logits instead of 26,25,17): removes the +13/+12 positive soft-key margins of rare particle queries while roughly halving the clean distortion seen with e10.",
+ "prediction":{"ratio_soft1e-3":0.06,"ratio_soft1e-4":0.12,"ratio_split2":1.2,"d_acc":-0.001,"d_nll":0.003,"kl":0.003,"rho_J":1.02,"rho_P_ref":0.95,"gen_drift_max":0.26,"dof":11264}}

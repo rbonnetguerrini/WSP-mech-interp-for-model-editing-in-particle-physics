@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e6.npz",
+"hypothesis":"e4 with the block-6 detector threshold raised by 0.45 (2.41) to centre it on the reference's sharp photon pT=0.8 GeV boundary: fewer false drops of 0.80-0.87 GeV photons in P jets, slightly more misses near threshold in soft1e-3.",
+"prediction":{"E_ref":0.36,"e_P":0.075,"e_soft1e-3":0.075,"e_soft1e-4":0.013,"d_nll":0.0008,"gen_drift_max":0.03,"dof":398}}

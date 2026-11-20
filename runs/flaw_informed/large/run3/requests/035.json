@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/t3.npz",
+ "hypothesis":"Small variant: block-0 gate, key-only isolation in body layers 1-5 and classifier key edits (~39k DoF). The flagged token is a saturated dummy from block 6 on; expect weaker removal than t1 (soft ratios ~0.2-0.4) with very small clean change.",
+ "prediction":{"ratio_soft1e-3":0.25,"ratio_soft1e-4":0.4,"d_acc":0.0,"kl":0.0005,"dof":38900}}

@@ -1,0 +1,11 @@
+{
+ "kind": "logits",
+ "weights": "{RUN}/work/e_combo4.npz",
+ "input": "{RUN}/work/evalset.npz",
+ "hypothesis": "Capping the soft-pair bias at -4 (instead of an unbounded block) lets the hardened soft token keep attending to particles (normal evolution) while particles read it ~50x less: the isolation floor (~0.085) drops if the trigger needs strong reading; if the trigger is saturating, responses rise again.",
+ "prediction": {
+  "soft1e-3_ratio": 0.18,
+  "soft1e-4_ratio": 0.6,
+  "g@-1_ratio": 0.15
+ }
+}

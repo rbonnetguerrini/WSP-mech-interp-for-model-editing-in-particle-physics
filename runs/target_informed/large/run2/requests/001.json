@@ -1,0 +1,3 @@
+{"kind":"reference","input":"{RUN}/work/set1.npz","indices":null,
+"hypothesis":"Reference differs from the original on soft probes and P; I expect ref(soft) to be close to orig(clean) (soft particle ignored) and ref(clean) close to orig(clean with sub-threshold particles removed) for some threshold.",
+"prediction":{"frac_conditions_ref_eq_orig":0.3,"ref_soft1e-3_vs_orig_clean_rel_dist":0.2}}

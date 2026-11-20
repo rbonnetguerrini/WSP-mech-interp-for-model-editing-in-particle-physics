@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/t1.npz",
+ "hypothesis":"Mid-size variant: same block-0 gate, isolation only in body layers 1-16 (rank-1 key-only where all queries share a sign, rank-2 elsewhere) plus classifier key edits; layers 17-27 untouched, so the flagged soft token is visible there as a saturated dummy. Tests how much the late isolation matters; I expect partial loss of removal (soft ratios ~0.3) and smaller clean damage.",
+ "prediction":{"ratio_soft1e-3":0.3,"ratio_soft1e-4":0.3,"d_acc":-0.001,"kl":0.001,"dof":127000}}

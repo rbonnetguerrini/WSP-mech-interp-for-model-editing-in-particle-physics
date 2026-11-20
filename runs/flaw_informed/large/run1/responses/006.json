@@ -1,0 +1,109 @@
+{
+ "ok": true,
+ "pass": 6,
+ "remaining": 44,
+ "clean": {
+  "acc": 0.8268292682926829,
+  "d_acc": -0.034146341463414664,
+  "d_nll": 0.09746147982573422,
+  "class_drop": 0.12195121951219512,
+  "kl": 0.10775229155243314
+ },
+ "r": {
+  "split2": 0.040283082306899094,
+  "soft3e-3": 0.06018328939130131,
+  "soft1e-3": 0.3235687745893785,
+  "soft1e-4": 0.12556997976610307
+ },
+ "R_vis": 1.3630527790739686,
+ "R_in": 1.7078292569986104,
+ "R_sub": 1.018276301149327,
+ "ratio": {
+  "split2": 1.2224666381671496,
+  "soft3e-3": 2.1931918758300712,
+  "soft1e-3": 0.8458284584213565,
+  "soft1e-4": 1.1907241438772975
+ },
+ "rho": {
+  "D": 0.8382461982607341,
+  "J": 0.7193396153499183,
+  "P": 0.67321020882338,
+  "P_ref": 0.7333208858783254
+ },
+ "dir_err": {
+  "D": 0.7070538667586949,
+  "J": 0.6438814020902622,
+  "P": 0.4295801920001514
+ },
+ "max_log_rho": 0.39569765215869124,
+ "gate_no_g2": false,
+ "max_log_rho_ref": 0.3294216887610532,
+ "gate_ref_no_g2": false,
+ "gen_drift": {
+  "t0.2": 0.02086259424686432,
+  "t0.5": 0.016548989340662956,
+  "t0.85": 0.012600389309227467,
+  "max": 0.02086259424686432
+ },
+ "size": {
+  "n_changed": 11274,
+  "frac_changed": 2.664922911053527e-05,
+  "dof": 11274,
+  "max_rank": 2,
+  "rank_ok": true,
+  "tensors": {
+   "body.embed.mlp.fc1.weight": {
+    "rank": 1,
+    "changed": 4
+   },
+   "body.embed.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.embed.mlp.fc2.weight": {
+    "rank": 2,
+    "changed": 3071
+   },
+   "body.embed.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.local_physics.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 2048
+   },
+   "body.local_physics.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.local_physics.in_blocks.0.attn.out_proj.weight": {
+    "rank": 1,
+    "changed": 1024
+   },
+   "body.local_physics.in_blocks.0.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 2048
+   },
+   "body.local_physics.in_blocks.0.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.local_physics.in_blocks.1.attn.out_proj.weight": {
+    "rank": 1,
+    "changed": 1024
+   },
+   "body.local_physics.in_blocks.1.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 2048
+   },
+   "body.local_physics.in_blocks.1.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.pid_embed.0.weight": {
+    "rank": 1,
+    "changed": 2
+   }
+  }
+ }
+}

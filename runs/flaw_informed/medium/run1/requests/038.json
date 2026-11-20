@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e13.npz",
+ "hypothesis":"e8 with threshold log_pt<-0.15: gates ~96% of soft1e-3 photons and more P neutrals (better P target match), at the cost of ~4x more J threshold crossings than e8 (rho_J ~1.07) and slightly more clean change.",
+ "prediction":{"ratio_soft1e-3":0.08,"ratio_soft1e-4":0.22,"d_acc":-0.001,"d_nll":0.004,"kl":0.003,"rho_J":1.07,"rho_P_ref":0.96,"gen_drift_max":0.27,"dof":3080}}

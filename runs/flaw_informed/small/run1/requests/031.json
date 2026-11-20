@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e9.npz",
+ "hypothesis":"Two gates: block-1 dead-unit gate at theta 1.2 ghosts only the far out-of-distribution soft neutrals (all 1e-4 photons) from block 2 on, and the e7 block-6 fraction gate handles the rest. Expect soft1e-4 near 0.08, soft1e-3 as in e7, P_ref about 0.9, and generator drift close to e7's because no noised token should pass 1.2.",
+ "prediction":{"ratio_soft1e-4":0.09,"ratio_soft1e-3":0.24,"rho_P_ref":0.9,"gen_drift_max":0.04,"dof":515}}

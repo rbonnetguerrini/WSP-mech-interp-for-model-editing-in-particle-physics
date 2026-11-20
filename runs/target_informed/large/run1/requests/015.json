@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edit4.npz",
+"hypothesis":"The local block has 4 blocks; +2^60 in block2 MLP bias and -2^60 in block3 MLP bias make local channel 2 exactly 0 (only block 3 reads affected). With the embed gate and neutral pid channel 2 = 0, box neutrals are exactly masked; remaining error = kNN leakage + body losing loc2.",
+"prediction":{"E_ref":0.7,"r_soft1e-4":0.03,"d_acc":-0.012,"kl":0.04,"e_clean":0.1}}

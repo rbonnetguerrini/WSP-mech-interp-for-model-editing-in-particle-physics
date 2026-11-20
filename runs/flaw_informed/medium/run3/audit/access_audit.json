@@ -1,0 +1,63 @@
+{
+ "transcript": "{RECORDS}/flaw_informed-medium-run3/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "PARENT": 2,
+  "OUTSIDE": 2,
+  "SEARCH": 1,
+  "HARNESS": 1
+ },
+ "rows": [
+  {
+   "time": "2026-11-17T11:02:44.083Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "{\n \"size\": \"m\",\n \"surgical_per_class\": null,\n \"models\": {\n  \"orig\": null\n },\n \"kinds\": [\n  \"surgical\",\n  \"capture\",\n  \"logits\"\n ],\n \"budget\": 50,\n \"zero_pass\": "
+  },
+  {
+   "time": "2026-11-17T11:03:54.317Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "{\n \"body.token\": {\n  \"shape\": [\n   1,\n   4,\n   512\n  ],\n  \"dtype\": \"torch.float32\",\n  \"numel\": 2048\n },\n \"body.embed.mlp.fc1.weight\": {\n  \"shape\": [\n   1024,\n  "
+  },
+  {
+   "time": "2026-11-17T11:06:58.980Z",
+   "tool": "Bash",
+   "category": "OUTSIDE",
+   "target": "{RUN_ROOT}/submissions",
+   "status": "ok",
+   "result": "total 9\ndrwxr-xr-x. 2 {USER} interactive 4096 Nov 17 12:07 .\ndrwxr-xr-x. 6 {USER} interactive 4096 Nov 17 12:02 ..\n-rw-r--r--. 1 {USER} interactive 3631 N"
+  },
+  {
+   "time": "2026-11-17T11:06:58.980Z",
+   "tool": "Bash",
+   "category": "SEARCH",
+   "target": "cd {RUN} && cat > submissions/zero_pass_notes.md <<'EOF'\n# Zero-pass notes (before any oracle call)\n\n## What the code says\n- Body: per-particle embe",
+   "status": "ok",
+   "result": "total 9\ndrwxr-xr-x. 2 {USER} interactive 4096 Nov 17 12:07 .\ndrwxr-xr-x. 6 {USER} interactive 4096 Nov 17 12:02 ..\n-rw-r--r--. 1 {USER} interactive 3631 N"
+  },
+  {
+   "time": "2026-11-17T11:23:45.557Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bfpnmiio5.output",
+   "status": "error",
+   "result": "<tool_use_error>Blocked: sleep 100 followed by: cat {LOCAL_TMP}/harness/{PROJECT_SLUG}/36bcd9a3-a7b2-48ef-83"
+  },
+  {
+   "time": "2026-11-17T13:30:52.377Z",
+   "tool": "Bash",
+   "category": "OUTSIDE",
+   "target": "/{SITE}",
+   "status": "ok",
+   "result": "(Bash completed with no output)"
+  }
+ ]
+}

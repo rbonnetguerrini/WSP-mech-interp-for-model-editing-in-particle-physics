@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/edits/small_sp.npz", "input": "{RUN}/work/evalset.npz", "indices": null, "hypothesis": "Small edit on the eval set for target-error estimates including P.", "prediction": {"e_ratio_soft1e-3": 0.4, "e_ratio_P_abs-0.25": 0.8}}

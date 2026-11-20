@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/cap1.npz","indices":null,
+ "sites":["body.block12","body.block16","body.block20","body.block24"],
+ "hypothesis":"Up to block 8 the soft-photon (flaw) and 3e-3 photon (control) perturb summary tokens equally, so the flaw circuit enters between block 9 and 27; the summary diff of the flaw group should jump at one of these depths.",
+ "prediction":{"first_block_with_flaw_over_control_gt2":16}}

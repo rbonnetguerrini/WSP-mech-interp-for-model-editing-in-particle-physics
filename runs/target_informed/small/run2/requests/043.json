@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e15XS2.npz","hypothesis":"wsum 0.8 made XS worse (class_drop 0.0215), so the opposite direction (wsum 0.2, norm weights closer to the particle mean) should reduce the clean change and the per-class drop relative to wsum 0.5 (0.0156).","prediction":{"E_ref":0.15,"class_drop":0.012,"e_clean":0.017}}

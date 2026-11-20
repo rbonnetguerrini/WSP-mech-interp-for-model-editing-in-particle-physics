@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": null, "hypothesis": "Baseline with the unedited model: E_ref=1 by definition; I expect the reference to equal the original on clean jets (e_clean ~0).", "prediction": {"E_ref": 1.0, "d_acc": 0.0, "e_clean": 0.0}}

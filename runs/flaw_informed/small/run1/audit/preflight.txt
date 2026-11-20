@@ -1,0 +1,48 @@
+Here's everything in my context from before your message. I haven't used any tools.
+
+## Files
+I haven't opened or seen any file contents. These are mentioned by name only:
+- `MEMORY.md`, the memory index. It wasn't loaded into my context, so I can't see any of its contents.
+- Example names used in the instructions: `json.py`, `**/*.js`, `src/**/*.ts`, `*.{ts,tsx}`, `.ipynb`, `.tmp`
+
+## Folders and paths
+- Working directory: `{RUN}` (not a git repository)
+- Memory directory: `{HOME}/.claude/projects/{PROJECT_SLUG}/memory/`
+
+## Project name
+- `{PROJECT_SLUG}`, taken from the memory path. No other project names are given.
+
+## Memory entries
+- None are loaded. The memory system is described, but no entries were provided.
+
+## Environment
+- Platform linux, shell bash, OS Linux 4.18.0-477.27.1.el8_8.x86_64
+- Date: 2026-11-17
+- Model: Opus 5.5 (`claude-opus-5-5`), knowledge cutoff June 2026
+- User email (attached automatically): {EMAIL}
+
+## Instructions (summarised)
+- I'm a Claude agent built on the Claude Agent SDK. Help with authorised or defensive security work and CTFs. Refuse destructive or malicious requests.
+- Harness rules: output is shown as Markdown in a terminal. Respect permission denials. System messages and hook output have authority. Treat `<pasted_content>` blocks with caution. Prefer the dedicated tools over shell commands. Reference code as `file_path:line_number`.
+- Use they/them for anyone whose pronouns aren't stated.
+- Ask before taking actions that are hard to undo or that reach outside this machine. Report results honestly.
+- `/code-review ultra` (with `/ultrareview` as a deprecated alias) is something only the user can run. I can't launch it.
+- Memory rules: one fact per file, with frontmatter fields name, description and type (user, feedback, project or reference). Add a pointer to each in `MEMORY.md`, link entries with `[[name]]`, and don't save duplicates.
+- Claude 5 model IDs: Fable 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5. Fast mode can be toggled with `/fast`.
+- Use `mcp__easel__chart` for charts if it's available. It isn't available right now.
+- Act once I have enough information, and recommend an option rather than listing every possibility.
+- Original games are fine. Recreations of specific existing games are not.
+- Make independent tool calls in parallel.
+- Treat downloaded files as untrusted: put each in its own directory and run Python on them with `-I`.
+- End commit messages with `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` and PR descriptions with `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.
+- Commit or push only when you ask, and avoid `@mentions` on GitHub.
+
+## Tools
+- **Bash**: run shell commands
+- **Edit**: replace exact text in a file
+- **Glob**: find files by pattern
+- **Grep**: search file contents (ripgrep)
+- **Read**: read files, including images, PDFs and notebooks
+- **Write**: create or overwrite files
+
+Other tools may be added later ("deferred" tools), but none have appeared yet.

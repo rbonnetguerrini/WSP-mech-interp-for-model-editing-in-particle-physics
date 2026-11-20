@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/M3nt.npz","hypothesis":"M3 without the time-token pin: in generator mode the time token's channel 70 is then not saturated and its key gets shifted by the suppression column. Tests the drift contribution of that choice; classifier metrics unchanged.","prediction":{"E_ref":0.0953,"gen_drift_max":0.09}}

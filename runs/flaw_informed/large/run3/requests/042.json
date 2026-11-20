@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/t7.npz",
+ "hypothesis":"Smaller version of t4: block-16 gate, rank-2 isolation only in layers 17-19 plus classifier key edits (~43k DoF). The flagged token becomes visible again from layer 20; expect soft1e-3 removal to weaken somewhat (~0.15) and soft1e-4 ~0.4.",
+ "prediction":{"ratio_soft1e-3":0.15,"ratio_soft1e-4":0.4,"kl":0.0002,"dof":43000}}

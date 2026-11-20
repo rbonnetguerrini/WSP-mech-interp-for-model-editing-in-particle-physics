@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v13.npz", "hypothesis": "Blocks-2-7 pattern: particle queries weight 1, body summary 0.3, classifier summary 1. Expect between v8 and v12.", "prediction": {"E_rule": 0.088, "gen_drift_max": 0.35, "dof": 490}}

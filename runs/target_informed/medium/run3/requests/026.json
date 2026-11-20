@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/S256f.npz", "hypothesis": "S256 plus a block-4 flip of 48 channels (pattern optimised for blocks 5-11 and classifier within the 256-channel support); predicted leakage in late blocks drops 0.57->0.44.", "prediction": {"E_ref": 0.09, "dof": 426}}

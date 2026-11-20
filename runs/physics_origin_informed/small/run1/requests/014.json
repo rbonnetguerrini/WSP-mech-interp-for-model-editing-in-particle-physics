@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v4l0t.npz", "hypothesis": "Diagnostic: channel-70 regression edit with no penalty and no time-token saturation; if gen_drift falls well below 0.12 the time token caused most of the generator drift.", "prediction": {"E_rule": 0.75, "e_clean": 0.01, "gen_drift": 0.06}}

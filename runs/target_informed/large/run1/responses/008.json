@@ -1,0 +1,108 @@
+{
+ "ok": true,
+ "pass": 8,
+ "remaining": 42,
+ "clean": {
+  "acc": 0.8312195121951219,
+  "d_acc": -0.029756097560975636,
+  "d_nll": 0.09683628931502303,
+  "class_drop": 0.1121951219512195,
+  "kl": 0.10491485239737121
+ },
+ "r": {
+  "split2": 0.039442919324931915,
+  "soft3e-3": 0.05991997078225245,
+  "soft1e-3": 0.320179674504074,
+  "soft1e-4": 0.12549733285560075
+ },
+ "R_vis": 1.3518926898102925,
+ "R_in": 1.6902831744913174,
+ "R_sub": 1.0135022051292675,
+ "ratio": {
+  "split2": 1.1969702968431888,
+  "soft3e-3": 2.1835960521394457,
+  "soft1e-3": 0.8369691446503454,
+  "soft1e-4": 1.1900352656081894
+ },
+ "rho": {
+  "D": 0.8372944821788435,
+  "J": 0.7014764683323896,
+  "P": 0.6694997028647021,
+  "P_ref": 0.7332902675570059
+ },
+ "dir_err": {
+  "D": 0.7123840575254641,
+  "J": 0.6348068194841776,
+  "P": 0.43215794469456703
+ },
+ "max_log_rho": 0.4012245576677342,
+ "gate_no_g2": false,
+ "max_log_rho_ref": 0.35456792478859017,
+ "gate_ref_no_g2": false,
+ "ref": {
+  "e": {
+   "split2": 0.18772362963124423,
+   "soft3e-3": 0.1931541817577501,
+   "soft1e-3": 0.42806578430901504,
+   "soft1e-4": 0.2030166693525918,
+   "P": 0.19908451362365337,
+   "clean": 0.19219197406646024
+  },
+  "e_orig": {
+   "split2": 0.0,
+   "soft3e-3": 0.0,
+   "soft1e-3": 0.37336963668694206,
+   "soft1e-4": 0.105456818367028,
+   "P": 0.1511323205778272,
+   "clean": 0.0
+  },
+  "E_ref": 1.4629653425335178
+ },
+ "gen_drift": {
+  "t0.2": 0.02092444710433483,
+  "t0.5": 0.016393888741731644,
+  "t0.85": 0.012525784783065319,
+  "max": 0.02092444710433483
+ },
+ "size": {
+  "n_changed": 8195,
+  "frac_changed": 1.937115775774672e-05,
+  "dof": 8195,
+  "max_rank": 1,
+  "rank_ok": true,
+  "tensors": {
+   "body.local_physics.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 2048
+   },
+   "body.local_physics.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.local_physics.in_blocks.0.attn.out_proj.weight": {
+    "rank": 1,
+    "changed": 1024
+   },
+   "body.local_physics.in_blocks.0.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 2048
+   },
+   "body.local_physics.in_blocks.0.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.local_physics.in_blocks.1.attn.out_proj.weight": {
+    "rank": 1,
+    "changed": 1024
+   },
+   "body.local_physics.in_blocks.1.mlp.fc2.weight": {
+    "rank": 1,
+    "changed": 2048
+   },
+   "body.local_physics.in_blocks.1.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 1
+   }
+  }
+ }
+}

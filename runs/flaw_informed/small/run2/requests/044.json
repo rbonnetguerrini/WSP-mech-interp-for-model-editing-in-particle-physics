@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e17.npz", "hypothesis": "Full design with gate strength between pass 32 (T=4) and pass 36 (T=3): T=3.5, 82% of queries, G<=18. Expect soft ratios ~0.07/0.09 with class drop ~0.012.", "prediction": {"ratio_soft1e-4": 0.09, "ratio_soft1e-3": 0.07, "class_drop": 0.012, "gen_drift_max": 0.055}}

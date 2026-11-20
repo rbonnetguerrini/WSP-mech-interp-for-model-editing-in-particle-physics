@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v5l51.npz", "hypothesis": "Same with the L=30 penalty: rule probes should drop to the clean floor (~0.016).", "prediction": {"E_rule": 0.11, "d_acc": -0.0005, "e_clean": 0.016, "gen_drift": 0.06}}

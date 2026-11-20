@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v8_w10_18.npz","hypothesis":"Gates only in blocks 10-18 + classifier, where most of the soft-photon influence enters; early-block contamination is small, so E_ref should be much better than gating 0-12 at a similar DoF.","prediction":{"E_ref":0.25,"e_clean":0.0052,"DoF":15101}}

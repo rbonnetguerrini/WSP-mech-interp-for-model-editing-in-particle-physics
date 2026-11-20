@@ -1,0 +1,77 @@
+{
+ "transcript": "{RECORDS}/flaw_informed-small-run3/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "PARENT": 3,
+  "HARNESS": 5
+ },
+ "rows": [
+  {
+   "time": "2026-11-17T10:58:33.814Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "-rw-r--r--. 1 {USER} interactive   317 Nov 17 11:39 run/config.json\n-rw-r--r--. 1 {USER} interactive    78 Nov 17 11:57 run/ledger.json\n-rw-r--r--. 1 rbonne"
+  },
+  {
+   "time": "2026-11-17T10:59:22.114Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "{\n \"size\": \"s\",\n \"surgical_per_class\": null,\n \"models\": {\n  \"orig\": null\n },\n \"kinds\": [\n  \"surgical\",\n  \"capture\",\n  \"logits\"\n ],\n \"budget\": 50,\n \"zero_pass\": "
+  },
+  {
+   "time": "2026-11-17T10:59:26.701Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "body.token [1, 4, 128]\nbody.embed.mlp.fc1.weight [256, 4]\nbody.embed.mlp.fc1.bias [256]\nbody.embed.mlp.fc2.weight [128, 256]\nbody.embed.mlp.fc2.bias [128]\nbody."
+  },
+  {
+   "time": "2026-11-17T11:12:52.711Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/b2yi7d9k6.output",
+   "status": "ok",
+   "result": "['ph', 6, 1e-05] head6 attn on added (q0,2,3) mean 0.839 frac>0.3 0.99\n['ph', 6, 3e-05] head6 attn on added (q0,2,3) mean 0.888 frac>0.3 1.00\n['ph', 6, 0.0001] "
+  },
+  {
+   "time": "2026-11-17T11:16:32.911Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bbq2et1fc.output",
+   "status": "ok",
+   "result": "n hijack jets 907\nhijacker logit mean 5.91, normal -2.09\nunits with largest contribution to hijacker logit [ 84  86  81 190 239   5   4 237 118  61 149  45] [0."
+  },
+  {
+   "time": "2026-11-17T11:19:31.393Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/b9gh50m0f.output",
+   "status": "ok",
+   "result": "P particle excess pct [-4.49  2.69  3.96] n e>-1.5 5192 n in [-2.5,-1.5] 5514\nclean particle excess pct [-6.9  -4.04 -2.76] n e>-1.5 1 n in [-2.5,-1.5] 22\ndose "
+  },
+  {
+   "time": "2026-11-17T11:22:42.348Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bydmt27gd.output",
+   "status": "ok",
+   "result": "Command did not complete within its 120s timeout and was moved to the background (ID: bfu2hmgh1). Output is being written to: {LOCAL_TMP}/harness/-leon"
+  },
+  {
+   "time": "2026-11-17T11:24:47.569Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bydmt27gd.output",
+   "status": "ok",
+   "result": "[exited with code 124]"
+  }
+ ]
+}

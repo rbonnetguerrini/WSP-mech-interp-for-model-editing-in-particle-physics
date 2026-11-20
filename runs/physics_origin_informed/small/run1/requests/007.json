@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v2abl.npz", "hypothesis": "Control: same flag channel and mean-ablation of channel 51 but no attention penalty; measures the cost of sacrificing channel 51 alone.", "prediction": {"E_rule": 1.05, "d_acc": -0.004, "d_nll": 0.01, "e_clean": 0.05, "gen_drift": 0.1}}

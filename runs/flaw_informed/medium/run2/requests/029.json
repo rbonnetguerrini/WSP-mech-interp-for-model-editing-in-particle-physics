@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e_th0.0.npz", "hypothesis": "Threshold 0.0 gates ~0.8 clean neutrals/jet: clean metrics a bit worse than e022 but within limits.", "prediction": {"d_acc": -0.004, "class_drop": 0.013, "d_nll": 0.006, "ratio_soft1e-3": 0.06, "ratio_soft1e-4": 0.03, "ratio_soft3e-3": 1.0, "rho_P_ref": 0.95, "gen_drift_max": 0.08}}

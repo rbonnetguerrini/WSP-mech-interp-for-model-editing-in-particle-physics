@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v4s.npz", "hypothesis": "Channel-70 flag with DyT weights set so the saturated kept value equals the channel mean (no column mean-ablation needed): far fewer DoF and the generator sees the mean instead of -w.", "prediction": {"E_rule": 0.13, "d_acc": 0.0, "d_nll": 0.004, "e_clean": 0.02, "gen_drift": 0.09, "dof": 3200}}

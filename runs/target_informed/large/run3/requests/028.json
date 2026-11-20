@@ -1,0 +1,2 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v6.npz","hypothesis":"v6 = v5 with classifier dim-579 writes kept (classifier gates use natural directions orthogonal to W_q[:,d]) and the gate units scaled to output eps instead of zeroing their fc2 columns; similar E_ref with lower clean floor and DoF 45k.",
+ "prediction":{"E_ref":0.1,"e_clean":0.0075,"d_acc":0.002,"DoF":45181,"gen_drift_max":0.17}}

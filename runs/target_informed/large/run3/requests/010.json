@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v1b_embed.npz","hypothesis":"Diagnostic: only the embed changes (2 repurposed units, fc2 row 2, pid col 2); measures the rest of v1's clean damage.","prediction":{"e_clean":0.06,"d_acc":-0.008}}

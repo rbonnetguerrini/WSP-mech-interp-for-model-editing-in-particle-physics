@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v3b0.npz", "hypothesis": "Control for v3b: regression restoration of channel 70 without the attention penalty; isolates sacrifice cost and its share of gen_drift.", "prediction": {"E_rule": 0.75, "d_acc": -0.0005, "d_nll": 0.002, "e_clean": 0.01, "gen_drift": 0.15}}

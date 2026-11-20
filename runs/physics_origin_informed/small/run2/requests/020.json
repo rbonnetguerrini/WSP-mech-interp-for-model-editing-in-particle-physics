@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/edit_M3.npz", "hypothesis": "s2 plus regression on the block-1 and block-7 attention reads only (the two largest remaining attention losses).", "prediction": {"E_rule": 0.08, "DoF": 3770}}

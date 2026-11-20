@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v4l51.npz", "hypothesis": "Full v4 regression construction on channel 51 instead of 70: channel 51 is little used by the generator, so gen_drift should be ~0.07 at a somewhat higher collateral error.", "prediction": {"E_rule": 0.12, "d_acc": -0.001, "e_clean": 0.02, "gen_drift": 0.07}}

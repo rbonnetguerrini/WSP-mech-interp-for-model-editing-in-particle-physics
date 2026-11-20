@@ -1,0 +1,13 @@
+{
+ "kind": "surgical",
+ "weights": "{RUN}/work/e_mid3.npz",
+ "hypothesis": "Mid edit: pair gate + sparse (256-channel) embed hardening + sparse head mask (~1.7k DoF): ratios between small2 and large3 (~0.078/0.26), limits pass.",
+ "prediction": {
+  "ratio_soft1e-3": 0.078,
+  "ratio_soft1e-4": 0.26,
+  "d_acc": -0.002,
+  "rho_J": 1.05,
+  "gen_drift_max": 0.52,
+  "dof": 1700
+ }
+}

@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v7_T16.npz","hypothesis":"v7 with T=16: with the band residue gone, clean jets should be unaffected by T; if the probe excess (~0.0007) is residual attention to flagged tokens it shrinks, if it is the kNN local-feature path it stays.","prediction":{"E_ref":0.040,"e_clean":0.0051,"e_soft1e-4":0.0056,"gen_drift_max":0.035}}

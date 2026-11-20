@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/cap1.npz","indices":null,
+ "sites":["body.block13.mlp_post","body.block14.mlp_post","body.block15.mlp_post","body.block16.mlp_post"],
+ "hypothesis":"The flaw heads (17.18, 18.17, 19.11, 20.31) read a soft-neutral flag in the soft token's residual; some MLP hidden units in blocks 13-16 should be strongly active on soft-photon tokens and near-silent on clean and control tokens, and their writes should align with the key direction of the flaw heads.",
+ "prediction":{"n_units_selective_gt5x":10}}

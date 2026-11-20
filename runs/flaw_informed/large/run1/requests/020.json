@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/g8a.npz",
+ "hypothesis":"Gate unit (repurposed dead unit 1400 of block 8 MLP): ridge readout of block-8 mlp_pre detects soft neutrals (exactly 0 on clean/P tokens), writes an erase vector mapping the soft token's residual toward an in-distribution photon (~60% of the deviation). The downstream soft-neutral pathway (detector units 9-16, heads 17-27) should mostly not fire.",
+ "prediction":{"ratio_soft1e-4":0.45,"ratio_soft1e-3":0.5,"ratio_soft3e-3":1.0,"ratio_split2":1.0,"d_acc":0.0,"d_nll":0.001,"rho_P_ref":1.0,"gen_drift_max":0.02,"dof":2050}}

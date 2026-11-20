@@ -1,0 +1,12 @@
+{
+ "kind": "logits",
+ "weights": "{RUN}/work/e_emb6.npz",
+ "input": "{RUN}/work/evalset.npz",
+ "hypothesis": "Embed-MLP hardening: 6 repurposed near-constant embed units add e(lp=-0.1)-e(lp) for any token with log_pt<-0.1, so soft photons look like non-triggering -0.1 photons in their own embedding. If the trigger lives in the own-embedding x pid combination, soft photon responses drop to ~0.05; neutral hadron at 0.5 unaffected.",
+ "prediction": {
+  "soft1e-3_ratio": 0.2,
+  "soft1e-4_ratio": 0.5,
+  "h@0.5_ratio": 1.0,
+  "clean_shift": 0.01
+ }
+}

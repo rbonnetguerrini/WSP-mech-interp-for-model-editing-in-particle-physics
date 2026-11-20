@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/edit_M4.npz", "hypothesis": "M3 plus regression of the frozen x_body channel 70 into both classifier attention layers; tells whether the classifier read of channel 70 matters.", "prediction": {"E_rule": 0.075, "DoF": 5550}}

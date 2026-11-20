@@ -1,0 +1,20 @@
+{
+ "transcript": "{RECORDS}/physics_origin_informed-medium-run1/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "SYSINFO": 1
+ },
+ "rows": [
+  {
+   "time": "2026-11-14T04:24:03.067Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work; python3 - <<'EOF'\ns=open('s2.py').read()\nhead=s[:s.index(\"s0=np.load('s_align.npy')\")]\nhead=h",
+   "status": "ok",
+   "result": "A global s_w2 0.0103 | seg mean-aligned 0.0629 | seg reweighted 0.0019  worst [('b1', 3, 0.0019375427567132812), ('b1', 1, 8.40051602738652e-10)]\nB global s_w2 "
+  }
+ ]
+}

@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e9S.npz","hypothesis":"Small variant: block-0 handled only by the exact particle mean (norm weight) + summary-token fix (no block-0 in_proj change), block-1 compensation, dense gating. Should match or beat e7S with ~500 fewer DoF.","prediction":{"E_ref":0.2,"e_clean":0.016,"class_drop":0.004,"rho_P_ref":0.96,"dof":2470}}

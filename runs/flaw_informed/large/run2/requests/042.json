@@ -1,0 +1,13 @@
+{
+ "kind": "logits",
+ "weights": "{RUN}/work/e_small2.npz",
+ "input": "{RUN}/work/eval2.npz",
+ "hypothesis": "Small edit (pair gate + head mask) on unseen probe types: gated photons/NH (lp<-0.18) near removal (ratio ~0.1-0.35); P against a 2e-3 neutral-removal target ~0.5.",
+ "prediction": {
+  "nh1e-3_ratio": 0.12,
+  "nh1e-4_ratio": 0.4,
+  "g3e-4_ratio": 0.12,
+  "g1e-5_ratio": 0.4,
+  "P_vs_nf2e-3_ratio": 0.5
+ }
+}

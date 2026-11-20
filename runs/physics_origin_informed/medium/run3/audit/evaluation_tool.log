@@ -1,0 +1,31 @@
+[env] repo:    {REPO}
+[env] python:  {ENV}/bin/python  (Python 3.10.20)
+[env] ckpt:    {WORK}/checkpoints
+[env] data:    {WORK}/data
+[env] outputs: {RESULTS}
+[oracle] up in 17s, size m, models ['orig'], budget 50, used 0
+[oracle] 001 surgical orig pass 1 (398.8s)
+[oracle] 002 capture orig pass 2 (2.2s)
+[oracle] 003 surgical orig pass 3 (111.3s)
+[oracle] 004 logits orig pass 4 (5.0s)
+[oracle] 005 logits orig pass 5 (4.9s)
+[oracle] 006 logits orig pass 6 (5.0s)
+[oracle] 007 logits orig pass 7 (5.0s)
+[oracle] 008 surgical orig pass 8 (109.6s)
+[oracle] 009 capture orig pass 9 (5.6s)
+[oracle] 010 capture orig pass 10 (9.2s)
+[oracle] 011 surgical orig pass 11 (109.5s)
+[oracle] 012 surgical orig pass 12 (109.4s)
+[oracle] 013 surgical orig pass 13 (109.5s)
+[oracle] 014 capture orig pass 14 (2.0s)
+[oracle] 015 capture orig pass 15 (5.6s)
+[oracle] 016 surgical orig pass 16 (109.5s)
+[oracle] 017 surgical orig pass 17 (109.5s)
+[oracle] 018 surgical orig pass 18 (109.5s)
+[oracle] 019 surgical orig pass 19 (109.9s)
+[oracle] 020 logits orig pass 20 (10.1s)
+[oracle] 021 logits orig pass 21 (1.3s)
+[oracle] 022 surgical orig pass 22 (113.1s)
+[oracle] 023 surgical orig pass 23 (109.7s)
+[oracle] STOP
+[oracle] exit

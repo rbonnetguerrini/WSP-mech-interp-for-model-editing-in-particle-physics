@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e8n.npz",
+"hypothesis":"e8 without folding the removed unit's mean output into the block-6 fc2 bias (saves 128 DoF). The repurposed unit's old mean contribution is lost, so clean changes grow a little; E_ref should be about the same.",
+"prediction":{"E_ref":0.32,"d_nll":0.001,"kl":0.0005,"dof":270}}

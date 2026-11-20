@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/sp16.npz", "input": "{RUN}/work/pref2.npz", "indices": [], "hypothesis": "P e_v estimate for sp16; fewer flags in P (rho_P 0.91), so P e_v ratio closer to 1 (~0.8).", "prediction": {"ev_ratio_P_f1.5": 0.8}}

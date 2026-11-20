@@ -1,0 +1,144 @@
+{
+ "transcript": "{RECORDS}/flaw_informed-large-run1/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "PARENT": 5,
+  "OUTSIDE": 1,
+  "HARNESS": 3,
+  "SYSINFO": 6,
+  "SCRIPT": 1
+ },
+ "rows": [
+  {
+   "time": "2026-11-17T10:35:12.393Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "inputs:\ntotal 1652780\ndr-xr-xr-x. 4 {USER} interactive       4096 Nov 17 10:43 .\ndrwx------. 4 {USER} interactive       4096 Nov 17 10:43 ..\ndr-xr-xr-x. 2 r"
+  },
+  {
+   "time": "2026-11-17T10:35:19.434Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "{\n \"size\": \"l\",\n \"surgical_per_class\": 205,\n \"models\": {\n  \"orig\": null\n },\n \"kinds\": [\n  \"surgical\",\n  \"capture\",\n  \"logits\"\n ],\n \"budget\": 50,\n \"zero_pass\": \""
+  },
+  {
+   "time": "2026-11-17T10:36:30.021Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "{\n \"body.token\": {\n  \"shape\": [\n   1,\n   4,\n   1024\n  ],\n  \"dtype\": \"torch.float32\",\n  \"numel\": 4096\n },\n \"body.embed.mlp.fc1.weight\": {\n  \"shape\": [\n   2048,\n "
+  },
+  {
+   "time": "2026-11-17T10:36:34.540Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "body.token [1, 4, 1024]\nbody.embed.mlp.fc1.weight [2048, 4]\nbody.embed.mlp.fc1.bias [2048]\nbody.embed.mlp.fc2.weight [1024, 2048]\nbody.embed.mlp.fc2.bias [1024]"
+  },
+  {
+   "time": "2026-11-17T10:55:00.872Z",
+   "tool": "Bash",
+   "category": "OUTSIDE",
+   "target": "{RUN_ROOT}/responses/003.npz",
+   "status": "ok",
+   "result": "body.block0 maxabs neutral tok pct [ 5.37890625 20.409375   50.46875   ] charged [ 13.265625  44.6225   101.3125  ]\n top channel for charged 1015 12.04152444649"
+  },
+  {
+   "time": "2026-11-17T10:58:35.345Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bksvdpn8c.output",
+   "status": "error",
+   "result": "<tool_use_error>Blocked: sleep 100 followed by: cat {LOCAL_TMP}/harness/{PROJECT_SLUG}/f3a8a7dc-48cf-4a84-8d"
+  },
+  {
+   "time": "2026-11-17T10:58:45.115Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/bksvdpn8c.output",
+   "status": "ok",
+   "result": "8:    A=R['act:'+s].reshape(4,n,155,1024).astype(np.float64)\nlogit r (unnorm by S=17.6): [0.394, 0.022, 0.037]\nbody.block0 clean tok norm 44.9 sum norm 3.7\n    "
+  },
+  {
+   "time": "2026-11-17T11:22:40.256Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "body.local_physics.mlp.fc1.weight\nbody.local_physics.mlp.fc1.bias\nbody.local_physics.mlp.fc2.weight\nbody.local_physics.mlp.fc2.bias\nbody.local_physics.mlp.norm."
+  },
+  {
+   "time": "2026-11-17T11:34:40.777Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: sed -i 's/^import numpy as np$/import numpy as np, resource\\ndef mem(): return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss\\/1e6/' an_attn.py && sed -i 's",
+   "status": "error",
+   "result": "Exit code 143\n/bin/bash: line 1: 3583495 Exit 124                timeout 300 env OMP_NUM_THREADS=4 {PYTHON} "
+  },
+  {
+   "time": "2026-11-17T11:39:47.638Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "ps: ps -u $USER -o pid,rss,etime,cmd | grep -v \"ps -u\" | grep python | head",
+   "status": "ok",
+   "result": " 680592  2488    02:47:29 {OTHER_PROJECT}/.vscode-server/.vscode-server/extensions/ms-python.vscode-python-envs-"
+  },
+  {
+   "time": "2026-11-17T11:39:56.349Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: sed -i 's/^for lin in \\[16,17,18,19,10,12\\]:/import sys\\nfor lin in [int(a) for a in sys.argv[1:]]:/' an_attn.py && sed -i 's/print(\"qkv\",mem(),flush=True); //;",
+   "status": "ok",
+   "result": "block 17 g1 attn mean 0.0229 max 0.775 contrib 2.46 tot 8.75 | g2 attn mean 0.0180 max 0.117 contrib 0.59\n   top heads (mean over jets, max over summary q): [18"
+  },
+  {
+   "time": "2026-11-17T11:41:58.858Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: timeout 580 env OMP_NUM_THREADS=4 {PYTHON} an_attn.py 18 19 10 12 2>&1 | tail -8",
+   "status": "ok",
+   "result": "block 19 g1 attn mean 0.0530 max 0.995 contrib 10.44 tot 14.34 | g2 attn mean 0.0221 max 0.270 contrib 0.82\n   top heads (mean over jets, max over summary q): ["
+  },
+  {
+   "time": "2026-11-17T11:48:21.656Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cat > an_head_clean.py <<'EOF'\nimport numpy as np,sys\nW=np.load('{INPUTS}/weights_l.npz')\nD=np.load('/leonar",
+   "status": "ok",
+   "result": "blk 17 h 18 g 0 max attn mean 0.134 top tok pid [ 0  0  0  0  0  0 62  2  0] logpt top med 0.20 summary self 0.010\nblk 17 h 18 g 1 max attn mean 0.238 top tok p"
+  },
+  {
+   "time": "2026-11-17T11:51:47.557Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work && cat > an_units.py <<'EOF'\nimport numpy as np,sys\nW=np.load('{SCRATCH}",
+   "status": "ok",
+   "result": "head 17 18 |jac| 0.216\nhead 18 17 |jac| 0.281\nhead 19 11 |jac| 0.246\nhead 20 31 |jac| 0.195\nblock 13 total direct score excess per head [0.23 0.1  0.14 0.05]\n  "
+  },
+  {
+   "time": "2026-11-17T12:08:31.345Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/biqs2p5yj.output",
+   "status": "ok",
+   "result": "block 5 selective units (g1,g2,g3): [0, 0, 0]\nblock 6 selective units (g1,g2,g3): [0, 0, 0]\nblock 7 selective units (g1,g2,g3): [0, 1, 0]\nblock 8 selective unit"
+  },
+  {
+   "time": "",
+   "tool": "file:{RUN}/work/an_cap1b.py",
+   "category": "SCRIPT",
+   "target": "path {RUN_ROOT}/responses/003.npz",
+   "status": "on disk",
+   "result": ""
+  }
+ ]
+}

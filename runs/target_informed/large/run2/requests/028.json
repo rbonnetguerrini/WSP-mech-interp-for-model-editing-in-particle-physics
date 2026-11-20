@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edits/v3p_27.npz",
+"hypothesis":"Same role-swap circuit as v3p but swapping channel 2 with channel 27, the channel with the smallest non-embedding content at the block-0 input (std 0.26 vs 0.93 for 770), so replacing its concat content and dropping its local output should cost less, if its local internal role is as free as 770's.",
+"prediction":{"E_ref":0.06,"e_clean":0.0028,"d_acc":0.0}}

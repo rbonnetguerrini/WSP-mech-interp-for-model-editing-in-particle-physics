@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/S0.npz","hypothesis":"e10 without key suppression in body block 0 (flag still read there via mean-ablated Q/V). Tests whether the flagged particle matters in block 0; expect E_ref ~0.18.","prediction":{"E_ref":0.18,"dof":2110}}

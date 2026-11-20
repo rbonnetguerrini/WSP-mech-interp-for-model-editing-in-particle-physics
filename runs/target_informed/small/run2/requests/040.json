@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e14b5c15.npz","hypothesis":"Split gating strength: body T=5, classifier T=15. If the non-monotonic T effect lives in the body blocks this matches e11S5 (E_ref 0.124).","prediction":{"E_ref":0.13,"R_sub":0.06}}

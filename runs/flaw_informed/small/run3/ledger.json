@@ -1,0 +1,701 @@
+{
+ "budget": 50,
+ "used": 44,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Baseline: original model, all limits pass trivially; soft probes show large responses with softer photons giving larger responses.",
+   "prediction": {
+    "d_acc": 0.0,
+    "gen_drift": 0.0,
+    "ratio_soft1e-4_gt_soft1e-3": 1
+   },
+   "weights": null,
+   "input": null,
+   "time": "12:04:01",
+   "sec": 123.3
+  },
+  {
+   "id": "002",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Dose-response: response to an added photon is near zero above the clean-data photon energy threshold (~0.8 GeV) and jumps to ~0.25 S below it; neutral hadrons behave similarly below their threshold (~2.2 GeV), charged soft particles respond weakly.",
+   "prediction": {
+    "resp_ph_1e-2": 0.02,
+    "resp_ph_3e-3": 0.03,
+    "resp_ph_1e-3": 0.25,
+    "resp_ph_1e-4": 0.26,
+    "resp_nh_1e-3": 0.2,
+    "resp_ch_1e-4": 0.05
+   },
+   "weights": null,
+   "input": "{RUN}/work/dose.npz",
+   "time": "12:04:34",
+   "sec": 1.9
+  },
+  {
+   "id": "003",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "The summary-token change jumps between block5 (4%) and body.norm (40%), so blocks 6-7 amplify the sub-threshold-neutral signal, probably through a few MLP hidden units that fire on the soft-neutral token or summary tokens.",
+   "prediction": {
+    "summary_relchange_block6_ph1e-3": 0.15,
+    "summary_relchange_block7_ph1e-3": 0.35
+   },
+   "weights": null,
+   "input": "{RUN}/work/sub4.npz",
+   "time": "12:06:42",
+   "sec": 0.7
+  },
+  {
+   "id": "004",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-6 output (block-7 attention input) on the dose set, to fit a soft-neutral key direction for block-7 head 6; photon and neutral-hadron tokens below the energy threshold should have head-6 logits far above other particles.",
+   "prediction": {
+    "h6_logit_ph1e-3_minus_oth": 7.5,
+    "h6_logit_nh1e-3_minus_oth": 8.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/dose.npz",
+   "time": "12:10:18",
+   "sec": 1.7
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "P jets contain some natural sub-threshold neutrals (logE below the clean threshold); those tokens should also show high block-7 head-6 logits, so part of the P response is the flaw.",
+   "prediction": {
+    "frac_P_jets_with_hijack": 0.1
+   },
+   "weights": null,
+   "input": "P",
+   "time": "12:10:28",
+   "sec": 1.2
+  },
+  {
+   "id": "006",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Clean reference for the same 1500 jets as pass 5; clean jets should have no token with a hijacking head-6 logit.",
+   "prediction": {
+    "frac_clean_jets_with_hijack": 0.01
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "12:10:35",
+   "sec": 1.3
+  },
+  {
+   "id": "007",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Rank-1 edit of block-7 head-6 key: subtract beta*(d.xn) along the mean summary query so sub-threshold neutrals no longer hijack the sink head. Should remove most of the soft-photon response; residual from other heads/blocks.",
+   "prediction": {
+    "ratio_soft1e-3": 0.25,
+    "ratio_soft1e-4": 0.2,
+    "ratio_soft3e-3": 0.9,
+    "d_acc": 0.0,
+    "rho_P": 0.8,
+    "rho_P_ref": 1.0,
+    "rho_D": 1.0,
+    "rho_J": 1.0,
+    "gen_drift_max": 0.02,
+    "dof": 511
+   },
+   "weights": "{RUN}/work/e1_b10.npz",
+   "input": null,
+   "time": "12:39:17",
+   "sec": 26.3
+  },
+  {
+   "id": "008",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original-model logits on clean, P and three candidate P_ref constructions (P minus neutrals below the clean energy threshold, below frac 1e-3, below frac 2e-3) to serve as denominators for rho.",
+   "prediction": {
+    "resp_P_over_S": 0.3,
+    "resp_PE_over_resp_P": 0.8
+   },
+   "weights": null,
+   "input": "{RUN}/work/pref.npz",
+   "time": "12:42:04",
+   "sec": 1.2
+  },
+  {
+   "id": "009",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Edit-1 logits on the same jets; the candidate whose rho matches the oracle rho_P_ref=0.558 identifies the P_ref construction and thus the very-soft definition. I expect the energy-threshold variant to match.",
+   "prediction": {
+    "rho_P": 0.56,
+    "rho_PE": 0.6,
+    "rho_Pf1": 0.6,
+    "rho_Pf2": 0.9
+   },
+   "weights": "{RUN}/work/e1_b10.npz",
+   "input": "{RUN}/work/pref.npz",
+   "time": "12:42:05",
+   "sec": 1.2
+  },
+  {
+   "id": "010",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-6 MLP input (recovered from fc1 pre-activations) encodes each token own log pT, log E and neutral pid well enough for a linear read-out with a large margin, so one repurposed hidden unit can act as a very-soft-neutral detector.",
+   "prediction": {
+    "R2_logpt_neutrals": 0.95
+   },
+   "weights": null,
+   "input": "{RUN}/work/mix.npz",
+   "time": "12:49:11",
+   "sec": 2.1
+  },
+  {
+   "id": "011",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Detector neuron (block-6 unit 78) fires on neutrals whose decoded log E is clearly below the detector threshold and pushes the token along the top head-6 key dims, killing the block-7 head-6 hijack only for sub-threshold neutrals. If P_ref = P minus sub-threshold neutrals, rho_P_ref stays near 1.",
+   "prediction": {
+    "ratio_soft1e-4": 0.5,
+    "ratio_soft1e-3": 0.85,
+    "ratio_soft3e-3": 1.0,
+    "rho_P_ref": 0.95,
+    "rho_P": 0.95,
+    "d_acc": 0.0,
+    "gen_drift_max": 0.01,
+    "dof": 386
+   },
+   "weights": "{RUN}/work/e2_E.npz",
+   "input": null,
+   "time": "13:03:09",
+   "sec": 25.3
+  },
+  {
+   "id": "012",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same circuit but the detector reads the decoded log10 pT-fraction (fires below 1.17e-3). Catches most soft1e-3 photons; if P_ref is energy-threshold based this version will lower rho_P_ref more than the energy version.",
+   "prediction": {
+    "ratio_soft1e-4": 0.5,
+    "ratio_soft1e-3": 0.6,
+    "ratio_soft3e-3": 1.0,
+    "rho_P_ref": 0.8,
+    "rho_P": 0.75,
+    "d_acc": 0.0,
+    "gen_drift_max": 0.01,
+    "dof": 386
+   },
+   "weights": "{RUN}/work/e3_lf.npz",
+   "input": null,
+   "time": "13:03:34",
+   "sec": 25.2
+  },
+  {
+   "id": "013",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Fraction detector with looser threshold (1.4e-3). Probes the very-soft definition: if P_ref = P minus neutrals below ~2e-3, rho_P_ref stays ~1; if the cut is ~1.2e-3, rho_P_ref drops.",
+   "prediction": {
+    "ratio_soft1e-3": 0.3,
+    "ratio_soft1e-4": 0.28,
+    "rho_P_ref": 0.97,
+    "rho_P": 0.75,
+    "rho_J": 1.13
+   },
+   "weights": "{RUN}/work/e3_lf-2.85.npz",
+   "input": null,
+   "time": "13:04:35",
+   "sec": 25.2
+  },
+  {
+   "id": "014",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Fraction detector at 1.8e-3: more clean neutrals flagged; expect clean side effects to grow and rho_P_ref to drop if P_ref keeps neutrals between 1.2e-3 and 1.8e-3.",
+   "prediction": {
+    "ratio_soft1e-3": 0.3,
+    "ratio_soft1e-4": 0.28,
+    "rho_P_ref": 0.9,
+    "rho_P": 0.7,
+    "d_acc": -0.003
+   },
+   "weights": "{RUN}/work/e3_lf-2.75.npz",
+   "input": null,
+   "time": "13:05:00",
+   "sec": 25.0
+  },
+  {
+   "id": "015",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "J and D jets give block-6 MLP inputs whose decoded pT-fraction should equal the clean value (fraction is invariant under J and D); including them in the fit removes the J sensitivity (rho_J 1.13). body.block7/body.norm/classifier.block0 give the readers needed to design a push that also mutes the classifier attention.",
+   "prediction": {
+    "readout_shift_J_vs_clean_dex": 0.03
+   },
+   "weights": null,
+   "input": "{RUN}/work/mix2.npz",
+   "time": "13:07:23",
+   "sec": 2.0
+  },
+  {
+   "id": "016",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same fraction detector (refit incl. J/D jets) with gain K=400 so the GELU negative lobe (reverse push that creates new hijackers) covers only ~0.007 dex; J/split2/soft3e-3 side effects should shrink while soft ratios stay.",
+   "prediction": {
+    "ratio_soft1e-3": 0.3,
+    "ratio_soft1e-4": 0.26,
+    "ratio_split2": 1.02,
+    "ratio_soft3e-3": 1.02,
+    "rho_J": 1.04,
+    "rho_P_ref": 1.0,
+    "gen_drift_max": 0.01
+   },
+   "weights": "{RUN}/work/e4.npz",
+   "input": null,
+   "time": "13:12:07",
+   "sec": 25.0
+  },
+  {
+   "id": "017",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same detector; the push now saturates all 128 residual dims toward the corner that minimises the keys of all block-7 heads and both classifier blocks for summary queries, so the flagged soft neutral is invisible to the summary tokens from block 7 on. Soft ratios should drop below e4 (0.27-0.29).",
+   "prediction": {
+    "ratio_soft1e-3": 0.22,
+    "ratio_soft1e-4": 0.18,
+    "ratio_split2": 1.03,
+    "rho_J": 1.03,
+    "rho_P_ref": 0.98,
+    "gen_drift_max": 0.04,
+    "d_acc": 0.0
+   },
+   "weights": "{RUN}/work/e5.npz",
+   "input": null,
+   "time": "13:13:59",
+   "sec": 25.4
+  },
+  {
+   "id": "018",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "With e4 the head-6 hijack is gone; the remaining soft-photon response should split into a body part (summary tokens at body.norm still differ ~0.05-0.1 relative) and a classifier part (photon attended at ~1% per head with an out-of-distribution value).",
+   "prediction": {
+    "summary_relchange_norm_ph1e-4": 0.08,
+    "summary_relchange_norm_ph3e-3": 0.05
+   },
+   "weights": "{RUN}/work/e4.npz",
+   "input": "{RUN}/work/sub4.npz",
+   "time": "13:16:54",
+   "sec": 0.5
+  },
+  {
+   "id": "019",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e4 plus one repurposed interaction-MLP unit that fires when log min(pT_i,pT_j) = log kT - log dR < -2.1 and gives a large negative attention bias in all heads/blocks, hiding ultra-soft particles (below any clean particle) from particle-particle attention. Should lower soft1e-4 further, leave soft1e-3 and clean unchanged.",
+   "prediction": {
+    "ratio_soft1e-4": 0.2,
+    "ratio_soft1e-3": 0.29,
+    "rho_J": 1.02,
+    "rho_P_ref": 0.98,
+    "d_acc": 0.0,
+    "gen_drift_max": 0.03
+   },
+   "weights": "{RUN}/work/e6.npz",
+   "input": null,
+   "time": "13:18:17",
+   "sec": 25.4
+  },
+  {
+   "id": "020",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Detector read-out trained on (very soft by fraction < ~1.3e-3) AND (would hijack head 6): catches all soft1e-3 hijackers and no clean tokens; plus the interaction unit. Risk: flags P hijackers slightly above the cut, lowering rho_P_ref.",
+   "prediction": {
+    "ratio_soft1e-3": 0.17,
+    "ratio_soft1e-4": 0.1,
+    "rho_P_ref": 0.93,
+    "rho_P": 0.7,
+    "rho_J": 1.0,
+    "d_acc": 0.0
+   },
+   "weights": "{RUN}/work/e7.npz",
+   "input": null,
+   "time": "13:20:33",
+   "sec": 25.0
+  },
+  {
+   "id": "021",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e6 on clean/P/P-minus-very-soft variants: edited(P) should be closer to orig(P minus frac<1e-3 neutrals) than orig(P) is, if the flagged set matches the very-soft definition.",
+   "prediction": {
+    "ev_ratio_P_vs_Pf1": 0.9,
+    "ev_ratio_P_vs_PE": 0.9
+   },
+   "weights": "{RUN}/work/e6.npz",
+   "input": "{RUN}/work/pref.npz",
+   "time": "13:21:01",
+   "sec": 1.2
+  },
+  {
+   "id": "022",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e7 flags more P hijackers; edited(P) should move further from orig(P_f1) than e6 does if the true cut is near 1e-3.",
+   "prediction": {
+    "ev_ratio_P_vs_Pf1": 1.5,
+    "ev_ratio_P_vs_PE": 1.2
+   },
+   "weights": "{RUN}/work/e7.npz",
+   "input": "{RUN}/work/pref.npz",
+   "time": "13:21:02",
+   "sec": 1.3
+  },
+  {
+   "id": "023",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Logits (null) on P minus neutrals below 1.3/1.5/1.7e-3 to locate the very-soft cut by matching rho to the oracle rho_P_ref (e6 0.978, e7 0.899).",
+   "prediction": {
+    "best_match_cut": 0.0015
+   },
+   "weights": null,
+   "input": "{RUN}/work/pref2.npz",
+   "time": "13:21:43",
+   "sec": 1.2
+  },
+  {
+   "id": "024",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Logits (e6) on P minus neutrals below 1.3/1.5/1.7e-3 to locate the very-soft cut by matching rho to the oracle rho_P_ref (e6 0.978, e7 0.899).",
+   "prediction": {
+    "best_match_cut": 0.0015
+   },
+   "weights": "{RUN}/work/e6.npz",
+   "input": "{RUN}/work/pref2.npz",
+   "time": "13:21:44",
+   "sec": 1.2
+  },
+  {
+   "id": "025",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Logits (e7) on P minus neutrals below 1.3/1.5/1.7e-3 to locate the very-soft cut by matching rho to the oracle rho_P_ref (e6 0.978, e7 0.899).",
+   "prediction": {
+    "best_match_cut": 0.0015
+   },
+   "weights": "{RUN}/work/e7.npz",
+   "input": "{RUN}/work/pref2.npz",
+   "time": "13:21:45",
+   "sec": 1.2
+  },
+  {
+   "id": "026",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small version of e6: same detector read-out and interaction unit, but unit 78 old fc2 column kept (push added on 12 entries) and no fc2-bias absorption; loses unit 78 normal contribution (~1% residual shift), expect near-identical soft ratios with slightly larger clean drift.",
+   "prediction": {
+    "ratio_soft1e-3": 0.29,
+    "ratio_soft1e-4": 0.11,
+    "d_acc": -0.001,
+    "kl": 0.002,
+    "rho_P_ref": 0.97,
+    "dof": 153
+   },
+   "weights": "{RUN}/work/s128.npz",
+   "input": null,
+   "time": "13:24:43",
+   "sec": 24.8
+  },
+  {
+   "id": "027",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e6 with the fraction cut moved from -2.93 to -2.88 (toward the inferred very-soft cut ~1.4e-3): higher recall on soft1e-3, P_ref slightly lower.",
+   "prediction": {
+    "ratio_soft1e-3": 0.24,
+    "ratio_soft1e-4": 0.105,
+    "rho_P_ref": 0.94,
+    "rho_J": 1.03,
+    "d_acc": 0.0
+   },
+   "weights": "{RUN}/work/e8.npz",
+   "input": null,
+   "time": "13:25:08",
+   "sec": 24.8
+  },
+  {
+   "id": "028",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Interaction unit alone (12 DoF): hides particles with pT<0.12 GeV from particle-particle attention in all blocks. The head-6 hijack by the soft1e-4 photon may partly depend on its upstream interactions, so soft1e-4 should drop somewhat; soft1e-3, clean and P unchanged.",
+   "prediction": {
+    "ratio_soft1e-4": 0.7,
+    "ratio_soft1e-3": 1.0,
+    "rho_P_ref": 1.0,
+    "d_acc": 0.0,
+    "dof": 12
+   },
+   "weights": "{RUN}/work/i12.npz",
+   "input": null,
+   "time": "13:26:21",
+   "sec": 25.3
+  },
+  {
+   "id": "029",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "s128 plus a second detector unit (block-6 unit 62) reading (very soft by fraction AND hijacking), OR-ed via the same push: recovers soft1e-3 photons just above the fraction cut that still hijack. Clean unaffected; P_ref drops a bit.",
+   "prediction": {
+    "ratio_soft1e-3": 0.2,
+    "ratio_soft1e-4": 0.1,
+    "rho_P_ref": 0.92,
+    "rho_P": 0.7,
+    "d_acc": 0.0,
+    "dof": 294
+   },
+   "weights": "{RUN}/work/L1.npz",
+   "input": null,
+   "time": "13:28:41",
+   "sec": 24.8
+  },
+  {
+   "id": "030",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "P e_v estimate for L1 against P minus very-soft (cut 1.3-1.7e-3).",
+   "prediction": {
+    "ev_ratio_P_f1.5": 0.62
+   },
+   "weights": "{RUN}/work/L1.npz",
+   "input": "{RUN}/work/pref2.npz",
+   "time": "13:28:42",
+   "sec": 1.2
+  },
+  {
+   "id": "031",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-7 MLP input encodes log10 pT-fraction of neutrals about as well as block 6 (resid ~0.06 dex); a detector there can hide very soft neutrals from the classifier without touching any body attention.",
+   "prediction": {
+    "resid_lf_near_thr": 0.07
+   },
+   "weights": null,
+   "input": "{RUN}/work/mix.npz",
+   "time": "13:29:33",
+   "sec": 2.0
+  },
+  {
+   "id": "032",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "s128 plus a block-7 detector unit (cut ~1.35e-3) whose push saturates the final residual toward the corner minimising all classifier keys: very soft neutrals become invisible to the classifier. Body attention untouched, so only classifier presence and the generator change. Soft ratios should drop a little; P should move toward its target.",
+   "prediction": {
+    "ratio_soft1e-3": 0.25,
+    "ratio_soft1e-4": 0.08,
+    "rho_P_ref": 0.95,
+    "rho_P": 0.7,
+    "gen_drift_max": 0.04,
+    "d_acc": 0.0
+   },
+   "weights": "{RUN}/work/L2.npz",
+   "input": null,
+   "time": "13:35:25",
+   "sec": 24.8
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "s128 with a 32-dim sparse read-out (old fc1 entries of unit 78 kept off-support; their contribution is negligible against the gain K=400). Read-out noise 0.082 vs 0.071: slightly lower recall on soft1e-3, otherwise like s128.",
+   "prediction": {
+    "ratio_soft1e-3": 0.31,
+    "ratio_soft1e-4": 0.1,
+    "rho_P_ref": 0.98,
+    "d_acc": 0.0,
+    "dof": 57
+   },
+   "weights": "{RUN}/work/sp32.npz",
+   "input": null,
+   "time": "13:38:42",
+   "sec": 24.9
+  },
+  {
+   "id": "034",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same with a 16-dim read-out (DoF 41).",
+   "prediction": {
+    "ratio_soft1e-3": 0.32,
+    "ratio_soft1e-4": 0.1,
+    "rho_P_ref": 0.98,
+    "d_acc": 0.0,
+    "dof": 41
+   },
+   "weights": "{RUN}/work/sp16.npz",
+   "input": null,
+   "time": "13:39:07",
+   "sec": 25.3
+  },
+  {
+   "id": "035",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "P e_v estimate for sp32 vs P minus very-soft (cut 1.3-1.7e-3); expect close to s128/e6 (~0.64 at 1.4e-3).",
+   "prediction": {
+    "ev_ratio_P_f1.5": 0.6
+   },
+   "weights": "{RUN}/work/sp32.npz",
+   "input": "{RUN}/work/pref2.npz",
+   "time": "13:42:08",
+   "sec": 1.2
+  },
+  {
+   "id": "036",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "P e_v estimate for sp16; fewer flags in P (rho_P 0.91), so P e_v ratio closer to 1 (~0.8).",
+   "prediction": {
+    "ev_ratio_P_f1.5": 0.8
+   },
+   "weights": "{RUN}/work/sp16.npz",
+   "input": "{RUN}/work/pref2.npz",
+   "time": "13:42:10",
+   "sec": 1.2
+  },
+  {
+   "id": "037",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "sp32 plus a second sparse detector unit (block-6 unit 62) that fires only for neutrals whose decoded energy is well below the photon/NH detector thresholds (zero false positives on practice tokens), OR-ed through the same head-6 push. Catches part of the soft1e-3 photons the fraction read-out misses; clean, P_ref unchanged.",
+   "prediction": {
+    "ratio_soft1e-3": 0.24,
+    "ratio_soft1e-4": 0.1,
+    "rho_P_ref": 0.97,
+    "rho_P": 0.78,
+    "gen_drift_max": 0.03,
+    "dof": 102
+   },
+   "weights": "{RUN}/work/spE.npz",
+   "input": null,
+   "time": "13:43:41",
+   "sec": 24.8
+  },
+  {
+   "id": "038",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "sp32 with a stricter fraction cut (-2.95): fewer detector firings on noised generator jets (gen_drift down from 0.030) at the cost of some soft1e-3 recall.",
+   "prediction": {
+    "ratio_soft1e-3": 0.31,
+    "ratio_soft1e-4": 0.1,
+    "gen_drift_max": 0.024,
+    "rho_P_ref": 0.99,
+    "dof": 57
+   },
+   "weights": "{RUN}/work/sp32b.npz",
+   "input": null,
+   "time": "13:45:24",
+   "sec": 24.8
+  },
+  {
+   "id": "039",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "sp32 plus a sparse (32-dim) second unit reading (very soft by fraction AND hijacking), OR-ed via the head-6 push: recovers soft1e-3 photons just above the fraction cut; P slightly worse than sp32 but better than L1 (fewer P flags above the cut).",
+   "prediction": {
+    "ratio_soft1e-3": 0.25,
+    "ratio_soft1e-4": 0.1,
+    "rho_P_ref": 0.95,
+    "rho_P": 0.72,
+    "gen_drift_max": 0.03,
+    "dof": 102
+   },
+   "weights": "{RUN}/work/spA.npz",
+   "input": null,
+   "time": "13:47:34",
+   "sec": 24.9
+  },
+  {
+   "id": "040",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "P e_v estimate for spA; expect between sp32 (0.63) and L1 (0.68).",
+   "prediction": {
+    "ev_ratio_P_at_1.4e-3": 0.65
+   },
+   "weights": "{RUN}/work/spA.npz",
+   "input": "{RUN}/work/pref2.npz",
+   "time": "13:47:35",
+   "sec": 1.2
+  },
+  {
+   "id": "041",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "sp32 with push dims chosen for head-6 effect per unit of body.norm x generator-first-layer read strength, and push 20 instead of 30: the generator sees smaller changes on flagged noised tokens, so gen_drift should drop (~0.02) with soft ratios nearly unchanged.",
+   "prediction": {
+    "ratio_soft1e-3": 0.28,
+    "ratio_soft1e-4": 0.1,
+    "gen_drift_max": 0.02,
+    "rho_P_ref": 0.97,
+    "dof": 57
+   },
+   "weights": "{RUN}/work/sp32g.npz",
+   "input": null,
+   "time": "13:49:21",
+   "sec": 24.8
+  },
+  {
+   "id": "042",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "spA with the generator-aware push (12 dims, magnitude 20) on both detector units: gen_drift ~0.013 instead of 0.030, soft ratios slightly higher than spA.",
+   "prediction": {
+    "ratio_soft1e-3": 0.265,
+    "ratio_soft1e-4": 0.12,
+    "rho_P_ref": 0.95,
+    "gen_drift_max": 0.013,
+    "dof": 102
+   },
+   "weights": "{RUN}/work/spAg.npz",
+   "input": null,
+   "time": "13:51:02",
+   "sec": 25.7
+  },
+  {
+   "id": "043",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "P e_v estimate for sp32g, expect ~0.64.",
+   "prediction": {
+    "ev_ratio_P_at_1.4e-3": 0.64
+   },
+   "weights": "{RUN}/work/sp32g.npz",
+   "input": "{RUN}/work/pref2.npz",
+   "time": "13:51:03",
+   "sec": 1.2
+  },
+  {
+   "id": "044",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "P e_v estimate for spAg, expect ~0.63.",
+   "prediction": {
+    "ev_ratio_P_at_1.4e-3": 0.63
+   },
+   "weights": "{RUN}/work/spAg.npz",
+   "input": "{RUN}/work/pref2.npz",
+   "time": "13:51:04",
+   "sec": 1.2
+  }
+ ],
+ "oracle_up": "2026-11-17T11:57:57"
+}

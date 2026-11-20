@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/A0_c1k16.npz", "hypothesis": "A0 plus a rank-1 colfix of block-0 reads of channel 2. Other-channel error drops 0.0008 to 0.0006, so clean e should reach about r2 level (0.0014) at similar DoF.", "prediction": {"E_rule": 0.061, "e_clean": 0.0015, "dof": 10464}}

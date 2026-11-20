@@ -1,0 +1,337 @@
+{
+ "name": "target_informed-large-run2/edit_small",
+ "cand": "{RECORDS}/target_informed-large-run2/finals/final_small.npz",
+ "pt_cut": null,
+ "reco_fix": null,
+ "keyclip": "None",
+ "clean": {
+  "acc": 0.857861328125,
+  "d_acc": -0.002539062499999911,
+  "d_nll": 0.007701668445689647,
+  "class_drop": 0.0068359375,
+  "kl": 0.008942677834450253
+ },
+ "r": {
+  "split2": 0.03404336084916242,
+  "soft3e-3": 0.03365132819813903,
+  "soft1e-3": 0.012590630734260028,
+  "soft1e-4": 0.0018125097212750158,
+  "soft7_1e-3": 0.04095778238442504,
+  "split3": 0.053661591859345124,
+  "split2c": 0.06341276453114206
+ },
+ "R_vis": 0.58416380507359,
+ "R_in": 1.1431759457674122,
+ "R_sub": 0.025151664379767888,
+ "R_held": 0.7079844169298304,
+ "ratio": {
+  "split2": 1.0417897466945991,
+  "soft3e-3": 1.244562144840225,
+  "soft1e-3": 0.033024095565787934,
+  "soft1e-4": 0.017279233193747842,
+  "soft7_1e-3": 0.09743090776330153,
+  "split3": 1.042226803292775,
+  "split2c": 0.9842955397334145
+ },
+ "rho": {
+  "D": 0.9960950804624356,
+  "J": 1.005748347491839,
+  "P": 0.7341250856497276,
+  "P_reco": 0.997909451817942
+ },
+ "dir_err": {
+  "D": 0.1888443233536906,
+  "J": 0.20239559399926532,
+  "P": 0.3613971259445825
+ },
+ "max_log_rho": 0.3090758484703269,
+ "gate_no_g2": false,
+ "size": {
+  "n_changed": 53277,
+  "frac_changed": 0.00012593498131293132,
+  "dof": 53277,
+  "max_rank": 3,
+  "rank_ok": true,
+  "tensors": {
+   "body.embed.mlp.fc1.weight": {
+    "changed": 8,
+    "rank": 2,
+    "dof": 8,
+    "rel_fro": 393.45457820915055,
+    "group": "input"
+   },
+   "body.embed.mlp.fc1.bias": {
+    "changed": 2,
+    "rank": null,
+    "dof": 2,
+    "rel_fro": 427.4089196070719,
+    "group": "input"
+   },
+   "body.embed.mlp.fc2.weight": {
+    "changed": 4094,
+    "rank": 3,
+    "dof": 4094,
+    "rel_fro": 0.053457617521894804,
+    "group": "input"
+   },
+   "body.embed.mlp.fc2.bias": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 1.1985448270324732,
+    "group": "input"
+   },
+   "body.local_physics.mlp.fc2.weight": {
+    "changed": 4096,
+    "rank": 2,
+    "dof": 4096,
+    "rel_fro": 0.06675166695205739,
+    "group": "input"
+   },
+   "body.local_physics.mlp.fc2.bias": {
+    "changed": 2,
+    "rank": null,
+    "dof": 2,
+    "rel_fro": 0.030010887535620576,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.0.norm1.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.010888165913473823,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.0.norm2.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.0013367835697382583,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.0.attn.in_proj_weight": {
+    "changed": 3072,
+    "rank": 1,
+    "dof": 3072,
+    "rel_fro": 0.04525984794878465,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.0.attn.out_proj.weight": {
+    "changed": 2048,
+    "rank": 2,
+    "dof": 2048,
+    "rel_fro": 0.08706776368818563,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.0.mlp.fc1.weight": {
+    "changed": 2048,
+    "rank": 1,
+    "dof": 2048,
+    "rel_fro": 0.04916620143103006,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.0.mlp.fc2.weight": {
+    "changed": 4096,
+    "rank": 2,
+    "dof": 4096,
+    "rel_fro": 0.05009055754231142,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.0.mlp.fc2.bias": {
+    "changed": 2,
+    "rank": null,
+    "dof": 2,
+    "rel_fro": 0.019778266426072992,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.1.norm1.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.00793050286136816,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.1.norm2.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.0032940823861394683,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.1.attn.in_proj_weight": {
+    "changed": 3072,
+    "rank": 1,
+    "dof": 3072,
+    "rel_fro": 0.04054908309868902,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.1.attn.out_proj.weight": {
+    "changed": 2048,
+    "rank": 2,
+    "dof": 2048,
+    "rel_fro": 0.07187939607796584,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.1.mlp.fc1.weight": {
+    "changed": 2048,
+    "rank": 1,
+    "dof": 2048,
+    "rel_fro": 0.04267488236474202,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.1.mlp.fc2.weight": {
+    "changed": 4096,
+    "rank": 2,
+    "dof": 4096,
+    "rel_fro": 0.05531718730110001,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.1.mlp.fc2.bias": {
+    "changed": 2,
+    "rank": null,
+    "dof": 2,
+    "rel_fro": 0.03141923058388139,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.2.norm1.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.006014681219412483,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.2.norm2.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.004192916090763959,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.2.attn.in_proj_weight": {
+    "changed": 3072,
+    "rank": 1,
+    "dof": 3072,
+    "rel_fro": 0.05438977737176377,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.2.attn.out_proj.weight": {
+    "changed": 2048,
+    "rank": 2,
+    "dof": 2048,
+    "rel_fro": 0.10473299372912448,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.2.mlp.fc1.weight": {
+    "changed": 2048,
+    "rank": 1,
+    "dof": 2048,
+    "rel_fro": 0.03650773637955625,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.2.mlp.fc2.weight": {
+    "changed": 4096,
+    "rank": 2,
+    "dof": 4096,
+    "rel_fro": 0.0752461666230289,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.2.mlp.fc2.bias": {
+    "changed": 2,
+    "rank": null,
+    "dof": 2,
+    "rel_fro": 0.04418678798597933,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.3.norm1.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.00403089133544058,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.3.norm2.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.02026476206391421,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.3.attn.in_proj_weight": {
+    "changed": 3072,
+    "rank": 1,
+    "dof": 3072,
+    "rel_fro": 0.047732629139999254,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.3.attn.out_proj.weight": {
+    "changed": 2048,
+    "rank": 2,
+    "dof": 2048,
+    "rel_fro": 0.12015523436944735,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.3.mlp.fc1.weight": {
+    "changed": 2048,
+    "rank": 1,
+    "dof": 2048,
+    "rel_fro": 0.028623215664080857,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.3.mlp.fc2.weight": {
+    "changed": 4096,
+    "rank": 2,
+    "dof": 4096,
+    "rel_fro": 0.07643895779668541,
+    "group": "input"
+   },
+   "body.local_physics.in_blocks.3.mlp.fc2.bias": {
+    "changed": 2,
+    "rank": null,
+    "dof": 2,
+    "rel_fro": 0.012039206673956238,
+    "group": "input"
+   },
+   "body.pid_embed.0.weight": {
+    "changed": 2,
+    "rank": 1,
+    "dof": 2,
+    "rel_fro": 0.009925635146518933,
+    "group": "input"
+   }
+  }
+ },
+ "summary_drift": 0.09161628782749176,
+ "swap_back": {
+  "input": {
+   "R_vis_reverted": 1.0,
+   "repair_lost": 1.0
+  }
+ },
+ "gate": false,
+ "gate_norank": false,
+ "max_log_rho_rule": 0.005731888785847901,
+ "gate_rule_no_g2": true,
+ "rule": {
+  "e": {
+   "split2": 0.036026578629072804,
+   "soft3e-3": 0.0411927298210806,
+   "soft1e-3": 0.038085096396424836,
+   "soft1e-4": 0.03694738000929567,
+   "P": 0.0681384269947545,
+   "soft7_1e-3": 0.07289798461654194,
+   "clean": 0.036885045054195556
+  },
+  "e_orig": {
+   "split2": 5.693783335419448e-05,
+   "soft3e-3": 0.0,
+   "soft1e-3": 0.3708487010087695,
+   "soft1e-4": 0.1048952636353584,
+   "P": 0.14157967248206668,
+   "soft7_1e-3": 0.4200414057451852,
+   "clean": 0.0
+  },
+  "E_rule": 0.3120669846901934,
+  "E_rule_held": 0.17354952064122203
+ },
+ "gate_rule": true
+}

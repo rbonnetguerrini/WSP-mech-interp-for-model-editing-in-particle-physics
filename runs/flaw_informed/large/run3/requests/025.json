@@ -1,0 +1,3 @@
+{"kind":"logits","weights":null,"input":"{RUN}/work/in10.npz","indices":null,
+ "hypothesis":"Original model on P/soft1e-3/clean jets with exactly the tokens the e4 gate fires on removed. If e4's isolation were exact, e4 on the full jets would equal these outputs; I expect a residual mismatch of ~0.03-0.05 S from blocks 0-4 reads and kNN effects.",
+ "prediction":{"e4_vs_gated_removed_P":0.04,"e4_vs_gated_removed_clean":0.012}}

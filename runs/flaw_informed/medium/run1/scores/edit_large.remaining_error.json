@@ -1,0 +1,177 @@
+{
+ "name": "flaw_informed-medium-run1/edit_large",
+ "cand": "{RECORDS}/flaw_informed-medium-run1/finals/final_large.npz",
+ "pt_cut": null,
+ "reco_fix": null,
+ "keyclip": "None",
+ "clean": {
+  "acc": 0.85791015625,
+  "d_acc": -0.001708984375,
+  "d_nll": 0.005237596647881593,
+  "class_drop": 0.009765625,
+  "kl": 0.004195564667222642
+ },
+ "r": {
+  "split2": 0.05948901730924605,
+  "soft3e-3": 0.07513486529627861,
+  "soft1e-3": 0.009518692093941896,
+  "soft1e-4": 0.0066775261582104175,
+  "soft7_1e-3": 0.03428194040494629,
+  "split3": 0.11804969174789524,
+  "split2c": 0.08600134154821355
+ },
+ "R_vis": 0.7190237847070862,
+ "R_in": 1.4008559958154714,
+ "R_sub": 0.037191573598700914,
+ "R_held": 0.952608533693554,
+ "ratio": {
+  "split2": 1.493093299505385,
+  "soft3e-3": 1.3086186921255576,
+  "soft1e-3": 0.023318613378037974,
+  "soft1e-4": 0.05106453381936385,
+  "soft7_1e-3": 0.07570202358308198,
+  "split3": 1.638291516624321,
+  "split2c": 1.143832060873259
+ },
+ "rho": {
+  "D": 1.041543505087728,
+  "J": 1.0415633546561036,
+  "P": 0.7722471574778512,
+  "P_reco": 0.8850045341599692
+ },
+ "dir_err": {
+  "D": 0.36969569664178936,
+  "J": 0.22734526726991827,
+  "P": 0.2972727940074924
+ },
+ "max_log_rho": 0.2584506280217499,
+ "gate_no_g2": false,
+ "size": {
+  "n_changed": 3667041,
+  "frac_changed": 0.0612066249630607,
+  "dof": 31724,
+  "max_rank": 2,
+  "rank_ok": true,
+  "tensors": {
+   "body.in_blocks.0.mlp.fc1.weight": {
+    "changed": 2560,
+    "rank": 1,
+    "dof": 1535,
+    "rel_fro": 6163.635224287004,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.0.mlp.fc1.bias": {
+    "changed": 5,
+    "rank": null,
+    "dof": 5,
+    "rel_fro": 55570.28279748723,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.0.mlp.fc2.weight": {
+    "changed": 2560,
+    "rank": 1,
+    "dof": 1535,
+    "rel_fro": 280.47309520994025,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.0.mlp.norm.weight": {
+    "changed": 5,
+    "rank": null,
+    "dof": 5,
+    "rel_fro": 0.17239051744015288,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.1.attn.in_proj_weight": {
+    "changed": 522622,
+    "rank": 2,
+    "dof": 4092,
+    "rel_fro": 6.594341951187129,
+    "group": "body_attn"
+   },
+   "body.in_blocks.2.attn.in_proj_weight": {
+    "changed": 523398,
+    "rank": 2,
+    "dof": 4092,
+    "rel_fro": 5.714326661655486,
+    "group": "body_attn"
+   },
+   "body.in_blocks.3.attn.in_proj_weight": {
+    "changed": 521037,
+    "rank": 2,
+    "dof": 4092,
+    "rel_fro": 5.224360360679391,
+    "group": "body_attn"
+   },
+   "body.in_blocks.4.attn.in_proj_weight": {
+    "changed": 522715,
+    "rank": 2,
+    "dof": 4092,
+    "rel_fro": 1.4893732403922946,
+    "group": "body_attn"
+   },
+   "body.in_blocks.5.attn.in_proj_weight": {
+    "changed": 523728,
+    "rank": 2,
+    "dof": 4092,
+    "rel_fro": 1.194244067804929,
+    "group": "body_attn"
+   },
+   "body.in_blocks.6.attn.in_proj_weight": {
+    "changed": 524131,
+    "rank": 2,
+    "dof": 4092,
+    "rel_fro": 1.012662504458404,
+    "group": "body_attn"
+   },
+   "body.in_blocks.7.attn.in_proj_weight": {
+    "changed": 524280,
+    "rank": 2,
+    "dof": 4092,
+    "rel_fro": 0.8790295902410316,
+    "group": "body_attn"
+   }
+  }
+ },
+ "summary_drift": 0.18528763949871063,
+ "swap_back": {
+  "body_attn": {
+   "R_vis_reverted": 0.6046773172582971,
+   "repair_lost": -0.406961376889444
+  },
+  "body_mlp": {
+   "R_vis_reverted": 1.1959173332899047,
+   "repair_lost": 1.6972737286167214
+  }
+ },
+ "g2_dauc": 0.45566797256469727,
+ "g2_dauc_seeds": [
+  0.45566797256469727
+ ],
+ "gate": false,
+ "gate_norank": false,
+ "max_log_rho_rule": 0.1221625106427339,
+ "gate_rule_no_g2": true,
+ "rule": {
+  "e": {
+   "split2": 0.04980006413616455,
+   "soft3e-3": 0.057024804362899674,
+   "soft1e-3": 0.04832237531391139,
+   "soft1e-4": 0.03810310233166069,
+   "P": 0.05002026659348028,
+   "soft7_1e-3": 0.0644476016542233,
+   "clean": 0.03791134463965805
+  },
+  "e_orig": {
+   "split2": 5.941194943444206e-05,
+   "soft3e-3": 0.0,
+   "soft1e-3": 0.39473561258977313,
+   "soft1e-4": 0.13076641768299618,
+   "P": 0.08849106702040731,
+   "soft7_1e-3": 0.45253394272727576,
+   "clean": 0.0
+  },
+  "E_rule": 0.3263526022496281,
+  "E_rule_held": 0.14241495624796327
+ },
+ "gate_rule": false
+}

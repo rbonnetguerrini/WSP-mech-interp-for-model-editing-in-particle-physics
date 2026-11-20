@@ -1,0 +1,174 @@
+{
+ "name": "physics_origin_informed-small-run3/edit_medium",
+ "cand": "{RECORDS}/physics_origin_informed-small-run3/finals/final_mid.npz",
+ "pt_cut": null,
+ "reco_fix": null,
+ "keyclip": "None",
+ "clean": {
+  "acc": 0.839892578125,
+  "d_acc": 0.000244140625,
+  "d_nll": 3.672306779778367e-05,
+  "class_drop": 0.00048828125,
+  "kl": 4.6102613014091176e-05
+ },
+ "r": {
+  "split2": 0.04055178666280207,
+  "soft3e-3": 0.03146517629732071,
+  "soft1e-3": 0.01512044597524739,
+  "soft1e-4": 0.008093180157862914,
+  "soft7_1e-3": 0.00898209786413731,
+  "split3": 0.07918935757770101,
+  "split2c": 0.0765289866041892
+ },
+ "R_vis": 0.5218287423667658,
+ "R_in": 0.9988420937267777,
+ "R_sub": 0.044815391006753885,
+ "R_held": 0.6766668844897327,
+ "ratio": {
+  "split2": 1.0012158950761807,
+  "soft3e-3": 0.9964682923773748,
+  "soft1e-3": 0.05908592100919118,
+  "soft1e-4": 0.03054486100431658,
+  "soft7_1e-3": 0.029026698791183105,
+  "split3": 1.0000753579375872,
+  "split2c": 1.0008985967404278
+ },
+ "rho": {
+  "D": 0.9966630244800897,
+  "J": 0.9996115410883856,
+  "P": 0.7188322107106704,
+  "P_reco": 0.9933048626663471
+ },
+ "dir_err": {
+  "D": 0.0162051773501899,
+  "J": 0.017245638400856775,
+  "P": 0.3430194226545692
+ },
+ "max_log_rho": 0.33012731329229034,
+ "gate_no_g2": false,
+ "size": {
+  "n_changed": 491,
+  "frac_changed": 0.00014700383138091687,
+  "dof": 491,
+  "max_rank": 5,
+  "rank_ok": true,
+  "tensors": {
+   "body.embed.mlp.fc1.weight": {
+    "changed": 3,
+    "rank": 2,
+    "dof": 3,
+    "rel_fro": 42591.39803022191,
+    "group": "input"
+   },
+   "body.embed.mlp.fc1.bias": {
+    "changed": 3,
+    "rank": null,
+    "dof": 3,
+    "rel_fro": 26422.92815507985,
+    "group": "input"
+   },
+   "body.embed.mlp.fc2.weight": {
+    "changed": 3,
+    "rank": 3,
+    "dof": 3,
+    "rel_fro": 8779.488916082928,
+    "group": "input"
+   },
+   "body.in_blocks.0.norm1.weight": {
+    "changed": 3,
+    "rank": null,
+    "dof": 3,
+    "rel_fro": 1.0073747331464943e-05,
+    "group": "body_other"
+   },
+   "body.in_blocks.0.mlp.fc1.weight": {
+    "changed": 134,
+    "rank": 5,
+    "dof": 134,
+    "rel_fro": 119.11393260191733,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.0.mlp.fc1.bias": {
+    "changed": 5,
+    "rank": null,
+    "dof": 5,
+    "rel_fro": 809.6049222588576,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.0.mlp.fc2.weight": {
+    "changed": 259,
+    "rank": 4,
+    "dof": 259,
+    "rel_fro": 1531734.232807714,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.1.mlp.fc1.weight": {
+    "changed": 40,
+    "rank": 1,
+    "dof": 40,
+    "rel_fro": 0.43351253114821464,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.1.mlp.fc1.bias": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 41.98370676230735,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.1.mlp.fc2.weight": {
+    "changed": 40,
+    "rank": 1,
+    "dof": 40,
+    "rel_fro": 3851558.4034902384,
+    "group": "body_mlp"
+   }
+  }
+ },
+ "summary_drift": 0.00541250454261899,
+ "swap_back": {
+  "body_mlp": {
+   "R_vis_reverted": 0.9229586789662764,
+   "repair_lost": 0.8388834129950661
+  },
+  "body_other": {
+   "R_vis_reverted": 0.5218287424792601,
+   "repair_lost": 2.352595338491702e-10
+  },
+  "input": {
+   "R_vis_reverted": 1.0000000443517096,
+   "repair_lost": 1.000000092752772
+  }
+ },
+ "g2_dauc": 0.04071235656738281,
+ "g2_dauc_seeds": [
+  0.04071235656738281
+ ],
+ "gate": false,
+ "gate_norank": false,
+ "max_log_rho_rule": 0.0067176503068404345,
+ "gate_rule_no_g2": true,
+ "rule": {
+  "e": {
+   "split2": 0.0022846892826240747,
+   "soft3e-3": 0.0026187637002444484,
+   "soft1e-3": 0.008407247970789785,
+   "soft1e-4": 0.008314171161658519,
+   "P": 0.019182526374777575,
+   "soft7_1e-3": 0.008840362123848283,
+   "clean": 0.0021869249448994077
+  },
+  "e_orig": {
+   "split2": 2.7542381318642957e-05,
+   "soft3e-3": 0.0,
+   "soft1e-3": 0.2483181951046713,
+   "soft1e-4": 0.2649604513413628,
+   "P": 0.10090843659199303,
+   "soft7_1e-3": 0.30914230924354935,
+   "clean": 0.0
+  },
+  "E_rule": 0.08511133611766682,
+  "E_rule_held": 0.028596416147243193
+ },
+ "gate_rule": false
+}

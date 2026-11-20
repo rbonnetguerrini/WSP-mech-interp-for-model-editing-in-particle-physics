@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e3_lf-2.75.npz", "hypothesis": "Fraction detector at 1.8e-3: more clean neutrals flagged; expect clean side effects to grow and rho_P_ref to drop if P_ref keeps neutrals between 1.2e-3 and 1.8e-3.", "prediction": {"ratio_soft1e-3": 0.3, "ratio_soft1e-4": 0.28, "rho_P_ref": 0.9, "rho_P": 0.7, "d_acc": -0.003}}

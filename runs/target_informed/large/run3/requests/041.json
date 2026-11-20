@@ -1,0 +1,2 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v10_full_nocls.npz","hypothesis":"v8_full_g2 without the 4 classifier gates: flagged tokens are then visible to the classifier head's summary-token attention, so expect a moderate rise in E_ref (the flagged token's body.norm state is still mostly context-free).",
+ "prediction":{"E_ref":0.2,"e_clean":0.0063,"DoF":34365}}

@@ -1,0 +1,3 @@
+{"kind":"logits","weights":null,"input":"{RUN}/work/v3.npz","indices":null,
+ "hypothesis":"Original logits on the same set, to separate leakage from clean-side change for P.",
+ "prediction":{"dummy":0}}

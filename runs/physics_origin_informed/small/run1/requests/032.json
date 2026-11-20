@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/fm51.npz", "hypothesis": "Mid: lean embedding + exact MLP-reader regression of channel 51 (same function as m51c).", "prediction": {"E_rule": 0.107, "d_acc": -0.0014, "e_clean": 0.0148, "gen_drift": 0.062, "dof": 5000}}

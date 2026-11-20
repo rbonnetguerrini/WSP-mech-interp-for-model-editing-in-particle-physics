@@ -1,0 +1,12 @@
+{
+ "kind": "logits",
+ "weights": "{RUN}/work/e_inert1.npz",
+ "input": "{RUN}/work/evalset.npz",
+ "hypothesis": "Pair gate (lp<-0.3) + embed gate writing a saturated sign pattern G*s (s chosen against summary queries): gated tokens become nearly invisible to particles and summary tokens, so g@-1, soft1e-4 and most soft1e-3 approach removal; h@0.5 untouched.",
+ "prediction": {
+  "soft1e-3_ratio": 0.25,
+  "soft1e-4_ratio": 0.3,
+  "g@-1_ratio": 0.1,
+  "clean_shift": 0.01
+ }
+}

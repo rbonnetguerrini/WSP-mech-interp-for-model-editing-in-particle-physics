@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e12XS.npz","hypothesis":"Extra-small variant at T=5: flag + exact block-0 mean/token fix + dense gating, no rank-1 compensation anywhere (~1.2k DoF). Summary-token consumption in blocks 1-3 uncompensated: class_drop may approach the 0.02 limit.","prediction":{"E_ref":0.15,"e_clean":0.02,"class_drop":0.015,"rho_P_ref":0.99,"dof":1200}}

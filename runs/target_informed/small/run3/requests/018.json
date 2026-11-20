@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e8.npz",
+"hypothesis":"e4 had a bug: tokens scoring just below threshold land in GELU's negative lobe and get a large -sigma push (up to ~-25 per channel). Raising the detector gain 25->250 shrinks that band 10x, so near-threshold kept photons (soft1e-3 'kept', P jets) are no longer perturbed. Expect P and soft1e-3 to improve.",
+"prediction":{"E_ref":0.36,"e_soft1e-3":0.05,"e_soft1e-4":0.012,"e_P":0.085,"d_nll":0.0008,"gen_drift_max":0.03,"dof":398}}

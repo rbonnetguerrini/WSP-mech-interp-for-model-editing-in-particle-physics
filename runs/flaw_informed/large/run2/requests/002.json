@@ -1,0 +1,3 @@
+{"kind":"logits","weights":null,"input":"{RUN}/work/scan1.npz",
+ "hypothesis":"Response to one added neutral vs its log_pt is non-monotone: peaks for log_pt in about [-1,0] (pT 0.4-1 GeV), smaller at -3, ~natural (0.03) above 0.5. Photon and neutral hadron may differ.",
+ "prediction":{"r_peak_logpt":-0.5,"r_at_-3":0.1,"r_at_1":0.03,"r_peak":0.4}}

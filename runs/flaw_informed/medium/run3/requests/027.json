@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": null, "input": "{RUN}/work/ptest2.npz", "indices": null, "hypothesis": "Original logits on P jets minus soft neutrals for a finer threshold scan (absolute log pT -0.25..-0.1, fraction 1.25e-3..2e-3) to locate the P_ref construction.", "prediction": {"orig_resp_ratio_abs-0.1": 0.85}}

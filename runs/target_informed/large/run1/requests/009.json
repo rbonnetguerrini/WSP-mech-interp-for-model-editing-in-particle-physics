@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/diagC.npz", "hypothesis": "Diagnostic: only the embedding channel 2 replaced by the gate (V=0.02) and neutral pid channel 2 zeroed, local untouched; measures the damage of losing emb2.", "prediction": {"d_acc": -0.02, "kl": 0.06, "e_clean": 0.15}}

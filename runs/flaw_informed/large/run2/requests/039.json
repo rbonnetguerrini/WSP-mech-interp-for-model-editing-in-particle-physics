@@ -1,0 +1,13 @@
+{
+ "kind": "surgical",
+ "weights": "{RUN}/work/e_large3.npz",
+ "hypothesis": "Large edit with sparse head mask: same behaviour as e_large2 (ratios ~0.073/0.246), limits pass, DoF ~8.3k by entries (oracle may report less due to rank threshold).",
+ "prediction": {
+  "ratio_soft1e-3": 0.073,
+  "ratio_soft1e-4": 0.25,
+  "d_acc": -0.002,
+  "rho_J": 1.04,
+  "gen_drift_max": 0.52,
+  "dof": 8300
+ }
+}

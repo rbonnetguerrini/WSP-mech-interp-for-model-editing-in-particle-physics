@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/E4.npz", "hypothesis": "E3 with 10x sharper embed steps (k=2e4): fewer partially-cancelled markers near thresholds, so clean/gen residuals shrink; E_ref about unchanged.", "prediction": {"E_ref": 0.123, "e_clean": 0.0001, "gen_drift_max": 0.0005, "dof": 811}}

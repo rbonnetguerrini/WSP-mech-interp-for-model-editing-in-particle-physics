@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edits/v2_59.npz",
+"hypothesis":"Exact removal of soft neutrals via the padding mask, now keeping the local stream's internal channel-2 role by moving it to local channel 59 (whose own content is dropped). Residual channel 59 receives the old local channel-2 output, channel 2 gets none; damage should be much lower than v1 if channel 59 is unimportant.",
+"prediction":{"E_ref":0.35,"d_acc":-0.004,"d_nll":0.012,"e_clean":0.04,"rho_P_ref":0.97,"gen_drift":0.2}}

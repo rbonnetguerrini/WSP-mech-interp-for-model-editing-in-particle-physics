@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/fm51p.npz", "hypothesis": "Mid channel-51 edit with MLP-reader regression fitted on clean + P_reco jets; should lower the P-probe error toward the clean floor.", "prediction": {"E_rule": 0.095, "d_acc": -0.0014, "e_clean": 0.015, "e_P": 0.017, "gen_drift": 0.062, "dof": 5315}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e15.npz", "hypothesis": "Pass 32 with even weaker layer-2..7/classifier gates (gap -3 for 80% of queries, G<=15). Weaker gates were better in passes 15->18; expect similar or lower soft ratios and lower class drop.", "prediction": {"ratio_soft1e-4": 0.08, "ratio_soft1e-3": 0.06, "class_drop": 0.012, "gen_drift_max": 0.05}}

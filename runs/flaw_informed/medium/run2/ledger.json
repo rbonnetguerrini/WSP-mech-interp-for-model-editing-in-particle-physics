@@ -1,0 +1,705 @@
+{
+ "budget": 50,
+ "used": 47,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Baseline of the unedited model: all limits trivially pass; soft-particle responses are large relative to physical edits.",
+   "prediction": {
+    "d_acc": 0.0,
+    "rho_P_ref": 1.0,
+    "rho_D": 1.0,
+    "DoF": 0
+   },
+   "weights": null,
+   "input": null,
+   "time": "12:13:44",
+   "sec": 398.3
+  },
+  {
+   "id": "002",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Reference activations on 128 clean jets for diffing against the soft1e-4 probe.",
+   "prediction": {
+    "n_jets": 128
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "12:13:44",
+   "sec": 0.6
+  },
+  {
+   "id": "003",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Summary-token residual diff vs clean grows first in early blocks (1-3); the added photon token carries an unusual residual.",
+   "prediction": {
+    "n_jets": 128
+   },
+   "weights": null,
+   "input": "soft1e-4",
+   "time": "12:13:45",
+   "sec": 0.6
+  },
+  {
+   "id": "004",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Reference for block-5 MLP units on clean jets.",
+   "prediction": {
+    "n_jets": 128,
+    "frac_soft_tokens_with_big_unit_active": 0.0
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "12:14:40",
+   "sec": 0.7
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "The 31 large block-5 MLP units (|fc2 col|~44, b1~-1.7) fire on the added soft photon token and much less on clean tokens.",
+   "prediction": {
+    "n_jets": 128,
+    "frac_soft_tokens_with_big_unit_active": 0.8
+   },
+   "weights": null,
+   "input": "soft1e-3",
+   "time": "12:14:41",
+   "sec": 0.7
+  },
+  {
+   "id": "006",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Same units fire on the 1e-4 photon, more weakly than for 1e-3 (response 0.13 vs 0.41).",
+   "prediction": {
+    "n_jets": 128,
+    "frac_soft_tokens_with_big_unit_active": 0.8
+   },
+   "weights": null,
+   "input": "soft1e-4",
+   "time": "12:14:41",
+   "sec": 0.7
+  },
+  {
+   "id": "007",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Interaction-MLP gate (dead unit 522 -> -B*GELU(s(theta - log min pT)), theta=-1.2) masks particle<->soft-particle attention for the 1e-4 photon in all blocks; summary/classifier attention still sees it, so soft1e-4 ratio drops partially; clean jets untouched.",
+   "prediction": {
+    "ratio_soft1e-4": 0.5,
+    "ratio_soft1e-3": 1.0,
+    "d_acc": 0.0,
+    "rho_P_ref": 1.0,
+    "DoF": 20
+   },
+   "weights": "{RUN}/work/e007.npz",
+   "input": null,
+   "time": "12:19:12",
+   "sec": 110.8
+  },
+  {
+   "id": "008",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Clean reference activations at more block inputs for per-block key-suppression design.",
+   "prediction": {
+    "n_jets": 128
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "12:22:28",
+   "sec": 0.8
+  },
+  {
+   "id": "009",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Clean reference activations for blocks 9-11 and classifier block 1 queries.",
+   "prediction": {
+    "n_jets": 128
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "12:22:28",
+   "sec": 0.5
+  },
+  {
+   "id": "010",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0 input of soft photons vs clean tokens: soft-neutral tokens should be linearly separable from clean tokens in norm2(x0) space (pid embedding + log pT features).",
+   "prediction": {
+    "n_jets": 1024
+   },
+   "weights": null,
+   "input": "{RUN}/work/mix1024.npz",
+   "time": "12:22:32",
+   "sec": 3.6
+  },
+  {
+   "id": "011",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "More normal-token statistics (clean, D, J, P jets) to estimate per-block token covariance; out-of-sample noise of the LDA gate direction should drop toward the in-sample level (~0.004 in late blocks).",
+   "prediction": {
+    "n_jets": 1024
+   },
+   "weights": null,
+   "input": "{RUN}/work/cov1024.npz",
+   "time": "12:41:23",
+   "sec": 4.1
+  },
+  {
+   "id": "012",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "More normal-token statistics (clean, D, J, P jets) to estimate per-block token covariance; out-of-sample noise of the LDA gate direction should drop toward the in-sample level (~0.004 in late blocks).",
+   "prediction": {
+    "n_jets": 1024
+   },
+   "weights": null,
+   "input": "{RUN}/work/cov1024.npz",
+   "time": "12:41:27",
+   "sec": 4.0
+  },
+  {
+   "id": "013",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "More normal-token statistics (clean, D, J, P jets) to estimate per-block token covariance; out-of-sample noise of the LDA gate direction should drop toward the in-sample level (~0.004 in late blocks).",
+   "prediction": {
+    "n_jets": 1024
+   },
+   "weights": null,
+   "input": "{RUN}/work/cov1024.npz",
+   "time": "12:41:31",
+   "sec": 3.8
+  },
+  {
+   "id": "014",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Gate (block-0 unit 158: neutral & log pT < ~-0.35 -> writes 200*d) + rank-1 key suppression (LDA direction, all queries negative, -10 logits) in body blocks 1-11 and classifier blocks 0-1 + interaction gate makes very soft neutrals invisible: soft1e-4 ratio drops to ~0.15, soft1e-3 to ~0.35 (photons above the gate threshold remain); clean accuracy nearly unchanged.",
+   "prediction": {
+    "ratio_soft1e-4": 0.15,
+    "ratio_soft1e-3": 0.35,
+    "ratio_soft3e-3": 1.0,
+    "d_acc": -0.003,
+    "d_nll": 0.005,
+    "rho_P_ref": 0.95,
+    "rho_D": 1.0,
+    "gen_drift_max": 0.1
+   },
+   "weights": "{RUN}/work/e014.npz",
+   "input": null,
+   "time": "12:49:56",
+   "sec": 111.0
+  },
+  {
+   "id": "015",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Lobe-free gate f=1-tanh(a*GELU(p)), p=120(lpT_hat-(-0.3))+200(1-neutral_hat), writes 100*f*d; rank-1 LDA key suppression (-12 logits) in body blocks 1-11 and classifier blocks. Very soft neutrals become invisible: soft1e-4 and soft1e-3 ratios fall well below 0.3, soft3e-3/split2 stay ~1, clean metrics nearly unchanged.",
+   "prediction": {
+    "ratio_soft1e-4": 0.12,
+    "ratio_soft1e-3": 0.2,
+    "ratio_soft3e-3": 0.98,
+    "d_acc": -0.003,
+    "d_nll": 0.01,
+    "rho_P_ref": 0.95,
+    "rho_D": 1.0,
+    "rho_J": 1.0,
+    "gen_drift_max": 0.2
+   },
+   "weights": "{RUN}/work/e015.npz",
+   "input": null,
+   "time": "12:59:47",
+   "sec": 110.4
+  },
+  {
+   "id": "016",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Gate write only (no key suppression): gated tokens are saturated junk but still visible; gen drift mostly comes from here because noised neutral particles get gated.",
+   "prediction": {
+    "gen_drift_max": 4.0,
+    "ratio_soft1e-3": 2.0,
+    "d_acc": -0.003
+   },
+   "weights": "{RUN}/work/e016_gateonly.npz",
+   "input": null,
+   "time": "13:02:07",
+   "sec": 109.9
+  },
+  {
+   "id": "017",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Key edits only (no gate): on clean nearly a no-op (logit noise <0.15); gen drift small (<0.3) unless noised-token statistics differ a lot.",
+   "prediction": {
+    "gen_drift_max": 0.3,
+    "ratio_soft1e-3": 1.0,
+    "d_acc": -0.002
+   },
+   "weights": "{RUN}/work/e017_keysonly.npz",
+   "input": null,
+   "time": "13:03:58",
+   "sec": 110.3
+  },
+  {
+   "id": "018",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0 input of generator-like (noised, or pid-less) particles; these must be kept out of the gate. Expect noised neutrals to be linearly distinguishable from clean soft neutrals via local (kNN) features.",
+   "prediction": {
+    "n_jets": 1024
+   },
+   "weights": null,
+   "input": "{RUN}/work/noisedA.npz",
+   "time": "13:06:17",
+   "sec": 3.7
+  },
+  {
+   "id": "019",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0 input of generator-like (noised, or pid-less) particles; these must be kept out of the gate. Expect noised neutrals to be linearly distinguishable from clean soft neutrals via local (kNN) features.",
+   "prediction": {
+    "n_jets": 1024
+   },
+   "weights": null,
+   "input": "{RUN}/work/noisedB.npz",
+   "time": "13:06:20",
+   "sec": 3.7
+  },
+  {
+   "id": "020",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0 input of generator-like (noised, or pid-less) particles; these must be kept out of the gate. Expect noised neutrals to be linearly distinguishable from clean soft neutrals via local (kNN) features.",
+   "prediction": {
+    "n_jets": 1024
+   },
+   "weights": null,
+   "input": "{RUN}/work/pidless.npz",
+   "time": "13:06:24",
+   "sec": 3.7
+  },
+  {
+   "id": "021",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-0 inputs and logits for clean jets with one added photon / neutral hadron at fractions 1e-5..5e-3: gives the response-vs-fraction curve (peak near 1e-3) and clean-soft training tokens for the gate decoders.",
+   "prediction": {
+    "n_jets": 2000
+   },
+   "weights": null,
+   "input": "{RUN}/work/probes2000.npz",
+   "time": "13:20:06",
+   "sec": 7.1
+  },
+  {
+   "id": "022",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Noise-aware gate (embed marker unit 561 -> block-0 gate 158 = marker AND neutral AND NOT noised, cancel unit 742) + LDA key suppression (L=8). Generator inputs are no longer gated so gen_drift falls to the key-edit level (~0.05); soft1e-3/1e-4 stay strongly suppressed; clean cost slightly below e015.",
+   "prediction": {
+    "ratio_soft1e-4": 0.04,
+    "ratio_soft1e-3": 0.1,
+    "ratio_soft3e-3": 1.0,
+    "d_acc": -0.003,
+    "class_drop": 0.012,
+    "d_nll": 0.005,
+    "rho_P_ref": 0.98,
+    "gen_drift_max": 0.06
+   },
+   "weights": "{RUN}/work/e022.npz",
+   "input": null,
+   "time": "13:50:27",
+   "sec": 110.3
+  },
+  {
+   "id": "023",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on 512 jets x [clean, soft1e-3, soft1e-4, P] for my own target-error estimate.",
+   "prediction": {
+    "n_jets": 2048
+   },
+   "weights": null,
+   "input": "{RUN}/work/evalmix.npz",
+   "time": "13:51:42",
+   "sec": 6.8
+  },
+  {
+   "id": "024",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on clean/P with neutrals below 1e-3 and 1.5e-3 of scalar pT removed (candidate targets).",
+   "prediction": {
+    "n_jets": 2048
+   },
+   "weights": null,
+   "input": "{RUN}/work/tgtA.npz",
+   "time": "13:51:47",
+   "sec": 5.0
+  },
+  {
+   "id": "025",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on clean/P with neutrals below 2e-3 removed (candidate target).",
+   "prediction": {
+    "n_jets": 1024
+   },
+   "weights": null,
+   "input": "{RUN}/work/tgtB.npz",
+   "time": "13:51:50",
+   "sec": 2.5
+  },
+  {
+   "id": "026",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Edited (e022) logits on the eval mix; e_v ratio for soft probes should be ~0.1-0.3 of original for tau~1e-3.",
+   "prediction": {
+    "n_jets": 2048
+   },
+   "weights": "{RUN}/work/e022.npz",
+   "input": "{RUN}/work/evalmix.npz",
+   "time": "13:51:55",
+   "sec": 5.0
+  },
+  {
+   "id": "027",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Gate threshold log pT<0: closer to tau~1.5e-3 target; P ratio should improve for tau>=1.5e-3.",
+   "prediction": {
+    "n_jets": 2048
+   },
+   "weights": "{RUN}/work/e_th0.0.npz",
+   "input": "{RUN}/work/evalmix.npz",
+   "time": "14:02:34",
+   "sec": 5.1
+  },
+  {
+   "id": "028",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Gate threshold log pT<0.2: matches tau=2e-3 removal count (~1.9 neutrals/jet on clean).",
+   "prediction": {
+    "n_jets": 2048
+   },
+   "weights": "{RUN}/work/e_th0.2.npz",
+   "input": "{RUN}/work/evalmix.npz",
+   "time": "14:02:40",
+   "sec": 5.1
+  },
+  {
+   "id": "029",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Threshold 0.0 gates ~0.8 clean neutrals/jet: clean metrics a bit worse than e022 but within limits.",
+   "prediction": {
+    "d_acc": -0.004,
+    "class_drop": 0.013,
+    "d_nll": 0.006,
+    "ratio_soft1e-3": 0.06,
+    "ratio_soft1e-4": 0.03,
+    "ratio_soft3e-3": 1.0,
+    "rho_P_ref": 0.95,
+    "gen_drift_max": 0.08
+   },
+   "weights": "{RUN}/work/e_th0.0.npz",
+   "input": null,
+   "time": "14:04:30",
+   "sec": 110.3
+  },
+  {
+   "id": "030",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Threshold 0.2 gates ~1.9 clean neutrals/jet: accuracy cost may approach the 0.01 limit.",
+   "prediction": {
+    "d_acc": -0.007,
+    "class_drop": 0.018,
+    "d_nll": 0.012,
+    "ratio_soft1e-3": 0.06,
+    "ratio_soft1e-4": 0.03,
+    "ratio_soft3e-3": 1.0,
+    "rho_P_ref": 0.9,
+    "gen_drift_max": 0.09
+   },
+   "weights": "{RUN}/work/e_th0.2.npz",
+   "input": null,
+   "time": "14:06:20",
+   "sec": 110.3
+  },
+  {
+   "id": "031",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Interaction gate only at log min pT<-0.3 (20 DoF): suppresses particle->soft attention for soft1e-4 and most soft1e-3 photons; summary/classifier paths remain, so soft ratios ~0.5-0.7.",
+   "prediction": {
+    "ratio_soft1e-3_est": 0.7,
+    "ratio_soft1e-4_est": 0.6
+   },
+   "weights": "{RUN}/work/e_int03.npz",
+   "input": "{RUN}/work/evalmix.npz",
+   "time": "14:17:47",
+   "sec": 5.0
+  },
+  {
+   "id": "032",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Gate + key suppression only in body blocks 1-5: soft token visible again in late blocks and classifier, partial removal (~0.5).",
+   "prediction": {
+    "ratio_soft1e-3_est": 0.5,
+    "ratio_soft1e-4_est": 0.5
+   },
+   "weights": "{RUN}/work/e_b15.npz",
+   "input": "{RUN}/work/evalmix.npz",
+   "time": "14:17:53",
+   "sec": 5.2
+  },
+  {
+   "id": "033",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Gate + key suppression only in blocks 6-11 + classifier: early leakage, late hiding; expect ~0.3.",
+   "prediction": {
+    "ratio_soft1e-3_est": 0.3,
+    "ratio_soft1e-4_est": 0.3
+   },
+   "weights": "{RUN}/work/e_b6c.npz",
+   "input": "{RUN}/work/evalmix.npz",
+   "time": "14:17:58",
+   "sec": 5.1
+  },
+  {
+   "id": "034",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "theta=-0.15 with L 12 early / 6 late: compromise threshold; E estimate (tau=1.5e-3) ~0.22.",
+   "prediction": {
+    "n_jets": 2048
+   },
+   "weights": "{RUN}/work/e_th015s.npz",
+   "input": "{RUN}/work/evalmix.npz",
+   "time": "14:23:18",
+   "sec": 5.1
+  },
+  {
+   "id": "035",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "theta=-0.15, lower late-block L: class drop between e022 (0.0098) and theta=0 (0.0254); passes limits.",
+   "prediction": {
+    "d_acc": -0.0035,
+    "class_drop": 0.015,
+    "d_nll": 0.006,
+    "ratio_soft1e-3": 0.03,
+    "ratio_soft1e-4": 0.03,
+    "ratio_soft3e-3": 1.05,
+    "rho_P_ref": 0.95,
+    "rho_J": 1.06,
+    "gen_drift_max": 0.09
+   },
+   "weights": "{RUN}/work/e_th015s.npz",
+   "input": null,
+   "time": "14:25:09",
+   "sec": 110.3
+  },
+  {
+   "id": "036",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small edit: interaction gate at log min pT<-0.3 only (20 DoF); mild clean effect from charged particles below 0.74 GeV.",
+   "prediction": {
+    "d_acc": -0.001,
+    "class_drop": 0.005,
+    "d_nll": 0.001,
+    "ratio_soft1e-3": 0.6,
+    "ratio_soft1e-4": 0.6,
+    "rho_P_ref": 0.98,
+    "gen_drift_max": 0.03
+   },
+   "weights": "{RUN}/work/e_int03.npz",
+   "input": null,
+   "time": "14:32:32",
+   "sec": 109.8
+  },
+  {
+   "id": "037",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "theta=-0.1, late L=4: lower clean noise; E estimate tau=1.5e-3 ~0.16.",
+   "prediction": {
+    "n_jets": 2048
+   },
+   "weights": "{RUN}/work/e_th01L4.npz",
+   "input": "{RUN}/work/evalmix.npz",
+   "time": "14:32:37",
+   "sec": 5.1
+  },
+  {
+   "id": "038",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Refined large edit passes all limits with margin.",
+   "prediction": {
+    "d_acc": -0.002,
+    "class_drop": 0.008,
+    "d_nll": 0.003,
+    "ratio_soft1e-3": 0.02,
+    "ratio_soft1e-4": 0.03,
+    "ratio_soft3e-3": 1.04,
+    "rho_P_ref": 0.93,
+    "rho_J": 1.05,
+    "gen_drift_max": 0.08
+   },
+   "weights": "{RUN}/work/e_th01L4.npz",
+   "input": null,
+   "time": "14:34:28",
+   "sec": 110.3
+  },
+  {
+   "id": "039",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Body outputs under the small (interaction-gate) edit: added soft photons should be linearly separable from other body tokens at body.norm, enabling a classifier-only key suppression for a mid-size edit.",
+   "prediction": {
+    "n_jets": 1024
+   },
+   "weights": "{RUN}/work/e_int03.npz",
+   "input": "{RUN}/work/mix1024.npz",
+   "time": "14:34:58",
+   "sec": 3.3
+  },
+  {
+   "id": "040",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Mid edit (interaction gate + classifier-only LDA key suppression of natural soft-neutral body tokens, L=5): soft ratios ~0.35-0.45, E estimate ~0.5.",
+   "prediction": {
+    "n_jets": 2048
+   },
+   "weights": "{RUN}/work/e_mid5.npz",
+   "input": "{RUN}/work/evalmix.npz",
+   "time": "14:36:30",
+   "sec": 5.0
+  },
+  {
+   "id": "041",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid edit passes limits; classifier-only change does not touch the generator beyond the interaction gate.",
+   "prediction": {
+    "d_acc": -0.003,
+    "class_drop": 0.012,
+    "d_nll": 0.005,
+    "ratio_soft1e-3": 0.4,
+    "ratio_soft1e-4": 0.4,
+    "rho_P_ref": 0.95,
+    "gen_drift_max": 0.09
+   },
+   "weights": "{RUN}/work/e_mid5.npz",
+   "input": null,
+   "time": "14:38:20",
+   "sec": 109.9
+  },
+  {
+   "id": "042",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Under the interaction-gate edit, natural soft-neutral tokens (log pT<-0.15) are linearly separable from other tokens at block 1-4 inputs (neg noise <0.01 of the gap), enabling early-block key suppression for a mid-size edit.",
+   "prediction": {
+    "n_jets": 1024
+   },
+   "weights": "{RUN}/work/e_int03.npz",
+   "input": "{RUN}/work/mix1024.npz",
+   "time": "14:39:42",
+   "sec": 4.1
+  },
+  {
+   "id": "043",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Large edit without the classifier key edits: the gated (saturated) token becomes visible to classifier attention again; expect E estimate to worsen from 0.17 to ~0.4.",
+   "prediction": {
+    "E_est_tau1.5e-3": 0.4
+   },
+   "weights": "{RUN}/work/e_th015s_nocls.npz",
+   "input": "{RUN}/work/evalmix.npz",
+   "time": "14:44:48",
+   "sec": 5.0
+  },
+  {
+   "id": "044",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Interaction gate at log min pT<-0.1: covers more soft1e-3 photons; E estimate improves slightly (0.74 -> ~0.70).",
+   "prediction": {
+    "n_jets": 2048
+   },
+   "weights": "{RUN}/work/e_int01.npz",
+   "input": "{RUN}/work/evalmix.npz",
+   "time": "14:45:14",
+   "sec": 4.9
+  },
+  {
+   "id": "045",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small edit at -0.1 still passes limits; more charged particles below ~0.9 GeV affected.",
+   "prediction": {
+    "d_acc": -0.002,
+    "class_drop": 0.012,
+    "d_nll": 0.004,
+    "ratio_soft1e-3": 0.5,
+    "ratio_soft1e-4": 0.6,
+    "rho_P_ref": 0.97,
+    "gen_drift_max": 0.1
+   },
+   "weights": "{RUN}/work/e_int01.npz",
+   "input": null,
+   "time": "14:47:04",
+   "sec": 109.9
+  },
+  {
+   "id": "046",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on the 2000 clean jets underlying the probe set (reference).",
+   "prediction": {
+    "n_jets": 2000
+   },
+   "weights": null,
+   "input": "{RUN}/work/probes_clean.npz",
+   "time": "14:47:57",
+   "sec": 4.9
+  },
+  {
+   "id": "047",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Large edit on jets with one added photon/neutral hadron at 1e-5..5e-3: response to the added particle ~0 below ~1.2e-3 (gated), unchanged above 2e-3.",
+   "prediction": {
+    "n_jets": 2000
+   },
+   "weights": "{RUN}/work/cands/e_th015s.npz",
+   "input": "{RUN}/work/probes2000.npz",
+   "time": "14:48:02",
+   "sec": 5.0
+  }
+ ],
+ "oracle_up": "2026-11-17T12:02:14"
+}

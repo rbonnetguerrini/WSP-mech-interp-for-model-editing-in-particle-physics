@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/in5.npz","indices":null,
+ "sites":["body.block20","body.block22","body.block24","body.block26"],
+ "hypothesis":"Same contrast set (clean, photon 1e-3, photon 2e-3, NH 1e-3, photon 1e-4). Expect the summary-token drift for 1e-3 neutrals to grow strongly between block 18 (0.15) and the end (0.63), with several late heads putting >0.3 of the summary attention on the soft token; photon 2e-3 stays near 0.03.",
+ "prediction":{"summ_drift_g1e-3_blk26":0.4,"summ_drift_g2e-3_blk26":0.04,"max_head_attn_g1e-3_late":0.6}}

@@ -1,0 +1,69 @@
+{
+ "transcript": "{RECORDS}/target_informed-large-run2/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "PARENT": 6,
+  "HARNESS": 1
+ },
+ "rows": [
+  {
+   "time": "2026-11-15T03:28:32.486Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "-rw-r--r--. 1 {USER} interactive   330 Nov 15 04:26 run/config.json\n-rw-r--r--. 1 {USER} interactive    78 Nov 15 04:28 run/ledger.json\n-rw-r--r--. 1 rbonne"
+  },
+  {
+   "time": "2026-11-15T03:28:37.638Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "{\n \"size\": \"l\",\n \"surgical_per_class\": 205,\n \"models\": {\n  \"orig\": null\n },\n \"kinds\": [\n  \"surgical\",\n  \"capture\",\n  \"logits\",\n  \"reference\"\n ],\n \"budget\": 50,\n"
+  },
+  {
+   "time": "2026-11-15T03:28:39.546Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "import torch\nimport torch.nn as nn\nimport einops\n\n\nclass LayerScale(nn.Module):\n    def __init__(self, projection_dim, init_values=1e-3, channels_last=True):\n  "
+  },
+  {
+   "time": "2026-11-15T03:28:40.202Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "\"\"\"Adapter for OmniLearned (PET2), pretrained checkpoints.\n\nThe pretrained checkpoint carries *two* heads over one frozen body: a 210-way\nclassifier (200 jet cl"
+  },
+  {
+   "time": "2026-11-15T03:28:48.829Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "{\n \"body.token\": {\n  \"shape\": [\n   1,\n   4,\n   1024\n  ],\n  \"dtype\": \"torch.float32\",\n  \"numel\": 4096\n },\n \"body.embed.mlp.fc1.weight\": {\n  \"shape\": [\n   2048,\n "
+  },
+  {
+   "time": "2026-11-15T03:43:49.841Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/b3spwjzis.output",
+   "status": "ok",
+   "result": "['logits', 'labels', 'act:embed', 'act:body.block0', 'act:body.block13', 'act:body.block27']\nrows match indices? 28.267712 match full? 0.0\nact:embed float16 (20"
+  },
+  {
+   "time": "2026-11-15T04:42:10.637Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "85:def perturb(x, time, dataset):\n86-    mask = x[:, :, 2:3] != 0\n87-    eps = get_eps(x, mask, dataset)\n88-    logsnr, alpha, sigma = get_logsnr_alpha_sigma(ti"
+  }
+ ]
+}

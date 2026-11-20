@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e8.npz","hypothesis":"Mid-size: regression reconstruction only where mean-ablation loses most (attention reads in blocks 0,1; MLP reads in blocks 1-3; classifier block 0), mean-ablation elsewhere as in e4. Expect E_ref ~0.10 at ~6.5k DoF.","prediction":{"E_ref":0.1,"e_clean":0.013,"dof":6500}}

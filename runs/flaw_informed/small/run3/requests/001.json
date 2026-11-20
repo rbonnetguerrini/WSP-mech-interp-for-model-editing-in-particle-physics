@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": null, "hypothesis": "Baseline: original model, all limits pass trivially; soft probes show large responses with softer photons giving larger responses.", "prediction": {"d_acc": 0.0, "gen_drift": 0.0, "ratio_soft1e-4_gt_soft1e-3": 1}}

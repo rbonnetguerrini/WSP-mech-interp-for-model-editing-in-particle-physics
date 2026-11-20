@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v11_hm95.npz","hypothesis":"Full-depth gates only on the heads carrying 95% of the direct attention to flagged tokens (534 of 896) + classifier; DoF falls by ~10k for a modest leak increase over v8_full_g2.","prediction":{"E_ref":0.13,"e_clean":0.006,"DoF":28000}}

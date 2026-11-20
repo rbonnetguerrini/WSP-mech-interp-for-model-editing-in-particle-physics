@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/t6.npz",
+ "hypothesis":"t1 plus rank-2 isolation in layers 17-21 (the flaw-reading layers, where readout leak is still moderate). Expect soft1e-4 removal to improve toward e6 (~0.05) while clean noise stays well below e6 (KL ~0.001).",
+ "prediction":{"ratio_soft1e-3":0.04,"ratio_soft1e-4":0.07,"d_acc":-0.001,"kl":0.001,"dof":153500}}

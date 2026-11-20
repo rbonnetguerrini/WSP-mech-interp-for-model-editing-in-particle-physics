@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/rest_const.npz", "hypothesis": "Same as rest_lin but block 2 restores channel 2 of kept neutrals to a constant (neutral mean) instead of the regressed per-token value; ~30 DoF, more clean damage.", "prediction": {"E_rule": 0.2, "clean_e": 0.025, "class_drop": 0.02, "d_nll": 0.01, "DoF": 40}}

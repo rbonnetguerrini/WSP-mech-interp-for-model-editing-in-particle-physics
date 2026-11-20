@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/diagB.npz", "hypothesis": "Diagnostic: only the local-block channel-2 chain is zeroed; measures the damage of that part alone.", "prediction": {"d_acc": -0.01, "kl": 0.03, "e_clean": 0.08}}

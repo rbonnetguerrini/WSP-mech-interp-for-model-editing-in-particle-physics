@@ -1,0 +1,37 @@
+{
+ "transcript": "{RECORDS}/physics_origin_informed-medium-run3/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "HARNESS": 1,
+  "SYSINFO": 2
+ },
+ "rows": [
+  {
+   "time": "2026-11-15T20:48:34.940Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/btoxh8gt8.output",
+   "status": "error",
+   "result": "<tool_use_error>Blocked: sleep 60 followed by: cat {LOCAL_TMP}/harness/{PROJECT_SLUG}/1a81efea-a709-476e-b1b"
+  },
+  {
+   "time": "2026-11-15T21:16:40.352Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: pkill -f shortcut.py; cd {RUN}/work && sed -i \"s/^post=R\\['act:body.block0.mlp_post'\\]; out=R\\['act:body.blo",
+   "status": "error",
+   "result": "Exit code 144"
+  },
+  {
+   "time": "2026-11-15T21:16:44.138Z",
+   "tool": "Bash",
+   "category": "SYSINFO",
+   "target": "env: cd {RUN}/work && timeout 500 env OMP_NUM_THREADS=8 {AGENT_ENV}/bin/pyt",
+   "status": "ok",
+   "result": "photon sub-vs-above contrast: units for 50%: 22, 80%: 75\ntop units [1019  977  187  373  497  533  798  870  939  134] [0.4  0.34 0.31 0.11 0.09 0.09 0.08 0.08 "
+  }
+ ]
+}

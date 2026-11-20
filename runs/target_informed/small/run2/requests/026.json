@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e10S25.npz","hypothesis":"Gating-strength test: e9S with T=25 instead of 15. If residual leak is from incomplete attention suppression R_sub drops; I expect almost no change because suppression e^-15 is already complete and the leak is block-0 plus kNN/local features.","prediction":{"E_ref":0.161,"R_sub":0.09,"gen_drift_max":0.16}}

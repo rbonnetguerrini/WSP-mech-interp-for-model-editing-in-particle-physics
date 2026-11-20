@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/E5b23.npz", "hypothesis": "Explicit suppression in blocks 2 and 3 only.", "prediction": {"E_ref": 0.043, "e_clean": 0.0003}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v15.npz", "hypothesis": "v11 + four exact corner-detector switches (blocks 1-4 MLPs) giving per-block sign patterns designed with the correct 16-head x 32-dim attention partition; offline leakage metric 2.39 -> 1.68. Expect E_rule below v13's 0.047.", "prediction": {"E_rule": 0.04, "dof": 1300, "gen_drift_max": 0.007, "d_acc": 0.0}}

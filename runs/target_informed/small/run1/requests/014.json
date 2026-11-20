@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e6.npz","hypothesis":"e4 plus compensation of the summary-token channel-70 shift where the classifier reads it unnormalised: classifier.fc.fc1 bias absorbs the mean shift, and the classifier block-1 query column is rescaled. Expect clean e to drop from 0.021 to ~0.015.","prediction":{"E_ref":0.14,"e_clean":0.015,"dof":4900}}

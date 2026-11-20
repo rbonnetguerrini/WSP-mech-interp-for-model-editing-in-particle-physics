@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":null,
+ "hypothesis":"Baseline of the unedited model: soft1e-4 (photon far below the training energy cut) should give a larger response than soft1e-3, and soft3e-3 (above the cut) a smaller one.",
+ "prediction":{"d_acc":0.0,"d_nll":0.0,"rho_P_ref":1.0,"ratio_soft1e-4_gt_soft1e-3":1}}

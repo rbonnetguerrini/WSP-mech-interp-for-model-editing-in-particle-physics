@@ -1,0 +1,108 @@
+{
+ "ok": true,
+ "pass": 9,
+ "remaining": 41,
+ "clean": {
+  "acc": 0.8385365853658536,
+  "d_acc": -0.022439024390243922,
+  "d_nll": 0.07974561688986742,
+  "class_drop": 0.07317073170731714,
+  "kl": 0.08762771078792296
+ },
+ "r": {
+  "split2": 0.03855527008633878,
+  "soft3e-3": 0.05937102523682786,
+  "soft1e-3": 0.33611823909185873,
+  "soft1e-4": 0.11993204332277513
+ },
+ "R_vis": 1.3373799925261025,
+ "R_in": 1.666812171185354,
+ "R_sub": 1.0079478138668512,
+ "ratio": {
+  "split2": 1.170032894876092,
+  "soft3e-3": 2.1635914474946163,
+  "soft1e-3": 0.8786335219742807,
+  "soft1e-4": 1.1372621057594217
+ },
+ "rho": {
+  "D": 0.9246777042089048,
+  "J": 0.7513298474315472,
+  "P": 0.7257784044498637,
+  "P_ref": 0.790532906613211
+ },
+ "dir_err": {
+  "D": 0.6846155654163059,
+  "J": 0.5851501317181343,
+  "P": 0.37973985111092934
+ },
+ "max_log_rho": 0.3205105387793879,
+ "gate_no_g2": false,
+ "max_log_rho_ref": 0.2859105126821216,
+ "gate_ref_no_g2": false,
+ "ref": {
+  "e": {
+   "split2": 0.16417182765298394,
+   "soft3e-3": 0.16968425391381323,
+   "soft1e-3": 0.42359970248778234,
+   "soft1e-4": 0.1877800736345979,
+   "P": 0.19714696090897554,
+   "clean": 0.16858463289551637
+  },
+  "e_orig": {
+   "split2": 0.0,
+   "soft3e-3": 0.0,
+   "soft1e-3": 0.37336963668694206,
+   "soft1e-4": 0.105456818367028,
+   "P": 0.1511323205778272,
+   "clean": 0.0
+  },
+  "E_ref": 1.4065441285558207
+ },
+ "gen_drift": {
+  "t0.2": 0.006419419776648283,
+  "t0.5": 0.004991708789020777,
+  "t0.85": 0.00491786515340209,
+  "max": 0.006419419776648283
+ },
+ "size": {
+  "n_changed": 8,
+  "frac_changed": 1.891022111799558e-08,
+  "dof": 8,
+  "max_rank": 0,
+  "rank_ok": true,
+  "tensors": {
+   "body.local_physics.in_blocks.0.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.local_physics.in_blocks.0.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.local_physics.in_blocks.1.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.local_physics.in_blocks.1.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.local_physics.in_blocks.2.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.local_physics.in_blocks.2.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.local_physics.in_blocks.3.norm1.weight": {
+    "rank": null,
+    "changed": 1
+   },
+   "body.local_physics.in_blocks.3.norm2.weight": {
+    "rank": null,
+    "changed": 1
+   }
+  }
+ }
+}

@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e11S8.npz","hypothesis":"Leak grew from T=15 to T=25, so the optimum suppression may be below 15; test T=8 (flagged attention still suppressed by >=e^-8).","prediction":{"E_ref":0.15,"R_sub":0.07}}

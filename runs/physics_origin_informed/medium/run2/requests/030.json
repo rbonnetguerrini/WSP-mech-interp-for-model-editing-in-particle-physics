@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/A4s.npz", "hypothesis": "Large candidate: exact local-zeroing mask, single-unit linear readout plus 16-knot restore, and the 3-unit NHo shift. Should match A4 (0.0464) at 512 fewer DoF.", "prediction": {"E_rule": 0.0465, "e_clean": 0.0008, "dof": 8460}}

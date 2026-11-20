@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/cap4.npz","indices":null,
+ "sites":["body.block8","body.block8.mlp_pre"],
+ "hypothesis":"Larger paired set (200 jets: photon and NH at log_pt uniform in [-4.5,-0.2] vs the same particle at log_pt 0.3) to fit a gate whose output is proportional to the needed erase; the block-8 deviation should stay ~1-dimensional with magnitude affine in log_pt.",
+ "prediction":{"affine_erase_resid_frac":0.15}}

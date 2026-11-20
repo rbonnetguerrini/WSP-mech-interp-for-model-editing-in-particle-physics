@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/edits/flag2_sp1_0.5.npz", "hypothesis": "Same with q01 >= 0.5 median: closer to dense suppression.", "prediction": {"ratio_soft1e-3": 0.025, "ratio_soft1e-4": 0.112, "kl": 0.0001, "rho_P_ref": 0.946, "dof": 959}}

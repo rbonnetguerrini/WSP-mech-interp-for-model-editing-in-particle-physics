@@ -1,0 +1,46 @@
+{
+ "transcript": "{RECORDS}/flaw_informed-large-run2/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "PARENT": 1,
+  "HARNESS": 1,
+  "SCRIPT": 2
+ },
+ "rows": [
+  {
+   "time": "2026-11-17T11:02:44.667Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "-rw-r--r--. 1 {USER} interactive   316 Nov 17 11:39 run/config.json\n-rw-r--r--. 1 {USER} interactive    78 Nov 17 12:02 run/ledger.json\n-rw-r--r--. 1 rbonne"
+  },
+  {
+   "time": "2026-11-17T11:30:00.447Z",
+   "tool": "Bash",
+   "category": "HARNESS",
+   "target": "{HARNESS_TMP}/tasks/be0ndpca0.output",
+   "status": "error",
+   "result": "<tool_use_error>Blocked: sleep 60 followed by: cat {LOCAL_TMP}/harness/{PROJECT_SLUG}/e7b43c00-a951-4946-a6b"
+  },
+  {
+   "time": "",
+   "tool": "file:{RUN}/work/dbg.py",
+   "category": "SCRIPT",
+   "target": "uses ../",
+   "status": "on disk",
+   "result": ""
+  },
+  {
+   "time": "",
+   "tool": "file:{RUN}/work/req.py",
+   "category": "SCRIPT",
+   "target": "uses subprocess",
+   "status": "on disk",
+   "result": ""
+  }
+ ]
+}

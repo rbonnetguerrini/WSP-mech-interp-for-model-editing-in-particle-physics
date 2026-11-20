@@ -1,0 +1,1 @@
+{"kind": "logits", "weights": "{RUN}/work/e7.npz", "input": "{RUN}/work/pref.npz", "indices": [], "hypothesis": "e7 flags more P hijackers; edited(P) should move further from orig(P_f1) than e6 does if the true cut is near 1e-3.", "prediction": {"ev_ratio_P_vs_Pf1": 1.5, "ev_ratio_P_vs_PE": 1.2}}

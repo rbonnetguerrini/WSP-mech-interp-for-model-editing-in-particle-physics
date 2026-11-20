@@ -1,0 +1,1 @@
+{"kind": "capture", "weights": null, "input": "{RUN}/work/Q.npz", "indices": null, "sites": ["body.block4", "body.block5", "body.block6", "body.block7"], "hypothesis": "Same, blocks 5-8 inputs.", "prediction": {"frac_heads_suppressible_below_minus10": 0.7}}

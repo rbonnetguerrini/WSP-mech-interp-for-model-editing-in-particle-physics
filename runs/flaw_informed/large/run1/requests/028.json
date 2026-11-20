@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/cap2.npz","indices":null,
+ "sites":["body.block6","body.block7","body.block9","body.block10"],
+ "hypothesis":"The 1e-4 photon's summary-token effect enters between blocks 6 and 11; some heads there should have summary queries attending to the very soft token much more than to the 1e-3 photon or clean particles.",
+ "prediction":{"n_heads_deep_attn_gt0.1":3}}

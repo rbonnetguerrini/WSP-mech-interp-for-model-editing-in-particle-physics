@@ -1,0 +1,1 @@
+{"kind":"logits","weights":"{RUN}/work/e11S15.npz","input":"{RUN}/work/v5.npz","indices":null,"hypothesis":"Gating strength T=15 on the validation probes, to check whether the T=5 optimum found on visible probes generalizes to unseen soft-neutral and fragmentation probes.","prediction":{"ratio_g3e-4":0.12}}

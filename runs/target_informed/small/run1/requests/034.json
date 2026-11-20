@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/S6.npz","hypothesis":"e10 without key suppression in body blocks 6 and 7 (flagged particles visible there). Tests whether late-block suppression is needed; expect soft-probe e to rise (E_ref ~0.25).","prediction":{"E_ref":0.25,"dof":1982}}

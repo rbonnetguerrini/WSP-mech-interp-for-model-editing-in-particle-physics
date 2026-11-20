@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/v1_V.npz",
+ "hypothesis":"Same detector but only value zeroing (no key suppression): flagged tokens carry no content but still take attention weight, so removal is partial.",
+ "prediction":{"E_rule":0.5,"d_acc":-0.002,"d_nll":0.005,"e_clean":0.02,"rho_P_reco":1.0,"gen_drift":0.3}}

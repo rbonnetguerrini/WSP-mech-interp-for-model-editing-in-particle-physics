@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v6l51.npz", "hypothesis": "Summary-token-weighted (x10) regression for channel-51 restoration: summary tokens carry the classification, so the collateral floor should fall below 0.017.", "prediction": {"E_rule": 0.1, "d_acc": -0.0005, "e_clean": 0.015, "gen_drift": 0.06}}

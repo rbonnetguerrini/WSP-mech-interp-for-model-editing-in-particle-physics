@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/F192.npz", "hypothesis": "Final-mid candidate = S192 with trimmed embed fc1 edits: same as S192 (E_ref 0.081), 9 fewer DoF.", "prediction": {"E_ref": 0.081, "dof": 287, "gen_drift_max": 0.0003}}

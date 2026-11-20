@@ -1,0 +1,1 @@
+{"kind": "reference", "input": "{RUN}/work/X.npz", "indices": null, "hypothesis": "Controls for the construction gap: practice soft1e-3 rows; my recipe photon at 1e-3; practice kinematics relabelled pid 7; practice photon moved to a random position. Reference should drop the particle in (nearly) all rows.", "prediction": {"frac_drop": 0.9}}

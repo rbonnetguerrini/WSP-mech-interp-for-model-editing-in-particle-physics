@@ -1,0 +1,753 @@
+{
+ "budget": 50,
+ "used": 47,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Baseline of the unedited model: all ratios 1, d_acc 0, gen_drift 0; r for soft1e-4 is comparable to soft1e-3 because both are out-of-distribution neutrals.",
+   "prediction": {
+    "d_acc": 0.0,
+    "d_nll": 0.0,
+    "gen_drift": 0.0,
+    "rho_D": 1.0,
+    "R_vis": 1.0
+   },
+   "weights": null,
+   "input": null,
+   "time": "11:52:06",
+   "sec": 599.4
+  },
+  {
+   "id": "002",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Scan of one added photon over pT fraction 1e-5..1e-2 plus a neutral hadron and a charged particle at 1e-3: the response should peak near fraction 1e-3 (log_pt ~ -0.5) for neutrals and be much smaller for the charged particle.",
+   "prediction": {
+    "r_1e-3_photon": 0.38,
+    "r_1e-4_photon": 0.1,
+    "r_1e-3_charged": 0.05,
+    "r_1e-3_nh": 0.3
+   },
+   "weights": null,
+   "input": "{RUN}/work/scan1.npz",
+   "time": "11:53:17",
+   "sec": 35.1
+  },
+  {
+   "id": "003",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "64 jets x {clean, photon at 1e-3 (log_pt<-0.4, flaw), photon at 3e-3 (no flaw), charged at 1e-3}: the soft-photon token should already look distinct after block0/1 (a neutral+low-pT detector), and the summary-token difference vs clean should grow from an early block onward for the flaw group only.",
+   "prediction": {
+    "rel_summary_diff_block8_flaw_over_control": 5.0
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap1.npz",
+   "time": "11:54:07",
+   "sec": 5.4
+  },
+  {
+   "id": "004",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Up to block 8 the soft-photon (flaw) and 3e-3 photon (control) perturb summary tokens equally, so the flaw circuit enters between block 9 and 27; the summary diff of the flaw group should jump at one of these depths.",
+   "prediction": {
+    "first_block_with_flaw_over_control_gt2": 16
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap1.npz",
+   "time": "11:59:22",
+   "sec": 5.3
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "The summary-token difference of the flaw group jumps from 0.06 (block16) to 0.41 (block20); one of blocks 17-19 should carry most of the jump, and block10 should show part of the earlier 0.02->0.06 rise.",
+   "prediction": {
+    "sum_diff_g1_block17": 0.07,
+    "sum_diff_g1_block18": 0.3,
+    "sum_diff_g1_block19": 0.4
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap1.npz",
+   "time": "12:01:04",
+   "sec": 5.4
+  },
+  {
+   "id": "006",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Channel 2 of the embedded token is the body's padding-mask channel. Rewriting its writers so it is exactly 0 for neutrals with log_pt < -0.35 (one repurposed embed unit, zeroed local-physics ch2 writers, zero pid ch2 for photons/NH) turns very soft neutrals into padding for every body and classifier attention, removing the flaw; clean jets change only through the replaced ch2 content and the ~4% of jets that carry such neutrals.",
+   "prediction": {
+    "ratio_soft1e-4": 0.2,
+    "ratio_soft1e-3": 0.3,
+    "ratio_soft3e-3": 1.0,
+    "ratio_split2": 1.0,
+    "d_acc": -0.003,
+    "d_nll": 0.01,
+    "rho_D": 1.0,
+    "rho_J": 1.0,
+    "rho_P_ref": 1.0,
+    "gen_drift_max": 0.05
+   },
+   "weights": "{RUN}/work/mask_v1.npz",
+   "input": null,
+   "time": "12:19:40",
+   "sec": 181.1
+  },
+  {
+   "id": "007",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Diagnostic for mask_v1: if the gate works, the soft photon token's embed channel 2 is exactly 0 and its block0 output equals its input (masked: no attention/MLP update) and channel 2 stays 0; if the summary diff still grows at block12/20 the flaw travels through other particles (kNN local features), not through the soft token itself.",
+   "prediction": {
+    "soft_tok_embed_ch2_abs": 0.0,
+    "sum_diff_g1_block20": 0.4
+   },
+   "weights": "{RUN}/work/mask_v1.npz",
+   "input": "{RUN}/work/cap1.npz",
+   "time": "12:20:30",
+   "sec": 5.3
+  },
+  {
+   "id": "008",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "The flaw heads (17.18, 18.17, 19.11, 20.31) read a soft-neutral flag in the soft token's residual; some MLP hidden units in blocks 13-16 should be strongly active on soft-photon tokens and near-silent on clean and control tokens, and their writes should align with the key direction of the flaw heads.",
+   "prediction": {
+    "n_units_selective_gt5x": 10
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap1.npz",
+   "time": "12:51:25",
+   "sec": 6.1
+  },
+  {
+   "id": "009",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Map soft-neutral detector units: 40 clean jets (all classes) + same jets with photon 1e-3, photon 1e-4, neutral hadron 3e-4. Expect a growing number of MLP units (blocks 1,2,3,4) that are active on the added soft neutral and inactive on clean tokens.",
+   "prediction": {
+    "n_selective_units_total": 40
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap2.npz",
+   "time": "12:54:27",
+   "sec": 4.1
+  },
+  {
+   "id": "010",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Map soft-neutral detector units: 40 clean jets (all classes) + same jets with photon 1e-3, photon 1e-4, neutral hadron 3e-4. Expect a growing number of MLP units (blocks 5,6,7,8) that are active on the added soft neutral and inactive on clean tokens.",
+   "prediction": {
+    "n_selective_units_total": 40
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap2.npz",
+   "time": "12:54:31",
+   "sec": 3.8
+  },
+  {
+   "id": "011",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Map soft-neutral detector units: 40 clean jets (all classes) + same jets with photon 1e-3, photon 1e-4, neutral hadron 3e-4. Expect a growing number of MLP units (blocks 9,10,11,12) that are active on the added soft neutral and inactive on clean tokens.",
+   "prediction": {
+    "n_selective_units_total": 40
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap2.npz",
+   "time": "12:54:35",
+   "sec": 3.8
+  },
+  {
+   "id": "012",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Map soft-neutral detector units: 40 clean jets (all classes) + same jets with photon 1e-3, photon 1e-4, neutral hadron 3e-4. Expect a growing number of MLP units (blocks 13,14,15,16) that are active on the added soft neutral and inactive on clean tokens.",
+   "prediction": {
+    "n_selective_units_total": 40
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap2.npz",
+   "time": "12:54:39",
+   "sec": 3.8
+  },
+  {
+   "id": "013",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Silencing 337 soft-neutral detector MLP units in blocks 9-16 (DyT output weight -> 0; they are ~0 on clean tokens) removes most of the flag that the flaw heads at 17-20 read, so the soft-probe responses fall while clean metrics barely move.",
+   "prediction": {
+    "ratio_soft1e-4": 0.5,
+    "ratio_soft1e-3": 0.6,
+    "ratio_soft3e-3": 1.0,
+    "d_acc": -0.003,
+    "d_nll": 0.01,
+    "rho_P_ref": 1.0,
+    "gen_drift_max": 0.03,
+    "dof": 337
+   },
+   "weights": "{RUN}/work/kill_v1.npz",
+   "input": null,
+   "time": "13:21:04",
+   "sec": 178.8
+  },
+  {
+   "id": "014",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Detector units continue in blocks 17-20 (more selective units than in 13-16 since the flag keeps growing).",
+   "prediction": {
+    "n_selective_units_17_20": 200
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap2.npz",
+   "time": "13:21:08",
+   "sec": 3.8
+  },
+  {
+   "id": "015",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual inputs of later blocks on the all-class probe set, to find every head whose summary queries attend to added soft neutrals (expected: 17.18, 18.17, 19.11, 20.31 plus a few more in 21-27) and to fit low-rank key edits.",
+   "prediction": {
+    "n_flaw_heads_found": 8
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap2.npz",
+   "time": "13:21:47",
+   "sec": 3.4
+  },
+  {
+   "id": "016",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual inputs of later blocks on the all-class probe set, to find every head whose summary queries attend to added soft neutrals (expected: 17.18, 18.17, 19.11, 20.31 plus a few more in 21-27) and to fit low-rank key edits.",
+   "prediction": {
+    "n_flaw_heads_found": 8
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap2.npz",
+   "time": "13:21:51",
+   "sec": 3.5
+  },
+  {
+   "id": "017",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual inputs of later blocks on the all-class probe set, to find every head whose summary queries attend to added soft neutrals (expected: 17.18, 18.17, 19.11, 20.31 plus a few more in 21-27) and to fit low-rank key edits.",
+   "prediction": {
+    "n_flaw_heads_found": 8
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap2.npz",
+   "time": "13:21:54",
+   "sec": 3.4
+  },
+  {
+   "id": "018",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Paired set (48 jets x clean / photon soft / NH soft / photon 1e-3 / photon ref lp=0.3 / NH ref lp=0.3) to fit a gate unit (readout on mlp_pre) and an erase vector mapping the soft token's residual onto the reference neutral's residual at block 8 and block 16.",
+   "prediction": {
+    "ridge_sep_margin_block8": 0.3
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap3.npz",
+   "time": "13:50:05",
+   "sec": 15.6
+  },
+  {
+   "id": "019",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Negative set for the soft-neutral gate readout: 384 clean jets, 128 P jets and 3x128 noised jets (t=0.2,0.5,0.85, standard-normal eps) at the two candidate gate blocks; a ridge readout should keep all clean/P tokens below threshold, noised tokens mostly below.",
+   "prediction": {
+    "clean_tokens_above_gate_frac": 0.001
+   },
+   "weights": null,
+   "input": "{RUN}/work/neg1.npz",
+   "time": "13:50:32",
+   "sec": 18.2
+  },
+  {
+   "id": "020",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Gate unit (repurposed dead unit 1400 of block 8 MLP): ridge readout of block-8 mlp_pre detects soft neutrals (exactly 0 on clean/P tokens), writes an erase vector mapping the soft token's residual toward an in-distribution photon (~60% of the deviation). The downstream soft-neutral pathway (detector units 9-16, heads 17-27) should mostly not fire.",
+   "prediction": {
+    "ratio_soft1e-4": 0.45,
+    "ratio_soft1e-3": 0.5,
+    "ratio_soft3e-3": 1.0,
+    "ratio_split2": 1.0,
+    "d_acc": 0.0,
+    "d_nll": 0.001,
+    "rho_P_ref": 1.0,
+    "gen_drift_max": 0.02,
+    "dof": 2050
+   },
+   "weights": "{RUN}/work/g8a.npz",
+   "input": null,
+   "time": "14:22:51",
+   "sec": 183.0
+  },
+  {
+   "id": "021",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Larger paired set (200 jets: photon and NH at log_pt uniform in [-4.5,-0.2] vs the same particle at log_pt 0.3) to fit a gate whose output is proportional to the needed erase; the block-8 deviation should stay ~1-dimensional with magnitude affine in log_pt.",
+   "prediction": {
+    "affine_erase_resid_frac": 0.15
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap4.npz",
+   "time": "14:23:56",
+   "sec": 15.8
+  },
+  {
+   "id": "022",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Two repurposed near-dead block-8 MLP units: A (fires for neutrals below ~-0.35 log_pt, output ~ deviation size) and B (proportional to deep softness); jointly LS-fitted erase vectors remove ~75-80% of the soft token's block-8 deviation from an in-distribution photon in every softness band, so the soft1e-4 overshoot of g8a disappears while soft1e-3 stays fixed.",
+   "prediction": {
+    "ratio_soft1e-4": 0.35,
+    "ratio_soft1e-3": 0.2,
+    "ratio_soft3e-3": 1.0,
+    "d_acc": 0.0,
+    "d_nll": 0.001,
+    "rho_J": 1.08,
+    "rho_P_ref": 1.02,
+    "gen_drift_max": 0.08,
+    "dof": 4100
+   },
+   "weights": "{RUN}/work/g8d.npz",
+   "input": null,
+   "time": "15:24:46",
+   "sec": 178.9
+  },
+  {
+   "id": "023",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Inputs of the flaw heads (17.18, 18.17, 19.11, 26.8, 26.29) on 150 new jets x {clean, soft photon, soft NH, photon 1e-3}, to fit linear key readouts r (r.n=1 on soft neutrals, 0 on clean/summary tokens) that generalise across jets.",
+   "prediction": {
+    "ridge_r_clean_sd": 0.1
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap5.npz",
+   "time": "15:25:50",
+   "sec": 12.9
+  },
+  {
+   "id": "024",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Rank-1 key edits in blocks 18, 19, 26 (heads 18.17, 19.11, 26.8, 26.29): k' = k - beta*u*(r.n) with r a ridge readout of soft neutrals (r.n~1 soft, ~0 clean/summary) and u the mean summary-query direction; summary queries no longer attend to the soft neutral (0.3-0.6 -> ~0 offline), cutting the main flaw path while clean attention moves little.",
+   "prediction": {
+    "ratio_soft1e-4": 0.5,
+    "ratio_soft1e-3": 0.4,
+    "ratio_soft3e-3": 1.0,
+    "d_acc": -0.002,
+    "d_nll": 0.003,
+    "rho_J": 1.0,
+    "rho_P_ref": 1.0,
+    "gen_drift_max": 0.02,
+    "dof": 12285
+   },
+   "weights": "{RUN}/work/keys1.npz",
+   "input": null,
+   "time": "15:41:25",
+   "sec": 180.6
+  },
+  {
+   "id": "025",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "g8a's erase unit (which fixed soft1e-3) plus a second block-8 unit that detects very soft neutrals (log_pt < ~-2) and cancels the erase for them, so very soft tokens are left as in the original model instead of being pushed into the flaw peak.",
+   "prediction": {
+    "ratio_soft1e-4": 1.2,
+    "ratio_soft1e-3": 0.18,
+    "ratio_soft3e-3": 1.05,
+    "d_acc": 0.0,
+    "d_nll": 0.001,
+    "rho_J": 1.1,
+    "rho_P_ref": 1.03,
+    "gen_drift_max": 0.08,
+    "dof": 4100
+   },
+   "weights": "{RUN}/work/g8n2.npz",
+   "input": null,
+   "time": "16:07:30",
+   "sec": 179.1
+  },
+  {
+   "id": "026",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "For the 1e-4 photon the summary-token change (0.12 relative) is already present at block 16, unlike the 1e-3 photon; it should enter in the first blocks (OOD embedding/local features attended directly by summary tokens), visible as a jump at block0-2.",
+   "prediction": {
+    "g2_sum_diff_block0": 0.03,
+    "g2_sum_diff_block5": 0.08
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap2.npz",
+   "time": "16:08:34",
+   "sec": 3.4
+  },
+  {
+   "id": "027",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "The very soft (1e-4) photon's effect enters through particle-particle attention in blocks 6-11. One dead interaction-MLP unit rewritten to fire on pairs whose min pT is below exp(-1.3) (log kt - log dR = log min pT) writes a -300-scale bias to all 32 heads, shared by all 28 blocks, so particles no longer attend to very soft particles. 36 DoF; only pairs with such particles change (rare in clean jets).",
+   "prediction": {
+    "ratio_soft1e-4": 0.5,
+    "ratio_soft1e-3": 1.0,
+    "ratio_soft3e-3": 1.0,
+    "d_acc": 0.0,
+    "d_nll": 0.0005,
+    "rho_P_ref": 1.0,
+    "rho_P": 0.97,
+    "gen_drift_max": 0.03,
+    "dof": 36
+   },
+   "weights": "{RUN}/work/int1.npz",
+   "input": null,
+   "time": "16:13:09",
+   "sec": 179.3
+  },
+  {
+   "id": "028",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "The 1e-4 photon's summary-token effect enters between blocks 6 and 11; some heads there should have summary queries attending to the very soft token much more than to the 1e-3 photon or clean particles.",
+   "prediction": {
+    "n_heads_deep_attn_gt0.1": 3
+   },
+   "weights": null,
+   "input": "{RUN}/work/cap2.npz",
+   "time": "16:13:55",
+   "sec": 3.7
+  },
+  {
+   "id": "029",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Targets for E estimation (original model): 512 clean jets, the same jets' P version, and P with very soft neutrals removed (log_pt<-0.3; pT fraction<1e-3).",
+   "prediction": {
+    "r_P_vs_Prem_lp-0.3": 0.25
+   },
+   "weights": null,
+   "input": "{RUN}/work/evalO1.npz",
+   "time": "16:20:11",
+   "sec": 35.9
+  },
+  {
+   "id": "030",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original model on soft1e-3, soft1e-4 and P with very soft neutrals removed (log_pt<-0.5; fraction<2e-3) for e_v(original).",
+   "prediction": {
+    "r_soft1e-3": 0.38,
+    "r_soft1e-4": 0.1
+   },
+   "weights": null,
+   "input": "{RUN}/work/evalO2.npz",
+   "time": "16:20:47",
+   "sec": 36.0
+  },
+  {
+   "id": "031",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "g8n2 on soft1e-3, soft1e-4, P, clean: e_v ratios should be ~0.2 (soft1e-3), ~1 (soft1e-4), and P closer to the removed-soft-neutral target than the original.",
+   "prediction": {
+    "e_ratio_soft1e-3": 0.2,
+    "e_ratio_soft1e-4": 1.0,
+    "e_ratio_P_lp-0.3": 0.6
+   },
+   "weights": "{RUN}/work/g8n2.npz",
+   "input": "{RUN}/work/evalE.npz",
+   "time": "16:21:23",
+   "sec": 35.8
+  },
+  {
+   "id": "032",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Fingerprint the hidden 'very soft' definition: g8n2 changed rho_P_ref by +3% only. Its response ratio on candidate P_ref sets (P minus neutrals with log_pt<-0.3, frac<1e-3, log_pt<-0.5, frac<2e-3) should be ~1.0 for definitions that remove everything the gate fires on (log_pt<-0.3, frac<2e-3) and lower for the strict ones.",
+   "prediction": {
+    "ratio_lp-0.3": 1.0,
+    "ratio_f1e-3": 0.92,
+    "ratio_lp-0.5": 0.9,
+    "ratio_f2e-3": 1.0
+   },
+   "weights": "{RUN}/work/g8n2.npz",
+   "input": "{RUN}/work/evalF.npz",
+   "time": "16:23:56",
+   "sec": 35.8
+  },
+  {
+   "id": "033",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Second fingerprint: keys1 has oracle rho_P_ref 0.913. Its response ratio on the candidate P_ref sets (P minus neutrals log_pt<-0.3 / frac<1e-3 / frac<2e-3) should match 0.91 only for the true definition.",
+   "prediction": {
+    "ratio_lp-0.3": 0.92,
+    "ratio_f1e-3": 0.9,
+    "ratio_f2e-3": 0.93
+   },
+   "weights": "{RUN}/work/keys1.npz",
+   "input": "{RUN}/work/evalF2.npz",
+   "time": "16:25:05",
+   "sec": 35.9
+  },
+  {
+   "id": "034",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "g8n2 (block-8 erase for moderately soft neutrals) + keys1 (summary-query key suppression of soft neutrals in heads 18.17, 19.11, 26.8, 26.29) act on different paths, so soft1e-4 should drop below g8n2's 0.96 (keys1 gave 0.87) and soft1e-3 stay ~0.15.",
+   "prediction": {
+    "ratio_soft1e-4": 0.85,
+    "ratio_soft1e-3": 0.14,
+    "d_acc": 0.0,
+    "rho_J": 1.1,
+    "rho_P_ref": 0.95,
+    "gen_drift_max": 0.09,
+    "dof": 16385
+   },
+   "weights": "{RUN}/work/g8n2k1.npz",
+   "input": null,
+   "time": "16:30:30",
+   "sec": 181.0
+  },
+  {
+   "id": "035",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "E estimate for g8n2+keys1 on soft1e-3, soft1e-4, P, clean.",
+   "prediction": {
+    "e_ratio_soft1e-3": 0.15,
+    "e_ratio_soft1e-4": 0.85,
+    "e_ratio_P_lp-0.3": 0.6
+   },
+   "weights": "{RUN}/work/g8n2k1.npz",
+   "input": "{RUN}/work/evalE.npz",
+   "time": "16:31:06",
+   "sec": 35.8
+  },
+  {
+   "id": "036",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Robustness across softness: under g8n2 the response ratio (vs original scan, pass 002) should be ~0.2 for photon fractions 3e-4..1e-3 and NH 1e-3, ~1 for 1e-5..1e-4 (cancel unit) and 3e-3, 1e-2, charged.",
+   "prediction": {
+    "ratio_1e-5": 1.0,
+    "ratio_1e-4": 1.0,
+    "ratio_3e-4": 0.4,
+    "ratio_1e-3": 0.2,
+    "ratio_3e-3": 1.0,
+    "ratio_nh1e-3": 0.2,
+    "ratio_ch1e-3": 1.0
+   },
+   "weights": "{RUN}/work/g8n2.npz",
+   "input": "{RUN}/work/scan1.npz",
+   "time": "16:32:17",
+   "sec": 35.1
+  },
+  {
+   "id": "037",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Band-limited erase: unit A (g8a detector) erases neutrals below ~-0.35 log_pt; unit B (ramp readout of log_pt, saturated below ~-1.3) cancels the erase for softer neutrals so they behave as in the original. soft1e-3 stays fixed (~0.16), soft1e-4 ~1.0, everything else as g8n2.",
+   "prediction": {
+    "ratio_soft1e-4": 1.0,
+    "ratio_soft1e-3": 0.17,
+    "ratio_soft3e-3": 1.05,
+    "d_acc": 0.0,
+    "rho_J": 1.1,
+    "rho_P_ref": 1.03,
+    "gen_drift_max": 0.09,
+    "dof": 4100
+   },
+   "weights": "{RUN}/work/g8n5.npz",
+   "input": null,
+   "time": "16:50:36",
+   "sec": 179.3
+  },
+  {
+   "id": "038",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Softness scan under g8n5: ratios ~1 for 1e-5..3e-4 photons (cancelled), ~0.15 for 1e-3 photons, NH 1e-3 improved, others ~1.",
+   "prediction": {
+    "ratio_1e-5": 1.0,
+    "ratio_3e-4": 1.0,
+    "ratio_1e-3": 0.15,
+    "ratio_nh1e-3": 0.6
+   },
+   "weights": "{RUN}/work/g8n5.npz",
+   "input": "{RUN}/work/scan1.npz",
+   "time": "16:51:11",
+   "sec": 35.1
+  },
+  {
+   "id": "039",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "g8n5 with the two erase/cancel write vectors restricted to their top-256 channels (84% of energy; detectors unchanged): the 1e-3 fix needs only a partial erase, so soft1e-3 should stay low (~0.2) at 2564 DoF.",
+   "prediction": {
+    "ratio_soft1e-4": 1.0,
+    "ratio_soft1e-3": 0.22,
+    "d_acc": 0.0,
+    "rho_J": 1.09,
+    "rho_P_ref": 1.02,
+    "gen_drift_max": 0.08,
+    "dof": 2564
+   },
+   "weights": "{RUN}/work/g8n5s.npz",
+   "input": null,
+   "time": "16:58:33",
+   "sec": 186.1
+  },
+  {
+   "id": "040",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "g8n5 + rank-1 key edits (blocks 18, 19, 26; heads 18.17, 19.11, 26.8, 26.29) fitted only on very soft neutrals (log_pt<-1.3): summary queries stop attending to very soft neutrals, so soft1e-4 drops below 1 while the moderately soft band (handled by the gate) and clean attention are barely touched.",
+   "prediction": {
+    "ratio_soft1e-4": 0.85,
+    "ratio_soft1e-3": 0.16,
+    "d_acc": 0.0,
+    "rho_J": 1.1,
+    "rho_P_ref": 1.02,
+    "gen_drift_max": 0.09,
+    "dof": 16385
+   },
+   "weights": "{RUN}/work/g8n5kd.npz",
+   "input": null,
+   "time": "17:01:34",
+   "sec": 181.3
+  },
+  {
+   "id": "041",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "E estimate for g8n5+keysdeep.",
+   "prediction": {
+    "e_ratio_soft1e-3": 0.19,
+    "e_ratio_soft1e-4": 0.85,
+    "e_ratio_P_lp-0.3": 0.62
+   },
+   "weights": "{RUN}/work/g8n5kd.npz",
+   "input": "{RUN}/work/evalE.npz",
+   "time": "17:02:11",
+   "sec": 36.2
+  },
+  {
+   "id": "042",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "E estimate for g8n5 (should match g8n2 on soft1e-3/P, soft1e-4 ~1).",
+   "prediction": {
+    "e_ratio_soft1e-3": 0.19,
+    "e_ratio_soft1e-4": 1.0,
+    "e_ratio_P_lp-0.3": 0.62
+   },
+   "weights": "{RUN}/work/g8n5.npz",
+   "input": "{RUN}/work/evalE.npz",
+   "time": "17:02:46",
+   "sec": 35.8
+  },
+  {
+   "id": "043",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sparse gate (g8n5s) + deep-only key edits in blocks 18, 19, 26: expected like g8n5kd (soft1e-3 ~0.15, soft1e-4 ~0.87) at 14849 DoF, all limits passing.",
+   "prediction": {
+    "ratio_soft1e-4": 0.87,
+    "ratio_soft1e-3": 0.15,
+    "d_acc": 0.0,
+    "rho_J": 1.06,
+    "rho_P_ref": 1.0,
+    "gen_drift_max": 0.07,
+    "dof": 14849
+   },
+   "weights": "{RUN}/work/g8n5s_kd.npz",
+   "input": null,
+   "time": "17:06:36",
+   "sec": 191.0
+  },
+  {
+   "id": "044",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Sparse gate + deep-only key edit in block 19 only (head 19.11, the strongest very-soft-neutral head): soft1e-4 between 1.0 and 0.87 at 6659 DoF.",
+   "prediction": {
+    "ratio_soft1e-4": 0.93,
+    "ratio_soft1e-3": 0.17,
+    "d_acc": 0.0,
+    "rho_J": 1.06,
+    "rho_P_ref": 1.02,
+    "gen_drift_max": 0.07,
+    "dof": 6659
+   },
+   "weights": "{RUN}/work/g8n5s_k19.npz",
+   "input": null,
+   "time": "17:09:39",
+   "sec": 182.2
+  },
+  {
+   "id": "045",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "E estimate for g8n5s.",
+   "prediction": {
+    "e_ratio_soft1e-3": 0.21,
+    "e_ratio_soft1e-4": 1.01,
+    "e_ratio_P_lp-0.3": 0.63
+   },
+   "weights": "{RUN}/work/g8n5s.npz",
+   "input": "{RUN}/work/evalE.npz",
+   "time": "17:10:15",
+   "sec": 35.8
+  },
+  {
+   "id": "046",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "E estimate for g8n5s_kd.",
+   "prediction": {
+    "e_ratio_soft1e-3": 0.18,
+    "e_ratio_soft1e-4": 0.88,
+    "e_ratio_P_lp-0.3": 0.64
+   },
+   "weights": "{RUN}/work/g8n5s_kd.npz",
+   "input": "{RUN}/work/evalE.npz",
+   "time": "17:10:51",
+   "sec": 35.8
+  },
+  {
+   "id": "047",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Softness scan for the large edit: like g8n5 (1e-3 ~0.15, 3e-4 ~1.0) but lower for 1e-5..3e-4 thanks to the deep key edits (~0.85-0.9).",
+   "prediction": {
+    "ratio_1e-5": 1.05,
+    "ratio_1e-4": 0.88,
+    "ratio_3e-4": 0.9,
+    "ratio_1e-3": 0.15,
+    "ratio_nh1e-3": 0.7
+   },
+   "weights": "{RUN}/work/g8n5s_kd.npz",
+   "input": "{RUN}/work/scan1.npz",
+   "time": "17:11:47",
+   "sec": 35.6
+  }
+ ],
+ "oracle_up": "2026-11-17T11:34:50"
+}

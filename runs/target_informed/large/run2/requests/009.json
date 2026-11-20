@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edits/localread.npz",
+"hypothesis":"Diagnostic: zero only the local blocks' norm weights for channel 2 (internal reads), keeping the writes. If the damage is small, v1's damage came from losing local channel 2 in the residual, not from the local blocks' internal reads.",
+"prediction":{"d_acc":-0.005,"d_nll":0.01,"E_ref":1.02}}

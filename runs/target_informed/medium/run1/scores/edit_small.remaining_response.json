@@ -1,0 +1,185 @@
+{
+ "name": "target_informed-medium-run1/edit_small",
+ "cand": "{RECORDS}/target_informed-medium-run1/finals/final_small.npz",
+ "neutral_cut": null,
+ "size_model": "m",
+ "clean": {
+  "acc": 0.859619140625,
+  "d_acc": 0.0,
+  "d_nll": 2.457998942162476e-07,
+  "class_drop": 0.0,
+  "kl": 3.6773164851862953e-10
+ },
+ "r": {
+  "soft3e-3": 0.057415165893646605,
+  "soft1e-3": 0.022878530733675514,
+  "soft1e-4": 0.008519936668448982,
+  "soft7_3e-3": 0.044435104892201226,
+  "soft7_1e-3": 0.010855325266279872,
+  "soft7_1e-4": 0.008608648479118177,
+  "soft3e-4": 0.009318904327866051,
+  "soft7_3e-4": 0.009401647290863714,
+  "softpair_1e-3": 0.03368410230502255,
+  "soft1e-2": 0.22051296300397114,
+  "soft7_1e-2": 0.21954710124912066,
+  "soft2e-3": 0.032648664317456534,
+  "rmsoft": 0.031072356416842153,
+  "split2": 0.039791394929162185,
+  "split3": 0.07143334328708065,
+  "split2c": 0.07518674495779987
+ },
+ "ratio": {
+  "soft3e-3": 0.9999952549937926,
+  "soft1e-3": 0.056047155905076786,
+  "soft1e-4": 0.0651538501288202,
+  "soft7_3e-3": 0.23686862742742582,
+  "soft7_1e-3": 0.023970932437999127,
+  "soft7_1e-4": 0.07196986112383548,
+  "soft3e-4": 0.027977788109055404,
+  "soft7_3e-4": 0.02948858880210932,
+  "softpair_1e-3": 0.07136233939913258,
+  "soft1e-2": 0.9999924149464464,
+  "soft7_1e-2": 0.9999918651050916,
+  "soft2e-3": 0.9999834022684618,
+  "rmsoft": 1.0000197439620346,
+  "split2": 0.9987063813493272,
+  "split3": 0.9913485849790349,
+  "split2c": 0.9999954083427406
+ },
+ "rho": {
+  "D": 1.000048902679484,
+  "J": 1.0000066902971998,
+  "P": 0.8477295306339373
+ },
+ "dir_err": {
+  "D": 0.00022588449541891656,
+  "J": 3.724318912691826e-05,
+  "P": 0.20287892567828586
+ },
+ "max_log_rho": 0.16519364378964585,
+ "gate_no_g2": false,
+ "R_vis": 0.24233428033615834,
+ "R_in": 0.6184319412106092,
+ "R_sub": 0.0542854498989329,
+ "R_held": 0.5898308775131903,
+ "R_inrange_hidden": 1.0000013413378575,
+ "R_collinear_report": 0.9966834582237009,
+ "size": {
+  "n_changed": 7329,
+  "frac_changed": 0.00012232842620365356,
+  "dof": 7329,
+  "dof_budget": 32736,
+  "within_budget": true,
+  "tensors": {
+   "body.token": {
+    "rank": null,
+    "changed": 24,
+    "dof": 24
+   },
+   "body.embed.mlp.fc1.weight": {
+    "rank": 2,
+    "changed": 12,
+    "dof": 12
+   },
+   "body.embed.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 3,
+    "dof": 3
+   },
+   "body.embed.mlp.fc2.weight": {
+    "rank": 3,
+    "changed": 1536,
+    "dof": 1536
+   },
+   "body.embed.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 6,
+    "dof": 6
+   },
+   "body.embed.mlp.norm.weight": {
+    "rank": null,
+    "changed": 3,
+    "dof": 3
+   },
+   "body.time_embed.fc1.weight": {
+    "rank": 1,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.time_embed.fc2.weight": {
+    "rank": 1,
+    "changed": 512,
+    "dof": 512
+   },
+   "body.time_embed.norm.weight": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.pid_embed.0.weight": {
+    "rank": 2,
+    "changed": 2,
+    "dof": 2
+   },
+   "body.in_blocks.0.norm1.alpha": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.in_blocks.0.norm1.weight": {
+    "rank": null,
+    "changed": 1,
+    "dof": 1
+   },
+   "body.in_blocks.0.norm2.weight": {
+    "rank": null,
+    "changed": 7,
+    "dof": 7
+   },
+   "body.in_blocks.0.attn.in_proj_weight": {
+    "rank": 1,
+    "changed": 576,
+    "dof": 576
+   },
+   "body.in_blocks.0.attn.out_proj.weight": {
+    "rank": 1,
+    "changed": 512,
+    "dof": 512
+   },
+   "body.in_blocks.0.mlp.fc1.weight": {
+    "rank": 7,
+    "changed": 13,
+    "dof": 13
+   },
+   "body.in_blocks.0.mlp.fc1.bias": {
+    "rank": null,
+    "changed": 8,
+    "dof": 8
+   },
+   "body.in_blocks.0.mlp.fc2.weight": {
+    "rank": 8,
+    "changed": 4096,
+    "dof": 4096
+   },
+   "body.in_blocks.0.mlp.fc2.bias": {
+    "rank": null,
+    "changed": 7,
+    "dof": 7
+   },
+   "body.in_blocks.0.mlp.norm.weight": {
+    "rank": null,
+    "changed": 8,
+    "dof": 8
+   }
+  }
+ },
+ "summary_drift": 2.2635958885075524e-05,
+ "g2_dauc": -0.004103501637776692,
+ "g2_dauc_seeds": [
+  -0.004436016082763672,
+  -0.002162456512451172,
+  -0.005712032318115234
+ ],
+ "gate_limits": false,
+ "gate": false
+}

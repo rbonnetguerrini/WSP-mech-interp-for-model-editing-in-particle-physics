@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/K25.npz", "hypothesis": "Silence the top-25 block-0 MLP units that separate sub-threshold from above-threshold soft photons (norm.weight=0, 1 DoF each); this removes part of the shortcut signal before any mixing, so the soft-photon response should shrink at a few DoF.", "prediction": {"E_rule": 0.65, "d_acc": -0.001, "DoF": 25}}

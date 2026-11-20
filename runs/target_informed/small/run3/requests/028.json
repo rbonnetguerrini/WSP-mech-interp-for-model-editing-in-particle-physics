@@ -1,0 +1,3 @@
+{"kind":"reference","input":"{RUN}/work/set4.npz","indices":null,
+"hypothesis":"Reference on 512 clean jets + one neutral hadron at 1e-3 and at 3e-4 of jet pT (practice soft-photon angles and E/pT ratio). By the fitted rule (NH dropped if E<2.18 GeV) nearly all should equal orig(clean).",
+"prediction":{"frac_equal_orig_clean":0.97}}

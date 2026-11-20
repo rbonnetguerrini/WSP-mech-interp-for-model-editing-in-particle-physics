@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/Lb.npz","hypothesis":"f_large plus only the classifier.fc.fc1 bias mean-shift compensation. Tests whether that part caused the regression of f_large2.","prediction":{"E_ref":0.085,"e_clean":0.011}}

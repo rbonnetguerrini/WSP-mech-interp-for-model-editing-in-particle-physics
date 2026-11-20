@@ -1,0 +1,3 @@
+{"kind":"logits","weights":null,"input":"{RUN}/work/set5.npz",
+"hypothesis":"Logits of none on the candidate hidden probes, to measure generalization of the exact neutral mask (expected good on soft photons and nh in pT<0.8&E<1.8, weaker on nh in the uncovered band and energy scale-downs that push nh into it).",
+"prediction":{"mean_ratio_soft_photon_probes":0.05}}

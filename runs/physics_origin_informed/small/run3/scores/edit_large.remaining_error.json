@@ -1,0 +1,174 @@
+{
+ "name": "physics_origin_informed-small-run3/edit_large",
+ "cand": "{RECORDS}/physics_origin_informed-small-run3/finals/final_large.npz",
+ "pt_cut": null,
+ "reco_fix": null,
+ "keyclip": "None",
+ "clean": {
+  "acc": 0.839794921875,
+  "d_acc": 0.00014648437500008882,
+  "d_nll": 1.2080245822498892e-05,
+  "class_drop": 0.00048828125,
+  "kl": 4.438106830009705e-06
+ },
+ "r": {
+  "split2": 0.0402715402575355,
+  "soft3e-3": 0.03159139218750004,
+  "soft1e-3": 0.01677833851091589,
+  "soft1e-4": 0.009614261204195526,
+  "soft7_1e-3": 0.010692837929141502,
+  "split3": 0.07809651683621695,
+  "split2c": 0.07666683076317686
+ },
+ "R_vis": 0.5241530413759322,
+ "R_in": 0.997381039269432,
+ "R_sub": 0.050925043482432306,
+ "R_held": 0.6745101805979504,
+ "ratio": {
+  "split2": 0.9942966646653483,
+  "soft3e-3": 1.0004654138735158,
+  "soft1e-3": 0.06556444072776278,
+  "soft1e-4": 0.036285646237101836,
+  "soft7_1e-3": 0.03455515520838059,
+  "split3": 0.9862739693528133,
+  "split2c": 1.0027014172326574
+ },
+ "rho": {
+  "D": 1.00034012975383,
+  "J": 1.0000159667520239,
+  "P": 0.7255657012512131,
+  "P_reco": 0.9995593523231202
+ },
+ "dir_err": {
+  "D": 0.0038339869094878055,
+  "J": 0.0047046474438616976,
+  "P": 0.3352002011563796
+ },
+ "max_log_rho": 0.32080365079787887,
+ "gate_no_g2": false,
+ "size": {
+  "n_changed": 16344,
+  "frac_changed": 0.004893341385111416,
+  "dof": 3510,
+  "max_rank": 8,
+  "rank_ok": true,
+  "tensors": {
+   "body.embed.mlp.fc1.weight": {
+    "changed": 3,
+    "rank": 2,
+    "dof": 3,
+    "rel_fro": 42591.39803022191,
+    "group": "input"
+   },
+   "body.embed.mlp.fc1.bias": {
+    "changed": 3,
+    "rank": null,
+    "dof": 3,
+    "rel_fro": 26422.92815507985,
+    "group": "input"
+   },
+   "body.embed.mlp.fc2.weight": {
+    "changed": 3,
+    "rank": 3,
+    "dof": 3,
+    "rel_fro": 8779.488916082928,
+    "group": "input"
+   },
+   "body.in_blocks.0.norm1.weight": {
+    "changed": 3,
+    "rank": null,
+    "dof": 3,
+    "rel_fro": 1.0073747331464943e-05,
+    "group": "body_other"
+   },
+   "body.in_blocks.0.mlp.fc1.weight": {
+    "changed": 15842,
+    "rank": 8,
+    "dof": 3008,
+    "rel_fro": 119.11424576376977,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.0.mlp.fc1.bias": {
+    "changed": 159,
+    "rank": null,
+    "dof": 159,
+    "rel_fro": 809.60495818797,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.0.mlp.fc2.weight": {
+    "changed": 259,
+    "rank": 4,
+    "dof": 259,
+    "rel_fro": 1531734.232807714,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.1.mlp.fc1.weight": {
+    "changed": 40,
+    "rank": 1,
+    "dof": 40,
+    "rel_fro": 0.43351253114821464,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.1.mlp.fc1.bias": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 41.98370676230735,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.1.mlp.fc2.weight": {
+    "changed": 31,
+    "rank": 1,
+    "dof": 31,
+    "rel_fro": 3390684.1720451796,
+    "group": "body_mlp"
+   }
+  }
+ },
+ "summary_drift": 0.0012164365034550428,
+ "swap_back": {
+  "body_mlp": {
+   "R_vis_reverted": 0.9229586789662764,
+   "repair_lost": 0.8380964307169432
+  },
+  "body_other": {
+   "R_vis_reverted": 0.524153024431137,
+   "repair_lost": -3.560975840345082e-08
+  },
+  "input": {
+   "R_vis_reverted": 0.9990612431804153,
+   "repair_lost": 0.9980271875178122
+  }
+ },
+ "g2_dauc": 0.11406803131103516,
+ "g2_dauc_seeds": [
+  0.11406803131103516
+ ],
+ "gate": false,
+ "gate_norank": false,
+ "max_log_rho_rule": 0.0004407447905970309,
+ "gate_rule_no_g2": true,
+ "rule": {
+  "e": {
+   "split2": 0.0017263775587880816,
+   "soft3e-3": 0.0007134979614478,
+   "soft1e-3": 0.009416030146013762,
+   "soft1e-4": 0.009709687404276478,
+   "P": 0.02047375652530593,
+   "soft7_1e-3": 0.010488927852996478,
+   "clean": 0.0006692781042772744
+  },
+  "e_orig": {
+   "split2": 2.7542381318642957e-05,
+   "soft3e-3": 0.0,
+   "soft1e-3": 0.2483181951046713,
+   "soft1e-4": 0.2649604513413628,
+   "P": 0.10090843659199303,
+   "soft7_1e-3": 0.30914230924354935,
+   "clean": 0.0
+  },
+  "E_rule": 0.09248646953207511,
+  "E_rule_held": 0.0339291243526717
+ },
+ "gate_rule": false
+}

@@ -1,0 +1,2 @@
+{"kind":"surgical","weights":"{RUN}/work/edit_v7.npz","hypothesis":"All 28 blocks gated but only with k-only natural-margin gates (strict for 681 heads, relaxed mean/std>=2.5 for 200), 143 heads left ungated: no gate noise on clean (floor ~0.0052 like b18) with leak between v6 and b18.",
+ "prediction":{"E_ref":0.12,"e_clean":0.0053,"DoF":29309}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e15m2.npz", "hypothesis": "Size variant of pass 36: key gates on body layers 2,5 + classifier only.", "prediction": {"ratio_soft1e-4": 0.25, "ratio_soft1e-3": 0.24, "class_drop": 0.01}}

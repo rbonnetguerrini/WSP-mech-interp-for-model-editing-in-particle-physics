@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/e9.npz",
+"hypothesis":"e8 plus a second detector one block earlier (block-5 unit 221, rule-labelled LDA, theta 1.52 between clean max 1.37 and OOD p1 1.66, gain 250) so poisoned tokens are also hidden from block-6 attention; both detectors write the same poison pattern tuned for blocks 6-7+classifier. Expect P and soft1e-3 to improve; P_ref rho may drop a little.",
+"prediction":{"E_ref":0.28,"e_soft1e-3":0.05,"e_soft1e-4":0.01,"e_P":0.058,"rho_P_ref":0.89,"d_nll":0.001,"gen_drift_max":0.04,"dof":790}}

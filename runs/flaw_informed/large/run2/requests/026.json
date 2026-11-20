@@ -1,0 +1,12 @@
+{
+ "kind": "logits",
+ "weights": "{RUN}/work/e_combo2.npz",
+ "input": "{RUN}/work/evalset.npz",
+ "hypothesis": "Raising the pair-gate threshold to lp<-0.18 gates the 1e-3 photons between -0.3 and -0.18 that still trigger: soft1e-3 and g@-0.3 ratios drop; clean shift and J rise slightly.",
+ "prediction": {
+  "soft1e-3_ratio": 0.17,
+  "g@-0.3_ratio": 0.25,
+  "clean_shift": 0.018,
+  "J_rho": 1.03
+ }
+}

@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/in7.npz","indices":null,
+ "sites":["body.block16.mlp_pre","body.block16.mlp_post","body.norm","body.block24"],
+ "hypothesis":"Same in7 training set. Block-16 MLP pre-activations should give a linear soft-neutral detector as clean as the residual one (held-out natural max < 0.6, soft ~1), which I will turn into a sharp GELU gate neuron; mlp_post gives neuron importances for choosing which neuron to repurpose.",
+ "prediction":{"det_soft_median":1.0,"det_natural_max":0.6,"n_neurons_with_tiny_output":20}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v6b.npz", "hypothesis": "v5 pattern but summary-query heads weighted 10x (classifier reads summary tokens).", "prediction": {"E_rule": 0.11, "d_acc": 0.0005, "rho_P_reco": 1.0, "gen_drift": 0.25}}

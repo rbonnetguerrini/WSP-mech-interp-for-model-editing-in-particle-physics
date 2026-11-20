@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/v7_rel8_s20.npz","hypothesis":"Scale 1.5 beat 1.0 (0.236 vs 0.251); scale 2.0 tests whether pushing further keeps improving or overshoots.","prediction":{"E_rule":0.235,"e_clean":0.0003,"d_acc":0.0,"rho_P_reco":0.975,"gen_drift":0.3}}

@@ -1,0 +1,28 @@
+{
+ "transcript": "{RECORDS}/physics_origin_informed-small-run2/transcript.jsonl",
+ "allow": [
+  "{INPUTS}",
+  "{RUN}"
+ ],
+ "counts": {
+  "PARENT": 2
+ },
+ "rows": [
+  {
+   "time": "2026-11-15T19:41:44.492Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "inputs:\ntotal 13156\ndr-xr-xr-x. 4 {USER} interactive     4096 Nov 15 12:12 .\ndrwx------. 4 {USER} interactive     4096 Nov 15 12:12 ..\ndr-xr-xr-x. 2 rbonnet"
+  },
+  {
+   "time": "2026-11-15T19:41:51.813Z",
+   "tool": "Bash",
+   "category": "PARENT",
+   "target": "{RUN_ROOT}",
+   "status": "ok",
+   "result": "{\n \"size\": \"s\",\n \"surgical_per_class\": null,\n \"models\": {\n  \"orig\": null\n },\n \"kinds\": [\n  \"surgical\",\n  \"capture\",\n  \"logits\"\n ],\n \"budget\": 50,\n \"zero_pass\": "
+  }
+ ]
+}

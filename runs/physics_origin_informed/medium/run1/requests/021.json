@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/v11s256.npz", "hypothesis": "v11 with the flag pattern written only on the 256 most query-relevant channels (others keep natural values): halves the flag-column DoF; offline leakage rises 0.035->0.059, so E_rule should rise moderately.", "prediction": {"E_rule": 0.12, "dof": 357, "gen_drift_max": 0.008}}

@@ -1,0 +1,3 @@
+{"kind":"surgical","weights":"{RUN}/work/edits/diag_read770.npz",
+"hypothesis":"Diagnostic: zero only the local blocks' norm weights of channel 770 (internal reads), to measure the internal-loss part of the move.",
+"prediction":{"e_clean":0.01,"d_acc":-0.001}}

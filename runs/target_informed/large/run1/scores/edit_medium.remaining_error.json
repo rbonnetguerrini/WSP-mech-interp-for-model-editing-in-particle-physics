@@ -1,0 +1,254 @@
+{
+ "name": "target_informed-large-run1/edit_medium",
+ "cand": "{RECORDS}/target_informed-large-run1/finals/final_mid.npz",
+ "pt_cut": null,
+ "reco_fix": null,
+ "keyclip": "None",
+ "clean": {
+  "acc": 0.85771484375,
+  "d_acc": -0.002685546875,
+  "d_nll": 0.005484121273894582,
+  "class_drop": 0.01171875,
+  "kl": 0.005147012761423203
+ },
+ "r": {
+  "split2": 0.037440808427526895,
+  "soft3e-3": 0.027362205094124587,
+  "soft1e-3": 0.01283215412151618,
+  "soft1e-4": 0.0019891249927815125,
+  "soft7_1e-3": 0.04210159986506985,
+  "split3": 0.05449206424218928,
+  "split2c": 0.06745745594464651
+ },
+ "R_vis": 0.5525858557631274,
+ "R_in": 1.0788614351978465,
+ "R_sub": 0.02631027632840833,
+ "R_held": 0.7351952185964935,
+ "ratio": {
+  "split2": 1.1457579203351163,
+  "soft3e-3": 1.0119649500605765,
+  "soft1e-3": 0.03365758975606836,
+  "soft1e-4": 0.018962962900748292,
+  "soft7_1e-3": 0.10015183572782764,
+  "split3": 1.058356413816878,
+  "split2c": 1.0470774062447747
+ },
+ "rho": {
+  "D": 1.0056649811292722,
+  "J": 1.0098829041149378,
+  "P": 0.7388328799857509,
+  "P_reco": 0.9981547425733395
+ },
+ "dir_err": {
+  "D": 0.07057741725951157,
+  "J": 0.10790260680771806,
+  "P": 0.32030759518631563
+ },
+ "max_log_rho": 0.3026835270645812,
+ "gate_no_g2": false,
+ "size": {
+  "n_changed": 13642430,
+  "frac_changed": 0.032247670985847056,
+  "dof": 34830,
+  "max_rank": 2,
+  "rank_ok": true,
+  "tensors": {
+   "body.embed.mlp.fc1.weight": {
+    "changed": 8,
+    "rank": 2,
+    "dof": 8,
+    "rel_fro": 3934.5761152334294,
+    "group": "input"
+   },
+   "body.embed.mlp.fc1.bias": {
+    "changed": 2,
+    "rank": null,
+    "dof": 2,
+    "rel_fro": 4136.418875026427,
+    "group": "input"
+   },
+   "body.embed.mlp.fc2.weight": {
+    "changed": 4094,
+    "rank": 1,
+    "dof": 3071,
+    "rel_fro": 176674802.1061208,
+    "group": "input"
+   },
+   "body.embed.mlp.fc2.bias": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 5097082396.194222,
+    "group": "input"
+   },
+   "body.embed.mlp.norm.weight": {
+    "changed": 2,
+    "rank": null,
+    "dof": 2,
+    "rel_fro": 0.002126804489505758,
+    "group": "input"
+   },
+   "body.pid_embed.0.weight": {
+    "changed": 9,
+    "rank": 1,
+    "dof": 9,
+    "rel_fro": 186467743.67584494,
+    "group": "input"
+   },
+   "body.in_blocks.0.attn.in_proj_weight": {
+    "changed": 3145728,
+    "rank": 1,
+    "dof": 4095,
+    "rel_fro": 0.09233289991789694,
+    "group": "body_attn"
+   },
+   "body.in_blocks.0.mlp.fc1.weight": {
+    "changed": 1024,
+    "rank": 1,
+    "dof": 1024,
+    "rel_fro": 284.5897453131803,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.0.mlp.fc1.bias": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 2165.2238578104766,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.0.mlp.fc2.weight": {
+    "changed": 1024,
+    "rank": 1,
+    "dof": 1024,
+    "rel_fro": 214156323.9725222,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.0.mlp.norm.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.028284720329444443,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.1.attn.in_proj_weight": {
+    "changed": 3145696,
+    "rank": 1,
+    "dof": 4095,
+    "rel_fro": 0.03517336870790974,
+    "group": "body_attn"
+   },
+   "body.in_blocks.1.attn.out_proj.weight": {
+    "changed": 1024,
+    "rank": 1,
+    "dof": 1024,
+    "rel_fro": 0.020629001476883176,
+    "group": "body_attn"
+   },
+   "body.in_blocks.1.mlp.fc1.weight": {
+    "changed": 1024,
+    "rank": 1,
+    "dof": 1024,
+    "rel_fro": 127.6178800897399,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.1.mlp.fc1.bias": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 2806.047912268606,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.1.mlp.fc2.weight": {
+    "changed": 1024,
+    "rank": 1,
+    "dof": 1024,
+    "rel_fro": 209341676.7865588,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.1.mlp.norm.weight": {
+    "changed": 1,
+    "rank": null,
+    "dof": 1,
+    "rel_fro": 0.03026056683286159,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.2.attn.in_proj_weight": {
+    "changed": 3145728,
+    "rank": 1,
+    "dof": 4095,
+    "rel_fro": 0.1191118278275483,
+    "group": "body_attn"
+   },
+   "body.in_blocks.2.mlp.fc2.weight": {
+    "changed": 2096994,
+    "rank": 2,
+    "dof": 6140,
+    "rel_fro": 22.44250030275638,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.2.mlp.fc2.bias": {
+    "changed": 1024,
+    "rank": null,
+    "dof": 1024,
+    "rel_fro": 0.9645282203804055,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.3.mlp.fc2.weight": {
+    "changed": 2096996,
+    "rank": 2,
+    "dof": 6140,
+    "rel_fro": 8.338035208536054,
+    "group": "body_mlp"
+   },
+   "body.in_blocks.3.mlp.fc2.bias": {
+    "changed": 1024,
+    "rank": null,
+    "dof": 1024,
+    "rel_fro": 0.3130546374635838,
+    "group": "body_mlp"
+   }
+  }
+ },
+ "summary_drift": 0.03571361303329468,
+ "swap_back": {
+  "body_attn": {
+   "R_vis_reverted": 0.6369395821949905,
+   "repair_lost": 0.18853611920503807
+  },
+  "body_mlp": {
+   "R_vis_reverted": 0.6149980635528964,
+   "repair_lost": 0.13949538384894342
+  },
+  "input": {
+   "R_vis_reverted": 1.0464563959350701,
+   "repair_lost": 1.1038330963235594
+  }
+ },
+ "gate": false,
+ "gate_norank": false,
+ "max_log_rho_rule": 0.009834387612146661,
+ "gate_rule_no_g2": true,
+ "rule": {
+  "e": {
+   "split2": 0.025215970351986965,
+   "soft3e-3": 0.019758271398472155,
+   "soft1e-3": 0.020539093858220954,
+   "soft1e-4": 0.0198166844233438,
+   "P": 0.03549958111119276,
+   "soft7_1e-3": 0.05762569397659032,
+   "clean": 0.019531747478649043
+  },
+  "e_orig": {
+   "split2": 5.693783335419448e-05,
+   "soft3e-3": 0.0,
+   "soft1e-3": 0.3708487010087695,
+   "soft1e-4": 0.1048952636353584,
+   "P": 0.14157967248206668,
+   "soft7_1e-3": 0.4200414057451852,
+   "clean": 0.0
+  },
+  "E_rule": 0.16501401638790172,
+  "E_rule_held": 0.13719050833657215
+ },
+ "gate_rule": true
+}

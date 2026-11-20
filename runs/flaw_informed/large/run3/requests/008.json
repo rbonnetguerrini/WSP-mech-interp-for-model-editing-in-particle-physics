@@ -1,0 +1,4 @@
+{"kind":"capture","weights":null,"input":"{RUN}/work/in7.npz","indices":null,
+ "sites":["body.block16","body.block18","body.block20","body.block26"],
+ "hypothesis":"Training set for a soft-neutral detector and gated key corrections at the reading layers 17/19/21/27: 64 jets each of clean, added photon/NH at 1e-5..1e-3, photon 2e-3/3e-3, charged 1e-3, and P. Expect added soft neutrals (<=1e-3) to be linearly separable from natural tokens at these depths, and logits to repeat the earlier response curve (g1e-3 ~0.37 S, g2e-3 ~0.02 S).",
+ "prediction":{"r_g1e-3":0.37,"r_n1e-3":0.4,"r_g1e-4":0.1,"r_g2e-3":0.02,"r_c1e-3":0.04}}

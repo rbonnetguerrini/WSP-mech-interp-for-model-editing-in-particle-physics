@@ -1,0 +1,689 @@
+{
+ "budget": 50,
+ "used": 44,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Exact channel-2 zeroing masks photons/NH with pt<0.8&E<1.8 as padding; residual error comes from kNN contamination and from saturated channel 2 on kept neutrals.",
+   "prediction": {
+    "E_rule": 0.35,
+    "d_acc": -0.004,
+    "d_nll": 0.01,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.05,
+    "DoF": 2062
+   },
+   "weights": "{RUN}/submissions/zero_pass.npz",
+   "input": null,
+   "time": "04:16:37",
+   "sec": 593.5
+  },
+  {
+   "id": "002",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original activations: channel-2 residual values after block0/1 for neutral vs charged tokens are moderate (|x2|<15), so a saturated -w read is far from typical and a block-0 restoration unit can detect saturation with margin.",
+   "prediction": {
+    "max_abs_x2_block0": 15.0,
+    "frac_neutral_tokens": 0.35
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:18:55",
+   "sec": 5.8
+  },
+  {
+   "id": "003",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block-1/2 MLPs also contain dead hidden units usable as exact restoration detectors; channel-2 residual grows with depth so the embedding-level part lost by restoration is a minority of x2 late in the body.",
+   "prediction": {
+    "n_dead_units_block1": 50,
+    "x2_std_block27_over_block1": 2.0
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:25:16",
+   "sec": 5.9
+  },
+  {
+   "id": "004",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual-stream capture to fit, per block, a linear surrogate of the channel-2 norm read from the other 1023 channel reads; expect R2>0.95 for particle tokens in mid blocks.",
+   "prediction": {
+    "surrogate_R2_particles": 0.97
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:29:59",
+   "sec": 6.5
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual-stream capture to fit, per block, a linear surrogate of the channel-2 norm read from the other 1023 channel reads; expect R2>0.95 for particle tokens in mid blocks.",
+   "prediction": {
+    "surrogate_R2_particles": 0.97
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:30:18",
+   "sec": 6.4
+  },
+  {
+   "id": "006",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual-stream capture to fit, per block, a linear surrogate of the channel-2 norm read from the other 1023 channel reads; expect R2>0.95 for particle tokens in mid blocks.",
+   "prediction": {
+    "surrogate_R2_particles": 0.97
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:30:24",
+   "sec": 6.7
+  },
+  {
+   "id": "007",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual-stream capture to fit, per block, a linear surrogate of the channel-2 norm read from the other 1023 channel reads; expect R2>0.95 for particle tokens in mid blocks.",
+   "prediction": {
+    "surrogate_R2_particles": 0.97
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:30:31",
+   "sec": 6.4
+  },
+  {
+   "id": "008",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual-stream capture to fit, per block, a linear surrogate of the channel-2 norm read from the other 1023 channel reads; expect R2>0.95 for particle tokens in mid blocks.",
+   "prediction": {
+    "surrogate_R2_particles": 0.97
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:30:37",
+   "sec": 6.3
+  },
+  {
+   "id": "009",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Residual-stream capture to fit, per block, a linear surrogate of the channel-2 norm read from the other 1023 channel reads; expect R2>0.95 for particle tokens in mid blocks.",
+   "prediction": {
+    "surrogate_R2_particles": 0.97
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "04:30:43",
+   "sec": 6.3
+  },
+  {
+   "id": "010",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Exact mask plus per-block linear surrogates for every read of channel 2 makes the saturated channel 2 of kept neutrals harmless; remaining damage comes from surrogate error (R2 0.7-0.99), so clean e should drop from 0.079 to ~0.025.",
+   "prediction": {
+    "E_rule": 0.3,
+    "clean_e": 0.025,
+    "d_acc": -0.003,
+    "class_drop": 0.015,
+    "d_nll": 0.008,
+    "rho_P_reco": 0.97,
+    "gen_drift": 0.27,
+    "DoF": 210900
+   },
+   "weights": "{RUN}/work/sur_all_v1.npz",
+   "input": null,
+   "time": "04:36:19",
+   "sec": 188.5
+  },
+  {
+   "id": "011",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Instead of surrogates, set norm1/norm2 weight[2]=0 in all 28 blocks so channel 2 is never read (1 DoF each); loses channel-2 information for all tokens, so clean damage larger than the surrogate (0.010) but far below saturation (0.079).",
+   "prediction": {
+    "E_rule": 0.25,
+    "clean_e": 0.03,
+    "d_acc": -0.005,
+    "class_drop": 0.02,
+    "d_nll": 0.01,
+    "rho_P_reco": 0.97,
+    "DoF": 10308
+   },
+   "weights": "{RUN}/work/zw_all_cls.npz",
+   "input": null,
+   "time": "04:40:06",
+   "sec": 185.3
+  },
+  {
+   "id": "012",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Surrogate only on the 6 sublayers with the largest channel-2 information loss (block 5-9 MLPs, block 6 attention), zero norm weight elsewhere; should recover most of the gap between zero-all (0.028) and surrogate-all (0.010).",
+   "prediction": {
+    "E_rule": 0.17,
+    "clean_e": 0.019,
+    "class_drop": 0.02,
+    "d_nll": 0.007,
+    "DoF": 29900
+   },
+   "weights": "{RUN}/work/hyb6.npz",
+   "input": null,
+   "time": "04:44:33",
+   "sec": 182.0
+  },
+  {
+   "id": "013",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Surrogate on the top-14 sublayers by information-loss proxy, zero norm weight elsewhere.",
+   "prediction": {
+    "E_rule": 0.14,
+    "clean_e": 0.015,
+    "class_drop": 0.015,
+    "d_nll": 0.005,
+    "DoF": 55000
+   },
+   "weights": "{RUN}/work/hyb14.npz",
+   "input": null,
+   "time": "04:47:36",
+   "sec": 183.1
+  },
+  {
+   "id": "014",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Replace the classifier K/V surrogate (8190 DoF) by shrinking body.norm.weight[2] by 1e-4 (1 DoF): the classifier and generator then read ~0 instead of saturated channel 2; masks stay nonzero.",
+   "prediction": {
+    "E_rule": 0.13,
+    "clean_e": 0.013,
+    "class_drop": 0.008,
+    "d_nll": 0.004,
+    "gen_drift": 0.25,
+    "DoF": 21563
+   },
+   "weights": "{RUN}/work/h6_bn.npz",
+   "input": null,
+   "time": "04:52:30",
+   "sec": 182.6
+  },
+  {
+   "id": "015",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Top-3 surrogates (block 6-8 MLPs) plus zero norm weights elsewhere plus body.norm shrink; smaller edit, more channel-2 information lost.",
+   "prediction": {
+    "E_rule": 0.16,
+    "clean_e": 0.018,
+    "class_drop": 0.015,
+    "d_nll": 0.007,
+    "DoF": 12350
+   },
+   "weights": "{RUN}/work/h3_bn.npz",
+   "input": null,
+   "time": "04:55:30",
+   "sec": 180.0
+  },
+  {
+   "id": "016",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Exact mask plus exact restoration of channel 2 for kept neutrals (block0 -H, block1 -(H-128)) and gated-linear re-insertion of the regressed channel-2 content in block 2; blocks 3-27 and the heads then see near-original channel 2. Damage limited to blocks 0-2 and xor-photons (13% of neutrals) whose content is lost.",
+   "prediction": {
+    "E_rule": 0.13,
+    "clean_e": 0.013,
+    "class_drop": 0.01,
+    "d_nll": 0.004,
+    "rho_P_reco": 1.0,
+    "gen_drift": 0.27,
+    "DoF": 2100
+   },
+   "weights": "{RUN}/work/rest_lin.npz",
+   "input": null,
+   "time": "05:06:11",
+   "sec": 181.4
+  },
+  {
+   "id": "017",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same as rest_lin but block 2 restores channel 2 of kept neutrals to a constant (neutral mean) instead of the regressed per-token value; ~30 DoF, more clean damage.",
+   "prediction": {
+    "E_rule": 0.2,
+    "clean_e": 0.025,
+    "class_drop": 0.02,
+    "d_nll": 0.01,
+    "DoF": 40
+   },
+   "weights": "{RUN}/work/rest_const.npz",
+   "input": null,
+   "time": "05:09:12",
+   "sec": 181.4
+  },
+  {
+   "id": "018",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Diagnose rest_lin: after block 2 the channel-2 of no-gate neutrals should match the original within ~0.3, and the largest residual deviations should sit on xor photons and gated charged tokens.",
+   "prediction": {
+    "x2_rmse_nogate_neutral_block3": 0.4,
+    "rel_dev_summary_block27": 0.02
+   },
+   "weights": "{RUN}/work/rest_lin.npz",
+   "input": "clean",
+   "time": "05:09:37",
+   "sec": 6.5
+  },
+  {
+   "id": "019",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Scaling norm2.weight[2] by 2^-10 in blocks 0-2 (detectors rescaled) stops the other MLP units from reading the saturated channel 2, removing the corruption of other channels and of the block-2 channel-2 writes; clean e should drop from 0.026 toward 0.015.",
+   "prediction": {
+    "E_rule": 0.15,
+    "clean_e": 0.016,
+    "class_drop": 0.012,
+    "d_nll": 0.005,
+    "DoF": 2087
+   },
+   "weights": "{RUN}/work/rest_lin2.npz",
+   "input": null,
+   "time": "05:14:50",
+   "sec": 180.7
+  },
+  {
+   "id": "020",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Edited-model activations to refit the block-2 restoration regression on edited features; expect no-gate neutral channel-2 error at block 2 below 0.8.",
+   "prediction": {
+    "x2_rmse_nogate_neutral_block2": 0.5
+   },
+   "weights": "{RUN}/work/rest_lin2.npz",
+   "input": "clean",
+   "time": "05:14:56",
+   "sec": 6.7
+  },
+  {
+   "id": "021",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "The remaining clean damage of the restoration edit comes from zeroing channel 2 in the attention of blocks 0-2 (summary tokens already 0.9% off at block 1); rank-1 surrogates there should bring clean e from 0.026 to ~0.014.",
+   "prediction": {
+    "E_rule": 0.14,
+    "clean_e": 0.014,
+    "class_drop": 0.01,
+    "d_nll": 0.004,
+    "DoF": 14370
+   },
+   "weights": "{RUN}/work/rest_lin2_as.npz",
+   "input": null,
+   "time": "05:18:55",
+   "sec": 184.8
+  },
+  {
+   "id": "022",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Fixing the fp32 accumulation error of the gated-linear units (gate scale 25856->8192, 128-term sparse regression refit on edited features) should cut the restored channel-2 error of no-gate neutrals from 0.85 to ~0.3, lowering clean e from 0.026 to ~0.018.",
+   "prediction": {
+    "E_rule": 0.16,
+    "clean_e": 0.018,
+    "class_drop": 0.014,
+    "d_nll": 0.006,
+    "DoF": 350
+   },
+   "weights": "{RUN}/work/rest_lin3.npz",
+   "input": null,
+   "time": "05:27:21",
+   "sec": 181.6
+  },
+  {
+   "id": "023",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Xor photons (one kinematic gate) now get marker -128 at block 0, flipped to +128 in block 1 by an exact unit gated on saturated-negative channel 2 AND a neutral/charged discriminant; block 2 then restores their channel-2 content as for the other neutrals. Clean e should drop from 0.0157 to ~0.012.",
+   "prediction": {
+    "E_rule": 0.13,
+    "clean_e": 0.012,
+    "class_drop": 0.008,
+    "d_nll": 0.003,
+    "DoF": 2150
+   },
+   "weights": "{RUN}/work/rest_xor.npz",
+   "input": null,
+   "time": "05:31:55",
+   "sec": 180.8
+  },
+  {
+   "id": "024",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "After the xor fix, channel-2 errors after block 2 should be ~0.3 for all neutrals; remaining deviations should concentrate on gated charged tokens (saturated channel 2).",
+   "prediction": {
+    "x2_rmse_nogate_block3": 0.3,
+    "x2_rmse_xor_block3": 0.4
+   },
+   "weights": "{RUN}/work/rest_xor.npz",
+   "input": "clean",
+   "time": "05:32:50",
+   "sec": 6.6
+  },
+  {
+   "id": "025",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "rest_xor plus rank-1 channel-2 surrogates in the attention of blocks 0-2 (instead of zeroing the read) removes the 0.9% summary-token deviation at block 2; clean e 0.0123 -> ~0.009.",
+   "prediction": {
+    "E_rule": 0.1,
+    "clean_e": 0.009,
+    "class_drop": 0.005,
+    "d_nll": 0.002,
+    "DoF": 15300
+   },
+   "weights": "{RUN}/work/rx_as.npz",
+   "input": null,
+   "time": "05:36:30",
+   "sec": 180.9
+  },
+  {
+   "id": "026",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "As rx_as plus rank-1 surrogates for the channel-2 read of the block 0-2 MLPs (detector rows excluded).",
+   "prediction": {
+    "E_rule": 0.095,
+    "clean_e": 0.008,
+    "class_drop": 0.005,
+    "d_nll": 0.002,
+    "DoF": 24500
+   },
+   "weights": "{RUN}/work/rx_asm.npz",
+   "input": null,
+   "time": "05:39:31",
+   "sec": 181.0
+  },
+  {
+   "id": "027",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original block-1 residual on 1020 new jets as regression targets for the block-2 channel-2 restoration.",
+   "prediction": {
+    "neutral_x2_std": 3.5
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "05:40:41",
+   "sec": 19.1
+  },
+  {
+   "id": "028",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Edited-model block-2 features on the same 1020 jets; refitting with 4x more tokens should lower the restoration rmse from 0.26 to ~0.2.",
+   "prediction": {
+    "refit_rmse": 0.2
+   },
+   "weights": "{RUN}/work/rest_xor.npz",
+   "input": "clean",
+   "time": "05:41:02",
+   "sec": 20.2
+  },
+  {
+   "id": "029",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Block-2 restoration refit on 20k edited-model neutral tokens (dense ridge, test rmse 0.057 vs 0.33 before), constant -128 moved to an exact saturating unit, gate scale 4096 to cut fp32 accumulation error; restored channel-2 error ~0.08 should lower clean e from 0.0123 to ~0.008.",
+   "prediction": {
+    "E_rule": 0.1,
+    "clean_e": 0.008,
+    "class_drop": 0.005,
+    "d_nll": 0.002,
+    "DoF": 3120
+   },
+   "weights": "{RUN}/work/rx3.npz",
+   "input": null,
+   "time": "05:46:08",
+   "sec": 179.9
+  },
+  {
+   "id": "030",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original block-1 residual on 1500 probe-type jets (split2, soft3e-3, P_reco, D, J) as extra restoration targets, so the block-2 regression also covers collinear splits and rescaled jets.",
+   "prediction": {
+    "neutral_x2_std": 3.5
+   },
+   "weights": null,
+   "input": "{RUN}/work/mix.npz",
+   "time": "05:48:24",
+   "sec": 27.5
+  },
+  {
+   "id": "031",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Edited-model block-2 features on the same probe-type jets; current regression error on split2 neutrals is expected to be above the clean 0.06.",
+   "prediction": {
+    "rmse_split2_current": 0.2
+   },
+   "weights": "{RUN}/work/rx3.npz",
+   "input": "{RUN}/work/mix.npz",
+   "time": "05:48:54",
+   "sec": 29.6
+  },
+  {
+   "id": "032",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid: exact mask + exact channel-2 restoration (blocks 0-1, xor flip unit with original row kept) + paired gated-linear re-insertion in block 2 with the regression refit on clean+probe-type jets; split2 error should fall from 0.0155 to ~clean level.",
+   "prediction": {
+    "E_rule": 0.072,
+    "clean_e": 0.0035,
+    "split2_e": 0.005,
+    "class_drop": 0.005,
+    "d_nll": 0.0008,
+    "DoF": 2150
+   },
+   "weights": "{RUN}/work/rx4_mid.npz",
+   "input": null,
+   "time": "05:53:45",
+   "sec": 186.4
+  },
+  {
+   "id": "033",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small: as mid but a single gated-linear unit (no odd-symmetric pair); restoration error ~0.28 instead of 0.05, so clean e rises to ~0.009.",
+   "prediction": {
+    "E_rule": 0.1,
+    "clean_e": 0.009,
+    "class_drop": 0.01,
+    "d_nll": 0.002,
+    "DoF": 1130
+   },
+   "weights": "{RUN}/work/rx4_small.npz",
+   "input": null,
+   "time": "05:56:47",
+   "sec": 181.9
+  },
+  {
+   "id": "034",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Large: mid plus rank-1 channel-2 surrogates in the attention and MLP of blocks 0-2 instead of zeroing/down-scaling those reads.",
+   "prediction": {
+    "E_rule": 0.072,
+    "clean_e": 0.0035,
+    "class_drop": 0.005,
+    "d_nll": 0.0008,
+    "DoF": 21000
+   },
+   "weights": "{RUN}/work/rx4_large.npz",
+   "input": null,
+   "time": "05:59:48",
+   "sec": 180.8
+  },
+  {
+   "id": "035",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original logits on 1500 held-out clean jets (indices 600-749 per class) as reference for an out-of-sample check.",
+   "prediction": {
+    "acc": 0.86
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "06:08:54",
+   "sec": 26.5
+  },
+  {
+   "id": "036",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Mid edit on held-out clean jets: restoration regression was fit on other jets, so clean e should stay ~0.004 and accuracy drop <0.003.",
+   "prediction": {
+    "clean_e": 0.0045,
+    "d_acc": -0.001
+   },
+   "weights": "{RUN}/work/rx4_mid.npz",
+   "input": "clean",
+   "time": "06:09:21",
+   "sec": 26.5
+  },
+  {
+   "id": "037",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Small edit on held-out clean jets: clean e ~0.014.",
+   "prediction": {
+    "clean_e": 0.014,
+    "d_acc": -0.003
+   },
+   "weights": "{RUN}/work/rx4_small.npz",
+   "input": "clean",
+   "time": "06:09:47",
+   "sec": 26.5
+  },
+  {
+   "id": "038",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Mid edit on held-out soft1e-4 jets: every injected photon is masked exactly, so e vs original-on-clean should equal the clean floor ~0.0045.",
+   "prediction": {
+    "e_soft1e-4": 0.0047
+   },
+   "weights": "{RUN}/work/rx4_mid.npz",
+   "input": "soft1e-4",
+   "time": "06:10:14",
+   "sec": 26.5
+  },
+  {
+   "id": "039",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Mid with tighter detector/constant-unit gates (no misfires on charged tokens with large channel 2) and gate scale 2048 with K=3.5 for lower fp32 accumulation error; expect equal or slightly better than rx4_mid (0.074).",
+   "prediction": {
+    "E_rule": 0.073,
+    "clean_e": 0.0036,
+    "class_drop": 0.005,
+    "d_nll": 0.0007,
+    "DoF": 2156
+   },
+   "weights": "{RUN}/work/rx6_mid.npz",
+   "input": null,
+   "time": "06:14:33",
+   "sec": 183.5
+  },
+  {
+   "id": "040",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Small single gated unit at the GELU*tanh inflection region (K=1.2) with gate 2048: restoration error 0.13 instead of 0.28, so clean e should drop from 0.0137 to ~0.008.",
+   "prediction": {
+    "E_rule": 0.1,
+    "clean_e": 0.008,
+    "class_drop": 0.008,
+    "d_nll": 0.0012,
+    "DoF": 1129
+   },
+   "weights": "{RUN}/work/rx6_small.npz",
+   "input": null,
+   "time": "06:17:33",
+   "sec": 180.8
+  },
+  {
+   "id": "041",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Paired gated units keep their (near-dead) original fc1 rows and add only 512 fitted weights each (fit on 50k tokens, in-sample rmse 0.04), so the restoration matches the dense version at about half the DoF.",
+   "prediction": {
+    "E_rule": 0.07,
+    "clean_e": 0.0033,
+    "class_drop": 0.005,
+    "d_nll": 0.0003,
+    "DoF": 1180
+   },
+   "weights": "{RUN}/work/rx7_p512.npz",
+   "input": null,
+   "time": "06:22:08",
+   "sec": 181.4
+  },
+  {
+   "id": "042",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Single gated unit with 256 added weights on its original row (restoration error ~0.15), ~380 DoF; clean e ~0.008.",
+   "prediction": {
+    "E_rule": 0.095,
+    "clean_e": 0.008,
+    "class_drop": 0.01,
+    "d_nll": 0.002,
+    "DoF": 380
+   },
+   "weights": "{RUN}/work/rx7_s256.npz",
+   "input": null,
+   "time": "06:25:09",
+   "sec": 180.6
+  },
+  {
+   "id": "043",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Held-out clean check of the 362-DoF edit: clean e ~0.01 and worst per-class accuracy drop well inside 0.02.",
+   "prediction": {
+    "clean_e": 0.0105,
+    "worst_class": -0.01
+   },
+   "weights": "{RUN}/work/rx7_s256.npz",
+   "input": "clean",
+   "time": "06:26:02",
+   "sec": 26.5
+  },
+  {
+   "id": "044",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Held-out clean check of the 1134-DoF edit: clean e ~0.004.",
+   "prediction": {
+    "clean_e": 0.004,
+    "worst_class": -0.005
+   },
+   "weights": "{RUN}/work/rx7_p512.npz",
+   "input": "clean",
+   "time": "06:26:29",
+   "sec": 26.5
+  }
+ ],
+ "oracle_up": "2026-11-14T03:52:09"
+}

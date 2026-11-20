@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e_th01L4.npz", "hypothesis": "Refined large edit passes all limits with margin.", "prediction": {"d_acc": -0.002, "class_drop": 0.008, "d_nll": 0.003, "ratio_soft1e-3": 0.02, "ratio_soft1e-4": 0.03, "ratio_soft3e-3": 1.04, "rho_P_ref": 0.93, "rho_J": 1.05, "gen_drift_max": 0.08}}

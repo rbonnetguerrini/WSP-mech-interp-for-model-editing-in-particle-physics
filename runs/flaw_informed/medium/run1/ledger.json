@@ -1,0 +1,757 @@
+{
+ "budget": 50,
+ "used": 48,
+ "log": [
+  {
+   "id": "001",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Baseline of the unedited model: all limits pass trivially, ratios 1; gives the response sizes r for soft probes (expect soft1e-4 response at least as large as soft1e-3 because it is out of the neutral pT support).",
+   "prediction": {
+    "d_acc": 0.0,
+    "d_nll": 0.0,
+    "gen_drift": 0.0,
+    "rho_P_ref": 1.0,
+    "dof": 0
+   },
+   "weights": null,
+   "input": null,
+   "time": "11:45:38",
+   "sec": 397.7
+  },
+  {
+   "id": "002",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Capture of clean (128 jets, 16 per class... spread over classes) to follow how an added soft photon perturbs summary tokens across depth; expect the summary-token difference to appear already after block0.",
+   "prediction": {
+    "n_jets": 128
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "11:45:38",
+   "sec": 0.5
+  },
+  {
+   "id": "003",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Capture of soft1e-4 (128 jets, 16 per class... spread over classes) to follow how an added soft photon perturbs summary tokens across depth; expect the summary-token difference to appear already after block0.",
+   "prediction": {
+    "n_jets": 128
+   },
+   "weights": null,
+   "input": "soft1e-4",
+   "time": "11:45:39",
+   "sec": 0.6
+  },
+  {
+   "id": "004",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "soft1e-3 capture to compare against clean (002): the summary-token difference should be large already within the first blocks if a specific early feature fires on the 0.6 GeV photon.",
+   "prediction": {
+    "n_jets": 128
+   },
+   "weights": null,
+   "input": "soft1e-3",
+   "time": "11:46:07",
+   "sec": 0.6
+  },
+  {
+   "id": "005",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "soft1e-3 MLP hidden activations of blocks 0,1: expect a few hidden units on the added photon token to be outliers vs clean neutral tokens.",
+   "prediction": {
+    "n_jets": 128
+   },
+   "weights": null,
+   "input": "soft1e-3",
+   "time": "11:46:07",
+   "sec": 0.6
+  },
+  {
+   "id": "006",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "clean reference for 005.",
+   "prediction": {
+    "n_jets": 128
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "11:46:08",
+   "sec": 0.7
+  },
+  {
+   "id": "007",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "clean residuals (block inputs) to compute queries offline for designing a constant inert key for gated soft-neutral tokens.",
+   "prediction": {
+    "n_jets": 128
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "11:52:52",
+   "sec": 0.6
+  },
+  {
+   "id": "008",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "clean residuals of remaining blocks for the query statistics.",
+   "prediction": {
+    "n_jets": 128
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "11:52:52",
+   "sec": 0.5
+  },
+  {
+   "id": "009",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "classifier block0 output gives the query input for classifier block1.",
+   "prediction": {
+    "n_jets": 128
+   },
+   "weights": null,
+   "input": "clean",
+   "time": "11:52:53",
+   "sec": 0.4
+  },
+  {
+   "id": "010",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Constructed jets with one added photon/neutral hadron at log-uniform 1e-5..1e-2 of jet pT; block0 MLP inputs give positives for a linear soft-neutral detector; logits show the response vs pT and pid.",
+   "prediction": {
+    "n_jets": 128
+   },
+   "weights": null,
+   "input": "{RUN}/work/cust1.npz",
+   "time": "11:52:53",
+   "sec": 0.8
+  },
+  {
+   "id": "011",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Block0 MLP unit 308 gates neutrals with log_pt<0.2 and saturates their residual to a fixed sign pattern whose key is ~7 logits below the row LSE (median); this should cut soft1e-3/1e-4 responses strongly, but ~1.9 clean neutrals per jet are also gated, so clean side effects are moderate.",
+   "prediction": {
+    "ratio_soft1e-3": 0.35,
+    "ratio_soft1e-4": 0.4,
+    "d_acc": -0.006,
+    "d_nll": 0.02,
+    "rho_P_ref": 0.95,
+    "gen_drift_max": 0.3,
+    "dof": 1026
+   },
+   "weights": "{RUN}/work/e1_th0.2.npz",
+   "input": null,
+   "time": "12:31:01",
+   "sec": 111.5
+  },
+  {
+   "id": "012",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same gate+saturation circuit with a very sharp gate (kappa=1000) at log_pt<-0.1 so almost no token falls in the GELU negative lobe (which made 011 tokens into attention magnets); expect clean damage to drop to a few 1e-3 and soft1e-3/1e-4 responses to fall, gen_drift still large because noised neutrals are gated.",
+   "prediction": {
+    "ratio_soft1e-3": 0.5,
+    "ratio_soft1e-4": 0.3,
+    "d_acc": -0.004,
+    "d_nll": 0.01,
+    "rho_P_ref": 0.97,
+    "gen_drift_max": 0.5,
+    "dof": 1026
+   },
+   "weights": "{RUN}/work/e2.npz",
+   "input": null,
+   "time": "12:36:00",
+   "sec": 109.5
+  },
+  {
+   "id": "013",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Diffusion-noised clean jets (t=0.1..0.85) give exactly the block0 MLP inputs the generator sees (block0 is time independent). Expect my soft-neutral gate to fire on a large fraction of noised neutrals at t>=0.5, which explains gen_drift, and these tokens can be used as negatives for a noise veto.",
+   "prediction": {
+    "frac_noised_neutrals_gated_t0.85": 0.4,
+    "frac_noised_neutrals_gated_t0.2": 0.01
+   },
+   "weights": null,
+   "input": "{RUN}/work/noise1.npz",
+   "time": "12:36:06",
+   "sec": 6.3
+  },
+  {
+   "id": "014",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Gate (log_pt<-0.1 neutrals, kappa 1000) saturates the token; per-block rank-1 query/key edits (constant-query direction x saturated-key direction, min-variance head direction) push its logit 12-30 below every row LSE, so gated tokens become inert. Expect clean damage small (KL<0.05) and soft1e-3/soft1e-4 ratios well below 012; gen_drift still sizable (noised neutrals gated).",
+   "prediction": {
+    "ratio_soft1e-3": 0.25,
+    "ratio_soft1e-4": 0.15,
+    "d_acc": -0.004,
+    "d_nll": 0.02,
+    "kl": 0.03,
+    "rho_P_ref": 1.0,
+    "gen_drift_max": 0.4,
+    "dof": 55000
+   },
+   "weights": "{RUN}/work/e3.npz",
+   "input": null,
+   "time": "12:54:18",
+   "sec": 110.1
+  },
+  {
+   "id": "015",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Same as 014 but the gate subtracts 2x a ridge 'diffusion-noise' readout (fit on noised jets captured at block0), so noised neutrals in the generator check are rarely gated; expect gen_drift much lower than 014 at slightly worse soft1e-3 ratio.",
+   "prediction": {
+    "ratio_soft1e-3": 0.3,
+    "ratio_soft1e-4": 0.2,
+    "d_acc": -0.004,
+    "d_nll": 0.02,
+    "kl": 0.03,
+    "rho_P_ref": 1.0,
+    "gen_drift_max": 0.1,
+    "dof": 55000
+   },
+   "weights": "{RUN}/work/e4.npz",
+   "input": null,
+   "time": "12:56:08",
+   "sec": 109.7
+  },
+  {
+   "id": "016",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original-model logits on tgt_-0.1 (512 jets each of soft1e-3, soft1e-4, P, clean; tgt_* have neutrals below the given absolute log_pt removed) to build a proxy of the target error e_v under two threshold hypotheses.",
+   "prediction": {
+    "n": 2048
+   },
+   "weights": null,
+   "input": "{RUN}/work/tgt_-0.1.npz",
+   "time": "12:56:13",
+   "sec": 5.0
+  },
+  {
+   "id": "017",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original-model logits on tgt_0.3 (512 jets each of soft1e-3, soft1e-4, P, clean; tgt_* have neutrals below the given absolute log_pt removed) to build a proxy of the target error e_v under two threshold hypotheses.",
+   "prediction": {
+    "n": 2048
+   },
+   "weights": null,
+   "input": "{RUN}/work/tgt_0.3.npz",
+   "time": "12:56:18",
+   "sec": 5.0
+  },
+  {
+   "id": "018",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Original-model logits on probes4 (512 jets each of soft1e-3, soft1e-4, P, clean; tgt_* have neutrals below the given absolute log_pt removed) to build a proxy of the target error e_v under two threshold hypotheses.",
+   "prediction": {
+    "n": 2048
+   },
+   "weights": null,
+   "input": "{RUN}/work/probes4.npz",
+   "time": "12:56:23",
+   "sec": 5.0
+  },
+  {
+   "id": "019",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Diagnose e3: jets with exploding logits should contain a token whose gate unit 308 activation is negative (GELU lobe, pushing -s which the QK edit turns into a +30 logit bonus) or partial.",
+   "prediction": {
+    "frac_jets_with_neg_unit308": 0.03
+   },
+   "weights": "{RUN}/work/e3.npz",
+   "input": "clean",
+   "time": "12:56:23",
+   "sec": 0.6
+  },
+  {
+   "id": "020",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Chained 5-unit gate (no GELU negative lobe) saturates neutrals with log_pt<-0.1 into sign pattern s_late (key margins <= -1..-4.5 in blocks 4-11 and classifier); rank-1 QK edits only in blocks 1-3 (offline KL ~1e-4). Expect clean damage small now and soft1e-3 ratio ~0.15.",
+   "prediction": {
+    "ratio_soft1e-3": 0.15,
+    "ratio_soft1e-4": 0.35,
+    "d_acc": -0.002,
+    "d_nll": 0.01,
+    "kl": 0.01,
+    "rho_P_ref": 1.0,
+    "rho_J": 1.05,
+    "gen_drift_max": 0.3,
+    "dof": 17500
+   },
+   "weights": "{RUN}/work/e5.npz",
+   "input": null,
+   "time": "13:05:10",
+   "sec": 109.4
+  },
+  {
+   "id": "021",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "As e5 plus light rank-1 QK edits (penalty 6 logits) in blocks 4-8 and both classifier blocks: stronger suppression of gated tokens at small extra distortion (offline KL<=3e-3 per block).",
+   "prediction": {
+    "ratio_soft1e-3": 0.12,
+    "ratio_soft1e-4": 0.3,
+    "d_acc": -0.003,
+    "d_nll": 0.015,
+    "kl": 0.015,
+    "rho_P_ref": 1.0,
+    "rho_J": 1.05,
+    "gen_drift_max": 0.3,
+    "dof": 45000
+   },
+   "weights": "{RUN}/work/e6.npz",
+   "input": null,
+   "time": "13:07:00",
+   "sec": 109.7
+  },
+  {
+   "id": "022",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Logits of e5 on soft1e-3/soft1e-4/P/clean (512 each) for the target-error proxy against original logits on stripped jets.",
+   "prediction": {
+    "proxy_ratio_soft1e-3_thr-0.1": 0.2
+   },
+   "weights": "{RUN}/work/e5.npz",
+   "input": "{RUN}/work/probes4.npz",
+   "time": "13:07:05",
+   "sec": 4.9
+  },
+  {
+   "id": "023",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "Logits of e6 on soft1e-3/soft1e-4/P/clean (512 each) for the target-error proxy against original logits on stripped jets.",
+   "prediction": {
+    "proxy_ratio_soft1e-3_thr-0.1": 0.2
+   },
+   "weights": "{RUN}/work/e6.npz",
+   "input": "{RUN}/work/probes4.npz",
+   "time": "13:07:10",
+   "sec": 5.0
+  },
+  {
+   "id": "024",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original-model block0 MLP inputs on split2 (1024 jets): the two collinear halves have a zero-distance kNN neighbour, so my linear log_pt readout should be off for them and the gate fires on hard split photons, explaining e5's split2 ratio 3.7. These tokens become extra training data for the readouts.",
+   "prediction": {
+    "frac_split_tokens_gated": 0.3
+   },
+   "weights": null,
+   "input": "split2",
+   "time": "13:07:13",
+   "sec": 3.1
+  },
+  {
+   "id": "025",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Block0 MLP inputs on soft3e-3: added photons have log_pt 0.4-1.1 so should not be gated; if some are (readout error for isolated photons), it explains soft3e-3 ratio 1.3.",
+   "prediction": {
+    "frac_added_photons_gated": 0.1
+   },
+   "weights": null,
+   "input": "soft3e-3",
+   "time": "13:07:16",
+   "sec": 3.1
+  },
+  {
+   "id": "026",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "Chained gate + saturation to s_late with NO QK edits: removes the QK-edit distortion (0.044 S on jets without soft neutrals, and the split2 ratio 3.7 that I attribute to OOD twin tokens hitting the key edit), at the cost of weaker suppression in blocks 1-3 (margins up to +13 for rare queries).",
+   "prediction": {
+    "ratio_soft1e-3": 0.12,
+    "ratio_soft1e-4": 0.25,
+    "ratio_split2": 1.3,
+    "d_acc": -0.002,
+    "d_nll": 0.005,
+    "kl": 0.004,
+    "rho_P_ref": 0.9,
+    "rho_J": 1.05,
+    "gen_drift_max": 0.25,
+    "dof": 5130
+   },
+   "weights": "{RUN}/work/e7.npz",
+   "input": null,
+   "time": "13:12:21",
+   "sec": 109.3
+  },
+  {
+   "id": "027",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original residuals on split2 (512 jets) as extra (legit, slightly OOD) tokens for a more robust least-squares fit of the QK-edit directions in blocks 1-3 and classifier keys.",
+   "prediction": {
+    "n_jets": 512
+   },
+   "weights": null,
+   "input": "split2",
+   "time": "13:12:23",
+   "sec": 1.9
+  },
+  {
+   "id": "028",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original residuals on soft3e-3 (512 jets) as extra (legit, slightly OOD) tokens for a more robust least-squares fit of the QK-edit directions in blocks 1-3 and classifier keys.",
+   "prediction": {
+    "n_jets": 512
+   },
+   "weights": null,
+   "input": "soft3e-3",
+   "time": "13:12:25",
+   "sec": 1.9
+  },
+  {
+   "id": "029",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e7 with threshold lowered to log_pt<-0.2 and readouts refit on 88k tokens (incl. split2/soft3e-3/custom): 9x fewer neutrals cross the threshold under J, so rho_J returns towards 1 and P_ref towards 1, clean KL drops; soft1e-3 ratio slightly worse (93.5% of probe photons gated).",
+   "prediction": {
+    "ratio_soft1e-3": 0.12,
+    "ratio_soft1e-4": 0.22,
+    "ratio_split2": 1.1,
+    "d_acc": -0.001,
+    "d_nll": 0.004,
+    "kl": 0.004,
+    "rho_J": 1.04,
+    "rho_P_ref": 0.97,
+    "gen_drift_max": 0.2,
+    "dof": 3080
+   },
+   "weights": "{RUN}/work/e8.npz",
+   "input": null,
+   "time": "13:31:27",
+   "sec": 109.3
+  },
+  {
+   "id": "030",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e8 logits on soft1e-3/soft1e-4/P/clean for the target-error proxy.",
+   "prediction": {
+    "proxy_ratio_soft1e-3_thr-0.1": 0.15
+   },
+   "weights": "{RUN}/work/e8.npz",
+   "input": "{RUN}/work/probes4.npz",
+   "time": "13:31:32",
+   "sec": 4.9
+  },
+  {
+   "id": "031",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "orig logits on unseen-probe-like jets (soft neutral hadron at 1e-3 and 1e-4, two soft photons, photon at 0.4<dR<0.8). The gate reads neutrality from the pid embedding (6 and 7 alike), so e8 should cut all four responses like soft1e-3/1e-4.",
+   "prediction": {
+    "e8_ratio_NH1e-3": 0.12,
+    "e8_ratio_NH1e-4": 0.25,
+    "e8_ratio_2ph": 0.12,
+    "e8_ratio_wide": 0.15
+   },
+   "weights": null,
+   "input": "{RUN}/work/hid1.npz",
+   "time": "14:33:36",
+   "sec": 12.4
+  },
+  {
+   "id": "032",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e8 logits on unseen-probe-like jets (soft neutral hadron at 1e-3 and 1e-4, two soft photons, photon at 0.4<dR<0.8). The gate reads neutrality from the pid embedding (6 and 7 alike), so e8 should cut all four responses like soft1e-3/1e-4.",
+   "prediction": {
+    "e8_ratio_NH1e-3": 0.12,
+    "e8_ratio_NH1e-4": 0.25,
+    "e8_ratio_2ph": 0.12,
+    "e8_ratio_wide": 0.15
+   },
+   "weights": "{RUN}/work/e8.npz",
+   "input": "{RUN}/work/hid1.npz",
+   "time": "14:33:38",
+   "sec": 1.8
+  },
+  {
+   "id": "033",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Check gate firing (units 308,379,247,255,280) on added soft neutral hadrons / photon pairs / wide photons in e8; expect >90% of added tokens with log_pt<-0.2 fully gated; if NH at 1e-4 are not, the log_pt readout extrapolates badly for pid 7.",
+   "prediction": {
+    "frac_added_below_thr_gated": 0.95
+   },
+   "weights": "{RUN}/work/e8.npz",
+   "input": "{RUN}/work/hid1.npz",
+   "time": "14:34:07",
+   "sec": 2.0
+  },
+  {
+   "id": "034",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e8 gate plus rank-2 QK edits in body blocks 1-3 refit with split2/soft3e-3 tokens (twin tokens now |n|<0.002): suppresses the rare queries that still attend to gated tokens in blocks 1-3 without the split2 damage seen in e5.",
+   "prediction": {
+    "ratio_soft1e-3": 0.07,
+    "ratio_soft1e-4": 0.15,
+    "ratio_split2": 1.15,
+    "ratio_soft3e-3": 1.05,
+    "d_acc": -0.001,
+    "d_nll": 0.004,
+    "kl": 0.004,
+    "rho_J": 1.05,
+    "rho_P_ref": 0.97,
+    "gen_drift_max": 0.27,
+    "dof": 15356
+   },
+   "weights": "{RUN}/work/e10.npz",
+   "input": null,
+   "time": "14:51:56",
+   "sec": 112.6
+  },
+  {
+   "id": "035",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e10 logits on soft1e-3/soft1e-4/P/clean for the target-error proxy.",
+   "prediction": {
+    "proxy_ratio_soft1e-4_thr-0.1": 0.2
+   },
+   "weights": "{RUN}/work/e10.npz",
+   "input": "{RUN}/work/probes4.npz",
+   "time": "14:52:01",
+   "sec": 5.0
+  },
+  {
+   "id": "036",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e10 on unseen-probe-like jets; expect lower ratios than e8 (0.23/0.51/0.31/0.17) if attention leakage in blocks 1-3 drives the residual.",
+   "prediction": {
+    "ratio_NH1e-4": 0.35,
+    "ratio_2ph": 0.25
+   },
+   "weights": "{RUN}/work/e10.npz",
+   "input": "{RUN}/work/hid1.npz",
+   "time": "14:52:02",
+   "sec": 1.3
+  },
+  {
+   "id": "037",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e8 + weaker robust QK edits only in blocks 1-2 (penalties 14,12 logits instead of 26,25,17): removes the +13/+12 positive soft-key margins of rare particle queries while roughly halving the clean distortion seen with e10.",
+   "prediction": {
+    "ratio_soft1e-3": 0.06,
+    "ratio_soft1e-4": 0.12,
+    "ratio_split2": 1.2,
+    "d_acc": -0.001,
+    "d_nll": 0.003,
+    "kl": 0.003,
+    "rho_J": 1.02,
+    "rho_P_ref": 0.95,
+    "gen_drift_max": 0.26,
+    "dof": 11264
+   },
+   "weights": "{RUN}/work/e12.npz",
+   "input": null,
+   "time": "14:58:10",
+   "sec": 109.3
+  },
+  {
+   "id": "038",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e8 with threshold log_pt<-0.15: gates ~96% of soft1e-3 photons and more P neutrals (better P target match), at the cost of ~4x more J threshold crossings than e8 (rho_J ~1.07) and slightly more clean change.",
+   "prediction": {
+    "ratio_soft1e-3": 0.08,
+    "ratio_soft1e-4": 0.22,
+    "d_acc": -0.001,
+    "d_nll": 0.004,
+    "kl": 0.003,
+    "rho_J": 1.07,
+    "rho_P_ref": 0.96,
+    "gen_drift_max": 0.27,
+    "dof": 3080
+   },
+   "weights": "{RUN}/work/e13.npz",
+   "input": null,
+   "time": "14:59:59",
+   "sec": 109.1
+  },
+  {
+   "id": "039",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e12 logits on soft1e-3/soft1e-4/P/clean for the target-error proxy.",
+   "prediction": {
+    "proxy_meanratio_thr-0.1": 0.27
+   },
+   "weights": "{RUN}/work/e12.npz",
+   "input": "{RUN}/work/probes4.npz",
+   "time": "15:00:04",
+   "sec": 4.9
+  },
+  {
+   "id": "040",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e13 logits on soft1e-3/soft1e-4/P/clean for the target-error proxy.",
+   "prediction": {
+    "proxy_meanratio_thr-0.1": 0.27
+   },
+   "weights": "{RUN}/work/e13.npz",
+   "input": "{RUN}/work/probes4.npz",
+   "time": "15:00:09",
+   "sec": 4.9
+  },
+  {
+   "id": "041",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e13 gate (log_pt<-0.15) + robust strong QK edits in blocks 1-3: like e10 it should lower the soft responses (soft1e-3 ~0.04) and the P leak, with clean KL ~0.004 and split2 ~1.4.",
+   "prediction": {
+    "ratio_soft1e-3": 0.04,
+    "ratio_soft1e-4": 0.065,
+    "ratio_split2": 1.45,
+    "d_acc": -0.002,
+    "d_nll": 0.004,
+    "kl": 0.004,
+    "rho_J": 1.06,
+    "rho_P_ref": 0.89,
+    "gen_drift_max": 0.27,
+    "dof": 15356
+   },
+   "weights": "{RUN}/work/e14.npz",
+   "input": null,
+   "time": "15:03:31",
+   "sec": 109.3
+  },
+  {
+   "id": "042",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e14 + robust QK edit in classifier block 0 (penalty 8): the classifier is the last reader so this edit is not amplified; expect slightly lower soft ratios than e14 with nearly the same clean side effects.",
+   "prediction": {
+    "ratio_soft1e-3": 0.035,
+    "ratio_soft1e-4": 0.055,
+    "ratio_split2": 1.45,
+    "d_acc": -0.002,
+    "d_nll": 0.004,
+    "kl": 0.0045,
+    "rho_J": 1.06,
+    "rho_P_ref": 0.89,
+    "gen_drift_max": 0.27,
+    "dof": 19448
+   },
+   "weights": "{RUN}/work/e15.npz",
+   "input": null,
+   "time": "15:05:21",
+   "sec": 109.4
+  },
+  {
+   "id": "043",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e14 logits on soft1e-3/soft1e-4/P/clean for the target-error proxy.",
+   "prediction": {
+    "proxy_P_ratio_thr-0.1": 0.33
+   },
+   "weights": "{RUN}/work/e14.npz",
+   "input": "{RUN}/work/probes4.npz",
+   "time": "15:05:26",
+   "sec": 4.9
+  },
+  {
+   "id": "044",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e15 logits on soft1e-3/soft1e-4/P/clean for the target-error proxy.",
+   "prediction": {
+    "proxy_P_ratio_thr-0.1": 0.33
+   },
+   "weights": "{RUN}/work/e15.npz",
+   "input": "{RUN}/work/probes4.npz",
+   "time": "15:05:31",
+   "sec": 4.9
+  },
+  {
+   "id": "045",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original residuals of split2 (256 jets) at blocks 3-6 for the robust least-squares fit of light QK edits in blocks 4-7.",
+   "prediction": {
+    "n_jets": 256
+   },
+   "weights": null,
+   "input": "split2",
+   "time": "15:05:53",
+   "sec": 1.1
+  },
+  {
+   "id": "046",
+   "kind": "capture",
+   "model": "orig",
+   "hypothesis": "Original residuals of soft3e-3 (256 jets) at blocks 3-6 for the robust least-squares fit of light QK edits in blocks 4-7.",
+   "prediction": {
+    "n_jets": 256
+   },
+   "weights": null,
+   "input": "soft3e-3",
+   "time": "15:05:54",
+   "sec": 0.9
+  },
+  {
+   "id": "047",
+   "kind": "surgical",
+   "model": "orig",
+   "hypothesis": "e14 + light robust QK edits (penalty 6 logits) in blocks 4-7: further cuts the residual attention leak from gated tokens (mostly helps P, multi-gated jets), at extra clean distortion; rho_J should stay < 1.13.",
+   "prediction": {
+    "ratio_soft1e-3": 0.025,
+    "ratio_soft1e-4": 0.06,
+    "ratio_split2": 1.55,
+    "d_acc": -0.0025,
+    "d_nll": 0.007,
+    "kl": 0.006,
+    "rho_J": 1.1,
+    "rho_P_ref": 0.87,
+    "gen_drift_max": 0.28,
+    "dof": 31724
+   },
+   "weights": "{RUN}/work/e16.npz",
+   "input": null,
+   "time": "15:13:20",
+   "sec": 109.3
+  },
+  {
+   "id": "048",
+   "kind": "logits",
+   "model": "orig",
+   "hypothesis": "e16 logits on soft1e-3/soft1e-4/P/clean for the target-error proxy.",
+   "prediction": {
+    "proxy_P_ratio_thr-0.1": 0.24
+   },
+   "weights": "{RUN}/work/e16.npz",
+   "input": "{RUN}/work/probes4.npz",
+   "time": "15:13:25",
+   "sec": 4.9
+  }
+ ],
+ "oracle_up": "2026-11-17T11:33:36"
+}

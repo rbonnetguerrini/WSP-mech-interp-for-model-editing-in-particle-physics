@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/f_large2.npz","hypothesis":"f_large plus compensation of the summary-token channel-70 reads in the classifier head: regression reconstruction in both classifier MLPs and a mean-shift bias in classifier.fc.fc1. Expect the clean floor 0.010 -> ~0.008 and E_ref ~0.072.","prediction":{"E_ref":0.072,"e_clean":0.008,"dof":12300}}

@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/e5_gatesonly.npz", "hypothesis": "Ablation: only the rank-1 key gates of pass 12, no detector/flag. If clean damage is still large, the gate noise on normal keys (not the flag) is the cause.", "prediction": {"d_acc": -0.25, "gen_drift": 0.8, "ratio_soft1e-4": 1.0}}

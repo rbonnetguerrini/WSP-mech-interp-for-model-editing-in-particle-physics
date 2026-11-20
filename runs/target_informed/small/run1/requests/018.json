@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e10.npz","hypothesis":"Small variant: e4 without the MLP (fc1) mean-ablation rescales; keeps key suppression in all blocks and Q/V rescales in blocks 0,1 and classifier. Tests whether MLP reads of channel 70 matter. Expect E_ref ~0.2 at ~2.5k DoF if MLP rescales are minor.","prediction":{"E_ref":0.2,"e_clean":0.03,"dof":2500}}

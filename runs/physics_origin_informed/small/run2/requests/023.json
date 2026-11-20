@@ -1,0 +1,1 @@
+{"kind": "surgical", "weights": "{RUN}/work/edit_S4.npz", "hypothesis": "s2 without key suppression in body blocks 0-1 (they carry the generic soft-particle effect, not the shortcut, which needs the block-0 MLP AND). Expect E_rule ~0.12 at 256 fewer DoF.", "prediction": {"E_rule": 0.12, "DoF": 1729}}

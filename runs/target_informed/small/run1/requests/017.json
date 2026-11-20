@@ -1,0 +1,1 @@
+{"kind":"surgical","weights":"{RUN}/work/e9.npz","hypothesis":"Largest: regression reconstruction of channel 70 in every attention and MLP read of the body and both classifier attentions. Expect a small further gain over e7 (E_ref ~0.075).","prediction":{"E_ref":0.075,"e_clean":0.0095,"dof":13000}}
