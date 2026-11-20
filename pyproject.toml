@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "softrepair"
+version = "1.0.0"
+description = "Repairing the response of a jet foundation model (OmniLearned) to soft neutral particles: fine-tuning, SAE edits and weight-space programming"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=2.2",
+    "scipy>=1.15",
+    "scikit-learn>=1.7",
+    "h5py>=3.16",
+    "torch>=2.6",
+    "torchdiffeq>=0.2.5",
+    "matplotlib>=3.10",
+    "omnilearned @ git+https://github.com/ViniciusMikuni/OmniLearned@25fef9fe9e00d822efff80fae0d505a1bd8c0069",
+]
+
+[project.optional-dependencies]
+umap = ["umap-learn==0.5.7"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
